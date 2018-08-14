@@ -1,8 +1,8 @@
 module.exports = {
-    getPens(req, res) {
+    deleteUser(req, res) {
         res.status(200)
     },
-    getUserPens(req, res) {
+    updateUser(req, res) {
         res.status(200)
     }
 }
