@@ -1,4 +1,5 @@
 @import url(./reset.css);
+@import url("https://fonts.googleapis.com/css?family=Lato");
 .editor {
   display: flex;
   text-align: left; }
@@ -6,12 +7,20 @@
 .CodeMirror {
   font-size: 14px;
   height: 100%;
-  width: 33.3vw;
-  font-family: 'Source Code Pro'; }
+  width: calc(33.3vw - 3px);
+  font-family: 'Source Code Pro';
+  border-bottom: 15px solid #36383F; }
+
+.CodeMirror textarea {
+  z-index: -1; }
 
 .CodeMirror-scroll {
   width: 33.3vw;
-  background-color: #1D1E22; }
+  background-color: #1D1E22;
+  padding-top: 30px; }
+
+.CodeMirror-sizer {
+  border-top: 0.5px solid #36383F; }
 
 .CodeMirror-gutter {
   width: 15px !important;
@@ -19,8 +28,7 @@
   margin-right: 10px; }
 
 span {
-  font-size: 10px;
-  /* padding-left: 10px; */ }
+  font-size: 10px; }
 
 .CodeMirror-gutters {
   margin-right: 30px;
@@ -49,28 +57,62 @@ span {
   outline: 1px solid #C5C8D4; }
 
 .penFrame {
-  width: 100vw; }
+  width: calc(100vw - 10px);
+  min-height: calc(100vh - 100px); }
 
 .editorHead {
   width: 100vw;
-  height: 30px;
-  background-color: #1A1B1F;
-  margin: 0px; }
-
-.divider {
-  width: 15px;
-  height: 30px;
+  height: 5px;
   background-color: #36383F;
-  margin-right: 10px; }
+  margin: 0px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black; }
 
-.section {
-  width: 33.3vw;
-  display: inline-block; }
+.editorSection {
+  width: calc(33vw - 30px);
+  display: flex;
+  justify-content: space-between;
+  padding-right: 30px;
+  background-color: #1D1E22;
+  z-index: 1000;
+  position: relative;
+  top: 15px;
+  left: 0px;
+  padding-left: 20px; }
 
-.section button,
-.section h3 {
+.settingsImg {
+  width: 10px;
+  height: 10px;
+  padding: 4px 4px 2px 4px; }
+
+.editorSection button,
+.editorSection h3 {
   display: inline-block;
-  color: #C5C8D4; }
+  color: #C5C8D4;
+  border-radius: 4px;
+  margin: 5px;
+  font-family: "Lato", sans-serif; }
 
-.section button {
+.editorSection button {
   background-color: #4E505A; }
+
+.penFooter {
+  height: 20px;
+  width: calc(100vw - 50px);
+  background-color: #36383F;
+  margin-top: -3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px; }
+
+.penFooter button {
+  background-color: #1D1E22;
+  color: white;
+  font-size: 10px;
+  padding: 2px;
+  border-radius: 2px; }
+
+.codeEditor {
+  overflow-y: hidden; }
