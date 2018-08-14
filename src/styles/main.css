@@ -1,6 +1,76 @@
 @import url(./reset.css);
-* {
-  margin: 0; }
+.editor {
+  display: flex;
+  text-align: left; }
 
-body {
-  background-color: pink; }
+.CodeMirror {
+  font-size: 14px;
+  height: 100%;
+  width: 33.3vw;
+  font-family: 'Source Code Pro'; }
+
+.CodeMirror-scroll {
+  width: 33.3vw;
+  background-color: #1D1E22; }
+
+.CodeMirror-gutter {
+  width: 15px !important;
+  background-color: #36383F;
+  margin-right: 10px; }
+
+span {
+  font-size: 10px;
+  /* padding-left: 10px; */ }
+
+.CodeMirror-gutters {
+  margin-right: 30px;
+  background-color: #1D1E22 !important;
+  border: none !important; }
+
+.CodeMirror-linenumber {
+  font-size: 10px;
+  color: #36383F !important;
+  line-height: 2; }
+
+.CodeMirror-hscrollbar {
+  width: 0px; }
+
+span {
+  word-wrap: break-word; }
+
+.CodeMirror-scroll::-webkit-scrollbar {
+  width: 5px; }
+
+.CodeMirror-scroll::-webkit-scrollbar-track {
+  background-color: #1D1E22; }
+
+.CodeMirror-scroll::-webkit-scrollbar-thumb {
+  background-color: #666B7A;
+  outline: 1px solid #C5C8D4; }
+
+.penFrame {
+  width: 100vw; }
+
+.editorHead {
+  width: 100vw;
+  height: 30px;
+  background-color: #1A1B1F;
+  margin: 0px; }
+
+.divider {
+  width: 15px;
+  height: 30px;
+  background-color: #36383F;
+  margin-right: 10px; }
+
+.section {
+  width: 33.3vw;
+  display: inline-block; }
+
+.section button,
+.section h3 {
+  display: inline-block;
+  color: #C5C8D4; }
+
+.section button {
+  background-color: #4E505A; }
