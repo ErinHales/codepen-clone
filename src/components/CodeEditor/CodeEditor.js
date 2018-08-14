@@ -49,36 +49,40 @@ export default class CodeEditor extends Component {
     render() {
         let srcdoc = `${this.state.html}<style>${this.state.css}</style><script>${this.state.js}</script>`;
         return (
-            <div>
+            <div className="codeEditor">
                 <div className="editorHead">
-                    <div class="section">
-                        <div className="divider"></div>
-                        <div>
-                            <button></button>
-                            <h3>HTML</h3>
-                        </div>
+                <section className="editorSection">
+                    <div>
+                        <button><img className="settingsImg" src="http://www.clker.com/cliparts/5/t/n/f/d/T/white-gear-hi.png" alt="settings"/></button>
+                        <h3>HTML</h3>
                     </div>
-                    <div class="section">
-                        <div className="divider"></div>
-                        <div>
-                            <button></button>
-                            <h3>CSS</h3>
-                        </div>
+                    <button><img className="settingsImg" src="http://i66.tinypic.com/2gufexh.jpg" alt="down arrow" /></button>
+                </section>
+                <section className="editorSection">
+                    <div>
+                        <button><img className="settingsImg" src="http://www.clker.com/cliparts/5/t/n/f/d/T/white-gear-hi.png" alt="settings"/></button>
+                        <h3>CSS</h3>
                     </div>
-                    <div class="section">
-                        <div className="divider"></div>
-                        <div>
-                            <button></button>
-                            <h3>JS</h3>
-                        </div>
+                    <button><img className="settingsImg" src="http://i66.tinypic.com/2gufexh.jpg" alt="down arrow" /></button>
+                </section>
+                <section className="editorSection">
+                    <div>
+                        <button><img className="settingsImg" src="http://www.clker.com/cliparts/5/t/n/f/d/T/white-gear-hi.png" alt="settings"/></button>
+                        <h3>JS</h3>
                     </div>
+                    <button><img className="settingsImg" src="http://i66.tinypic.com/2gufexh.jpg" alt="down arrow" /></button>
+                </section>
                 </div>
                 <div className="editor">
                     <HTML updateHTML={this.updateHTML} html={this.state.html} />
                     <CSS updateCSS={this.updateCSS} css={this.state.css} />
                     <JavaScript updateJS={this.updateJS} js={this.state.js} />
                 </div>
-                <iframe class="penFrame" srcDoc={srcdoc} frameBorder="0" title="showPen"></iframe>
+                <iframe className="penFrame" srcDoc={srcdoc} frameBorder="0" title="showPen"></iframe>
+                <div className="penFooter">
+                    <button>Console</button>
+                    <button>Delete</button>
+                </div>
             </div>
         )
     }
