@@ -1,0 +1,172 @@
+.Name{
+ color:white;
+ background-color: black; 
+ font-size: 26px;
+ font-family: 'Source Sans Pro', sans-serif;
+ display: flex;
+ margin-left: 10px;
+ cursor: pointer;
+}
+
+.navbar{
+  display: flex;
+  background-color: black;
+  height: 65px;
+  align-items: center;
+}
+
+.icon{
+  height: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.Your{
+  color: rgb(103, 149, 235);
+  margin-left: 5px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  position: relative;
+  top: 20px;
+}
+
+.Prof-pens{
+  color: white;
+  margin-left: 5px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  cursor: pointer;
+  position: relative;
+  top: 20px;
+}
+
+.h-line{
+  height: 4px;
+  width: 50px;
+  background: black;
+  position: relative;
+  top: 30px;
+  left: 5px;
+}
+
+.Ex-line{
+  height: 4px;
+  width: 45px;
+  background: black;
+  position: relative;
+  top: 30px;
+  left: 5px;
+}
+
+.Pj-line{
+  height: 4px;
+  width: 65px;
+  background: black;
+  position: relative;
+  top: 10px;
+}
+
+.Coll-line{
+  height: 4px;
+  width: 82px;
+  background: black;
+  position: relative;
+  top: 10px;
+  left: 20px;
+}
+
+.Prof-holder{
+  height: 70px;
+  width: 70px;
+  position: relative;
+  left: 35px;
+  
+}
+.Prof-holder:hover .h-line{
+  background: linear-gradient(to right, rgba(29,189,255,0.8) 0%, rgba(233,204,59,0.8) 34%, rgba(173,96,228,0.8) 68%, rgba(75,207,115,0.8) 100%);  
+}
+
+.Prof-holder:hover .Ex-line{
+  background: #0ebeff
+}
+
+.Prof-holder:hover .Pj-line{
+  background: yellow;
+}
+
+.Prof-holder:hover .Coll-line{
+  background: rgb(219, 67, 219);
+}
+
+.Proj{
+  color: white;
+  margin-left: 1px;
+  margin-top: 34px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.Coll{
+  color: white;
+  margin-left: 18px;
+  margin-top: 34px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.Expl{
+  color: rgb(243, 243, 120);
+  font-family: 'Source Sans Pro', sans-serif;
+  margin-left: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  position: relative;
+  top: 20px;
+}
+
+.CreateBtn{
+  background-color: #36383F;
+  height: 45px;
+  width: 112px;
+  border-radius: 3px;
+  margin-left: 61%;
+  color: white;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Create{
+  margin-left: 15px;
+  font-family: 'Lato', sans-serif;
+}
+
+.greenArrow{
+  height: 18px;
+  margin-left: 8px;
+}
+
+.mag{
+  height: 33px;
+  margin-left: 14px;
+  fill: gray;
+  cursor: pointer;
+}
+
+.Bell{
+  height: 36px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.userPic{
+  height: 45px;
+  width: 45px;
+  background-color: gray;
+  border-radius: 3px;
+  margin-left: 10px;
+  cursor: pointer;
+}
