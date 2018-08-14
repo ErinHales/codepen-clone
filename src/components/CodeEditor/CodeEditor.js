@@ -12,19 +12,9 @@ export default class CodeEditor extends Component {
         super();
 
         this.state = {
-            css:
-`body {
-    background-color: pink;
-}
-`,
-            html:
-`<h1>Hello World</h1>
-`,
-            js:
-`function magic(fairyDust) {
-    return "I can fly. Also, I do believe in fairies";
-}
-`
+            css: 'body {\n\tbackground-color: pink;\n}',
+            html: '<h1>Hello World</h1>',
+            js: 'function magic(fairyDust) {\n\treturn "I can fly. Also, I do believe in fairies";\n}'
         }
     }
 
@@ -48,6 +38,7 @@ export default class CodeEditor extends Component {
 
     render() {
         let srcdoc = `${this.state.html}<style>${this.state.css}</style><script>${this.state.js}</script>`;
+        console.log(this.state.html);
         return (
             <div className="codeEditor">
                 <div className="editorHead">
@@ -81,7 +72,7 @@ export default class CodeEditor extends Component {
                 <iframe className="penFrame" srcDoc={srcdoc} frameBorder="0" title="showPen"></iframe>
                 <div className="penFooter">
                     <button>Console</button>
-                    <button>Delete</button>
+                    <button className="delete">Delete</button>
                 </div>
             </div>
         )

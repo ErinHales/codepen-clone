@@ -123,7 +123,7 @@ span {
 
 
 .penFooter {
-    height: 20px;
+    height: 30px;
     width: calc(100vw - 50px);
     background-color: $med-gray;
     margin-top: -3px;
@@ -137,8 +137,16 @@ span {
     background-color: $primary-black;
     color: white;
     font-size: 10px;
-    padding: 2px;
+    padding: 4px;
     border-radius: 2px;
+}
+
+.penFooter button:hover {
+    cursor: pointer;
+}
+
+.delete:hover {
+    background-color: #ED5151;
 }
 
 .codeEditor {
