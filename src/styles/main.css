@@ -75,7 +75,7 @@ span {
   justify-content: space-between;
   padding-right: 30px;
   background-color: #1D1E22;
-  z-index: 1000;
+  z-index: 500;
   position: relative;
   top: 15px;
   left: 0px;
