@@ -1,6 +1,174 @@
 @import url(./reset.css);
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+@import url("https://fonts.googleapis.com/css?family=Lato");
 @import url("https://fonts.googleapis.com/css?family=Lato");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+.component-login {
+  font-family: "Lato", sans-serif;
+  background: url("https://static.codepen.io/assets/logos/codepen-logo-pattern-725360e4ce5b66f968c7f39c80999bdeaa3cbe2f18eac75d58b01f8cf55c26ab.png");
+  background-repeat: repeat;
+  height: 140vh; }
+  .component-login input:active {
+    border: 3px solid #9396A4; }
+  .component-login .login-container {
+    width: 60%;
+    margin: 0 auto;
+    position: relative;
+    top: 5rem; }
+  .component-login .login-types {
+    display: flex;
+    justify-content: space-between; }
+    .component-login .login-types .login-controls {
+      display: flex;
+      align-items: center;
+      margin-top: 2rem; }
+      .component-login .login-types .login-controls p {
+        color: #75D8FC;
+        margin-left: 1.5rem; }
+        .component-login .login-types .login-controls p:hover {
+          cursor: pointer;
+          color: #FFFFFF; }
+      .component-login .login-types .login-controls .btn-green {
+        background-color: #47CF73;
+        border: none;
+        padding: 15px;
+        border-radius: 5px;
+        font-size: 1rem; }
+        .component-login .login-types .login-controls .btn-green:hover {
+          background-color: #2FB45A;
+          cursor: pointer; }
+  .component-login .logo {
+    margin-bottom: 0.5rem; }
+  .component-login h1 {
+    color: #FFFFFF;
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem; }
+  .component-login h5 {
+    color: #9396A4;
+    margin-bottom: 0.25rem; }
+  .component-login .login-inputs {
+    width: 45%; }
+    .component-login .login-inputs .input-group {
+      margin-bottom: 1rem; }
+      .component-login .login-inputs .input-group input {
+        width: 100%;
+        padding: 15px 5px;
+        border-radius: 5px; }
+      .component-login .login-inputs .input-group:last-child {
+        margin-top: 1rem; }
+  .component-login .login-divider {
+    display: flex;
+    flex-direction: column;
+    width: 0.3%; }
+    .component-login .login-divider .divider-top,
+    .component-login .login-divider .divider-bottom {
+      height: 50%;
+      background-color: #9396A4; }
+    .component-login .login-divider .divider-text-container {
+      border: 1px solid #9396A4;
+      padding: 10px 5px;
+      height: 10%;
+      width: 1000%;
+      border-radius: 5px;
+      position: relative;
+      right: 17px;
+      color: #9396A4;
+      text-align: center; }
+      .component-login .login-divider .divider-text-container .divider-text {
+        display: flex;
+        align-items: center;
+        height: 100%; }
+  .component-login .reset {
+    width: 93%;
+    max-height: 250px;
+    transition: all 0.5s; }
+  .component-login .reset-styles {
+    background-color: #32333B;
+    border-radius: 5px;
+    padding: 1.5rem 1rem;
+    margin-top: 2rem;
+    opacity: 1;
+    transition: all 5s; }
+    .component-login .reset-styles h3 {
+      color: #9396A4;
+      font-size: 1.75rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid #9396A4; }
+    .component-login .reset-styles .reset-input-group {
+      margin-top: 0.75rem; }
+      .component-login .reset-styles .reset-input-group h6 {
+        color: #9396A4;
+        margin-bottom: 0.2rem; }
+      .component-login .reset-styles .reset-input-group input {
+        padding: 1rem 0.8rem;
+        border-radius: 5px;
+        width: 75%;
+        margin-bottom: 1rem; }
+    .component-login .reset-styles .reset-button {
+      width: 90%; }
+      .component-login .reset-styles .reset-button button {
+        background-color: rgba(78, 80, 90, 0.2);
+        padding: 1rem 0.5rem;
+        border: none;
+        border-radius: 5px;
+        color: #FFFFFF;
+        width: 100%;
+        font-size: 1.125rem; }
+      .component-login .reset-styles .reset-button button:hover {
+        background-color: #4e505a;
+        cursor: pointer; }
+  .component-login .hidden {
+    max-height: 0;
+    overflow-y: hidden;
+    opacity: 0;
+    transition: all 0.5s; }
+  .component-login .login-socials {
+    width: 36%; }
+    .component-login .login-socials .social button {
+      padding: 8px 15px;
+      width: 100%;
+      color: #FFFFFF;
+      margin-top: 0.5rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem; }
+      .component-login .login-socials .social button .button-content {
+        display: flex;
+        align-items: center; }
+      .component-login .login-socials .social button:hover {
+        background-color: #E6E2E4;
+        cursor: pointer; }
+      .component-login .login-socials .social button i {
+        font-size: 1.8rem;
+        margin-right: 1rem; }
+    .component-login .login-socials .facebook {
+      background-color: #4464A2; }
+      .component-login .login-socials .facebook:hover {
+        color: #4464A2; }
+    .component-login .login-socials .twitter {
+      background-color: #60B5F0; }
+      .component-login .login-socials .twitter:hover {
+        color: #60B5F0; }
+    .component-login .login-socials .github {
+      background-color: #7B7E8C; }
+      .component-login .login-socials .github:hover {
+        color: #000; }
+  .component-login .signup-container {
+    margin-top: 2.5rem;
+    padding: 1.2rem;
+    background-color: #32333B;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .component-login .signup-container p {
+      color: #FFFFFF; }
+    .component-login .signup-container p:last-child {
+      color: #75D8FC;
+      margin-left: 1px; }
+      .component-login .signup-container p:last-child:hover {
+        color: #FFFFFF;
+        cursor: pointer; }
+
 .editor {
   display: flex;
   text-align: left; }
@@ -8,12 +176,20 @@
 .CodeMirror {
   font-size: 14px;
   height: 100%;
-  width: 33.3vw;
-  font-family: 'Source Code Pro'; }
+  width: calc(33.3vw - 3px);
+  font-family: 'Source Code Pro';
+  border-bottom: 15px solid #36383F; }
+
+.CodeMirror textarea {
+  z-index: -1; }
 
 .CodeMirror-scroll {
   width: 33.3vw;
-  background-color: #1D1E22; }
+  background-color: #1D1E22;
+  padding-top: 30px; }
+
+.CodeMirror-sizer {
+  border-top: 0.5px solid #36383F; }
 
 .CodeMirror-gutter {
   width: 15px !important;
@@ -21,8 +197,7 @@
   margin-right: 10px; }
 
 span {
-  font-size: 10px;
-  /* padding-left: 10px; */ }
+  font-size: 10px; }
 
 .CodeMirror-gutters {
   margin-right: 30px;
@@ -51,31 +226,65 @@ span {
   outline: 1px solid #C5C8D4; }
 
 .penFrame {
-  width: 100vw; }
+  width: calc(100vw - 10px);
+  min-height: calc(100vh - 100px); }
 
 .editorHead {
   width: 100vw;
-  height: 30px;
-  background-color: #1A1B1F;
-  margin: 0px; }
-
-.divider {
-  width: 15px;
-  height: 30px;
+  height: 5px;
   background-color: #36383F;
-  margin-right: 10px; }
+  margin: 0px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black; }
 
-.section {
-  width: 33.3vw;
-  display: inline-block; }
+.editorSection {
+  width: calc(33vw - 30px);
+  display: flex;
+  justify-content: space-between;
+  padding-right: 30px;
+  background-color: #1D1E22;
+  z-index: 500;
+  position: relative;
+  top: 15px;
+  left: 0px;
+  padding-left: 20px; }
 
-.section button,
-.section h3 {
+.settingsImg {
+  width: 10px;
+  height: 10px;
+  padding: 4px 4px 2px 4px; }
+
+.editorSection button,
+.editorSection h3 {
   display: inline-block;
-  color: #C5C8D4; }
+  color: #C5C8D4;
+  border-radius: 4px;
+  margin: 5px;
+  font-family: "Lato", sans-serif; }
 
-.section button {
+.editorSection button {
   background-color: #4E505A; }
+
+.penFooter {
+  height: 20px;
+  width: calc(100vw - 50px);
+  background-color: #36383F;
+  margin-top: -3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px; }
+
+.penFooter button {
+  background-color: #1D1E22;
+  color: white;
+  font-size: 10px;
+  padding: 2px;
+  border-radius: 2px; }
+
+.codeEditor {
+  overflow-y: hidden; }
 
 .nav1 {
   background: black;
