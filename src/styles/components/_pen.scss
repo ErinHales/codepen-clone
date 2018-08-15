@@ -1,0 +1,81 @@
+$primary-black: #1D1E22;
+// $med-gray: #36383F;
+$med-gray: #32333B;
+$light-gray: #C5C8D4;
+
+.penInfoContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: $med-gray;
+}
+
+.penInfo,
+.penPopularity {
+    display: flex;
+    align-items: center;
+}
+
+.pensView {
+    background-color: $primary-black;
+    color: $light-gray;
+}
+
+.pensHeader {
+    border-bottom: #0EBEFF;
+    display: flex;
+    align-items: flex-end;
+}
+
+.pensDisplay {
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.pensHeader h4 {
+    color: #0EBEFF;
+}
+
+.profilePicture {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.pensFrame {
+    width: 100%;
+    height: 60%;
+    overflow: hidden; 
+    -ms-overflow: hidden;
+}
+
+.showPen {
+    width: 300px;
+    height: 250px;
+    margin: 20px;
+    border-radius: 5px;
+}
+
+#viewIcon {
+    width: 20px;
+    height: 20px;
+}
+
+.penPopularity img {
+    width: 10px;
+    height: 10px;
+    margin: 10px;
+}
+
+#displayUserName {
+    color: white;
+}
+
+.penInfo {
+    margin: 5px 10px;
+    padding: 10px 0px;
+    border-bottom: 0.1px solid $light-gray;
+}
