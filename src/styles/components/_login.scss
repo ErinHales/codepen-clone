@@ -3,7 +3,9 @@
     font-family: $font-lato; // Background Styles
     background: url('https://static.codepen.io/assets/logos/codepen-logo-pattern-725360e4ce5b66f968c7f39c80999bdeaa3cbe2f18eac75d58b01f8cf55c26ab.png');
     background-repeat: repeat;
-    height: 140vh; // active styles for all inputs
+    min-height: 110vh; // active styles for all inputs
+    overflow-y: hidden;
+    padding-bottom: 5rem;
     input:active {
         border: 3px solid $text-grey;
     }
@@ -192,8 +194,9 @@
             }
         }
     }
-    .signup-container {
+    .login-signup-container {
         margin-top: 2.5rem;
+        margin-bottom: 5rem;
         padding: 1.2rem;
         background-color: #32333B;
         display: flex;
