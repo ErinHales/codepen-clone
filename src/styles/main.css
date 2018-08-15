@@ -1,4 +1,5 @@
 @import url(./reset.css);
+@import url("https://fonts.googleapis.com/css?family=Lato");
 .editor {
   display: flex;
   text-align: left; }
@@ -74,3 +75,184 @@ span {
 
 .section button {
   background-color: #4E505A; }
+
+.nav1 {
+  background: black;
+  display: flex;
+  align-items: center;
+  height: 63px; }
+
+.icon {
+  height: 26px;
+  position: relative;
+  top: 5px; }
+
+.Name {
+  width: 175px;
+  display: flex;
+  align-items: bottom;
+  font-family: 'Lato', sans-serif;
+  color: white;
+  margin-left: 15px;
+  font-size: 24px;
+  position: relative;
+  bottom: 2px;
+  cursor: pointer; }
+
+.Your {
+  color: lightskyblue;
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+  padding-bottom: 4px; }
+
+.Prof {
+  color: white;
+  font-family: "Lato", "Lucida Grande", "Lucida Sans Unicode";
+  font-size: 16px; }
+
+.Exp {
+  color: yellow;
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+  padding-bottom: 4px; }
+
+.Proj {
+  color: white;
+  font-family: "Lato", "Lucida Grande", "Lucida Sans Unicode";
+  position: relative;
+  top: 8px;
+  font-weight: 500; }
+
+.Coll {
+  color: white;
+  font-family: "Lato", "Lucida Grande", "Lucida Sans Unicode";
+  position: relative;
+  top: 9px;
+  font-weight: 599; }
+
+.divProf {
+  height: 70px;
+  width: 80px;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer; }
+
+.divProf:hover .h-line {
+  background: linear-gradient(to right, rgba(29, 189, 255, 0.8) 0%, rgba(233, 204, 59, 0.8) 34%, rgba(173, 96, 228, 0.8) 68%, rgba(75, 207, 115, 0.8) 100%); }
+
+.divExp:hover .p-line {
+  background: #0077ff; }
+
+.divProj:hover .prj-line {
+  background: yellow; }
+
+.divColl:hover .coll-line {
+  background: #ae63e4; }
+
+.h-line {
+  height: 4px;
+  width: 50px;
+  background: black;
+  position: relative;
+  top: 13px; }
+
+.p-line {
+  height: 4px;
+  width: 50px;
+  background: black;
+  position: relative;
+  top: 13px; }
+
+.prj-line {
+  height: 4px;
+  width: 59px;
+  background: black;
+  position: relative;
+  top: 21px; }
+
+.coll-line {
+  height: 4px;
+  width: 80px;
+  background: black;
+  position: relative;
+  top: 20px; }
+
+.divExp {
+  height: 70px;
+  width: 80px;
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer; }
+
+.divProj {
+  height: 70px;
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 13px;
+  cursor: pointer; }
+
+.divColl {
+  height: 70px;
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 13px;
+  cursor: pointer; }
+
+.nav2 {
+  display: flex;
+  margin-left: 55.5%; }
+
+.create {
+  height: 45px;
+  width: 108px;
+  border-radius: 3px;
+  background: #36383F;
+  color: white;
+  font-family: "Lato", "Lucida Grande", "Lucida Sans Unicode";
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer; }
+
+.create:hover {
+  background: #6e6d6d; }
+
+.arrow {
+  height: 30px; }
+
+.divMag {
+  border-radius: 50px;
+  background: #898e9e;
+  position: relative;
+  left: 15px;
+  height: 40px; }
+
+.mag {
+  height: 45px;
+  cursor: pointer; }
+
+.divMag:hover {
+  background: #cfcece; }
+
+.bell {
+  height: 35px;
+  margin-left: 15px;
+  margin-top: 6px;
+  cursor: pointer; }
+
+.userIcon {
+  height: 44px;
+  width: 44px;
+  background: gray;
+  border-radius: 3px;
+  margin-left: 15px;
+  cursor: pointer; }
