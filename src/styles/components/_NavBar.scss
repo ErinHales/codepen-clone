@@ -1,0 +1,426 @@
+
+.nav1{
+  background: rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  height: 63px;
+}
+
+.icon{
+  height: 26px;
+  position: relative;
+  top: 5px;
+}
+
+.Name{
+ width: 175px;
+ display: flex;
+ align-items: bottom;
+ font-family: 'Lato', sans-serif;
+ color: white;
+ margin-left: 15px;
+ font-size: 24px;
+ position: relative;
+ bottom: 2px;
+ cursor: pointer;
+}
+
+.Your{
+  color: lightskyblue;
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+  padding-bottom: 4px;
+}
+
+.Prof{
+  color: white;
+  font-family:  "Lato", "Lucida Grande", "Lucida Sans Unicode";
+  font-size: 16px;
+}
+
+.Exp{
+  color: yellow;
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+  padding-bottom: 4px;
+}
+
+.Proj{
+  color: white;
+  font-family:  "Lato", "Lucida Grande", "Lucida Sans Unicode";
+  position: relative;
+  top: 8px;
+  font-weight: 500;
+}
+
+.Coll{
+  color: white;
+  font-family:  "Lato", "Lucida Grande", "Lucida Sans Unicode";
+  position: relative;
+  top: 9px;
+  font-weight: 599;
+}
+
+
+.divProf{
+  height: 70px;
+  width: 80px;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.divProf:hover .h-line{
+  background: linear-gradient(to right, rgba(29,189,255,0.8) 0%, rgba(233,204,59,0.8) 34%, rgba(173,96,228,0.8) 68%, rgba(75,207,115,0.8) 100%);
+}
+
+.divExp:hover .p-line{
+  background: rgb(0, 119, 255);
+}
+
+.divProj:hover .prj-line{
+  background: yellow;
+}
+
+.divColl:hover .coll-line{
+  background: #ae63e4;
+
+.Name{
+ color:white;
+ background-color: black; 
+ font-size: 26px;
+ font-family: 'Source Sans Pro', sans-serif;
+ display: flex;
+ margin-left: 10px;
+ cursor: pointer;
+}
+
+.navbar{
+  display: flex;
+  background-color: black;
+  height: 65px;
+  align-items: center;
+}
+
+.icon{
+  height: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.Your{
+  color: rgb(103, 149, 235);
+  margin-left: 5px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  position: relative;
+  top: 20px;
+}
+
+.Prof-pens{
+  color: white;
+  margin-left: 5px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  cursor: pointer;
+  position: relative;
+  top: 20px;
+}
+
+.h-line{
+  height: 4px;
+  width: 50px;
+  background: black;
+  position: relative;
+  top: 13px;
+}
+
+.p-line{
+  height: 4px;
+  width: 50px;
+  background: rgb(0, 0, 0);
+  position: relative;
+  top: 13px;
+}
+
+.prj-line{
+  height: 4px;
+  width: 59px;
+  background: rgb(0, 0, 0);
+  position: relative;
+  top: 21px;
+}
+
+.coll-line{
+  height: 4px;
+  width: 80px;
+  background: rgb(0, 0, 0);
+  position: relative;
+  top: 20px;
+}
+
+.divExp{
+  height: 70px;
+  width: 80px;
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.divProj{
+  height: 70px;
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 13px;
+  cursor: pointer;
+}
+
+.divColl{
+  height: 70px;
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 13px;
+  cursor: pointer;
+}
+
+.nav2{
+ display: flex;
+ margin-left: 55.5%;
+}
+
+.create{
+  height: 45px;
+  width: 108px;
+  border-radius: 3px;
+  background: #36383F;
+  color: white;
+  font-family:  "Lato", "Lucida Grande", "Lucida Sans Unicode";
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.create:hover{
+  background: rgb(110, 109, 109)
+}
+
+.arrow{
+  height: 30px;
+}
+
+.divMag{
+  border-radius: 50px;
+  background: rgb(137, 142, 158);
+  position: relative;
+  left: 15px;
+  height: 40px;
+}
+
+.mag{
+  height: 45px;
+  cursor: pointer;
+}
+
+.divMag:hover{
+  background: rgb(207, 206, 206)
+}
+
+.bell{
+  height: 35px;
+  margin-left: 15px;
+  margin-top: 6px;
+  cursor: pointer;
+}
+
+.userIcon{
+  height: 44px;;
+  width: 44px;
+  background: gray;
+  border-radius: 3px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+// .createWindow{
+//   width: 250px;
+//   background: rgb(206, 204, 204);
+//   position: absolute;
+//   z-index: 1000;
+//   left: 77.3%;
+//   top: 55px;
+//   border-radius: 3px;
+// }
+
+.createWindow:hover{
+  background: white
+}
+
+.newPen{
+  height: 50px;
+  width: 99%;
+  border: 1px lightgray solid;
+  border-radius: 3px;
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  align-items: center;
+}
+
+.icon1{
+  height: 30px;
+  margin-left: 8px;
+  margin-right: 15px;
+  border-radius: 3px;
+}
+
+.show-nav{
+  display: none;
+}
+
+.createWin{
+  height: 51px;
+  width: 250px;
+  background: rgb(206, 204, 204);
+  position: absolute;
+  z-index: 1000;
+  left: 77.3%;
+  top: 55px;
+  border-radius: 3px;
+  display: inline;
+  transition: .8s height ease-out;
+}
+  top: 30px;
+  left: 5px;
+}
+
+.Ex-line{
+  height: 4px;
+  width: 45px;
+  background: black;
+  position: relative;
+  top: 30px;
+  left: 5px;
+}
+
+.Pj-line{
+  height: 4px;
+  width: 65px;
+  background: black;
+  position: relative;
+  top: 10px;
+}
+
+.Coll-line{
+  height: 4px;
+  width: 82px;
+  background: black;
+  position: relative;
+  top: 10px;
+  left: 20px;
+}
+
+.Prof-holder{
+  height: 70px;
+  width: 70px;
+  position: relative;
+  left: 35px;
+  
+}
+.Prof-holder:hover .h-line{
+  background: linear-gradient(to right, rgba(29,189,255,0.8) 0%, rgba(233,204,59,0.8) 34%, rgba(173,96,228,0.8) 68%, rgba(75,207,115,0.8) 100%);  
+}
+
+.Prof-holder:hover .Ex-line{
+  background: #0ebeff
+}
+
+.Prof-holder:hover .Pj-line{
+  background: yellow;
+}
+
+.Prof-holder:hover .Coll-line{
+  background: rgb(219, 67, 219);
+}
+
+.Proj{
+  color: white;
+  margin-left: 1px;
+  margin-top: 34px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.Coll{
+  color: white;
+  margin-left: 18px;
+  margin-top: 34px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.Expl{
+  color: rgb(243, 243, 120);
+  font-family: 'Source Sans Pro', sans-serif;
+  margin-left: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  position: relative;
+  top: 20px;
+}
+
+.CreateBtn{
+  background-color: #36383F;
+  height: 45px;
+  width: 112px;
+  border-radius: 3px;
+  margin-left: 61%;
+  color: white;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Create{
+  margin-left: 15px;
+  font-family: 'Lato', sans-serif;
+}
+
+.greenArrow{
+  height: 18px;
+  margin-left: 8px;
+}
+
+.mag{
+  height: 33px;
+  margin-left: 14px;
+  fill: gray;
+  cursor: pointer;
+}
+
+.Bell{
+  height: 36px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.userPic{
+  height: 45px;
+  width: 45px;
+  background-color: gray;
+  border-radius: 3px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
