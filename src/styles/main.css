@@ -326,9 +326,8 @@ span {
   top: 55px;
   border-radius: 3px;
   display: inline;
-  transition: .8s height ease-out; }
-  top: 30px;
-  left: 5px; }
+  transition: .8s height ease-out;
+  }
 
 .Ex-line {
   height: 4px;
