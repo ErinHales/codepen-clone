@@ -1,12 +1,9 @@
 @import url(./reset.css);
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
 @import url("https://fonts.googleapis.com/css?family=Lato");
-<<<<<<< HEAD
 @import url("https://fonts.googleapis.com/css?family=Sawarabi+Gothic|Lato");
-=======
 @import url("https://fonts.googleapis.com/css?family=Lato");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
->>>>>>> master
 .component-login {
   font-family: "Lato", sans-serif;
   background: url("https://static.codepen.io/assets/logos/codepen-logo-pattern-725360e4ce5b66f968c7f39c80999bdeaa3cbe2f18eac75d58b01f8cf55c26ab.png");
@@ -307,7 +304,6 @@ span {
 .codeEditor {
   overflow-y: hidden; }
 
-<<<<<<< HEAD
 .penInfoContainer {
   display: flex;
   flex-direction: column;
@@ -460,7 +456,8 @@ span {
 
 .filterPens h4:hover {
   color: white;
-=======
+  cursor: pointer; }
+
 .nav1 {
   background: black;
   display: flex;
@@ -791,5 +788,4 @@ span {
   background-color: gray;
   border-radius: 3px;
   margin-left: 10px;
->>>>>>> master
   cursor: pointer; }
