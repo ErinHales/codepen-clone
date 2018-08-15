@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import templateIcon from './tempsnip.jpg'
+// import templateIcon from './tempsnip.jpg'
 
 class NavBar extends Component {
   constructor() {
@@ -72,7 +72,7 @@ class NavBar extends Component {
 
           <div className={this.state.showNav ? 'show-nav createWin' : 'show-nav'}>
             <div className='createWindow'>
-              <h2 className='newPen'> <img className='icon1' src={templateIcon} alt="" /> New Pen</h2>
+              {/* <h2 className='newPen'> <img className='icon1' src={templateIcon} alt="" /> New Pen</h2> */}
             </div>
           </div>
           

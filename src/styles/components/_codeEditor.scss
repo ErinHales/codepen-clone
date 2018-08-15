@@ -14,7 +14,17 @@ $light-gray: #C5C8D4;
     height: 100%;
     width: calc(33.3vw - 3px);
     font-family: 'Source Code Pro';
-    border-bottom: 15px solid $med-gray;
+}
+
+.verticalResize {
+    width: 100vw;
+    height: 15px;
+    background-color: $med-gray;
+    border-top: 1px solid black;
+}
+
+.verticalResize:hover {
+    cursor: row-resize;
 }
 
 .CodeMirror textarea {
@@ -27,14 +37,15 @@ $light-gray: #C5C8D4;
     padding-top: 30px;
 }
 
-.CodeMirror-sizer {
-    border-top: 0.5px solid $med-gray;
-}
-
 .CodeMirror-gutter {
     width: 15px !important;
     background-color: $med-gray;
     margin-right: 10px;
+    margin-top: 20px;
+}
+
+.CodeMirror-gutter:hover {
+    cursor: col-resize;
 }
 
 span {
@@ -90,7 +101,7 @@ span {
 }
 
 .editorSection {
-    width: calc(33vw - 30px);
+    width: calc(33vw - 64.8px);
     display: flex;
     justify-content: space-between;
     padding-right: 30px;
@@ -100,6 +111,8 @@ span {
     top: 15px;
     left: 0px;
     padding-left: 20px;
+    border-bottom: 0.5px solid $med-gray;
+    border-left: 15px solid $med-gray;
 }
 
 .settingsImg {
@@ -123,7 +136,7 @@ span {
 
 
 .penFooter {
-    height: 20px;
+    height: 30px;
     width: calc(100vw - 50px);
     background-color: $med-gray;
     margin-top: -3px;
@@ -137,8 +150,16 @@ span {
     background-color: $primary-black;
     color: white;
     font-size: 10px;
-    padding: 2px;
+    padding: 4px;
     border-radius: 2px;
+}
+
+.penFooter button:hover {
+    cursor: pointer;
+}
+
+.delete:hover {
+    background-color: #ED5151;
 }
 
 .codeEditor {
