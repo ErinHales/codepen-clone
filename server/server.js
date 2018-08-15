@@ -2,14 +2,22 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const massive = require('massive');
 const session = require('express-session');
+const bcrypt = require('bcrypt-nodejs');
 require('dotenv').config();
 
 const app = express();
 app.use(bodyParser.json());
 
-const {CONNECTION_STRING, SERVER_PORT} = process.env;
 
-massive(CONNECTION_STRING).then(function(db) {
+const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env;
+
+app.use(session({
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
+
+massive(CONNECTION_STRING).then(function (db) {
     app.set("db", db);
     console.log("db is connected");
 }).catch(err => {
@@ -26,6 +34,9 @@ const interfaceCntrl = require('./controllers/interfaceController')
 const statsCntrl = require('./controllers/statsController')
 
 // LOGIN
+app.post('/api/auth/register', (req, res) => loginCntrl.registerUser(req, res, bcrypt));
+app.post('/api/auth/login', (req, res) => loginCntrl.getUser(req, res, bcrypt))
+
 
 
 // USER
@@ -39,10 +50,10 @@ app.delete('/api/user/:userId', userCntrl.deleteUser)
 // INTERFACE
 
 // query: ?types=views or likes. will return and array of objects in descending order organized by query type
-app.get('/api/pens/:pageNum', interfaceCntrl.getPens) 
+app.get('/api/pens/:pageNum', interfaceCntrl.getPens)
 
 // query: ?types=views or likes. will return and array of objects in descending order organized by query type. Limited to user
-app.get('/api/pens/user/:userId/:pageNum', interfaceCntrl.getUserPens) 
+app.get('/api/pens/user/:userId/:pageNum', interfaceCntrl.getUserPens)
 
 // PEN
 
@@ -50,7 +61,7 @@ app.get('/api/pens/user/:userId/:pageNum', interfaceCntrl.getUserPens)
 app.get('/api/pen/searchcdn/:type', penCntrl.searchCdn)
 
 // pen id will exist on the objects that populate the explore and user's profile view
-app.get('/api/pen/:penId', penCntrl.getPen) 
+app.get('/api/pen/:penId', penCntrl.getPen)
 
 // all data for the pen will exist on the body of the request
 app.post('/api/pen/', penCntrl.postPen)
@@ -59,7 +70,7 @@ app.post('/api/pen/', penCntrl.postPen)
 app.put('/api/pen/', penCntrl.updatePen)
 
 // takes penid and the scripts, comments, likes, and pen associated with penid
-app.delete('/api/pen/:penId',penCntrl.deletePen)
+app.delete('/api/pen/:penId', penCntrl.deletePen)
 
 // STATS
 
@@ -71,6 +82,8 @@ app.delete('/api/pen/like/:penId/:userId', statsCntrl.removeLike)
 
 //increment view by one for each unique user
 app.put('/api/pen/view/:penId/:userId', statsCntrl.incrementView)
+
+
 
 
 app.listen(SERVER_PORT, () => {
