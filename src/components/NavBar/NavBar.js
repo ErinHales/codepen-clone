@@ -8,12 +8,15 @@ class NavBar extends Component {
       togglePenWindow: false
     }
   }
-   toggleNav() {
+
+  toggleNav() {
     this.setState({
       showNav: !this.state.showNav
     })
   }
+
   render() {
+
     return (
       <div>
         <nav className='nav1'>
@@ -44,7 +47,7 @@ class NavBar extends Component {
           </div>
 
           <div className='nav2'>
-            <div className='create'>
+            <div className='create' onClick={() => this.toggleNav()}>
               <h1>Create</h1>
               <img className='arrow' src="https://static.wixstatic.com/media/0a9ac5_ada821b214df43feabfc80e16eebcbdb~mv2.gif" alt="arrow" />
             </div>
@@ -62,9 +65,10 @@ class NavBar extends Component {
             </div>
 
             <div className='userIcon'>
-              <p>user<br/>Pic</p>
+              <p>user<br />Pic</p>
             </div>
           </div>
+
 
           <div className={this.state.showNav ? 'show-nav createWin' : 'show-nav'}>
             <div className='createWindow'>
