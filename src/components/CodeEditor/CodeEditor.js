@@ -69,6 +69,7 @@ export default class CodeEditor extends Component {
                     <CSS updateCSS={this.updateCSS} css={this.state.css} />
                     <JavaScript updateJS={this.updateJS} js={this.state.js} />
                 </div>
+                <div className="verticalResize"></div>
                 <iframe className="penFrame" srcDoc={srcdoc} frameBorder="0" title="showPen"></iframe>
                 <div className="penFooter">
                     <button>Console</button>

@@ -8,8 +8,16 @@
   font-size: 14px;
   height: 100%;
   width: calc(33.3vw - 3px);
-  font-family: 'Source Code Pro';
-  border-bottom: 15px solid #36383F; }
+  font-family: 'Source Code Pro'; }
+
+.verticalResize {
+  width: 100vw;
+  height: 15px;
+  background-color: #36383F;
+  border-top: 1px solid black; }
+
+.verticalResize:hover {
+  cursor: row-resize; }
 
 .CodeMirror textarea {
   z-index: -1; }
@@ -19,13 +27,14 @@
   background-color: #1D1E22;
   padding-top: 30px; }
 
-.CodeMirror-sizer {
-  border-top: 0.5px solid #36383F; }
-
 .CodeMirror-gutter {
   width: 15px !important;
   background-color: #36383F;
-  margin-right: 10px; }
+  margin-right: 10px;
+  margin-top: 20px; }
+
+.CodeMirror-gutter:hover {
+  cursor: col-resize; }
 
 span {
   font-size: 10px; }
@@ -70,7 +79,7 @@ span {
   border-bottom: 1px solid black; }
 
 .editorSection {
-  width: calc(33vw - 30px);
+  width: calc(33vw - 64.8px);
   display: flex;
   justify-content: space-between;
   padding-right: 30px;
@@ -79,7 +88,9 @@ span {
   position: relative;
   top: 15px;
   left: 0px;
-  padding-left: 20px; }
+  padding-left: 20px;
+  border-bottom: 0.5px solid #36383F;
+  border-left: 15px solid #36383F; }
 
 .settingsImg {
   width: 10px;
