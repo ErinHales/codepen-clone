@@ -15,7 +15,7 @@ export default class JavaScript extends Component {
         };
         return (
             <div>
-                <Codemirror ref="editor" value={this.props.js} onChange={this.props.updateJS} options={options} autoFocus={true} />
+                <Codemirror ref="editor" value={this.props.js} onChange={this.props.updateJS} options={options} autoFocus={false} />
             </div>
         )
     }
