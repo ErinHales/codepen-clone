@@ -4,7 +4,11 @@
     background: url('https://static.codepen.io/assets/logos/codepen-logo-pattern-725360e4ce5b66f968c7f39c80999bdeaa3cbe2f18eac75d58b01f8cf55c26ab.png');
     background-repeat: repeat;
     height: 100vh;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
     .signup-form-container {
+
         width: 720px;
         .signup-form-highlights {
             display:flex;
@@ -40,36 +44,71 @@
             }
         }
         .signup-form {
+            font-family: $font-lato;
             background-color: #ffffff;
             padding: 20px;
             .signup-form-social {
-                font-size: 13px;
+                font-size: 14px;
                 color: white;
                 .signup-form-twitter {
-                    font-family: $font-lato;
                     border-radius: 3px;
-                    padding: 15px 16px;
+                    padding: 14px 16px;
                     margin-top: 10px;
-
                     background-color: $bg-twitter;
                 }
                 .signup-form-github {
-                    font-family: $font-lato;
                     border-radius: 3px;
-                    padding: 15px 16px;
+                    padding: 14px 16px;
                     margin-top: 10px;
-
                     background-color: $bg-github;
             }
                 .signup-form-facebook {
-                    font-family: $font-lato;
-                    border-radius: 3px;
-                    padding: 15px 16px;
-                    margin-top: 10px;
 
+                    border-radius: 3px;
+                    padding: 14px 16px;
+                    margin-top: 10px;
                     background-color: $bg-facebook;
                 }
             }
+            .signup-form-or {
+                color: #9396a4;
+                margin: 10px 0;
+            }
+            .signup-form-email {
+                background-color: $btn-black-background;
+                padding: 14px;
+                font-size:15px;
+                margin-top:5px;
+                color: white;
+                display: inline-block;
+                border-radius: 3px;
+            }
         }
     }
+    .signup-footer {
+        font-size: 13px;
+        display: flex;
+        font-family: $font-lato;
+        color: $link-blue;
+        margin-top: 30px;
+        .signup-footer-element {
+            margin: 0 10px;
+        }
+    }
+}
+.signup-input-group {
+    color: #9396A4;
+    margin: 20px 20px 20px 0;
+    font-family: $font-lato;
+    font-size: 14px;
+}
+
+.signup-input {
+    color: red;
+    background: #eaedf0;
+    border: 3px solid #eaedf0;
+    border-radius: 3px;
+    font-family: $font-lato;
+    font-size: 1.3rem;
+    width: 50%
 }

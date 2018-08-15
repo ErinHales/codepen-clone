@@ -9,6 +9,26 @@ export default class SignUp extends Component {
 
 
     render() {
+        let signUpField = (
+            <div>
+                <div className="signup-input-group" >
+                    <h5>YOUR NAME</h5>
+                    <input className="signup-input" type="text"/>
+                </div>
+                <div className="signup-input-group" >
+                    <h5>CHOOSE A USERNAME</h5>
+                    <input className="signup-input" type="text"/>
+                </div>
+                <div className="signup-input-group" >
+                    <h5>EMAIL</h5>
+                    <input className="signup-input" type="text"/>
+                </div>
+                <div className="signup-input-group" >
+                    <h5>CHOOSE PASSWORD</h5>
+                    <input className="signup-input" type="text"/>
+                </div>
+            </div>
+        )
         return (
             <div>
                 <div className="signup-container">
@@ -23,13 +43,13 @@ export default class SignUp extends Component {
                         <div className="signup-form" >
                             <div className="signup-form-social" >
                                 <div className="signup-form-twitter" ><i className="fa fa-twitter"/> Sign Up with Twitter</div>
-                                <div className="signup-form-github" ><i className="fa fa-github" /> Sign Up with Twitter</div>
-                                <div className="signup-form-facebook" ><i className="fa fa-facebook" /> Sign Up with Twitter</div>
+                                <div className="signup-form-github" ><i className="fa fa-github" /> Sign Up with GitHub</div>
+                                <div className="signup-form-facebook" ><i className="fa fa-facebook" /> Sign Up with Facebook</div>
                             </div>
-                            <div>Or,</div>
+                            <div className="signup-form-or">Or,</div>
                             <div className="signup-form-email" >Sign Up with Email</div>
                             {/* This form is rendered when sing up with email is clicked */}
-                            <div></div>
+                            {signUpField}
                         </div>
                     </div>
                     <div className="signup-footer">

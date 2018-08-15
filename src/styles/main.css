@@ -156,7 +156,7 @@
       background-color: #7B7E8C; }
       .component-login .login-socials .github:hover {
         color: #000; }
-  .component-login .signup-container {
+  .component-login .login-signup-container {
     margin-top: 2.5rem;
     margin-bottom: 5rem;
     padding: 1.2rem;
@@ -164,19 +164,22 @@
     display: flex;
     justify-content: center;
     align-items: center; }
-    .component-login .signup-container p {
+    .component-login .login-signup-container p {
       color: #FFFFFF; }
-    .component-login .signup-container p:last-child {
+    .component-login .login-signup-container p:last-child {
       color: #75D8FC;
       margin-left: 1px; }
-      .component-login .signup-container p:last-child:hover {
+      .component-login .login-signup-container p:last-child:hover {
         color: #FFFFFF;
         cursor: pointer; }
 
 .signup-container {
   background: url("https://static.codepen.io/assets/logos/codepen-logo-pattern-725360e4ce5b66f968c7f39c80999bdeaa3cbe2f18eac75d58b01f8cf55c26ab.png");
   background-repeat: repeat;
-  height: 100vh; }
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
   .signup-container .signup-form-container {
     width: 720px; }
     .signup-container .signup-form-container .signup-form-highlights {
@@ -205,29 +208,61 @@
         font-family: "Black Han Sans", sans-serif;
         color: white; }
     .signup-container .signup-form-container .signup-form {
+      font-family: "Lato", sans-serif;
       background-color: #ffffff;
       padding: 20px; }
       .signup-container .signup-form-container .signup-form .signup-form-social {
-        font-size: 13px;
+        font-size: 14px;
         color: white; }
         .signup-container .signup-form-container .signup-form .signup-form-social .signup-form-twitter {
-          font-family: "Lato", sans-serif;
           border-radius: 3px;
-          padding: 15px 16px;
+          padding: 14px 16px;
           margin-top: 10px;
           background-color: #60B5F0; }
         .signup-container .signup-form-container .signup-form .signup-form-social .signup-form-github {
-          font-family: "Lato", sans-serif;
           border-radius: 3px;
-          padding: 15px 16px;
+          padding: 14px 16px;
           margin-top: 10px;
           background-color: #7B7E8C; }
         .signup-container .signup-form-container .signup-form .signup-form-social .signup-form-facebook {
-          font-family: "Lato", sans-serif;
           border-radius: 3px;
-          padding: 15px 16px;
+          padding: 14px 16px;
           margin-top: 10px;
           background-color: #4464A2; }
+      .signup-container .signup-form-container .signup-form .signup-form-or {
+        color: #9396a4;
+        margin: 10px 0; }
+      .signup-container .signup-form-container .signup-form .signup-form-email {
+        background-color: #36383f;
+        padding: 14px;
+        font-size: 15px;
+        margin-top: 5px;
+        color: white;
+        display: inline-block;
+        border-radius: 3px; }
+  .signup-container .signup-footer {
+    font-size: 13px;
+    display: flex;
+    font-family: "Lato", sans-serif;
+    color: #75D8FC;
+    margin-top: 30px; }
+    .signup-container .signup-footer .signup-footer-element {
+      margin: 0 10px; }
+
+.signup-input-group {
+  color: #9396A4;
+  margin: 20px 20px 20px 0;
+  font-family: "Lato", sans-serif;
+  font-size: 14px; }
+
+.signup-input {
+  color: red;
+  background: #eaedf0;
+  border: 3px solid #eaedf0;
+  border-radius: 3px;
+  font-family: "Lato", sans-serif;
+  font-size: 1.3rem;
+  width: 50%; }
 
 .editor {
   display: flex;

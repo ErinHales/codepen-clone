@@ -89,7 +89,7 @@ class Login extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="signup-container">
+                    <div className="login-signup-container">
                         <p>Need an account?</p>
                         <p>Sign up now!</p>
                     </div>
