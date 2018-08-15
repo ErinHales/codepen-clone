@@ -70,7 +70,7 @@ app.post('/api/pen/like/:penId/:userId', statsCntrl.addLike)
 app.delete('/api/pen/like/:penId/:userId', statsCntrl.removeLike)
 
 //increment view by one for each unique user
-app.put('/api/pen/view/:penId/:userId', statsCntrl.addView)
+app.put('/api/pen/view/:penId/:userId', statsCntrl.incrementView)
 
 
 app.listen(SERVER_PORT, () => {
