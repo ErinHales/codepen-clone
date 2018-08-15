@@ -4,18 +4,51 @@ import JavaScript from './JS';
 import HTML from './HTML';
 import CSS from './CSS';
 import "./Theme.css";
-// import "./CodeEditor.css";
+import axios from 'axios';
 require('codemirror/lib/codemirror.css');
+
+// import "./CodeEditor.css";
+
+
 
 export default class CodeEditor extends Component {
     constructor() {
         super();
 
         this.state = {
+            name: "name of pen",
             css: 'body {\n\tbackground-color: pink;\n}',
             html: '<h1>Hello World</h1>',
             js: 'function magic(fairyDust) {\n\treturn "I can fly. Also, I do believe in fairies";\n}'
         }
+    }
+
+    componentDidMount() {
+        axios.get('/api/pen/7').then(response => {
+            this.setState({
+                css: response.data.css,
+                html: response.data.html,
+                js: response.data.js,
+                name: response.data.name
+            })
+        })
+        
+    }
+
+    postPen = () => {
+        // const { user_id, name, forked, html, css, js, scripts } = req.body
+        // add user_id in the backend once we set up sessions
+        let {name, css, html, js} = this.state;
+        let scripts = {
+            html:{
+                html_tag_class: "test\n\t testttttsss", 
+                head_tag: "test\n\t testttttsss"
+            },
+            css: ["asdfasdf"],
+            js: ["asdfasdf","adqwerpsadf"]
+        }
+        let bodyObj = {user_id: 3, name, forked: false, html, css, js, scripts};
+        axios.post('/api/pen/', bodyObj).catch(err => console.log(err));
     }
 
     updateCSS = (newCode) => {
@@ -73,6 +106,7 @@ export default class CodeEditor extends Component {
                 <iframe className="penFrame" srcDoc={srcdoc} frameBorder="0" title="showPen"></iframe>
                 <div className="penFooter">
                     <button>Console</button>
+                    <button onClick={() => this.postPen()}>Save</button>
                     <button className="delete">Delete</button>
                 </div>
             </div>

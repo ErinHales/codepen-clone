@@ -4,7 +4,12 @@ export default function Pen(props) {
     return (
         <div className="showPen">
             {/* <iframe className="pensFrame" src={props.url} frameBorder="0" title="Pen view"></iframe> */}
-            <img className="pensFrame" src={props.url} alt=""/>
+            <div className="overlayContainer">
+                <img className="pensFrame" src={props.url} alt="" />
+                <div className="middle">
+                    <div className="text">{props.penDescription}</div>
+                </div>
+            </div>
             <div className="penInfoContainer">
                 <div className="penInfo">
                     <img className="profilePicture" src={props.profile} alt="" />

@@ -5,6 +5,7 @@ import 'codemirror/mode/css/css';
 
 export default class CSS extends Component {
     render() {
+        console.log(this.props);
         var options = {
             lineNumbers: true,
             mode: 'css',
