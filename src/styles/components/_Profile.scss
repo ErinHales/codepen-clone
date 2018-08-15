@@ -1,0 +1,57 @@
+.grayLine{
+  height: 263px;
+  width: 100%;
+  background-image: url(
+    https://tponsukcharoen.github.io/KhanAcademyThailand/bg-blue.jpg
+  )
+}
+
+.b-line{
+  height: 70px;
+  width: 100%;
+  background: black;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.Content{
+  height: 150vh;
+  width: 100%;
+  background: gray;
+
+}
+
+.UserInfo{
+  height: 300px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  position: absolute;
+  left: 45%;
+  top: 174px;
+  align-items: center;
+  text-align: center
+}
+
+.UserName{
+  font-size: 36px;
+  margin-bottom: 15px;
+  font-family: 'Telex', sans-serif;
+  font-weight: 600;
+}
+
+.Name2{
+  margin-bottom: 18px;
+}
+
+.UserPic{
+  height: 130px;
+  width: 130px;
+  background: rgb(24, 24, 24);
+  position: relative;
+  left: 16px;
+  border: 4px rgb(46, 45, 45) solid;
+
+}

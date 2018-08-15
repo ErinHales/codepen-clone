@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import templateIcon from './tempsnip.jpg'
+import {Link} from 'react-router-dom'
 
 class NavBar extends Component {
   constructor() {
@@ -65,7 +66,7 @@ class NavBar extends Component {
             </div>
 
             <div className='userIcon'>
-              <p>user<br />Pic</p>
+             <Link to='/Profile'> <p>user<br />Pic</p> </Link>
             </div>
           </div>
 

@@ -3,6 +3,7 @@
 @import url("https://fonts.googleapis.com/css?family=Lato");
 @import url("https://fonts.googleapis.com/css?family=Lato");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+@import url("https://fonts.googleapis.com/css?family=Telex");
 .component-login {
   font-family: "Lato", sans-serif;
   background: url("https://static.codepen.io/assets/logos/codepen-logo-pattern-725360e4ce5b66f968c7f39c80999bdeaa3cbe2f18eac75d58b01f8cf55c26ab.png");
@@ -498,3 +499,53 @@ span {
   border-radius: 3px;
   display: inline;
   transition: .8s height ease-out; }
+
+.grayLine {
+  height: 263px;
+  width: 100%;
+  background-image: url(https://tponsukcharoen.github.io/KhanAcademyThailand/bg-blue.jpg); }
+
+.b-line {
+  height: 70px;
+  width: 100%;
+  background: black;
+  color: white;
+  display: flex;
+  align-items: center; }
+
+.Content {
+  height: 150vh;
+  width: 100%;
+  background: gray; }
+
+.UserInfo {
+  height: 300px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  position: absolute;
+  left: 45%;
+  top: 174px;
+  align-items: center;
+  text-align: center; }
+
+.UserName {
+  font-size: 36px;
+  margin-bottom: 15px;
+  font-family: 'Telex', sans-serif;
+  font-weight: 600; }
+
+.Name2 {
+  margin-bottom: 18px; }
+
+.UserPic {
+  height: 130px;
+  width: 130px;
+  background: #181818;
+  position: relative;
+  left: 16px;
+  border: 4px #2e2d2d solid; }
+
+.EditP {
+  color: white; }
