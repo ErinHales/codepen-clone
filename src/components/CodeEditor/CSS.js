@@ -15,7 +15,7 @@ export default class CSS extends Component {
 
         return (
             <div>
-                <Codemirror ref="editor" value={this.props.css} onChange={this.props.updateCSS} options={options} autoFocus={true} />
+                <Codemirror ref="editor" value={this.props.css} onChange={this.props.updateCSS} options={options} autoFocus={false} />
             </div>
         )
     }
