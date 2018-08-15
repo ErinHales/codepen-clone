@@ -5,7 +5,9 @@
   font-family: "Lato", sans-serif;
   background: url("https://static.codepen.io/assets/logos/codepen-logo-pattern-725360e4ce5b66f968c7f39c80999bdeaa3cbe2f18eac75d58b01f8cf55c26ab.png");
   background-repeat: repeat;
-  height: 140vh; }
+  min-height: 110vh;
+  overflow-y: hidden;
+  padding-bottom: 5rem; }
   .component-login input:active {
     border: 3px solid #9396A4; }
   .component-login .login-container {
@@ -153,6 +155,7 @@
         color: #000; }
   .component-login .signup-container {
     margin-top: 2.5rem;
+    margin-bottom: 5rem;
     padding: 1.2rem;
     background-color: #32333B;
     display: flex;
