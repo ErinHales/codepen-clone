@@ -18,17 +18,16 @@ module.exports = {
         dbConn.post_pen([user_id, name, forked, html, css, js])
             .then( dbResponse => {
                 const { pen_id } = dbResponse[0]
-
-                if(html_script[0]) {
-                    for(let i = 0; i < html_script.length; i++) {
-                        dbConn.post_html_scripts([pen_id, html_script[i]])
-                            .catch( err => {
-                                console.error(err)
-                                res.sendStatus(500)
-                            })
-                    }
+                const { html_tag_class, head_tag } = html_script
+                
+                if(html_tag_class || head_tag) {
+                    dbConn.post_html_scripts([pen_id, html_tag_class, head_tag])
+                        .catch( err => {
+                            console.error(err)
+                            res.sendStatus(500)
+                        })
                 }
-
+                
                 if(css_stylesheet[0]) {
                     for(let i = 0; i < css_stylesheet.length; i++) {
                         dbConn.post_css_stylesheet([pen_id, css_stylesheet[i]])
