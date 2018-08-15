@@ -3,7 +3,8 @@ import React from 'react';
 export default function Pen(props) {
     return (
         <div className="showPen">
-            <iframe className="pensFrame" src={props.url} frameborder="0" title="Pen view"></iframe>
+            {/* <iframe className="pensFrame" src={props.url} frameBorder="0" title="Pen view"></iframe> */}
+            <img className="pensFrame" src={props.url} alt=""/>
             <div className="penInfoContainer">
                 <div className="penInfo">
                     <img className="profilePicture" src={props.profile} alt="" />

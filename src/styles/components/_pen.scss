@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Sawarabi+Gothic');
+
 $primary-black: #1D1E22;
 // $med-gray: #36383F;
 $med-gray: #32333B;
@@ -16,12 +18,13 @@ $light-gray: #C5C8D4;
 }
 
 .pensView {
-    background-color: $primary-black;
+    background-color: #191A1D;
     color: $light-gray;
 }
 
 .pensHeader {
-    border-bottom: #0EBEFF;
+    border-bottom: 3px solid #0EBEFF;
+    margin: 5%;
     display: flex;
     align-items: flex-end;
 }
@@ -56,7 +59,6 @@ $light-gray: #C5C8D4;
     width: 300px;
     height: 250px;
     margin: 20px;
-    border-radius: 5px;
 }
 
 #viewIcon {

@@ -1,5 +1,6 @@
 @import url(./reset.css);
 @import url("https://fonts.googleapis.com/css?family=Lato");
+@import url("https://fonts.googleapis.com/css?family=Sawarabi+Gothic");
 .editor {
   display: flex;
   text-align: left; }
@@ -145,11 +146,12 @@ span {
   align-items: center; }
 
 .pensView {
-  background-color: #1D1E22;
+  background-color: #191A1D;
   color: #C5C8D4; }
 
 .pensHeader {
-  border-bottom: #0EBEFF;
+  border-bottom: 3px solid #0EBEFF;
+  margin: 5%;
   display: flex;
   align-items: flex-end; }
 
@@ -178,8 +180,7 @@ span {
 .showPen {
   width: 300px;
   height: 250px;
-  margin: 20px;
-  border-radius: 5px; }
+  margin: 20px; }
 
 #viewIcon {
   width: 20px;
