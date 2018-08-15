@@ -1,0 +1,215 @@
+@import '../variables';
+.component-login {
+    font-family: $font-lato; // Background Styles
+    background: url('https://static.codepen.io/assets/logos/codepen-logo-pattern-725360e4ce5b66f968c7f39c80999bdeaa3cbe2f18eac75d58b01f8cf55c26ab.png');
+    background-repeat: repeat;
+    height: 140vh; // active styles for all inputs
+    input:active {
+        border: 3px solid $text-grey;
+    }
+    .login-container {
+        width: 60%;
+        margin: 0 auto;
+        position: relative;
+        top: 5rem;
+    }
+    .login-types {
+        display: flex;
+        justify-content: space-between;
+        .login-controls {
+            display: flex;
+            align-items: center;
+            margin-top: 2rem;
+            p {
+                color: $link-blue;
+                margin-left: 1.5rem;
+                &:hover {
+                    cursor: pointer;
+                    color: $text-white;
+                }
+            }
+            .btn-green {
+                background-color: $btn-green;
+                border: none;
+                padding: 15px;
+                border-radius: 5px;
+                font-size: 1rem;
+                &:hover {
+                    background-color: $btn-green-hover;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .logo {
+        margin-bottom: 0.5rem;
+    }
+    h1 {
+        color: $text-white;
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+    }
+    h5 {
+        color: $text-grey;
+        margin-bottom: 0.25rem;
+    }
+    .login-inputs {
+        width: 45%;
+        .input-group {
+            margin-bottom: 1rem;
+            input {
+                width: 100%;
+                padding: 15px 5px;
+                border-radius: 5px;
+            }
+            &:last-child {
+                margin-top: 1rem;
+            }
+        }
+    }
+    .login-divider {
+        display: flex;
+        flex-direction: column;
+        width: 0.3%;
+        .divider-top,
+        .divider-bottom {
+            height: 50%;
+            background-color: $text-grey;
+        }
+        .divider-text-container {
+            border: 1px solid $text-grey;
+            padding: 10px 5px;
+            height: 10%;
+            width: 1000%;
+            border-radius: 5px;
+            position: relative;
+            right: 17px;
+            color: $text-grey;
+            text-align: center;
+            .divider-text {
+                display: flex;
+                align-items: center;
+                height: 100%;
+            }
+        }
+    }
+    .reset {
+        width: 93%;
+        max-height: 250px;
+        transition: all 0.5s;
+    }
+    .reset-styles {
+        background-color: #32333B;
+        border-radius: 5px;
+        padding: 1.5rem 1rem;
+        margin-top: 2rem;
+        opacity: 1;
+        transition: all 5s;
+        h3 {
+            color: $text-grey;
+            font-size: 1.75rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid $text-grey;
+        }
+        .reset-input-group {
+            margin-top: 0.75rem;
+            h6 {
+                color: $text-grey;
+                margin-bottom: 0.2rem;
+            }
+            input {
+                padding: 1rem 0.8rem;
+                border-radius: 5px;
+                width: 75%;
+                margin-bottom: 1rem;
+            }
+        }
+        .reset-button {
+            width: 90%;
+            button {
+                background-color: rgba(78, 80, 90, 0.2);
+                padding: 1rem 0.5rem;
+                border: none;
+                border-radius: 5px;
+                color: $text-white;
+                width: 100%;
+                font-size: 1.125rem;
+            }
+            button:hover {
+                background-color: rgba(78, 80, 90, 1);
+                cursor: pointer;
+            }
+        }
+    }
+    .hidden {
+        max-height: 0;
+        overflow-y: hidden;
+        opacity: 0;
+        transition: all 0.5s;
+    }
+    .login-socials {
+        width: 36%;
+        .social {
+            button {
+                padding: 8px 15px;
+                width: 100%;
+                color: $text-white;
+                margin-top: 0.5rem;
+                border: none;
+                border-radius: 5px;
+                font-size: 1rem;
+                .button-content {
+                    display: flex;
+                    align-items: center;
+                }
+                &:hover {
+                    background-color: #E6E2E4;
+                    cursor: pointer;
+                }
+                i {
+                    font-size: 1.8rem;
+                    margin-right: 1rem; // position: relative;
+                    // top: px;
+                }
+            }
+        }
+        .facebook {
+            background-color: $bg-facebook;
+            &:hover {
+                color: $bg-facebook;
+            }
+        }
+        .twitter {
+            background-color: $bg-twitter;
+            &:hover {
+                color: $bg-twitter;
+            }
+        }
+        .github {
+            background-color: $bg-github;
+            &:hover {
+                color: #000;
+            }
+        }
+    }
+    .signup-container {
+        margin-top: 2.5rem;
+        padding: 1.2rem;
+        background-color: #32333B;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        p {
+            color: $text-white;
+        }
+        p:last-child {
+            color: $link-blue;
+            margin-left: 1px;
+            &:hover {
+                color: $text-white;
+                cursor: pointer;
+                ;
+            }
+        }
+    }
+}
