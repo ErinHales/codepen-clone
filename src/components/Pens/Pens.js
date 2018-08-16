@@ -55,7 +55,7 @@ export default class Pens extends Component {
 
     nextPage() {
         let { type, currentPage, pens } = this.state;
-        if (type !== "user") {
+        if (type !== "user" && !pens[currentPage+1]) {
             axios.get(`/api/pens/${currentPage + 1}?type=${type}`)
                 .then(res => {
                     console.log(res.data);
@@ -65,12 +65,12 @@ export default class Pens extends Component {
                         console.log(copy);
                         this.setState({
                             pens: copy,
-                            currentPage: this.state.currentPage + 1
+                            currentPage: currentPage + 1
                         })
                     }
                 })
                 .catch(err => console.log(err));
-        } else {
+        } else if (!pens[currentPage+1]) {
             axios.get(`/api/pens/user/3/${currentPage + 1}?type=new`)
                 .then(res => {
                     // console.log([res.data]);
@@ -80,12 +80,22 @@ export default class Pens extends Component {
                         console.log(copy);
                         this.setState({
                             pens: copy,
-                            currentPage: this.state.currentPage + 1
+                            currentPage: currentPage + 1
                         })
                     }
                 })
                 .catch(err => console.log(err));
+        } else {
+            this.setState({
+                currentPage: currentPage + 1
+            })
         }
+    }
+
+    getPrev() {
+        this.setState({
+            currentPage: this.state.currentPage - 1
+        })
     }
 
     render() {
@@ -125,7 +135,10 @@ export default class Pens extends Component {
                     <div className="pensDisplay">
                         {pensList ? pensList : null}
                     </div>
-                    <button className="nextButton" onClick={() => this.nextPage()}>Next<img className="buttonArrow" src="http://i66.tinypic.com/2gufexh.jpg" alt="arrow" /></button>
+                    <div className="paginationButtons">
+                        <button className="nextButton" style={{display: this.state.currentPage === 0 ? "none" : "block"}} onClick={() => this.getPrev()}><i class="fa fa-angle-left"></i>Prev</button>
+                        <button className="nextButton" onClick={() => this.nextPage()}>Next<i class="fa fa-angle-right"></i></button>
+                    </div>
                 </div>
             </div>
         )

@@ -512,14 +512,16 @@ span {
   font-family: "Lato", sans-serif;
   box-shadow: 3px 3px 3px #000000; }
 
-#viewIcon {
-  width: 20px;
-  height: 20px; }
+.fa-eye {
+  font-size: 13px;
+  margin: 10px;
+  margin-bottom: 12px; }
 
 .penPopularity img {
   width: 10px;
   height: 10px;
-  margin: 0px 10px; }
+  margin: 0px 10px;
+  cursor: pointer; }
 
 #displayUserName {
   color: white; }
@@ -532,14 +534,17 @@ span {
 
 .penInfo h3 {
   font-size: 15px;
-  margin: 5px 0px; }
+  margin: 5px 0px;
+  cursor: pointer; }
 
 .penInfo h5 {
   font-size: 10px;
-  margin: 5px 0px; }
+  margin: 5px 0px;
+  cursor: pointer; }
 
 .penPopularity h3 {
-  font-size: 12px; }
+  font-size: 12px;
+  cursor: context-menu; }
 
 .nextButton {
   border-radius: 2px;
@@ -550,16 +555,22 @@ span {
   font-family: "Lato", sans-serif;
   font-size: 15px;
   text-align: center;
-  margin-left: calc(50% - 50px);
-  margin-bottom: 50px;
-  margin-top: 50px; }
+  margin: 0px 20px; }
 
-.buttonArrow {
-  transform: rotate(270deg);
-  width: 15px;
-  height: 15px;
-  margin-left: 5px;
-  margin-bottom: -3px; }
+.paginationButtons {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0px; }
+
+.paginationButtons .fa-angle-left {
+  font-size: 20px;
+  margin: 0px 10px 0px 0px; }
+
+.paginationButtons .fa-angle-right {
+  font-size: 20px;
+  margin: 0px 0px 0px 10px; }
 
 .nextButton:hover {
   background-color: white;
