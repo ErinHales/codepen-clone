@@ -4,6 +4,16 @@ import 'codemirror/mode/xml/xml';
 
 
 export default class HTML extends Component {
+    constructor(props) {
+        super(props)
+        // this.codeMirror = React.createRef()
+    }
+
+    componentDidUpdate(prevProps) {
+        if(prevProps.html !== this.props.html) {
+            this.props.updateHTML(this.props.html);
+        }
+    }
 
     render() {
         var options = {
@@ -15,7 +25,7 @@ export default class HTML extends Component {
         };
         return (
             <div>
-                <Codemirror ref="editor" value={this.props.html} onChange={this.props.updateHTML} options={options} autoFocus={true} />
+                <Codemirror ref={this.codeMirror} value={this.props.html} onChange={this.props.updateHTML} options={options} autoFocus={true} />
             </div>
         )
     }
