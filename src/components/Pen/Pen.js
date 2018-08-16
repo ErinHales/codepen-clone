@@ -1,18 +1,21 @@
 import React from 'react';
 
 export default function Pen(props) {
+    const srcDoc = `${props.html}<style>${props.css}</style><script>${props.js}</script>`
     return (
         <div className="showPen">
             {/* <iframe className="pensFrame" src={props.url} frameBorder="0" title="Pen view"></iframe> */}
             <div className="overlayContainer">
-                <img className="pensFrame" src={props.url} alt="" />
-                <div className="middle">
-                    <div className="text">{props.penDescription}</div>
-                </div>
+            <div className="pen-iframe-container">
+                <iframe className="pen-iframe" srcDoc={srcDoc}></iframe>
+            </div>
+                {/* <div className="middle">
+                    <div className="text">Hello</div>
+                </div> */}
             </div>
             <div className="penInfoContainer">
                 <div className="penInfo">
-                    <img className="profilePicture" src={props.profile} alt="" />
+                    <img className="profilePicture" src={props.profilePicture} alt="" />
                     <div>
                         <h3 id="displayUserName">{props.penName}</h3>
                         <h5>{props.username}</h5>

@@ -411,9 +411,15 @@ span {
   display: flex;
   align-items: center; }
 
+.pens-sizing-container {
+  max-width: 1500px; }
+
 .pensView {
   background-color: #191A1D;
-  color: #C5C8D4; }
+  color: #C5C8D4;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
 
 .pensHeader {
   border-bottom: 3px solid #0EBEFF;
@@ -423,7 +429,7 @@ span {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  font-family: "Lato", sans-serif;
+  font-family: "Black Han Sans", sans-serif;
   font-weight: bold; }
 
 .pensHeader h1 {
@@ -480,6 +486,17 @@ span {
 .overlayContainer .text {
   color: white;
   font-size: 10px; }
+
+.pen-iframe-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 3px; }
+
+.pen-iframe {
+  height: 100%;
+  width: 100%; }
 
 .showPen {
   width: 30%;
