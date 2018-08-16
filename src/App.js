@@ -12,12 +12,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Pens />
+          <NavBar/>
+       {/* <Pens />  */}
         {/* <Login /> */}
-        {/* <SignUp /> */}
+            
+        <SignUp />
         {/* <CodeEditor /> */}
-        {/* <NavBar/> */}
-        {/* <CodeEditor /> */}
+
+
       </div>
     );
   }
