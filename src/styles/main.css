@@ -541,7 +541,7 @@ span {
 .penPopularity h3 {
   font-size: 12px; }
 
-.pensView button {
+.nextButton {
   border-radius: 2px;
   background-color: transparent;
   border: 3px solid white;
@@ -561,7 +561,7 @@ span {
   margin-left: 5px;
   margin-bottom: -3px; }
 
-.pensView button:hover {
+.nextButton:hover {
   background-color: white;
   color: black;
   cursor: pointer; }
@@ -573,10 +573,15 @@ span {
   margin-bottom: 10px;
   font-family: "Lato", sans-serif; }
 
-.filterPens h4 {
-  margin-right: 10px; }
+.filterPens button {
+  margin: 0px;
+  margin-right: 10px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #8F8F8F; }
 
-.filterPens h4:hover {
+.filterPens button:hover {
   color: white;
   cursor: pointer; }
 
