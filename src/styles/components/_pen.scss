@@ -107,14 +107,22 @@ $light-gray: #C5C8D4;
 }
 .pen-iframe-container {
     position: relative;
-    height: 100%;
+    height: 0;
+    padding-top: 56.25%;
     width: 100%;
     overflow:hidden;
     border-radius: 3px;
 }
 .pen-iframe {
-    height: 100%;
-    width: 100%;
+    height: 200%;
+    width: 200%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    box-sizing: border-box;
+    transform: scale(.5);
+    transition: opacity 0.4s left;
+    transform-origin: top left;
 }
 .showPen {
     width: 30%;
