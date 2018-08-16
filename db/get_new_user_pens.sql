@@ -39,5 +39,7 @@ GROUP BY
     html_scripts.html_tag_class,
     html_scripts.head_tag
 ORDER BY
-    pen.pen_id
-    DESC;
+    pens.pen_id
+    DESC
+    OFFSET $2
+    LIMIT 6;

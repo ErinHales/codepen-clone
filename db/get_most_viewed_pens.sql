@@ -38,4 +38,6 @@ GROUP BY
     html_scripts.head_tag
 ORDER BY
     views
-    DESC;
+    DESC
+    OFFSET $1
+    LIMIT 6;
