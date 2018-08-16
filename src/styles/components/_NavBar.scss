@@ -1,8 +1,20 @@
+.Nav{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .nav1{
   background: rgb(0, 0, 0);
   display: flex;
   align-items: center;
   height: 63px;
+  width: 100%;
+}
+
+.navContnr{
+  display: flex;
+  align-items: center;
 }
 
 .icon{
@@ -12,7 +24,8 @@
 }
 
 .Name{
- width: 175px;
+ width: 10%;
+ min-width: 175px;
  display: flex;
  align-items: bottom;
  font-family: 'Lato', sans-serif;
@@ -150,7 +163,10 @@
 
 .nav2{
  display: flex;
- margin-left: 55.5%;
+ min-width: 150px;
+ float: right;
+  position: absolute;
+  right: 10px;
 }
 
 .create{

@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import templateIcon from './tempsnip.jpg'
+import {Link} from 'react-router-dom'
 // import templateIcon from './tempsnip.jpg'
 
 class NavBar extends Component {
@@ -18,8 +20,9 @@ class NavBar extends Component {
   render() {
 
     return (
-      <div>
+      <div className='Nav'>
         <nav className='nav1'>
+        
           <div className='Name'>
             <h1>C L <img className='icon' src='http://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Large.png' alt='' /> N E P E N</h1>
           </div>
@@ -46,6 +49,8 @@ class NavBar extends Component {
             <div className='coll-line'></div>
           </div>
 
+
+
           <div className='nav2'>
             <div className='create' onClick={() => this.toggleNav()}>
               <h1>Create</h1>
@@ -65,7 +70,7 @@ class NavBar extends Component {
             </div>
 
             <div className='userIcon'>
-              <p>user<br />Pic</p>
+             <Link to='/Profile'> <p>user<br />Pic</p> </Link>
             </div>
           </div>
 
