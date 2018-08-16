@@ -7,7 +7,7 @@ export default function Pen(props) {
             {/* <iframe className="pensFrame" src={props.url} frameBorder="0" title="Pen view"></iframe> */}
             <div className="overlayContainer">
             <div className="pen-iframe-container">
-                <iframe className="pen-iframe" srcDoc={srcDoc}></iframe>
+                <iframe scrolling="no" className="pen-iframe" srcDoc={srcDoc}></iframe>
             </div>
                 {/* <div className="middle">
                     <div className="text">Hello</div>
