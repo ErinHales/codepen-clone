@@ -14,10 +14,10 @@ class App extends Component {
       <div className="App">
         <Pens />
         {/* <Login /> */}
-        <SignUp />
+        {/* <SignUp /> */}
         {/* <CodeEditor /> */}
-        <NavBar/>
-        <CodeEditor />
+        {/* <NavBar/> */}
+        {/* <CodeEditor /> */}
       </div>
     );
   }

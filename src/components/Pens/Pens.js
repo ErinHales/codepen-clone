@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Pen from '../Pen/Pen';
+import axios from 'axios';
 
 export default class Pens extends Component {
     constructor() {
@@ -74,14 +75,38 @@ export default class Pens extends Component {
             }]
         }
     }
-
+    getMostViewedPens(){
+        axios.get('/api/pens/0?type=views')
+            .then( res => {
+                console.log(res.data)
+                this.setState({
+                    pens: res.data
+                })
+            })
+            .catch(err => console.log(err))
+    }
+    componentDidMount() {
+        this.getMostViewedPens()
+    }
 
     render() {
-        // let {url, profile, username, penName, views, commentsNum, loves} = this.state.
-        let pensList = [];
-        this.state.pens.forEach(pen => {
-            let {id, url, profile, username, penName, views, commentsNum, loves, penDescription} = pen;
-            return pensList.push(<Pen key={id} url={url} profile={profile} username={username} penName={penName} views={views} commentsNum={commentsNum} loves={loves} penDescription={penDescription} />);
+
+        let pensList = this.state.pens.map(pen => {
+            let {pen_id, name, username, img_url, views, comments, likes, scripts, html, css, js } = pen;
+            return (
+                <Pen 
+                    key={pen_id} 
+                    profilePicture={img_url}  
+                    scripts={scripts} 
+                    html={html} 
+                    css={css} 
+                    js={js} 
+                    username={username} 
+                    penName={name} 
+                    views={views} 
+                    commentsNum={comments} 
+                    loves={likes} />
+            );
         })
         return (
             <div className="pensView">
