@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import NavBar from '../NavBar/NavBar'
 
 class Profile extends Component {
 
@@ -10,13 +9,17 @@ class Profile extends Component {
         </div>
 
         <div className='b-line'>
-          <div className=''>
-            <h1>Followers</h1>
+            <div className='Hire'>Hire Me</div>
+          <div className='followers'>
+            <h1> 0 Followers</h1>
           </div>
           <div>
-            <h1>Following</h1>
+            <h1 className='followers'> 0 Following</h1>
           </div>
-            <div>Hire Me</div>
+        </div>
+
+        <div className='EditP'>
+          <h1>Edit Profile</h1>
         </div>
 
         <div className='UserInfo'>
@@ -27,6 +30,29 @@ class Profile extends Component {
               <h2>Image</h2>
             </div>
             <h3>City, State</h3>
+          </div>
+        </div>
+
+        <div className='Pen-InputWrapper'>
+          <h2 className='Pens2'>Pens</h2>
+          <h2 className='Proj2'>Projects</h2>
+          <h2 className='Coll2'>Collections</h2>
+        </div>
+          <input className='Inp-box' type="text" placeholder='Search These Pens...'/>
+
+        <div className='ligthgray-line'></div>
+        <div className='gray-line'></div>
+
+        <div className='Pen-window'>
+          <h1>DISPLAY USER PEN HERE</h1>
+            
+        </div>
+
+        <div className='footer'>
+          <div className='nameHolder'>
+          <h1 className='Name-footer'>C L <img className='icon-footer' src='http://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Large.png' alt='' /> N E P E N</h1>
+          <p className='Clonpen'>2018 ClonePen</p>
+          <p className='demo'>Demo or it didn't happen</p>
           </div>
         </div>
 

@@ -19,8 +19,9 @@ class NavBar extends Component {
   render() {
 
     return (
-      <div>
+      <div className='Nav'>
         <nav className='nav1'>
+        
           <div className='Name'>
             <h1>C L <img className='icon' src='http://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Large.png' alt='' /> N E P E N</h1>
           </div>
@@ -46,6 +47,8 @@ class NavBar extends Component {
             <h1 className='Coll'>Collections</h1>
             <div className='coll-line'></div>
           </div>
+
+
 
           <div className='nav2'>
             <div className='create' onClick={() => this.toggleNav()}>
