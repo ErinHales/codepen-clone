@@ -7,6 +7,7 @@
 @import url("https://fonts.googleapis.com/css?family=Sawarabi+Gothic|Lato");
 @import url("https://fonts.googleapis.com/css?family=Lato");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+@import url("https://fonts.googleapis.com/css?family=Telex");
 .component-login {
   font-family: "Lato", sans-serif;
   background: url("https://static.codepen.io/assets/logos/codepen-logo-pattern-725360e4ce5b66f968c7f39c80999bdeaa3cbe2f18eac75d58b01f8cf55c26ab.png");
@@ -637,11 +638,21 @@ span {
   color: white;
   cursor: pointer; }
 
+.Nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; }
+
 .nav1 {
   background: black;
   display: flex;
   align-items: center;
-  height: 63px; }
+  height: 63px;
+  width: 100%; }
+
+.navContnr {
+  display: flex;
+  align-items: center; }
 
 .icon {
   height: 26px;
@@ -649,7 +660,8 @@ span {
   top: 5px; }
 
 .Name {
-  width: 175px;
+  width: 10%;
+  min-width: 175px;
   display: flex;
   align-items: bottom;
   font-family: 'Lato', sans-serif;
@@ -768,7 +780,10 @@ span {
 
 .nav2 {
   display: flex;
-  margin-left: 55.5%; }
+  min-width: 150px;
+  float: right;
+  position: absolute;
+  right: 10px; }
 
 .create {
   height: 45px;
@@ -849,3 +864,202 @@ span {
   border-radius: 3px;
   display: inline;
   transition: .8s height ease-out; }
+
+.grayLine {
+  height: 263px;
+  width: 100%;
+  background-image: url(https://tponsukcharoen.github.io/KhanAcademyThailand/bg-blue.jpg); }
+
+.b-line {
+  height: 70px;
+  width: 100%;
+  background: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  min-width: 300px; }
+
+.Content {
+  height: 150vh;
+  width: 100%;
+  background: #191A1D; }
+
+.UserInfo {
+  height: 300px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  position: absolute;
+  left: 45%;
+  top: 174px;
+  align-items: center;
+  text-align: center; }
+
+.UserName {
+  font-size: 36px;
+  margin-bottom: 15px;
+  font-family: 'Telex', sans-serif;
+  font-weight: 600; }
+
+.Name2 {
+  margin-bottom: 18px; }
+
+.UserPic {
+  height: 130px;
+  width: 130px;
+  background: #181818;
+  position: relative;
+  left: 16px;
+  border: 4px #2e2d2d solid;
+  box-shadow: 1px 1px #1d1c1c; }
+
+.Hire {
+  font-family: 'Lato', sans-serif;
+  position: relative;
+  left: 95%;
+  font-size: 11px;
+  border: 1px solid white;
+  padding: 5px;
+  border-radius: 3px;
+  min-width: 42px;
+  cursor: pointer; }
+
+.Hire:hover {
+  background: whitesmoke;
+  color: black; }
+
+.followers {
+  color: gray;
+  font-family: 'Lato', sans-serif;
+  margin-left: 20px;
+  cursor: pointer; }
+
+.followers:hover {
+  color: whitesmoke; }
+
+.EditP {
+  height: 40px;
+  width: 80px;
+  z-index: 8;
+  position: absolute;
+  color: white;
+  font-family: 'Lato', sans-serif;
+  top: 85px;
+  right: 40px;
+  padding-left: 13px;
+  padding-right: 8px;
+  display: flex;
+  align-items: center;
+  border: 3px solid white;
+  border-radius: 3px;
+  font-size: 15px;
+  cursor: pointer; }
+
+.EditP:hover {
+  background: whitesmoke;
+  color: black; }
+
+.Pen-InputWrapper {
+  height: 30px;
+  width: 60%;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  display: flex;
+  align-items: flex-end;
+  color: gray;
+  margin-left: 20px;
+  position: relative;
+  left: 18%;
+  top: 6%; }
+
+.Pens2 {
+  color: white;
+  margin-right: 20px; }
+
+.Proj2 {
+  margin-right: 20px; }
+
+.Inp-box {
+  height: 30px;
+  border-radius: 4px;
+  z-index: 8;
+  position: relative;
+  left: 70%;
+  top: 60px; }
+
+.ligthgray-line {
+  height: 5px;
+  width: 60.2%;
+  background: gray;
+  position: relative;
+  left: 19%;
+  top: 5%; }
+
+.gray-line {
+  height: 50px;
+  width: 60.2%;
+  background: #252527;
+  position: relative;
+  left: 19%;
+  top: 5%; }
+
+.Pen-window {
+  height: 600px;
+  width: 60.2%;
+  background: white;
+  border-radius: 10px;
+  position: relative;
+  top: 6%;
+  left: 19%; }
+
+.footer {
+  height: 200px;
+  width: 100%;
+  background: #111;
+  position: absolute;
+  top: 136vh; }
+
+.nameHolder {
+  display: flex;
+  width: 175px;
+  color: white;
+  align-items: center;
+  height: 63px;
+  position: relative;
+  left: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end; }
+
+.Name-footer {
+  width: 10%;
+  min-width: 175px;
+  display: flex;
+  align-items: bottom;
+  font-family: 'Lato', sans-serif;
+  color: white;
+  margin-left: 15px;
+  font-size: 24px;
+  position: relative;
+  bottom: 2px;
+  margin-top: 30px;
+  cursor: pointer; }
+
+.icon-footer {
+  height: 26px;
+  margin-left: 2px;
+  margin-right: 2px; }
+
+.demo {
+  font-size: 10px;
+  font-family: 'Lato', sans-serif;
+  margin: 10px;
+  font-style: italic; }
+
+.Clonpen {
+  font-family: 'Lato', sans-serif;
+  margin: 10px;
+  margin-top: 35px;
+  font-size: 12px; }
