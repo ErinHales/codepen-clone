@@ -4,14 +4,15 @@ export default function Pen(props) {
     const srcDoc = `${props.html}<style>${props.css}</style><script>${props.js}</script>`
     return (
         <div className="showPen">
-            {/* <iframe className="pensFrame" src={props.url} frameBorder="0" title="Pen view"></iframe> */}
             <div className="overlayContainer">
-            <div className="pen-iframe-container">
-                <iframe scrolling="no" className="pen-iframe" srcDoc={srcDoc}></iframe>
-            </div>
-                {/* <div className="middle">
-                    <div className="text">Hello</div>
-                </div> */}
+                <div className="overlayContainer">
+                    <div className="pen-iframe-container">
+                        <iframe scrolling="no" className="pen-iframe" srcDoc={srcDoc}></iframe>
+                    </div>
+                    <div className="overlay">
+                        <div className="text">This is a description</div>
+                    </div>
+                </div>
             </div>
             <div className="penInfoContainer">
                 <div className="penInfo">

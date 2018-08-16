@@ -404,7 +404,8 @@ span {
 .penInfoContainer {
   display: flex;
   flex-direction: column;
-  background-color: #32333B; }
+  background-color: #32333B;
+  border-radius: 0px 0px 4px 4px; }
 
 .penInfo,
 .penPopularity {
@@ -444,8 +445,13 @@ span {
   justify-content: space-around; }
 
 .pensHeader h4 {
+  font-weight: normal;
+  font-size: 12px;
   color: #0EBEFF;
   margin: 10px 0px; }
+
+.pensHeader .fa-arrow-right {
+  margin-left: 5px; }
 
 .profilePicture {
   width: 30px;
@@ -459,33 +465,45 @@ span {
   -ms-overflow: hidden;
   z-index: -1; }
 
-.overlayContainer img {
+.overlayContainer:hover .overlay {
+  opacity: 1;
+  cursor: pointer; }
+
+.overlayContainer {
+  position: relative;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8); }
+
+.pen-iframe-container {
   opacity: 1;
   display: block;
   transition: .5s ease;
-  backface-visibility: hidden; }
+  backface-visibility: hidden;
+  display: block;
+  width: 100%;
+  height: auto; }
 
-.overlayContainer .middle {
+.overlayContainer .overlay {
   transition: .5s ease;
-  opacity: 0;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  text-align: center; }
-
-.overlayContainer:hover img {
-  opacity: 0.3;
-  border-bottom: 3px solid #0EBEFF;
-  margin-bottom: -3px; }
+  text-align: left;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc(100% - 2px);
+  border-bottom: 2px solid #0EBEFF;
+  width: 100%;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.8); }
 
 .overlayContainer:hover .middle {
   opacity: 1; }
 
 .overlayContainer .text {
   color: white;
-  font-size: 10px; }
+  font-size: 10px;
+  margin: 10px; }
 
 .pen-iframe-container {
   position: relative;
@@ -493,7 +511,7 @@ span {
   padding-top: 56.25%;
   width: 100%;
   overflow: hidden;
-  border-radius: 3px; }
+  border-radius: 4px 4px 0px 0px; }
 
 .pen-iframe {
   height: 200%;

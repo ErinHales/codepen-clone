@@ -9,7 +9,8 @@ export default class Pens extends Component {
         this.state = {
             pens: [],
             currentPage: 0,
-            type: "new"
+            type: "new",
+            filter: "all"  // popular, my
         }
     }
 
@@ -19,7 +20,8 @@ export default class Pens extends Component {
                 // console.log(res.data)
                 this.setState({
                     pens: [res.data],
-                    currentPage: 0
+                    currentPage: 0,
+                    filter: "popular"
                 })
             })
             .catch(err => console.log(err))
@@ -31,7 +33,8 @@ export default class Pens extends Component {
                 // console.log(res.data);
                 this.setState({
                     pens: [res.data],
-                    currentPage: 0
+                    currentPage: 0,
+                    filter: "all"
                 })
             })
             .catch(err => console.log(err));
@@ -43,7 +46,8 @@ export default class Pens extends Component {
                 // console.log(res.data);
                 this.setState({
                     pens: [res.data],
-                    currentPage: 0
+                    currentPage: 0,
+                    filter: "my"
                 })
             })
             .catch(err => console.log(err));
@@ -125,12 +129,12 @@ export default class Pens extends Component {
                 <div className="pens-sizing-container">
                     <div className="pensHeader">
                         <h1>Explore Pens</h1>
-                        <h4>View More Pens</h4>
+                        <h4>View More Pens<i class="fa fa-arrow-right"></i></h4>
                     </div>
                     <div className="filterPens">
-                        <button onClick={() => this.getMostRecentPens()}>All Pens</button>
-                        <button onClick={() => this.getMostViewedPens()}>Popular Pens</button>
-                        <button onClick={() => this.getUserPens()}>My Pens</button>
+                        <button onClick={() => this.getMostRecentPens()} style={{color: this.state.filter === "all" ? "white" : "#8F8F8F"}}>All Pens</button>
+                        <button onClick={() => this.getMostViewedPens()} style={{color: this.state.filter === "popular" ? "white" : null}}>Popular Pens</button>
+                        <button onClick={() => this.getUserPens()} style={{color: this.state.filter === "my" ? "white" : null}}>My Pens</button>
                     </div>
                     <div className="pensDisplay">
                         {pensList ? pensList : null}
