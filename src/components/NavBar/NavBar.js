@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import templateIcon from './tempsnip.jpg'
-import {Link} from 'react-router-dom'
-// import templateIcon from './tempsnip.jpg'
+import { Link } from 'react-router-dom'
 
 class NavBar extends Component {
   constructor() {
@@ -22,22 +21,26 @@ class NavBar extends Component {
     return (
       <div className='Nav'>
         <nav className='nav1'>
-        
+
           <div className='Name'>
             <h1>C L <img className='icon' src='http://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Large.png' alt='' /> N E P E N</h1>
           </div>
 
-          <div className='divProf'>
-            <p className='Your'>YOUR</p>
-            <h1 className='Prof'>Profile</h1>
-            <div className='h-line'></div>
-          </div>
+          <Link to="/profile" className="link">
+            <div className='divProf'>
+              <p className='Your'>YOUR</p>
+              <h1 className='Prof'>Profile</h1>
+              <div className='h-line'></div>
+            </div>
+          </Link>
 
-          <div className='divExp'>
-            <h1 className='Exp'>EXPLORE</h1>
-            <h1 className='Prof'>Pens</h1>
-            <div className='p-line'></div>
-          </div>
+          <Link to="/pens" className="link">
+            <div className='divExp'>
+              <h1 className='Exp'>EXPLORE</h1>
+              <h1 className='Prof'>Pens</h1>
+              <div className='p-line'></div>
+            </div>
+          </Link>
 
           <div className='divProj'>
             <h1 className='Proj'>Projects</h1>
@@ -70,17 +73,17 @@ class NavBar extends Component {
             </div>
 
             <div className='userIcon'>
-             <Link to='/Profile'> <p>user<br />Pic</p> </Link>
+              <Link to='/Profile'> <p>user<br />Pic</p> </Link>
             </div>
           </div>
 
 
           <div className={this.state.showNav ? 'show-nav createWin' : 'show-nav'}>
             <div className='createWindow'>
-              {/* <h2 className='newPen'> <img className='icon1' src={templateIcon} alt="" /> New Pen</h2> */}
+              <h2 className='newPen'> <img className='icon1' src={templateIcon} alt="" /> New Pen</h2>
             </div>
           </div>
-          
+
         </nav>
       </div>
     )

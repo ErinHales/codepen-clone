@@ -104,13 +104,13 @@ export default class Pens extends Component {
 
     render() {
         let { currentPage, pens } = this.state;
-        console.log(pens);
         if (pens[currentPage]) {
             var pensList = pens[currentPage].map(pen => {
                 let { pen_id, name, username, img_url, views, comments, likes, scripts, html, css, js } = pen;
                 return (
                     <Pen
                         key={pen_id}
+                        id={pen_id}
                         profilePicture={img_url}
                         scripts={scripts}
                         html={html}
@@ -129,7 +129,7 @@ export default class Pens extends Component {
                 <div className="pens-sizing-container">
                     <div className="pensHeader">
                         <h1>Explore Pens</h1>
-                        <h4>View More Pens<i class="fa fa-arrow-right"></i></h4>
+                        <h4>View More Pens<i className="fa fa-arrow-right"></i></h4>
                     </div>
                     <div className="filterPens">
                         <button onClick={() => this.getMostRecentPens()} style={{color: this.state.filter === "all" ? "white" : "#8F8F8F"}}>All Pens</button>
@@ -140,8 +140,8 @@ export default class Pens extends Component {
                         {pensList ? pensList : null}
                     </div>
                     <div className="paginationButtons">
-                        <button className="nextButton" style={{display: this.state.currentPage === 0 ? "none" : "block"}} onClick={() => this.getPrev()}><i class="fa fa-angle-left"></i>Prev</button>
-                        <button className="nextButton" onClick={() => this.nextPage()}>Next<i class="fa fa-angle-right"></i></button>
+                        <button className="nextButton" style={{display: this.state.currentPage === 0 ? "none" : "block"}} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
+                        <button className="nextButton" onClick={() => this.nextPage()}>Next<i className="fa fa-angle-right"></i></button>
                     </div>
                 </div>
             </div>
