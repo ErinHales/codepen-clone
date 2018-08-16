@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
-// import CodeMirror from 'react-codemirror';
 import JavaScript from './JS';
 import HTML from './HTML';
 import CSS from './CSS';
 import "./Theme.css";
 import axios from 'axios';
 require('codemirror/lib/codemirror.css');
-
-// import "./CodeEditor.css";
-
 
 
 export default class CodeEditor extends Component {
@@ -17,15 +13,14 @@ export default class CodeEditor extends Component {
 
         this.state = {
             name: "name of pen",
-            css: 'body {\n\tbackground-color: pink;\n}',
-            html: '<h1>Hello World</h1>',
-            js: 'function magic(fairyDust) {\n\treturn "I can fly. Also, I do believe in fairies";\n}'
+            css: null,
+            html: null,
+            js: null
         }
     }
 
     componentWillMount() {
-        axios.get('/api/pen/7').then(response => {
-            console.log(response);
+        axios.get(`/api/pen/${this.props.match.params.id}`).then(response => {
             this.setState({
                 css: response.data.css,
                 html: response.data.html,
@@ -99,11 +94,11 @@ export default class CodeEditor extends Component {
                     <button><img className="settingsImg" src="http://i66.tinypic.com/2gufexh.jpg" alt="down arrow" /></button>
                 </section>
                 </div>
-                <div className="editor">
+                { this.state.html !== null ? <div className="editor">
                     <HTML updateHTML={this.updateHTML} html={this.state.html} />
                     <CSS updateCSS={this.updateCSS} css={this.state.css} />
                     <JavaScript updateJS={this.updateJS} js={this.state.js} />
-                </div>
+                </div> : null }
                 <div className="verticalResize"></div>
                 <iframe className="penFrame" srcDoc={srcdoc} frameBorder="0" title="showPen"></iframe>
                 <div className="penFooter">

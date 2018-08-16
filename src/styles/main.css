@@ -176,6 +176,9 @@
       .component-login .login-signup-container p:last-child:hover {
         color: #FFFFFF;
         cursor: pointer; }
+  .component-login .link {
+    text-decoration: none;
+    margin-left: 10px; }
 
 .signup-container {
   background: url("https://static.codepen.io/assets/logos/codepen-logo-pattern-725360e4ce5b66f968c7f39c80999bdeaa3cbe2f18eac75d58b01f8cf55c26ab.png");
@@ -347,7 +350,7 @@ span {
   word-wrap: break-word; }
 
 .CodeMirror-scroll::-webkit-scrollbar {
-  width: 5px; }
+  width: 7px; }
 
 .CodeMirror-scroll::-webkit-scrollbar-track {
   background-color: #1D1E22; }
@@ -355,6 +358,9 @@ span {
 .CodeMirror-scroll::-webkit-scrollbar-thumb {
   background-color: #666B7A;
   outline: 1px solid #C5C8D4; }
+
+.CodeMirror-vscroll {
+  width: 0px !important; }
 
 .penFrame {
   width: calc(100vw - 10px);
@@ -428,7 +434,8 @@ span {
 .penInfoContainer {
   display: flex;
   flex-direction: column;
-  background-color: #32333B; }
+  background-color: #32333B;
+  border-radius: 0px 0px 4px 4px; }
 
 .penInfo,
 .penPopularity {
@@ -468,8 +475,13 @@ span {
   justify-content: space-around; }
 
 .pensHeader h4 {
+  font-weight: normal;
+  font-size: 12px;
   color: #0EBEFF;
   margin: 10px 0px; }
+
+.pensHeader .fa-arrow-right {
+  margin-left: 5px; }
 
 .profilePicture {
   width: 30px;
@@ -483,33 +495,45 @@ span {
   -ms-overflow: hidden;
   z-index: -1; }
 
-.overlayContainer img {
+.overlayContainer:hover .overlay {
+  opacity: 1;
+  cursor: pointer; }
+
+.overlayContainer {
+  position: relative;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8); }
+
+.pen-iframe-container {
   opacity: 1;
   display: block;
   transition: .5s ease;
-  backface-visibility: hidden; }
+  backface-visibility: hidden;
+  display: block;
+  width: 100%;
+  height: auto; }
 
-.overlayContainer .middle {
+.overlayContainer .overlay {
   transition: .5s ease;
-  opacity: 0;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  text-align: center; }
-
-.overlayContainer:hover img {
-  opacity: 0.3;
-  border-bottom: 3px solid #0EBEFF;
-  margin-bottom: -3px; }
+  text-align: left;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc(100% - 2px);
+  border-bottom: 2px solid #0EBEFF;
+  width: 100%;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.8); }
 
 .overlayContainer:hover .middle {
   opacity: 1; }
 
 .overlayContainer .text {
   color: white;
-  font-size: 10px; }
+  font-size: 10px;
+  margin: 10px; }
 
 .pen-iframe-container {
   position: relative;
@@ -517,7 +541,7 @@ span {
   padding-top: 56.25%;
   width: 100%;
   overflow: hidden;
-  border-radius: 3px; }
+  border-radius: 4px 4px 0px 0px; }
 
 .pen-iframe {
   height: 200%;
@@ -536,14 +560,16 @@ span {
   font-family: "Lato", sans-serif;
   box-shadow: 3px 3px 3px #000000; }
 
-#viewIcon {
-  width: 20px;
-  height: 20px; }
+.fa-eye {
+  font-size: 13px;
+  margin: 10px;
+  margin-bottom: 12px; }
 
 .penPopularity img {
   width: 10px;
   height: 10px;
-  margin: 0px 10px; }
+  margin: 0px 10px;
+  cursor: pointer; }
 
 #displayUserName {
   color: white; }
@@ -556,14 +582,17 @@ span {
 
 .penInfo h3 {
   font-size: 15px;
-  margin: 5px 0px; }
+  margin: 5px 0px;
+  cursor: pointer; }
 
 .penInfo h5 {
   font-size: 10px;
-  margin: 5px 0px; }
+  margin: 5px 0px;
+  cursor: pointer; }
 
 .penPopularity h3 {
-  font-size: 12px; }
+  font-size: 12px;
+  cursor: context-menu; }
 
 .nextButton {
   border-radius: 2px;
@@ -574,16 +603,22 @@ span {
   font-family: "Lato", sans-serif;
   font-size: 15px;
   text-align: center;
-  margin-left: calc(50% - 50px);
-  margin-bottom: 50px;
-  margin-top: 50px; }
+  margin: 0px 20px; }
 
-.buttonArrow {
-  transform: rotate(270deg);
-  width: 15px;
-  height: 15px;
-  margin-left: 5px;
-  margin-bottom: -3px; }
+.paginationButtons {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0px; }
+
+.paginationButtons .fa-angle-left {
+  font-size: 20px;
+  margin: 0px 10px 0px 0px; }
+
+.paginationButtons .fa-angle-right {
+  font-size: 20px;
+  margin: 0px 0px 0px 10px; }
 
 .nextButton:hover {
   background-color: white;
@@ -835,6 +870,9 @@ span {
   border-radius: 3px;
   display: inline;
   transition: .8s height ease-out; }
+
+.link {
+  text-decoration: none; }
 
 .component-account {
   background-color: #191A1D;

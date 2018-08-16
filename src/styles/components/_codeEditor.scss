@@ -73,7 +73,7 @@ span {
 }
 
 .CodeMirror-scroll::-webkit-scrollbar {
-    width: 5px;
+    width: 7px;
 }
 
 .CodeMirror-scroll::-webkit-scrollbar-track {
@@ -83,6 +83,10 @@ span {
 .CodeMirror-scroll::-webkit-scrollbar-thumb {
     background-color: #666B7A;
     outline: 1px solid $light-gray;
+}
+
+.CodeMirror-vscroll {
+    width: 0px !important;
 }
 
 .penFrame {
