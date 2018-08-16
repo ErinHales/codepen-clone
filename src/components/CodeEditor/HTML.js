@@ -6,10 +6,16 @@ import 'codemirror/mode/xml/xml';
 export default class HTML extends Component {
     constructor(props) {
         super(props)
-        this.codeMirror = React.createRef()
+        // this.codeMirror = React.createRef()
     }
+
+    componentDidUpdate(prevProps) {
+        if(prevProps.html !== this.props.html) {
+            this.props.updateHTML(this.props.html);
+        }
+    }
+
     render() {
-        console.log(this.props)
         var options = {
             lineNumbers: true,
             mode: 'text/html',

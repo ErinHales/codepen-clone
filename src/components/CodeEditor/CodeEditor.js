@@ -23,8 +23,9 @@ export default class CodeEditor extends Component {
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         axios.get('/api/pen/7').then(response => {
+            console.log(response);
             this.setState({
                 css: response.data.css,
                 html: response.data.html,
@@ -32,7 +33,9 @@ export default class CodeEditor extends Component {
                 name: response.data.name
             })
         })
-        
+        // this.setState({
+        //     html: '<h1>Hello Erin</h1>'
+        // })
     }
 
     postPen = () => {
@@ -71,7 +74,6 @@ export default class CodeEditor extends Component {
 
     render() {
         let srcdoc = `${this.state.html}<style>${this.state.css}</style><script>${this.state.js}</script>`;
-        console.log(this.state.html);
         return (
             <div className="codeEditor">
                 <div className="editorHead">
