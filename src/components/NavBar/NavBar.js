@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import templateIcon from './tempsnip.jpg'
+import {Link} from 'react-router-dom'
 // import templateIcon from './tempsnip.jpg'
 
 class NavBar extends Component {
@@ -8,15 +10,19 @@ class NavBar extends Component {
       togglePenWindow: false
     }
   }
-   toggleNav() {
+
+  toggleNav() {
     this.setState({
       showNav: !this.state.showNav
     })
   }
+
   render() {
+
     return (
-      <div>
+      <div className='Nav'>
         <nav className='nav1'>
+        
           <div className='Name'>
             <h1>C L <img className='icon' src='http://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Large.png' alt='' /> N E P E N</h1>
           </div>
@@ -43,8 +49,10 @@ class NavBar extends Component {
             <div className='coll-line'></div>
           </div>
 
+
+
           <div className='nav2'>
-            <div className='create'>
+            <div className='create' onClick={() => this.toggleNav()}>
               <h1>Create</h1>
               <img className='arrow' src="https://static.wixstatic.com/media/0a9ac5_ada821b214df43feabfc80e16eebcbdb~mv2.gif" alt="arrow" />
             </div>
@@ -62,9 +70,10 @@ class NavBar extends Component {
             </div>
 
             <div className='userIcon'>
-              <p>user<br/>Pic</p>
+             <Link to='/Profile'> <p>user<br />Pic</p> </Link>
             </div>
           </div>
+
 
           <div className={this.state.showNav ? 'show-nav createWin' : 'show-nav'}>
             <div className='createWindow'>

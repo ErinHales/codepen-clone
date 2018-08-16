@@ -1,3 +1,4 @@
+const restructureResponsePen = require('./helpers/restructureResponsePen')
 module.exports = {
     searchCdn(req, res) {
         res.status(200)
@@ -17,21 +18,8 @@ module.exports = {
                 // console.log(dbResponse)
                 let pen = dbResponse[0]
                 // restructure pen object for consistency
-                pen.scripts = {
-                    html: {
-                        html_tag_class: pen.html_tag_class,
-                        head_tag: pen.head_tag
-                    },
-                    css: pen.css_stylesheet,
-                    js: pen.js_script
-                }
-                // remove unneeded
-                delete pen.html_tag_class
-                delete pen.head_tag
-                delete pen.css_stylesheet
-                delete pen.js_script
-                
-                res.send(pen).status(200)
+                const restructuredPen = restructureResponsePen(pen)
+                res.send(restructuredPen).status(200)
             })
             .catch( err => {
                 console.error(err)
@@ -53,6 +41,12 @@ module.exports = {
             .then( dbResponse => {
                 // setting the pen_id from the newly created row to a a variable
                 const { pen_id } = dbResponse[0]
+                //add single page view for user
+                dbConn.post_like([user_id, pen_id])
+                    .catch( err => {
+                        console.error(err)
+                        res.sendStatus(500)
+                    })
                 // check to see if the request from the client contains any html settings content
                 if(html_tag_class || head_tag) {
                     //Adding the content if it exists

@@ -1,0 +1,143 @@
+@import '../variables';
+
+.signup-container {
+    background: url('https://static.codepen.io/assets/logos/codepen-logo-pattern-725360e4ce5b66f968c7f39c80999bdeaa3cbe2f18eac75d58b01f8cf55c26ab.png');
+    background-repeat: repeat;
+    height: 100vh;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    .signup-form-container {
+        margin-top: 40px;
+        width: 720px;
+        .signup-form-highlights {
+            display:flex;
+            justify-content: space-evenly;
+            height: 3px;
+            .signup-form-highlights-green {
+                background:#47cf73;
+                width:25%;
+            }
+            .signup-form-highlights-yellow {
+                background: #FFDD40;
+                width:25%;
+            }
+            .signup-form-highlights-purple {
+                background: #ae63e4;
+                width:25%;
+            }
+            .signup-form-highlights-blue {
+                background: #76daff;
+                width:25%;
+            }
+        }
+        .signup-form-header {
+            text-align: center;
+            background-color:#4C4F5A;
+            padding: 80px 0px 80px;
+            h1 {
+                text-shadow: 3px 3px 0 rgba(0,0,0,0.05);
+                font-size: 2rem;
+
+                font-family: $font-Black-Han-Sans;
+                color: white;
+            }
+        }
+        .signup-form {
+            
+            font-family: $font-lato;
+            background-color: #ffffff;
+            // padding: 20px;
+            display:flex;
+            .signup-form-userinput {
+                width: 65%;
+                padding: 20px;
+                .signup-form-social {
+                    font-size: 14px;
+                    color: white;
+                    .signup-form-twitter {
+                        border-radius: 3px;
+                        padding: 14px 16px;
+                        margin-top: 10px;
+                        background-color: $bg-twitter;
+                    }
+                    .signup-form-github {
+                        border-radius: 3px;
+                        padding: 14px 16px;
+                        margin-top: 10px;
+                        background-color: $bg-github;
+                }
+                    .signup-form-facebook {
+    
+                        border-radius: 3px;
+                        padding: 14px 16px;
+                        margin-top: 10px;
+                        background-color: $bg-facebook;
+                    }
+                }
+            }
+            .signup-form-divider {
+                width: 5px;
+                height: 100%;
+                background-color: #7B7E8C;
+            }
+            .signup-form-info {
+                width: 35%;
+                // height: 100%;
+                background-color:#36383F;
+            }
+            .signup-form-or {
+                color: #9396a4;
+                margin: 10px 0;
+            }
+            .signup-form-email {
+                background-color: $btn-black-background;
+                padding: 14px;
+                font-size:15px;
+                margin-top:5px;
+                color: white;
+                display: inline-block;
+                border-radius: 3px;
+            }
+        }
+    }
+    .signup-footer {
+        font-size: 13px;
+        display: flex;
+        font-family: $font-lato;
+        color: $link-blue;
+        margin-top: 30px;
+        .signup-footer-element {
+            margin: 0 10px;
+        }
+    }
+}
+.signup-input-group {
+    color: #9396A4;
+    margin: 20px 10px 20px 0;
+    font-family: $font-lato;
+    font-size: 14px;
+}
+
+.signup-input {
+    color: red;
+    background: #eaedf0;
+    border: 3px solid #eaedf0;
+    border-radius: 3px;
+    font-family: $font-lato;
+    font-size: 1.3rem;
+    width: 100%;
+}
+.signup-form-submit-button {
+    background-color: #47cf73;
+    color: white;
+    font-family: $font-lato;
+    font-weight: bold !important;
+    font-size: 1.6em;
+    border-radius: 3px;
+    padding: 0.8rem 2.8rem;
+    &:hover {
+        box-shadow: 0 0 0 1px #34c864;
+        transform: translateY(1px) translateZ(0);
+    }
+}

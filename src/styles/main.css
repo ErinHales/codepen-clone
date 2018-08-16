@@ -1,13 +1,20 @@
 @import url(./reset.css);
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+@import url("https://fonts.googleapis.com/css?family=Black+Han+Sans");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+@import url("https://fonts.googleapis.com/css?family=Black+Han+Sans");
 @import url("https://fonts.googleapis.com/css?family=Lato");
+@import url("https://fonts.googleapis.com/css?family=Sawarabi+Gothic|Lato");
 @import url("https://fonts.googleapis.com/css?family=Lato");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+@import url("https://fonts.googleapis.com/css?family=Telex");
 .component-login {
   font-family: "Lato", sans-serif;
   background: url("https://static.codepen.io/assets/logos/codepen-logo-pattern-725360e4ce5b66f968c7f39c80999bdeaa3cbe2f18eac75d58b01f8cf55c26ab.png");
   background-repeat: repeat;
-  height: 140vh; }
+  min-height: 110vh;
+  overflow-y: hidden;
+  padding-bottom: 5rem; }
   .component-login input:active {
     border: 3px solid #9396A4; }
   .component-login .login-container {
@@ -153,21 +160,136 @@
       background-color: #7B7E8C; }
       .component-login .login-socials .github:hover {
         color: #000; }
-  .component-login .signup-container {
+  .component-login .login-signup-container {
     margin-top: 2.5rem;
+    margin-bottom: 5rem;
     padding: 1.2rem;
     background-color: #32333B;
     display: flex;
     justify-content: center;
     align-items: center; }
-    .component-login .signup-container p {
+    .component-login .login-signup-container p {
       color: #FFFFFF; }
-    .component-login .signup-container p:last-child {
+    .component-login .login-signup-container p:last-child {
       color: #75D8FC;
       margin-left: 1px; }
-      .component-login .signup-container p:last-child:hover {
+      .component-login .login-signup-container p:last-child:hover {
         color: #FFFFFF;
         cursor: pointer; }
+
+.signup-container {
+  background: url("https://static.codepen.io/assets/logos/codepen-logo-pattern-725360e4ce5b66f968c7f39c80999bdeaa3cbe2f18eac75d58b01f8cf55c26ab.png");
+  background-repeat: repeat;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .signup-container .signup-form-container {
+    margin-top: 40px;
+    width: 720px; }
+    .signup-container .signup-form-container .signup-form-highlights {
+      display: flex;
+      justify-content: space-evenly;
+      height: 3px; }
+      .signup-container .signup-form-container .signup-form-highlights .signup-form-highlights-green {
+        background: #47cf73;
+        width: 25%; }
+      .signup-container .signup-form-container .signup-form-highlights .signup-form-highlights-yellow {
+        background: #FFDD40;
+        width: 25%; }
+      .signup-container .signup-form-container .signup-form-highlights .signup-form-highlights-purple {
+        background: #ae63e4;
+        width: 25%; }
+      .signup-container .signup-form-container .signup-form-highlights .signup-form-highlights-blue {
+        background: #76daff;
+        width: 25%; }
+    .signup-container .signup-form-container .signup-form-header {
+      text-align: center;
+      background-color: #4C4F5A;
+      padding: 80px 0px 80px; }
+      .signup-container .signup-form-container .signup-form-header h1 {
+        text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.05);
+        font-size: 2rem;
+        font-family: "Black Han Sans", sans-serif;
+        color: white; }
+    .signup-container .signup-form-container .signup-form {
+      font-family: "Lato", sans-serif;
+      background-color: #ffffff;
+      display: flex; }
+      .signup-container .signup-form-container .signup-form .signup-form-userinput {
+        width: 65%;
+        padding: 20px; }
+        .signup-container .signup-form-container .signup-form .signup-form-userinput .signup-form-social {
+          font-size: 14px;
+          color: white; }
+          .signup-container .signup-form-container .signup-form .signup-form-userinput .signup-form-social .signup-form-twitter {
+            border-radius: 3px;
+            padding: 14px 16px;
+            margin-top: 10px;
+            background-color: #60B5F0; }
+          .signup-container .signup-form-container .signup-form .signup-form-userinput .signup-form-social .signup-form-github {
+            border-radius: 3px;
+            padding: 14px 16px;
+            margin-top: 10px;
+            background-color: #7B7E8C; }
+          .signup-container .signup-form-container .signup-form .signup-form-userinput .signup-form-social .signup-form-facebook {
+            border-radius: 3px;
+            padding: 14px 16px;
+            margin-top: 10px;
+            background-color: #4464A2; }
+      .signup-container .signup-form-container .signup-form .signup-form-divider {
+        width: 5px;
+        height: 100%;
+        background-color: #7B7E8C; }
+      .signup-container .signup-form-container .signup-form .signup-form-info {
+        width: 35%;
+        background-color: #36383F; }
+      .signup-container .signup-form-container .signup-form .signup-form-or {
+        color: #9396a4;
+        margin: 10px 0; }
+      .signup-container .signup-form-container .signup-form .signup-form-email {
+        background-color: #36383f;
+        padding: 14px;
+        font-size: 15px;
+        margin-top: 5px;
+        color: white;
+        display: inline-block;
+        border-radius: 3px; }
+  .signup-container .signup-footer {
+    font-size: 13px;
+    display: flex;
+    font-family: "Lato", sans-serif;
+    color: #75D8FC;
+    margin-top: 30px; }
+    .signup-container .signup-footer .signup-footer-element {
+      margin: 0 10px; }
+
+.signup-input-group {
+  color: #9396A4;
+  margin: 20px 10px 20px 0;
+  font-family: "Lato", sans-serif;
+  font-size: 14px; }
+
+.signup-input {
+  color: red;
+  background: #eaedf0;
+  border: 3px solid #eaedf0;
+  border-radius: 3px;
+  font-family: "Lato", sans-serif;
+  font-size: 1.3rem;
+  width: 100%; }
+
+.signup-form-submit-button {
+  background-color: #47cf73;
+  color: white;
+  font-family: "Lato", sans-serif;
+  font-weight: bold !important;
+  font-size: 1.6em;
+  border-radius: 3px;
+  padding: 0.8rem 2.8rem; }
+  .signup-form-submit-button:hover {
+    box-shadow: 0 0 0 1px #34c864;
+    transform: translateY(1px) translateZ(0); }
 
 .editor {
   display: flex;
@@ -177,8 +299,16 @@
   font-size: 14px;
   height: 100%;
   width: calc(33.3vw - 3px);
-  font-family: 'Source Code Pro';
-  border-bottom: 15px solid #36383F; }
+  font-family: 'Source Code Pro'; }
+
+.verticalResize {
+  width: 100vw;
+  height: 15px;
+  background-color: #36383F;
+  border-top: 1px solid black; }
+
+.verticalResize:hover {
+  cursor: row-resize; }
 
 .CodeMirror textarea {
   z-index: -1; }
@@ -188,13 +318,14 @@
   background-color: #1D1E22;
   padding-top: 30px; }
 
-.CodeMirror-sizer {
-  border-top: 0.5px solid #36383F; }
-
 .CodeMirror-gutter {
   width: 15px !important;
   background-color: #36383F;
-  margin-right: 10px; }
+  margin-right: 10px;
+  margin-top: 20px; }
+
+.CodeMirror-gutter:hover {
+  cursor: col-resize; }
 
 span {
   font-size: 10px; }
@@ -239,7 +370,7 @@ span {
   border-bottom: 1px solid black; }
 
 .editorSection {
-  width: calc(33vw - 30px);
+  width: calc(33vw - 64.8px);
   display: flex;
   justify-content: space-between;
   padding-right: 30px;
@@ -248,7 +379,9 @@ span {
   position: relative;
   top: 15px;
   left: 0px;
-  padding-left: 20px; }
+  padding-left: 20px;
+  border-bottom: 0.5px solid #36383F;
+  border-left: 15px solid #36383F; }
 
 .settingsImg {
   width: 10px;
@@ -267,7 +400,7 @@ span {
   background-color: #4E505A; }
 
 .penFooter {
-  height: 20px;
+  height: 30px;
   width: calc(100vw - 50px);
   background-color: #36383F;
   margin-top: -3px;
@@ -280,17 +413,217 @@ span {
   background-color: #1D1E22;
   color: white;
   font-size: 10px;
-  padding: 2px;
+  padding: 4px;
   border-radius: 2px; }
+
+.penFooter button:hover {
+  cursor: pointer; }
+
+.delete:hover {
+  background-color: #ED5151; }
 
 .codeEditor {
   overflow-y: hidden; }
+
+.penInfoContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #32333B; }
+
+.penInfo,
+.penPopularity {
+  display: flex;
+  align-items: center; }
+
+.pens-sizing-container {
+  max-width: 1500px; }
+
+.pensView {
+  background-color: #191A1D;
+  color: #C5C8D4;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.pensHeader {
+  border-bottom: 3px solid #0EBEFF;
+  margin: 15px 2%;
+  margin-top: 0px;
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-family: "Black Han Sans", sans-serif;
+  font-weight: bold; }
+
+.pensHeader h1 {
+  font-size: 30px;
+  color: white;
+  margin: 10px 0px; }
+
+.pensDisplay {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; }
+
+.pensHeader h4 {
+  color: #0EBEFF;
+  margin: 10px 0px; }
+
+.profilePicture {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  border-radius: 3px; }
+
+.pensFrame {
+  width: 100%;
+  overflow: hidden;
+  -ms-overflow: hidden;
+  z-index: -1; }
+
+.overlayContainer img {
+  opacity: 1;
+  display: block;
+  transition: .5s ease;
+  backface-visibility: hidden; }
+
+.overlayContainer .middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center; }
+
+.overlayContainer:hover img {
+  opacity: 0.3;
+  border-bottom: 3px solid #0EBEFF;
+  margin-bottom: -3px; }
+
+.overlayContainer:hover .middle {
+  opacity: 1; }
+
+.overlayContainer .text {
+  color: white;
+  font-size: 10px; }
+
+.pen-iframe-container {
+  position: relative;
+  height: 0;
+  padding-top: 56.25%;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 3px; }
+
+.pen-iframe {
+  height: 200%;
+  width: 200%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  box-sizing: border-box;
+  transform: scale(0.5);
+  transition: opacity 0.4s left;
+  transform-origin: top left; }
+
+.showPen {
+  width: 30%;
+  margin: 10px;
+  font-family: "Lato", sans-serif;
+  box-shadow: 3px 3px 3px #000000; }
+
+#viewIcon {
+  width: 20px;
+  height: 20px; }
+
+.penPopularity img {
+  width: 10px;
+  height: 10px;
+  margin: 0px 10px; }
+
+#displayUserName {
+  color: white; }
+
+.penInfo {
+  margin: 5px 10px;
+  padding: 10px 0px;
+  border-bottom: 0.1px solid #C5C8D4;
+  font-family: "Lato", sans-serif; }
+
+.penInfo h3 {
+  font-size: 15px;
+  margin: 5px 0px; }
+
+.penInfo h5 {
+  font-size: 10px;
+  margin: 5px 0px; }
+
+.penPopularity h3 {
+  font-size: 12px; }
+
+.nextButton {
+  border-radius: 2px;
+  background-color: transparent;
+  border: 3px solid white;
+  color: white;
+  padding: 10px;
+  font-family: "Lato", sans-serif;
+  font-size: 15px;
+  text-align: center;
+  margin-left: calc(50% - 50px);
+  margin-bottom: 50px;
+  margin-top: 50px; }
+
+.buttonArrow {
+  transform: rotate(270deg);
+  width: 15px;
+  height: 15px;
+  margin-left: 5px;
+  margin-bottom: -3px; }
+
+.nextButton:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer; }
+
+.filterPens {
+  color: #88888A;
+  display: flex;
+  margin-left: 2%;
+  margin-bottom: 10px;
+  font-family: "Lato", sans-serif; }
+
+.filterPens button {
+  margin: 0px;
+  margin-right: 10px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #8F8F8F; }
+
+.filterPens button:hover {
+  color: white;
+  cursor: pointer; }
+
+.Nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; }
 
 .nav1 {
   background: black;
   display: flex;
   align-items: center;
-  height: 63px; }
+  height: 63px;
+  width: 100%; }
+
+.navContnr {
+  display: flex;
+  align-items: center; }
 
 .icon {
   height: 26px;
@@ -298,7 +631,8 @@ span {
   top: 5px; }
 
 .Name {
-  width: 175px;
+  width: 10%;
+  min-width: 175px;
   display: flex;
   align-items: bottom;
   font-family: 'Lato', sans-serif;
@@ -337,8 +671,7 @@ span {
   color: white;
   font-family: "Lato", "Lucida Grande", "Lucida Sans Unicode";
   position: relative;
-  top: 9px;
-  font-weight: 599; }
+  top: 9px; }
 
 .divProf {
   height: 70px;
@@ -359,264 +692,149 @@ span {
   background: yellow; }
 
 .divColl:hover .coll-line {
-  background: #ae63e4;
-  top: 30px;
-  left: 5px; }
-  .divColl:hover .coll-line .Name {
-    color: white;
-    background-color: black;
-    font-size: 26px;
-    font-family: 'Source Sans Pro', sans-serif;
-    display: flex;
-    margin-left: 10px;
-    cursor: pointer; }
-  .divColl:hover .coll-line .navbar {
-    display: flex;
-    background-color: black;
-    height: 65px;
-    align-items: center; }
-  .divColl:hover .coll-line .icon {
-    height: 30px;
-    margin-left: 5px;
-    margin-right: 5px; }
-  .divColl:hover .coll-line .Your {
-    color: #6795eb;
-    margin-left: 5px;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 14px;
-    cursor: pointer;
-    position: relative;
-    top: 20px; }
-  .divColl:hover .coll-line .Prof-pens {
-    color: white;
-    margin-left: 5px;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 18px;
-    cursor: pointer;
-    position: relative;
-    top: 20px; }
-  .divColl:hover .coll-line .h-line {
-    height: 4px;
-    width: 50px;
-    background: black;
-    position: relative;
-    top: 13px; }
-  .divColl:hover .coll-line .p-line {
-    height: 4px;
-    width: 50px;
-    background: black;
-    position: relative;
-    top: 13px; }
-  .divColl:hover .coll-line .prj-line {
-    height: 4px;
-    width: 59px;
-    background: black;
-    position: relative;
-    top: 21px; }
-  .divColl:hover .coll-line .coll-line {
-    height: 4px;
-    width: 80px;
-    background: black;
-    position: relative;
-    top: 20px; }
-  .divColl:hover .coll-line .divExp {
-    height: 70px;
-    width: 80px;
-    margin-left: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    cursor: pointer; }
-  .divColl:hover .coll-line .divProj {
-    height: 70px;
-    width: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-right: 13px;
-    cursor: pointer; }
-  .divColl:hover .coll-line .divColl {
-    height: 70px;
-    width: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-right: 13px;
-    cursor: pointer; }
-  .divColl:hover .coll-line .nav2 {
-    display: flex;
-    margin-left: 55.5%; }
-  .divColl:hover .coll-line .create {
-    height: 45px;
-    width: 108px;
-    border-radius: 3px;
-    background: #36383F;
-    color: white;
-    font-family: "Lato", "Lucida Grande", "Lucida Sans Unicode";
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer; }
-  .divColl:hover .coll-line .create:hover {
-    background: #6e6d6d; }
-  .divColl:hover .coll-line .arrow {
-    height: 30px; }
-  .divColl:hover .coll-line .divMag {
-    border-radius: 50px;
-    background: #898e9e;
-    position: relative;
-    left: 15px;
-    height: 40px; }
-  .divColl:hover .coll-line .mag {
-    height: 45px;
-    cursor: pointer; }
-  .divColl:hover .coll-line .divMag:hover {
-    background: #cfcece; }
-  .divColl:hover .coll-line .bell {
-    height: 35px;
-    margin-left: 15px;
-    margin-top: 6px;
-    cursor: pointer; }
-  .divColl:hover .coll-line .userIcon {
-    height: 44px;
-    width: 44px;
-    background: gray;
-    border-radius: 3px;
-    margin-left: 15px;
-    cursor: pointer; }
-  .divColl:hover .coll-line .createWindow:hover {
-    background: white; }
-  .divColl:hover .coll-line .newPen {
-    height: 50px;
-    width: 99%;
-    border: 1px lightgray solid;
-    border-radius: 3px;
-    font-family: 'Lato', sans-serif;
-    display: flex;
-    align-items: center; }
-  .divColl:hover .coll-line .icon1 {
-    height: 30px;
-    margin-left: 8px;
-    margin-right: 15px;
-    border-radius: 3px; }
-  .divColl:hover .coll-line .show-nav {
-    display: none; }
-  .divColl:hover .coll-line .createWin {
-    height: 51px;
-    width: 250px;
-    background: #cecccc;
-    position: absolute;
-    z-index: 1000;
-    left: 77.3%;
-    top: 55px;
-    border-radius: 3px;
-    display: inline;
-    transition: .8s height ease-out; }
+  background: #ae63e4; }
 
-.Ex-line {
+.h-line {
   height: 4px;
-  width: 45px;
+  width: 50px;
   background: black;
   position: relative;
-  top: 30px;
-  left: 5px; }
+  top: 13px; }
 
-.Pj-line {
+.p-line {
   height: 4px;
-  width: 65px;
+  width: 50px;
   background: black;
   position: relative;
-  top: 10px; }
+  top: 13px; }
 
-.Coll-line {
+.prj-line {
   height: 4px;
-  width: 82px;
+  width: 59px;
   background: black;
   position: relative;
-  top: 10px;
-  left: 20px; }
+  top: 21px; }
 
-.Prof-holder {
-  height: 70px;
-  width: 70px;
-  position: relative;
-  left: 35px; }
-
-.Prof-holder:hover .h-line {
-  background: linear-gradient(to right, rgba(29, 189, 255, 0.8) 0%, rgba(233, 204, 59, 0.8) 34%, rgba(173, 96, 228, 0.8) 68%, rgba(75, 207, 115, 0.8) 100%); }
-
-.Prof-holder:hover .Ex-line {
-  background: #0ebeff; }
-
-.Prof-holder:hover .Pj-line {
-  background: yellow; }
-
-.Prof-holder:hover .Coll-line {
-  background: #db43db; }
-
-.Proj {
-  color: white;
-  margin-left: 1px;
-  margin-top: 34px;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 18px;
-  cursor: pointer; }
-
-.Coll {
-  color: white;
-  margin-left: 18px;
-  margin-top: 34px;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 18px;
-  cursor: pointer; }
-
-.Expl {
-  color: #f3f378;
-  font-family: 'Source Sans Pro', sans-serif;
-  margin-left: 5px;
-  font-size: 14px;
-  cursor: pointer;
+.coll-line {
+  height: 4px;
+  width: 80px;
+  background: black;
   position: relative;
   top: 20px; }
 
-.CreateBtn {
-  background-color: #36383F;
+.divExp {
+  height: 70px;
+  width: 80px;
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer; }
+
+.divProj {
+  height: 70px;
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 13px;
+  cursor: pointer; }
+
+.divColl {
+  height: 70px;
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 13px;
+  cursor: pointer; }
+
+.nav2 {
+  display: flex;
+  min-width: 150px;
+  float: right;
+  position: absolute;
+  right: 10px; }
+
+.create {
   height: 45px;
-  width: 112px;
+  width: 108px;
   border-radius: 3px;
-  margin-left: 61%;
+  background: #36383F;
   color: white;
+  font-family: "Lato", "Lucida Grande", "Lucida Sans Unicode";
+  font-size: 16px;
   display: flex;
   align-items: center;
+  justify-content: center;
   cursor: pointer; }
 
-.Create {
-  margin-left: 15px;
-  font-family: 'Lato', sans-serif; }
+.create:hover {
+  background: #6e6d6d; }
 
-.greenArrow {
-  height: 18px;
-  margin-left: 8px; }
+.arrow {
+  height: 30px; }
+
+.divMag {
+  border-radius: 50px;
+  background: #898e9e;
+  position: relative;
+  left: 15px;
+  height: 40px; }
 
 .mag {
-  height: 33px;
-  margin-left: 14px;
-  fill: gray;
-  cursor: pointer; }
-
-.Bell {
-  height: 36px;
-  margin-left: 10px;
-  cursor: pointer; }
-
-.userPic {
   height: 45px;
-  width: 45px;
-  background-color: gray;
-  border-radius: 3px;
-  margin-left: 10px;
   cursor: pointer; }
+
+.divMag:hover {
+  background: #cfcece; }
+
+.bell {
+  height: 35px;
+  margin-left: 15px;
+  margin-top: 6px;
+  cursor: pointer; }
+
+.userIcon {
+  height: 44px;
+  width: 44px;
+  background: gray;
+  border-radius: 3px;
+  margin-left: 15px;
+  cursor: pointer; }
+
+.createWindow:hover {
+  background: white; }
+
+.newPen {
+  height: 50px;
+  width: 99%;
+  border: 1px lightgray solid;
+  border-radius: 3px;
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  align-items: center; }
+
+.icon1 {
+  height: 30px;
+  margin-left: 8px;
+  margin-right: 15px;
+  border-radius: 3px; }
+
+.show-nav {
+  display: none; }
+
+.createWin {
+  height: 51px;
+  width: 250px;
+  background: #cecccc;
+  position: absolute;
+  z-index: 1000;
+  left: 77.3%;
+  top: 55px;
+  border-radius: 3px;
+  display: inline;
+  transition: .8s height ease-out; }
 
 .component-account {
   background-color: #191A1D;
@@ -784,3 +1002,202 @@ span {
           .component-account .account-container .account-grid .account-customize .information-box p {
             margin-top: 1rem;
             color: #9396A4; }
+
+.grayLine {
+  height: 263px;
+  width: 100%;
+  background-image: url(https://tponsukcharoen.github.io/KhanAcademyThailand/bg-blue.jpg); }
+
+.b-line {
+  height: 70px;
+  width: 100%;
+  background: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  min-width: 300px; }
+
+.Content {
+  height: 150vh;
+  width: 100%;
+  background: #191A1D; }
+
+.UserInfo {
+  height: 300px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  position: absolute;
+  left: 45%;
+  top: 174px;
+  align-items: center;
+  text-align: center; }
+
+.UserName {
+  font-size: 36px;
+  margin-bottom: 15px;
+  font-family: 'Telex', sans-serif;
+  font-weight: 600; }
+
+.Name2 {
+  margin-bottom: 18px; }
+
+.UserPic {
+  height: 130px;
+  width: 130px;
+  background: #181818;
+  position: relative;
+  left: 16px;
+  border: 4px #2e2d2d solid;
+  box-shadow: 1px 1px #1d1c1c; }
+
+.Hire {
+  font-family: 'Lato', sans-serif;
+  position: relative;
+  left: 95%;
+  font-size: 11px;
+  border: 1px solid white;
+  padding: 5px;
+  border-radius: 3px;
+  min-width: 42px;
+  cursor: pointer; }
+
+.Hire:hover {
+  background: whitesmoke;
+  color: black; }
+
+.followers {
+  color: gray;
+  font-family: 'Lato', sans-serif;
+  margin-left: 20px;
+  cursor: pointer; }
+
+.followers:hover {
+  color: whitesmoke; }
+
+.EditP {
+  height: 40px;
+  width: 80px;
+  z-index: 8;
+  position: absolute;
+  color: white;
+  font-family: 'Lato', sans-serif;
+  top: 85px;
+  right: 40px;
+  padding-left: 13px;
+  padding-right: 8px;
+  display: flex;
+  align-items: center;
+  border: 3px solid white;
+  border-radius: 3px;
+  font-size: 15px;
+  cursor: pointer; }
+
+.EditP:hover {
+  background: whitesmoke;
+  color: black; }
+
+.Pen-InputWrapper {
+  height: 30px;
+  width: 60%;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  display: flex;
+  align-items: flex-end;
+  color: gray;
+  margin-left: 20px;
+  position: relative;
+  left: 18%;
+  top: 6%; }
+
+.Pens2 {
+  color: white;
+  margin-right: 20px; }
+
+.Proj2 {
+  margin-right: 20px; }
+
+.Inp-box {
+  height: 30px;
+  border-radius: 4px;
+  z-index: 8;
+  position: relative;
+  left: 70%;
+  top: 60px; }
+
+.ligthgray-line {
+  height: 5px;
+  width: 60.2%;
+  background: gray;
+  position: relative;
+  left: 19%;
+  top: 5%; }
+
+.gray-line {
+  height: 50px;
+  width: 60.2%;
+  background: #252527;
+  position: relative;
+  left: 19%;
+  top: 5%; }
+
+.Pen-window {
+  height: 600px;
+  width: 60.2%;
+  background: white;
+  border-radius: 10px;
+  position: relative;
+  top: 6%;
+  left: 19%; }
+
+.footer {
+  height: 200px;
+  width: 100%;
+  background: #111;
+  position: absolute;
+  top: 136vh; }
+
+.nameHolder {
+  display: flex;
+  width: 175px;
+  color: white;
+  align-items: center;
+  height: 63px;
+  position: relative;
+  left: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end; }
+
+.Name-footer {
+  width: 10%;
+  min-width: 175px;
+  display: flex;
+  align-items: bottom;
+  font-family: 'Lato', sans-serif;
+  color: white;
+  margin-left: 15px;
+  font-size: 24px;
+  position: relative;
+  bottom: 2px;
+  margin-top: 30px;
+  cursor: pointer; }
+
+.icon-footer {
+  height: 26px;
+  margin-left: 2px;
+  margin-right: 2px; }
+
+.demo {
+  font-size: 10px;
+  font-family: 'Lato', sans-serif;
+  margin: 10px;
+  font-style: italic; }
+
+.Clonpen {
+  font-family: 'Lato', sans-serif;
+  margin: 10px;
+  margin-top: 35px;
+  font-size: 12px; }

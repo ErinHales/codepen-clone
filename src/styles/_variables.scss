@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans');
 
 // Font colors
 $text-white: #FFFFFF;
@@ -19,6 +20,7 @@ $bg-dark-black: #191A1D;
 
 // Link Colors
 $link-blue: #75D8FC;
+$link-dark-blue: #0A73B4;
 
 
 // button colors
@@ -27,7 +29,10 @@ $btn-green-hover: #2FB45A;
 $btn-babyblue: #0EBEFF;
 $btn-babyblue-hover: #009FDA;
 
+$btn-black-background: #36383f;
 
 
 // Font Family
 $font-lato: 'Lato', sans-serif; 
+$font-BHS: 'Black Han Sans', sans-serif;
+$font-Black-Han-Sans: 'Black Han Sans', sans-serif;

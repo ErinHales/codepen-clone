@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css?family=Sawarabi+Gothic|Lato');
+
+$primary-black: #1D1E22;
+// $med-gray: #36383F;
+$med-gray: #32333B;
+$light-gray: #C5C8D4;
+
+.penInfoContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: $med-gray;
+}
+
+.penInfo,
+.penPopularity {
+    display: flex;
+    align-items: center;
+}
+
+.pens-sizing-container {
+    max-width: 1500px;
+}
+
+.pensView {
+    background-color: #191A1D;
+    color: $light-gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pensHeader {
+    border-bottom: 3px solid #0EBEFF;
+    margin: 15px 2%;
+    margin-top: 0px;
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-family: $font-BHS;
+    font-weight: bold;
+}
+
+.pensHeader h1 {
+    font-size: 30px;
+    color: white;
+    margin: 10px 0px;
+}
+
+.pensDisplay {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.pensHeader h4 {
+    color: #0EBEFF;
+    margin: 10px 0px;
+}
+
+.profilePicture {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 3px;
+}
+
+.pensFrame {
+    width: 100%;
+    overflow: hidden; 
+    -ms-overflow: hidden;
+    z-index: -1;
+}
+
+.overlayContainer img {
+    opacity: 1;
+    display: block;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.overlayContainer .middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;  
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.overlayContainer:hover img {
+    opacity: 0.3;
+    border-bottom: 3px solid #0EBEFF;
+    margin-bottom: -3px;
+}
+
+.overlayContainer:hover .middle {
+    opacity: 1;
+}
+
+.overlayContainer .text {
+    color: white;
+    font-size: 10px;
+}
+.pen-iframe-container {
+    position: relative;
+    height: 0;
+    padding-top: 56.25%;
+    width: 100%;
+    overflow:hidden;
+    border-radius: 3px;
+}
+.pen-iframe {
+    height: 200%;
+    width: 200%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    box-sizing: border-box;
+    transform: scale(.5);
+    transition: opacity 0.4s left;
+    transform-origin: top left;
+}
+.showPen {
+    width: 30%;
+    margin: 10px;
+    font-family: "Lato", sans-serif;
+    box-shadow: 3px 3px 3px #000000;
+}
+
+#viewIcon {
+    width: 20px;
+    height: 20px;
+}
+
+.penPopularity img {
+    width: 10px;
+    height: 10px;
+    margin: 0px 10px;
+}
+
+#displayUserName {
+    color: white;
+}
+
+.penInfo {
+    margin: 5px 10px;
+    padding: 10px 0px;
+    border-bottom: 0.1px solid $light-gray;
+    font-family: "Lato", sans-serif;
+}
+
+.penInfo h3 {
+    font-size: 15px;
+    margin: 5px 0px;
+}
+
+.penInfo h5 {
+    font-size: 10px;
+    margin: 5px 0px;
+}
+
+.penPopularity h3 {
+    font-size: 12px;
+}
+
+.nextButton {
+    border-radius: 2px;
+    background-color: transparent;
+    border: 3px solid white;
+    color: white;
+    padding: 10px;
+    font-family: "Lato", sans-serif;
+    font-size: 15px;
+    text-align: center;
+    margin-left: calc(50% - 50px);
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.buttonArrow {
+    transform: rotate(270deg);
+    width: 15px;
+    height: 15px;
+    margin-left: 5px;
+    margin-bottom: -3px;
+}
+
+.nextButton:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.filterPens {
+    color: #88888A;
+    display: flex;
+    margin-left: 2%;
+    margin-bottom: 10px;
+    font-family: "Lato", sans-serif;
+}
+
+.filterPens button {
+    margin: 0px;
+    margin-right: 10px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #8F8F8F;
+}
+
+.filterPens button:hover {
+    color: white;
+    cursor: pointer;
+}
