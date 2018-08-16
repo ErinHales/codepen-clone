@@ -85,19 +85,21 @@ export default class Pens extends Component {
         })
         return (
             <div className="pensView">
-                <div className="pensHeader">
-                    <h1>Explore Pens</h1>
-                    <h4>View More Pens</h4>
+                <div className="pens-sizing-container">
+                    <div className="pensHeader">
+                        <h1>Explore Pens</h1>
+                        <h4>View More Pens</h4>
+                    </div>
+                    <div className="filterPens">
+                        <h4>All Pens</h4>
+                        <h4>Popular Pens</h4>
+                        <h4>My Pens</h4>
+                    </div>
+                    <div className="pensDisplay">
+                        {pensList}
+                    </div>
+                    <button>Next<img className="buttonArrow" src="http://i66.tinypic.com/2gufexh.jpg" alt="arrow"/></button>
                 </div>
-                <div className="filterPens">
-                    <h4>All Pens</h4>
-                    <h4>Popular Pens</h4>
-                    <h4>My Pens</h4>
-                </div>
-                <div className="pensDisplay">
-                    {pensList}
-                </div>
-                <button>Next<img className="buttonArrow" src="http://i66.tinypic.com/2gufexh.jpg" alt="arrow"/></button>
             </div>
         )
     }

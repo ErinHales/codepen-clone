@@ -1,5 +1,6 @@
 @import url(./reset.css);
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+@import url("https://fonts.googleapis.com/css?family=Black+Han+Sans");
 @import url("https://fonts.googleapis.com/css?family=Lato");
 @import url("https://fonts.googleapis.com/css?family=Sawarabi+Gothic|Lato");
 @import url("https://fonts.googleapis.com/css?family=Lato");
@@ -314,9 +315,15 @@ span {
   display: flex;
   align-items: center; }
 
+.pens-sizing-container {
+  max-width: 1500px; }
+
 .pensView {
   background-color: #191A1D;
-  color: #C5C8D4; }
+  color: #C5C8D4;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
 
 .pensHeader {
   border-bottom: 3px solid #0EBEFF;
@@ -326,7 +333,7 @@ span {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  font-family: "Lato", sans-serif;
+  font-family: "Black Han Sans", sans-serif;
   font-weight: bold; }
 
 .pensHeader h1 {
