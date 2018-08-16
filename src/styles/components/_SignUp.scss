@@ -8,7 +8,7 @@
     flex-direction: column;
     align-items: center;
     .signup-form-container {
-
+        margin-top: 40px;
         width: 720px;
         .signup-form-highlights {
             display:flex;
@@ -44,31 +44,47 @@
             }
         }
         .signup-form {
+            
             font-family: $font-lato;
             background-color: #ffffff;
-            padding: 20px;
-            .signup-form-social {
-                font-size: 14px;
-                color: white;
-                .signup-form-twitter {
-                    border-radius: 3px;
-                    padding: 14px 16px;
-                    margin-top: 10px;
-                    background-color: $bg-twitter;
+            // padding: 20px;
+            display:flex;
+            .signup-form-userinput {
+                width: 65%;
+                padding: 20px;
+                .signup-form-social {
+                    font-size: 14px;
+                    color: white;
+                    .signup-form-twitter {
+                        border-radius: 3px;
+                        padding: 14px 16px;
+                        margin-top: 10px;
+                        background-color: $bg-twitter;
+                    }
+                    .signup-form-github {
+                        border-radius: 3px;
+                        padding: 14px 16px;
+                        margin-top: 10px;
+                        background-color: $bg-github;
                 }
-                .signup-form-github {
-                    border-radius: 3px;
-                    padding: 14px 16px;
-                    margin-top: 10px;
-                    background-color: $bg-github;
+                    .signup-form-facebook {
+    
+                        border-radius: 3px;
+                        padding: 14px 16px;
+                        margin-top: 10px;
+                        background-color: $bg-facebook;
+                    }
+                }
             }
-                .signup-form-facebook {
-
-                    border-radius: 3px;
-                    padding: 14px 16px;
-                    margin-top: 10px;
-                    background-color: $bg-facebook;
-                }
+            .signup-form-divider {
+                width: 5px;
+                height: 100%;
+                background-color: #7B7E8C;
+            }
+            .signup-form-info {
+                width: 35%;
+                // height: 100%;
+                background-color:#36383F;
             }
             .signup-form-or {
                 color: #9396a4;
@@ -98,7 +114,7 @@
 }
 .signup-input-group {
     color: #9396A4;
-    margin: 20px 20px 20px 0;
+    margin: 20px 10px 20px 0;
     font-family: $font-lato;
     font-size: 14px;
 }
@@ -110,5 +126,18 @@
     border-radius: 3px;
     font-family: $font-lato;
     font-size: 1.3rem;
-    width: 50%
+    width: 100%;
+}
+.signup-form-submit-button {
+    background-color: #47cf73;
+    color: white;
+    font-family: $font-lato;
+    font-weight: bold !important;
+    font-size: 1.6em;
+    border-radius: 3px;
+    padding: 0.8rem 2.8rem;
+    &:hover {
+        box-shadow: 0 0 0 1px #34c864;
+        transform: translateY(1px) translateZ(0);
+    }
 }
