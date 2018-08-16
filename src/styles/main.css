@@ -836,6 +836,173 @@ span {
   display: inline;
   transition: .8s height ease-out; }
 
+.component-account {
+  background-color: #191A1D;
+  min-height: 150vh; }
+  .component-account .account-container {
+    position: relative;
+    top: 4rem;
+    width: 90%;
+    margin: 0 auto; }
+    .component-account .account-container .account-header .account-save {
+      display: flex;
+      justify-content: flex-end; }
+      .component-account .account-container .account-header .account-save button {
+        background-color: #47CF73;
+        padding: 15px;
+        border-radius: 5px; }
+        .component-account .account-container .account-header .account-save button:hover {
+          background-color: #2FB45A; }
+    .component-account .account-container .account-header .account-links {
+      display: flex; }
+      .component-account .account-container .account-header .account-links p {
+        margin-right: 1rem;
+        color: #FFFFFF; }
+    .component-account .account-container .account-grid {
+      border: 1px solid blue;
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: space-between; }
+      .component-account .account-container .account-grid .account-avatar {
+        width: 14%;
+        border: 1px solid green;
+        height: 25rem;
+        background-color: #32333B;
+        padding: 1rem; }
+        .component-account .account-container .account-grid .account-avatar .img-placeholder {
+          border: 1px solid yellow;
+          height: 45%; }
+          .component-account .account-container .account-grid .account-avatar .img-placeholder img {
+            height: 100%;
+            width: 100%; }
+        .component-account .account-container .account-grid .account-avatar .dropzone {
+          height: 50%;
+          margin-top: 1rem; }
+          .component-account .account-container .account-grid .account-avatar .dropzone .dropzone-container {
+            border: 1px dashed #9396A4;
+            height: 80%;
+            border-radius: 5px;
+            padding: 1rem;
+            text-align: center; }
+            .component-account .account-container .account-grid .account-avatar .dropzone .dropzone-container p {
+              color: #FFFFFF;
+              text-transform: uppercase;
+              font-size: 0.8rem; }
+            .component-account .account-container .account-grid .account-avatar .dropzone .dropzone-container .dropzone-input {
+              display: flex;
+              align-items: center;
+              margin-top: 1rem;
+              justify-content: center; }
+              .component-account .account-container .account-grid .account-avatar .dropzone .dropzone-container .dropzone-input button {
+                background-color: #000;
+                color: #FFFFFF;
+                font-size: 0.8rem;
+                padding: 5px;
+                margin-left: 3px;
+                position: relative; }
+                .component-account .account-container .account-grid .account-avatar .dropzone .dropzone-container .dropzone-input button:active {
+                  top: 2px; }
+      .component-account .account-container .account-grid .account-information {
+        border: 1px solid red;
+        width: 58%; }
+        .component-account .account-container .account-grid .account-information .information-box {
+          background-color: #32333B;
+          margin-bottom: 1rem;
+          padding: 1rem; }
+          .component-account .account-container .account-grid .account-information .information-box .box-header h3 {
+            color: #FFFFFF;
+            font-size: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #9396A4; }
+          .component-account .account-container .account-grid .account-information .information-box .input-container {
+            border: 1px solid purple;
+            padding-right: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; }
+            .component-account .account-container .account-grid .account-information .information-box .input-container .input-group {
+              display: flex;
+              align-items: center;
+              border: 1px solid green;
+              width: 83%;
+              justify-content: space-between;
+              margin-top: 0.5rem; }
+              .component-account .account-container .account-grid .account-information .information-box .input-container .input-group h5 {
+                color: #EEEEEE;
+                font-size: 1.1rem;
+                text-transform: uppercase;
+                width: 30%;
+                text-align: right;
+                margin-right: 0.5rem; }
+              .component-account .account-container .account-grid .account-information .information-box .input-container .input-group input {
+                padding: 10px;
+                margin-top: 0.7rem;
+                border-radius: 5px;
+                width: 70%;
+                margin-top: 0; }
+        .component-account .account-container .account-grid .account-information .textarea-group {
+          border: 1px solid red;
+          display: flex;
+          justify-content: space-between;
+          padding-right: 10px;
+          margin-top: 1rem; }
+          .component-account .account-container .account-grid .account-information .textarea-group .textarea {
+            width: 60%;
+            border: 1px solid blue; }
+            .component-account .account-container .account-grid .account-information .textarea-group .textarea textarea {
+              width: 100%;
+              height: 90px;
+              border-radius: 5px; }
+            .component-account .account-container .account-grid .account-information .textarea-group .textarea p {
+              color: #EEEEEE;
+              margin-top: 0.75rem; }
+              .component-account .account-container .account-grid .account-information .textarea-group .textarea p .small {
+                color: #9396A4;
+                font-size: 0.85rem; }
+          .component-account .account-container .account-grid .account-information .textarea-group .title {
+            width: 40%;
+            text-align: right;
+            padding-top: 1rem; }
+            .component-account .account-container .account-grid .account-information .textarea-group .title h5 {
+              margin-right: 0.5rem;
+              color: #EEEEEE;
+              font-size: 1.1rem;
+              text-transform: uppercase; }
+      .component-account .account-container .account-grid .account-customize {
+        border: 1px solid orange;
+        width: 20%; }
+        .component-account .account-container .account-grid .account-customize .information-box {
+          border: 1px solid red;
+          background-color: #32333B;
+          height: 50%;
+          padding: 1rem; }
+          .component-account .account-container .account-grid .account-customize .information-box .box-header h3 {
+            color: #FFFFFF;
+            font-size: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #9396A4; }
+          .component-account .account-container .account-grid .account-customize .information-box .img-placeholder {
+            height: 48%;
+            margin-top: 1rem;
+            width: 100%; }
+            .component-account .account-container .account-grid .account-customize .information-box .img-placeholder img {
+              height: 100%;
+              width: 100%; }
+          .component-account .account-container .account-grid .account-customize .information-box button {
+            background-color: #0EBEFF;
+            width: 100%;
+            padding: 0.8rem;
+            color: #FFFFFF;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            margin-top: 1rem; }
+            .component-account .account-container .account-grid .account-customize .information-box button:hover {
+              background-color: #009FDA;
+              cursor: pointer; }
+          .component-account .account-container .account-grid .account-customize .information-box p {
+            margin-top: 1rem;
+            color: #9396A4; }
+
 .grayLine {
   height: 263px;
   width: 100%;
