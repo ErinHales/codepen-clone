@@ -107,14 +107,22 @@ $light-gray: #C5C8D4;
 }
 .pen-iframe-container {
     position: relative;
-    height: 100%;
+    height: 0;
+    padding-top: 56.25%;
     width: 100%;
     overflow:hidden;
     border-radius: 3px;
 }
 .pen-iframe {
-    height: 100%;
-    width: 100%;
+    height: 200%;
+    width: 200%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    box-sizing: border-box;
+    transform: scale(.5);
+    transition: opacity 0.4s left;
+    transform-origin: top left;
 }
 .showPen {
     width: 30%;
@@ -159,7 +167,7 @@ $light-gray: #C5C8D4;
     font-size: 12px;
 }
 
-.pensView button {
+.nextButton {
     border-radius: 2px;
     background-color: transparent;
     border: 3px solid white;
@@ -181,7 +189,7 @@ $light-gray: #C5C8D4;
     margin-bottom: -3px;
 }
 
-.pensView button:hover {
+.nextButton:hover {
     background-color: white;
     color: black;
     cursor: pointer;
@@ -195,11 +203,16 @@ $light-gray: #C5C8D4;
     font-family: "Lato", sans-serif;
 }
 
-.filterPens h4 {
+.filterPens button {
+    margin: 0px;
     margin-right: 10px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #8F8F8F;
 }
 
-.filterPens h4:hover {
+.filterPens button:hover {
     color: white;
     cursor: pointer;
 }
