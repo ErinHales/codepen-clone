@@ -7,19 +7,21 @@ import Pens from './components/Pens/Pens';
 import SignUp from './components/SignUp/SignUp';
 import Login from './components/Login/Login';
 import { Switch, Route } from 'react-router-dom'
+import PenSettings from './components/PenSettings/PenSettings';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar />
+        <PenSettings />
+        {/* <NavBar />
         <Switch>
           <Route exact path="/" component={Login} />
           <Route path="/signup" component={SignUp} />
           <Route path="/editor/:id" component={CodeEditor} />
           <Route path="/pens" component={Pens} />
           <Route path='/profile' component={Profile} />
-        </Switch>
+        </Switch> */}
       </div>
     );
   }
