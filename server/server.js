@@ -33,8 +33,9 @@ const penCntrl = require('./controllers/penController')
 const interfaceCntrl = require('./controllers/interfaceController')
 const statsCntrl = require('./controllers/statsController')
 
-// LOGIN
+// Sign a user up
 app.post('/api/auth/register', (req, res) => loginCntrl.registerUser(req, res, bcrypt));
+// Check when the user is loggin in
 app.post('/api/auth/login', (req, res) => loginCntrl.getUser(req, res, bcrypt))
 
 
@@ -46,6 +47,14 @@ app.get('/api/auth/logout', (req, res) => {
 
 
 // USER
+
+// get the users information
+app.get('/api/users', (req,res) =>{
+    res.send(req.session);
+});
+
+// Update a users pic
+app.put('/api/user/pic', userCntrl.updateUserImg);
 
 // takes object with new user data and updates database with changes
 app.put('/api/user', userCntrl.updateUser)

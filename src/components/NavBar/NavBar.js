@@ -15,7 +15,6 @@ class NavBar extends Component {
 
     this.logout = this.logout.bind(this);
   }
-
   toggleNav() {
     this.setState({
       showNav: !this.state.showNav
@@ -36,7 +35,6 @@ class NavBar extends Component {
 
 
   render() {
-
     return (
       <div className='Nav'>
         <nav className='nav1'>
