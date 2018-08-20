@@ -12,7 +12,6 @@ class NavBar extends Component {
       id: null
     }
   }
-
   toggleNav() {
     this.setState({
       showNav: !this.state.showNav
@@ -26,7 +25,6 @@ class NavBar extends Component {
   }
 
   render() {
-
     return (
       <div className='Nav'>
         <nav className='nav1'>

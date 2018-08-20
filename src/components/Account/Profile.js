@@ -27,7 +27,7 @@ class Profile extends Component {
         </div>
 
         <div className='EditP'>
-          <h1>Edit Profile</h1>
+          <h1 onClick={() => this.props.history.push('/account')}>Edit Profile</h1>
         </div>
 
         <div className='UserInfo'>

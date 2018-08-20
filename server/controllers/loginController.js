@@ -4,12 +4,15 @@ module.exports = {
         bcrypt.hash(password, null, null, (err, hash) => {
             req.app.get('db').register_user([name, hash, username, email])
                 .then(user => {
-                    //  let {id} = user[0];
-                    // req.session.userId = id;
-                    let { name, img_url, likes, username, email } = user[0];
-                    res.send({ name, img_url, likes, username, email });
+                    let { id, username, email, name, img_url, likes } = user[0];
+                    req.session.userid = id;
+                    req.session.username = username;
+                    req.session.email = email;
+                    req.session.name = name;
+                    req.session.img_url = img_url;
+                    res.sendStatus(200);
                 })
-                .catch(err => res.status(403).send('User not able to be added'));
+                .catch(err => res.sendStatus(500));
         })
     },
     getUser: (req, res, bcrypt) => {
@@ -23,23 +26,31 @@ module.exports = {
             req.app.get('db').find_user_by_email([credentials])
                 .then(user => {
                     let { id, bcrypt_password, username, email, name, img_url, likes } = user[0];
-                    req.session.userId = id;
+                    req.session.userid = id;
+                    req.session.username = username;
+                    req.session.email = email;
+                    req.session.name = name;
+                    req.session.img_url = img_url;
                     bcrypt.compare(password, bcrypt_password, (error, response) => {
-                        (response ? res.send({ username, email, name, img_url, likes }) : res.status(500).send('Password did not match the username'))
+                        (response ? res.sendStatus(200) : res.send('Password did not match the email'))
                     })
                 })
-                .catch(err => res.status(403).send('No user exist with that email'))
+                .catch(err => res.send('No user exist with that email'))
         }
         else {
             req.app.get('db').find_user_by_username([credentials])
                 .then(user => {
                     let { id, bcrypt_password, username, email, name, img_url, likes } = user[0];
-                    req.session.userId = id;
+                    req.session.userid = id;
+                    req.session.username = username;
+                    req.session.email = email;
+                    req.session.name = name;
+                    req.session.img_url = img_url;
                     bcrypt.compare(password, bcrypt_password, (error, response) => {
-                        (response ? res.send({ username, email, name, img_url, likes }) : res.sendStatus(500))
+                        (response ? res.sendStatus(200) : res.send('Password did not match the username'))
                     })
                 })
-                .catch(err => res.status(403).send('No user exist with that username'))
+                .catch(err => res.send('No user exist with that username'))
         }
     },
 }
