@@ -12,7 +12,7 @@ export default function Pen(props) {
                         <iframe scrolling="no" className="pen-iframe" srcDoc={srcDoc}></iframe>
                     </div>
                     <div className="overlay">
-                        <div className="text">This is a description</div>
+                        <div className="text">This is a description a very long description thei aslfkjas fl sfas flk f sf aslkfj sdlfk sf  f sfkl sfkljs dfk f dksf kasldf sl;fd sl;df sf ksf lksf </div>
                     </div>
                 </div>
             </div>
@@ -26,7 +26,6 @@ export default function Pen(props) {
                     </div>
                 </div>
                 <div className="penPopularity">
-                    {/* <img id="viewIcon" src="https://cdn1.iconfinder.com/data/icons/hawcons/32/699369-icon-22-eye-512.png" alt="" /> */}
                     <h3><i className="fa fa-eye"></i>{props.views}</h3>
                     <img src="https://www.drupal.org/files/issues/comment_6.png" alt="" />
                     <h3>{props.commentsNum}</h3>
