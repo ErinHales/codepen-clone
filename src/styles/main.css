@@ -1372,6 +1372,9 @@ span {
   margin-top: 35px;
   font-size: 12px; }
 
+.Name2 {
+  font-family: 'Lato', sans-serif; }
+
 .commentsPageContainer {
   background-color: #222222;
   display: flex;

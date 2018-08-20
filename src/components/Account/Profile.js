@@ -2,16 +2,24 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 class Profile extends Component {
+  constructor(){
+    super()
+    this.state = {
+      user: {}
+    }
+
+  }
 
   componentDidMount(){
-    axios.post('/api/auth/login', {credentials:'test@gmail.com', password: '123'}).then(res => {
-      this.props = res.data
+    axios.get('/api/users').then(res => {
+      this.setState({
+        user:res.data
+      })
+      console.log(res.data)
     })
   }
 
   render() {
-    let {user} = this.props;
-    console.log({user})
     return (
       <div className='Content'>
         <div className='grayLine'>
@@ -33,12 +41,12 @@ class Profile extends Component {
 
         <div className='UserInfo'>
           <div>
-            <h1 className='UserName'>UserName</h1>
-            <p className='Name2'>@abcd123</p>
+            <h1 className='UserName'>{this.state.user.username}</h1>
+            <p className='Name2'>{this.state.user.email}</p>
             <div className='UserPic'>
               {/* <img src={user.image} alt=""/> */}
             </div>
-            <h3>City, State</h3>
+              <h3 className='Name2'>{this.state.user.name}</h3>
           </div>
         </div>
 
