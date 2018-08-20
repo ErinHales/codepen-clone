@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import templateIcon from './tempsnip.jpg'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 class NavBar extends Component {
   constructor() {
     super()
     this.state = {
-      togglePenWindow: false
+      togglePenWindow: false,
+      id: null
     }
   }
 
@@ -14,6 +16,33 @@ class NavBar extends Component {
     this.setState({
       showNav: !this.state.showNav
     })
+  }
+
+  postPen = () => {
+    // const { user_id, name, forked, html, css, js, scripts } = req.body
+    // add user_id in the backend once we set up sessions
+    let html = '<h1>CLONEPEN</h1>';
+    let css = 'body {\n\tbackground-color: black;\n\tcolor: white\n}\n\nh1 {\n\ttext-align: center;\n}';
+    let js = 'var clonePen;'
+    let scripts = {
+      html: {
+        html_tag_class: "test\n\t testttttsss",
+        head_tag: "test\n\t testttttsss"
+      },
+      css: ["asdfasdf"],
+      js: ["asdfasdf", "adqwerpsadf"]
+    }
+    let bodyObj = { user_id: 3, name: 'new pen', forked: false, html: '', css: '', js: '', scripts };
+    axios.post('/api/pen/', bodyObj).then(response => {
+      this.setState({
+        id: response.data.pen_id
+      })
+    }).catch(console.error());
+  }
+
+  handleClick = () => {
+    this.postPen();
+    this.toggleNav();
   }
 
   render() {
@@ -43,12 +72,12 @@ class NavBar extends Component {
           </Link>
 
           <div className='divProj'>
-            <h1 className='Proj'>Projects</h1>
+            <h1 className='Proj'>Challenges</h1>
             <div className='prj-line'></div>
           </div>
 
           <div className='divColl'>
-            <h1 className='Coll'>Collections</h1>
+            <h1 className='Coll'>About</h1>
             <div className='coll-line'></div>
           </div>
 
@@ -79,7 +108,7 @@ class NavBar extends Component {
 
 
           <div className={this.state.showNav ? 'show-nav createWin' : 'show-nav'}>
-            <div className='createWindow'>
+            <div className='createWindow' onClick={() => this.handleClick()}>
               <h2 className='newPen'> <img className='icon1' src={templateIcon} alt="" /> New Pen</h2>
             </div>
           </div>

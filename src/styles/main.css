@@ -5,6 +5,8 @@
 @import url("https://fonts.googleapis.com/css?family=Black+Han+Sans");
 @import url("https://fonts.googleapis.com/css?family=Lato");
 @import url("https://fonts.googleapis.com/css?family=Sawarabi+Gothic|Lato");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+@import url("https://fonts.googleapis.com/css?family=Black+Han+Sans");
 @import url("https://fonts.googleapis.com/css?family=Lato");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
 @import url("https://fonts.googleapis.com/css?family=Telex");
@@ -532,7 +534,8 @@ span {
 
 .overlayContainer .text {
   color: white;
-  font-size: 10px;
+  font-size: 15px;
+  line-height: 1.5;
   margin: 10px; }
 
 .pen-iframe-container {
@@ -710,8 +713,7 @@ span {
 
 .divProf {
   height: 70px;
-  width: 80px;
-  margin-left: 20px;
+  margin: 0px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -738,29 +740,28 @@ span {
 
 .p-line {
   height: 4px;
-  width: 50px;
+  width: 40px;
   background: black;
   position: relative;
   top: 13px; }
 
 .prj-line {
   height: 4px;
-  width: 59px;
+  width: 80px;
   background: black;
   position: relative;
   top: 21px; }
 
 .coll-line {
   height: 4px;
-  width: 80px;
+  width: 50px;
   background: black;
   position: relative;
   top: 20px; }
 
 .divExp {
   height: 70px;
-  width: 80px;
-  margin-left: 5px;
+  margin: 0px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -768,11 +769,10 @@ span {
 
 .divProj {
   height: 70px;
-  width: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-right: 13px;
+  margin-right: 30px;
   cursor: pointer; }
 
 .divColl {
@@ -838,8 +838,12 @@ span {
   margin-left: 15px;
   cursor: pointer; }
 
+.createWindow {
+  background-color: white; }
+
 .createWindow:hover {
-  background: white; }
+  background-color: #EFF0F5;
+  cursor: pointer; }
 
 .newPen {
   height: 50px;
@@ -857,15 +861,18 @@ span {
   border-radius: 3px; }
 
 .show-nav {
-  display: none; }
+  width: 0;
+  height: 0;
+  overflow: hidden; }
 
 .createWin {
+  transition: all 0.1s linear;
   height: 51px;
   width: 250px;
   background: #cecccc;
   position: absolute;
   z-index: 1000;
-  left: 77.3%;
+  right: 164px;
   top: 55px;
   border-radius: 3px;
   display: inline;
@@ -1239,3 +1246,154 @@ span {
   margin: 10px;
   margin-top: 35px;
   font-size: 12px; }
+
+.commentsPageContainer {
+  background-color: #222222;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.comments {
+  font-family: "Lato", sans-serif;
+  width: 70%; }
+
+.commentsFrame {
+  width: 100vw;
+  height: 500px;
+  border-top: 5px solid #282A2F;
+  border-bottom: 15px solid #282A2F; }
+
+.penInfoBar {
+  background-color: #2F2F2F;
+  display: flex;
+  justify-content: space-between; }
+  .penInfoBar .penInfoLeft,
+  .penInfoBar section {
+    display: flex;
+    align-items: center; }
+
+.penInfoRight {
+  display: flex;
+  align-items: center; }
+  .penInfoRight img {
+    width: 15px;
+    height: 15px; }
+  .penInfoRight h3 {
+    color: #C5C8D4;
+    margin: 0px 20px 0px 5px; }
+
+.penInfoLeft img {
+  width: 60px;
+  height: 60px;
+  margin: 20px;
+  border-radius: 3px; }
+
+.penInfoLeft img:hover {
+  cursor: pointer; }
+
+.penInfoLeft h5 {
+  font-size: 12px;
+  color: lightgray; }
+
+.penInfoLeft h3 {
+  font-size: 30px;
+  color: #0EBEFF; }
+
+.penInfoLeft h3:hover {
+  color: white;
+  cursor: pointer; }
+
+.penInfoLeft button {
+  background-color: #47CF73;
+  padding: 5px;
+  border-radius: 2px;
+  margin: 0px 10px -5px 10px;
+  font-size: 14px; }
+
+.penInfoLeft button:hover {
+  background-color: #2FB45A;
+  cursor: pointer; }
+
+.commentsContainer {
+  background-color: #222222; }
+  .commentsContainer .tags {
+    display: flex;
+    align-items: center; }
+    .commentsContainer .tags h3 {
+      margin: 10px;
+      color: lightgray; }
+    .commentsContainer .tags h3:hover {
+      color: white;
+      cursor: pointer; }
+  .commentsContainer .descriptionBox {
+    background-color: #32333B;
+    color: lightgray;
+    padding: 20px; }
+  .commentsContainer h2 {
+    color: white;
+    margin: 50px 0px 20px 0px;
+    font-size: 20px;
+    font-weight: bold; }
+  .commentsContainer textarea {
+    width: 100%; }
+  .commentsContainer .submitComment {
+    background-color: transparent;
+    border: 2px solid white;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 3px;
+    color: white;
+    font-size: 14px;
+    margin: 30px 0px; }
+  .commentsContainer .submitComment:hover {
+    color: black;
+    background-color: white;
+    cursor: pointer; }
+
+.comment {
+  background-color: #32333B;
+  padding: 30px; }
+  .comment img {
+    width: 35px;
+    height: 35px;
+    border-radius: 2px;
+    margin: 10px; }
+  .comment .commentHeader {
+    display: flex;
+    align-items: center;
+    border-bottom: 0.5px solid lightgray;
+    padding: 0px 40px; }
+    .comment .commentHeader h2 {
+      color: #0EBEFF;
+      font-size: 16px;
+      margin: 10px; }
+    .comment .commentHeader h3 {
+      color: #C5C8D4;
+      margin: 10px; }
+  .comment p {
+    color: white;
+    margin: 10px;
+    padding: 0px 40px; }
+
+.leaveComment {
+  border-bottom: 0.5px solid lightgray;
+  padding-bottom: 5px; }
+
+.searchBar {
+  width: 100vw;
+  height: 0px;
+  overflow: hidden;
+  position: absolute;
+  top: 65px;
+  padding: 0px 50px;
+  background-image: linear-gradient(#222222, #222222, #222222, rgba(34, 34, 34, 0.7), rgba(34, 34, 34, 0));
+  color: #757575; }
+  .searchBar input {
+    background-color: transparent;
+    border: none;
+    font-size: 70px;
+    font-weight: bold; }
+  .searchBar div {
+    display: flex; }
+    .searchBar div h5 {
+      margin: 20px; }

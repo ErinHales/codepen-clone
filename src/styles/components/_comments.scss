@@ -1,0 +1,161 @@
+@import '../variables';
+
+.commentsPageContainer {
+    background-color: #222222;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.comments {
+    font-family: "Lato", sans-serif;
+    width: 70%;
+}
+
+.commentsFrame {
+    width: 100vw;
+    height: 500px;
+    border-top: 5px solid #282A2F;
+    border-bottom: 15px solid #282A2F;
+}
+
+.penInfoBar {
+    background-color: #2F2F2F;
+    display: flex;
+    justify-content: space-between;
+
+    .penInfoLeft,
+    section {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.penInfoRight {
+    display: flex;
+    align-items: center;
+    img {
+        width: 15px;
+        height: 15px;
+    }
+    h3 {
+        color: #C5C8D4;
+        margin: 0px 20px 0px 5px;
+    }
+}
+
+.penInfoLeft {
+    img {
+        width: 60px;
+        height: 60px;
+        margin: 20px;
+        border-radius: 3px;
+    }
+    img:hover {
+        cursor: pointer;
+    }
+    h5 {
+        font-size: 12px;
+        color: lightgray;
+    }
+    h3 {
+        font-size: 30px;
+        color: #0EBEFF;
+    }
+    h3:hover {
+        color: white;
+        cursor: pointer;
+    }
+    button {
+        background-color: $btn-green;
+        padding: 5px;
+        border-radius: 2px;
+        margin: 0px 10px -5px 10px;
+        font-size: 14px;
+    }
+    button:hover {
+        background-color: $btn-green-hover;
+        cursor: pointer;
+    }
+}
+
+.commentsContainer {
+    background-color: #222222;
+    .tags {
+        display: flex;
+        align-items: center;
+        h3 {
+            margin: 10px;
+            color: lightgray;
+        }
+        h3:hover {
+            color: white;
+            cursor: pointer;
+        }
+    }
+    .descriptionBox {
+        background-color: $dark-blue-gray;
+        color: lightgray;
+        padding: 20px;
+    }
+    h2 {
+        color: white;
+        margin: 50px 0px 20px 0px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    textarea {
+        width: 100%;
+    }
+    .submitComment {
+        background-color: transparent;
+        border: 2px solid white;
+        margin: 5px;
+        padding: 10px;
+        border-radius: 3px;
+        color: white;
+        font-size: 14px;
+        margin: 30px 0px;
+    }
+    .submitComment:hover {
+        color: black;
+        background-color: white;
+        cursor: pointer;
+    }
+}
+
+.comment {
+    background-color: $dark-blue-gray;
+    padding: 30px;
+    img {
+        width: 35px;
+        height: 35px;
+        border-radius: 2px;
+        margin: 10px;
+    }
+    .commentHeader {
+        display: flex;
+        align-items: center;
+        border-bottom: 0.5px solid lightgray;
+        padding: 0px 40px;
+        h2 {
+            color: $btn-babyblue;
+            font-size: 16px;
+            margin: 10px;
+        }
+        h3 {
+            color: $light-gray;
+            margin: 10px;
+        }
+    }
+    p {
+        color: white;
+        margin: 10px;
+        padding: 0px 40px;
+    }
+}
+
+.leaveComment {
+    border-bottom: 0.5px solid lightgray;
+    padding-bottom: 5px;
+}
