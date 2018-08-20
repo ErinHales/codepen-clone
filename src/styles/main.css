@@ -9,14 +9,20 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
 @import url("https://fonts.googleapis.com/css?family=Telex");
 .component-login {
-  font-family: "Lato", sans-serif;
+  font-family: "Black Han Sans", sans-serif;
   background: url("https://static.codepen.io/assets/logos/codepen-logo-pattern-725360e4ce5b66f968c7f39c80999bdeaa3cbe2f18eac75d58b01f8cf55c26ab.png");
   background-repeat: repeat;
-  min-height: 110vh;
+  min-height: 105vh;
   overflow-y: hidden;
   padding-bottom: 5rem; }
-  .component-login input:active {
-    border: 3px solid #9396A4; }
+  .component-login input:focus {
+    border: 3px solid #9396A4;
+    outline: 0; }
+  .component-login .logo {
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    position: relative;
+    bottom: 8px; }
   .component-login .login-container {
     width: 60%;
     margin: 0 auto;
@@ -838,10 +844,10 @@ span {
 
 .component-account {
   background-color: #191A1D;
-  min-height: 150vh; }
+  min-height: 170vh; }
   .component-account .account-container {
     position: relative;
-    top: 4rem;
+    top: 1rem;
     width: 90%;
     margin: 0 auto; }
     .component-account .account-container .account-header .account-save {
@@ -854,13 +860,16 @@ span {
         .component-account .account-container .account-header .account-save button:hover {
           background-color: #2FB45A; }
     .component-account .account-container .account-header .account-links {
-      display: flex; }
+      display: flex;
+      position: relative;
+      bottom: 5px; }
       .component-account .account-container .account-header .account-links p {
         margin-right: 1rem;
-        color: #FFFFFF; }
+        color: #FFFFFF;
+        font-size: 1.1rem; }
     .component-account .account-container .account-grid {
       border: 1px solid blue;
-      margin-top: 1.5rem;
+      margin-top: 0.75rem;
       display: flex;
       justify-content: space-between; }
       .component-account .account-container .account-grid .account-avatar {
@@ -908,7 +917,8 @@ span {
         .component-account .account-container .account-grid .account-information .information-box {
           background-color: #32333B;
           margin-bottom: 1rem;
-          padding: 1rem; }
+          padding: 1.25rem;
+          border-radius: 5px; }
           .component-account .account-container .account-grid .account-information .information-box .box-header h3 {
             color: #FFFFFF;
             font-size: 1.5rem;
@@ -917,6 +927,7 @@ span {
           .component-account .account-container .account-grid .account-information .information-box .input-container {
             border: 1px solid purple;
             padding-right: 10px;
+            padding-bottom: 8px;
             display: flex;
             flex-direction: column;
             align-items: flex-end; }
@@ -926,7 +937,7 @@ span {
               border: 1px solid green;
               width: 83%;
               justify-content: space-between;
-              margin-top: 0.5rem; }
+              margin-top: 0.75rem; }
               .component-account .account-container .account-grid .account-information .information-box .input-container .input-group h5 {
                 color: #EEEEEE;
                 font-size: 1.1rem;
@@ -935,11 +946,14 @@ span {
                 text-align: right;
                 margin-right: 0.5rem; }
               .component-account .account-container .account-grid .account-information .information-box .input-container .input-group input {
-                padding: 10px;
+                padding: 10px 3px;
                 margin-top: 0.7rem;
                 border-radius: 5px;
                 width: 70%;
                 margin-top: 0; }
+        .component-account .account-container .account-grid .account-information .bio {
+          border: 4px solid orange;
+          height: 191px; }
         .component-account .account-container .account-grid .account-information .textarea-group {
           border: 1px solid red;
           display: flex;
@@ -947,7 +961,7 @@ span {
           padding-right: 10px;
           margin-top: 1rem; }
           .component-account .account-container .account-grid .account-information .textarea-group .textarea {
-            width: 60%;
+            width: 70%;
             border: 1px solid blue; }
             .component-account .account-container .account-grid .account-information .textarea-group .textarea textarea {
               width: 100%;
@@ -968,6 +982,61 @@ span {
               color: #EEEEEE;
               font-size: 1.1rem;
               text-transform: uppercase; }
+      .component-account .account-container .account-grid .slider-container {
+        border: 1px solid green;
+        margin-top: 1.5rem;
+        padding-left: 0.5rem;
+        display: flex;
+        align-items: center;
+        /* Rounded sliders */ }
+        .component-account .account-container .account-grid .slider-container p {
+          color: #EEEEEE; }
+        .component-account .account-container .account-grid .slider-container .switch {
+          position: relative;
+          display: inline-block;
+          width: 60px;
+          height: 30px;
+          margin: 0 10px; }
+        .component-account .account-container .account-grid .slider-container .switch input {
+          display: none; }
+        .component-account .account-container .account-grid .slider-container .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #9396A4;
+          -webkit-transition: .4s;
+          transition: .4s; }
+        .component-account .account-container .account-grid .slider-container .slider:before {
+          position: absolute;
+          content: "";
+          height: 30px;
+          width: 30px;
+          left: 0px;
+          bottom: 0px;
+          background-color: white;
+          -webkit-transition: .4s;
+          transition: .4s; }
+        .component-account .account-container .account-grid .slider-container input:checked + .slider {
+          background-color: #9396A4; }
+        .component-account .account-container .account-grid .slider-container input:checked + .slider:before {
+          -webkit-transform: translateX(26px);
+          -ms-transform: translateX(26px);
+          transform: translateX(30px); }
+        .component-account .account-container .account-grid .slider-container .slider.round {
+          border-radius: 34px; }
+        .component-account .account-container .account-grid .slider-container .slider.round:before {
+          border-radius: 50%; }
+      .component-account .account-container .account-grid .hire-text {
+        margin: 1rem 0; }
+        .component-account .account-container .account-grid .hire-text p {
+          color: #9396A4;
+          font-size: 1.1rem; }
+        .component-account .account-container .account-grid .hire-text .link-text {
+          font-size: 1.1rem;
+          color: #75D8FC; }
       .component-account .account-container .account-grid .account-customize {
         border: 1px solid orange;
         width: 20%; }

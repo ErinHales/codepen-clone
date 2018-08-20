@@ -10,15 +10,12 @@ class NavBar extends Component {
       togglePenWindow: false
     }
   }
-
   toggleNav() {
     this.setState({
       showNav: !this.state.showNav
     })
   }
-
   render() {
-
     return (
       <div className='Nav'>
         <nav className='nav1'>
@@ -70,7 +67,7 @@ class NavBar extends Component {
             </div>
 
             <div className='userIcon'>
-             <Link to='/Profile'> <p>user<br />Pic</p> </Link>
+             <Link to='/profile'> <p>user<br />Pic</p> </Link>
             </div>
           </div>
 

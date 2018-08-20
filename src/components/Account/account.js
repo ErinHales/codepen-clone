@@ -7,11 +7,20 @@ class Account extends Component {
     constructor() {
         super();
         this.state = {
-            imgUrl: 'https://i1.wp.com/codepen.io/assets/avatars/user-avatar-512x512-6e240cf350d2f1cc07c2bed234c3a3bb5f1b237023c204c782622e80d6b212ba.png?ssl=1'
+            imgUrl: '',
+            wordCount: 0
         }
     }
 
-    componentDidMount
+    componentDidMount() {
+        axios.get('/api/users')
+            .then(res => this.setState({ imgUrl: res.data.img_url }))
+            .catch(err => console.log(err));
+    }
+
+    updateWordCount = () => {
+        this.setState({ wordCount: ++this.state.wordCount })
+    }
 
     onDrop = files => {
         let { REACT_APP_UPLOAD_PRESET, CLOUDINARY_API_KEY, REACT_APP_CLOUD_NAME } = process.env;
@@ -23,15 +32,16 @@ class Account extends Component {
             formData.append("api_key", CLOUDINARY_API_KEY); // Replace API key with your own Cloudinary key
             formData.append("timestamp", (Date.now() / 1000) | 0);
 
+            this.setState({ imgUrl: files[0].preview })
+
             // Make an AJAX upload request using Axios, pass in formData
             return axios.post(`https://api.cloudinary.com/v1_1/${REACT_APP_CLOUD_NAME}/image/upload`, formData, {
                 headers: { "X-Requested-With": "XMLHttpRequest" },
             }).then(response => {
                 const data = response.data;
                 const fileURL = data.secure_url // You should store this URL for future references in your app
-                axios.put('/api/user/img', {imgUrl: fileURL})
-                .then(this.setState({imgUrl: fileURL}))
-                .catch(err => console.log(err) );
+                axios.put('/api/user/pic', { imgUrl: fileURL })
+                    .catch(err => console.log(err));
             })
         });
     }
@@ -43,7 +53,6 @@ class Account extends Component {
                         <div className="account-save">
                             <button>Save All Settings</button>
                         </div>
-
                         <div className="account-links">
                             {/* <Link path='/settings/profile'>Profile</Link>
                         <Link path='/settings/Account'>Account</Link> */}
@@ -88,7 +97,7 @@ class Account extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="information-box">
+                            <div className="information-box bio">
                                 <div className="box-header">
                                     <h3>Bio</h3>
                                 </div>
@@ -97,8 +106,8 @@ class Account extends Component {
                                         <h5>About You</h5>
                                     </div>
                                     <div className="textarea">
-                                        <textarea></textarea>
-                                        <p>0/100 <span className="small">characters used.</span></p>
+                                        <textarea onChange={this.updateWordCount}></textarea>
+                                        <p>{this.state.wordCount}/100 <span className="small">characters used.</span></p>
                                     </div>
 
                                 </div>
@@ -126,8 +135,16 @@ class Account extends Component {
                                 <div className="box-header">
                                     <h3>Are you for hire?</h3>
                                 </div>
-                                <div className="slider">
-
+                                <div className="slider-container">
+                                    <p>Yes</p>
+                                    <label class="switch">
+                                        <input type="checkbox" />
+                                        Yes  <span class="slider round"></span> No
+                                    </label>
+                                    <p>No</p>
+                                </div>
+                                <div className="hire-text">
+                                    <p>You aren't for hire right now. See more about <span className="link-text">marking yourself as hireable</span></p>
                                 </div>
                             </div>
                         </div>
@@ -147,8 +164,6 @@ class Account extends Component {
                         </div>
                     </div>
                 </div>
-
-
             </div>
         )
     }
