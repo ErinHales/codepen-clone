@@ -9,7 +9,8 @@ export default class Pens extends Component {
         this.state = {
             pens: [],
             currentPage: 0,
-            type: "new"
+            type: "new",
+            filter: "all"  // popular, my
         }
     }
 
@@ -19,7 +20,8 @@ export default class Pens extends Component {
                 // console.log(res.data)
                 this.setState({
                     pens: [res.data],
-                    currentPage: 0
+                    currentPage: 0,
+                    filter: "popular"
                 })
             })
             .catch(err => console.log(err))
@@ -31,7 +33,8 @@ export default class Pens extends Component {
                 // console.log(res.data);
                 this.setState({
                     pens: [res.data],
-                    currentPage: 0
+                    currentPage: 0,
+                    filter: "all"
                 })
             })
             .catch(err => console.log(err));
@@ -43,7 +46,8 @@ export default class Pens extends Component {
                 // console.log(res.data);
                 this.setState({
                     pens: [res.data],
-                    currentPage: 0
+                    currentPage: 0,
+                    filter: "my"
                 })
             })
             .catch(err => console.log(err));
@@ -55,7 +59,7 @@ export default class Pens extends Component {
 
     nextPage() {
         let { type, currentPage, pens } = this.state;
-        if (type !== "user") {
+        if (type !== "user" && !pens[currentPage+1]) {
             axios.get(`/api/pens/${currentPage + 1}?type=${type}`)
                 .then(res => {
                     console.log(res.data);
@@ -65,12 +69,12 @@ export default class Pens extends Component {
                         console.log(copy);
                         this.setState({
                             pens: copy,
-                            currentPage: this.state.currentPage + 1
+                            currentPage: currentPage + 1
                         })
                     }
                 })
                 .catch(err => console.log(err));
-        } else {
+        } else if (!pens[currentPage+1]) {
             axios.get(`/api/pens/user/3/${currentPage + 1}?type=new`)
                 .then(res => {
                     // console.log([res.data]);
@@ -80,23 +84,33 @@ export default class Pens extends Component {
                         console.log(copy);
                         this.setState({
                             pens: copy,
-                            currentPage: this.state.currentPage + 1
+                            currentPage: currentPage + 1
                         })
                     }
                 })
                 .catch(err => console.log(err));
+        } else {
+            this.setState({
+                currentPage: currentPage + 1
+            })
         }
+    }
+
+    getPrev() {
+        this.setState({
+            currentPage: this.state.currentPage - 1
+        })
     }
 
     render() {
         let { currentPage, pens } = this.state;
-        console.log(pens);
         if (pens[currentPage]) {
             var pensList = pens[currentPage].map(pen => {
                 let { pen_id, name, username, img_url, views, comments, likes, scripts, html, css, js } = pen;
                 return (
                     <Pen
                         key={pen_id}
+                        id={pen_id}
                         profilePicture={img_url}
                         scripts={scripts}
                         html={html}
@@ -115,17 +129,20 @@ export default class Pens extends Component {
                 <div className="pens-sizing-container">
                     <div className="pensHeader">
                         <h1>Explore Pens</h1>
-                        <h4>View More Pens</h4>
+                        <h4>View More Pens<i className="fa fa-arrow-right"></i></h4>
                     </div>
                     <div className="filterPens">
-                        <button onClick={() => this.getMostRecentPens()}>All Pens</button>
-                        <button onClick={() => this.getMostViewedPens()}>Popular Pens</button>
-                        <button onClick={() => this.getUserPens()}>My Pens</button>
+                        <button onClick={() => this.getMostRecentPens()} style={{color: this.state.filter === "all" ? "white" : "#8F8F8F"}}>All Pens</button>
+                        <button onClick={() => this.getMostViewedPens()} style={{color: this.state.filter === "popular" ? "white" : null}}>Popular Pens</button>
+                        <button onClick={() => this.getUserPens()} style={{color: this.state.filter === "my" ? "white" : null}}>My Pens</button>
                     </div>
                     <div className="pensDisplay">
                         {pensList ? pensList : null}
                     </div>
-                    <button className="nextButton" onClick={() => this.nextPage()}>Next<img className="buttonArrow" src="http://i66.tinypic.com/2gufexh.jpg" alt="arrow" /></button>
+                    <div className="paginationButtons">
+                        <button className="nextButton" style={{display: this.state.currentPage === 0 ? "none" : "block"}} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
+                        <button className="nextButton" onClick={() => this.nextPage()}>Next<i className="fa fa-angle-right"></i></button>
+                    </div>
                 </div>
             </div>
         )

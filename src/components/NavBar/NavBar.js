@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import templateIcon from './tempsnip.jpg'
 import { Link } from 'react-router-dom'
 
+import axios from 'axios'
 
 class NavBar extends Component {
   constructor() {
     super()
     this.state = {
-      
+      togglePenWindow: false,
+      id: null
     }
   }
 
@@ -33,25 +35,29 @@ class NavBar extends Component {
             <h1>C L <img className='icon' src='http://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Large.png' alt='' /> N E P E N</h1>
           </div>
 
-          <div className='divProf'>
-            <p className='Your'>YOUR</p>
-            <h1 className='Prof'>Profile</h1>
-            <div className='h-line'></div>
-          </div>
+          <Link to="/profile" className="link">
+            <div className='divProf'>
+              <p className='Your'>YOUR</p>
+              <h1 className='Prof'>Profile</h1>
+              <div className='h-line'></div>
+            </div>
+          </Link>
 
-          <div className='divExp'>
-            <h1 className='Exp'>EXPLORE</h1>
-            <h1 className='Prof'>Pens</h1>
-            <div className='p-line'></div>
-          </div>
+          <Link to="/pens" className="link">
+            <div className='divExp'>
+              <h1 className='Exp'>EXPLORE</h1>
+              <h1 className='Prof'>Pens</h1>
+              <div className='p-line'></div>
+            </div>
+          </Link>
 
           <div className='divProj'>
-            <h1 className='Proj'>Projects</h1>
+            <h1 className='Proj'>Challenges</h1>
             <div className='prj-line'></div>
           </div>
 
           <div className='divColl'>
-            <h1 className='Coll'>Collections</h1>
+            <h1 className='Coll'>About</h1>
             <div className='coll-line'></div>
           </div>
 
