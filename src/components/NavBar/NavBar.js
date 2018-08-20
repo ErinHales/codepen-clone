@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import templateIcon from './tempsnip.jpg'
 import { Link } from 'react-router-dom'
+
 import axios from 'axios'
 
 class NavBar extends Component {
@@ -18,31 +19,10 @@ class NavBar extends Component {
     })
   }
 
-  postPen = () => {
-    // const { user_id, name, forked, html, css, js, scripts } = req.body
-    // add user_id in the backend once we set up sessions
-    let html = '<h1>CLONEPEN</h1>';
-    let css = 'body {\n\tbackground-color: black;\n\tcolor: white\n}\n\nh1 {\n\ttext-align: center;\n}';
-    let js = 'var clonePen;'
-    let scripts = {
-      html: {
-        html_tag_class: "test\n\t testttttsss",
-        head_tag: "test\n\t testttttsss"
-      },
-      css: ["asdfasdf"],
-      js: ["asdfasdf", "adqwerpsadf"]
-    }
-    let bodyObj = { user_id: 3, name: 'new pen', forked: false, html: '', css: '', js: '', scripts };
-    axios.post('/api/pen/', bodyObj).then(response => {
-      this.setState({
-        id: response.data.pen_id
-      })
-    }).catch(console.error());
-  }
-
-  handleClick = () => {
-    this.postPen();
-    this.toggleNav();
+  toggleUserNav() {
+    this.setState({
+      userWindow: !this.state.userWindow
+    })
   }
 
   render() {
@@ -89,9 +69,6 @@ class NavBar extends Component {
               <img className='arrow' src="https://static.wixstatic.com/media/0a9ac5_ada821b214df43feabfc80e16eebcbdb~mv2.gif" alt="arrow" />
             </div>
 
-            <div>
-              {this.state.penWin}
-            </div>
 
             <div className='divMag'>
               <img className='mag' src="https://www.shareicon.net/download/2015/09/25/107005_find_512x512.png" alt="magnifier" />
@@ -101,15 +78,34 @@ class NavBar extends Component {
               <img className='bell' src="https://www.applozic.com/assets/resources/lib/images/icon-bell.png" alt="Bell" />
             </div>
 
-            <div className='userIcon'>
-              <Link to='/Profile'> <p>user<br />Pic</p> </Link>
+            <div className='userIcon' onClick={() => this.toggleUserNav()}>
+              <p>user<br />Pic</p>
             </div>
           </div>
 
 
           <div className={this.state.showNav ? 'show-nav createWin' : 'show-nav'}>
-            <div className='createWindow' onClick={() => this.handleClick()}>
+            <div className='createWindow'>
               <h2 className='newPen'> <img className='icon1' src={templateIcon} alt="" /> New Pen</h2>
+            </div>
+          </div>
+
+          {/* className={this.state.showNav ? 'show-nav createWin' : 'show-nav'} */}
+
+          <div className={this.state.userWindow ? 'show-nav userWin' : 'show-nav'}>
+            <div>
+              <p className='goTo'> Go to...</p>
+              <Link to='/Profile'> <h1 className='Profile'> Your Profile</h1> </Link>
+              <div className='sttngbox'>
+                <div className='setbox'>
+                  <h1><img className='gearIcon' src='https://cdn2.iconfinder.com/data/icons/web/512/Cog-512.png' alt='gear' />
+                    Settings</h1>
+                </div>
+                <div className='setbox'>
+                  <h1><img className='logoutIcon' src="https://cdn4.iconfinder.com/data/icons/dashboard-icons/43/icon-logout-512.png" alt="logout" />
+                    Log Out</h1>
+                </div>
+              </div>
             </div>
           </div>
 
