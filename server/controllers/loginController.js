@@ -22,10 +22,11 @@ module.exports = {
         if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(credentials)){
             req.app.get('db').find_user_by_email([credentials])
             .then(user =>{
-                let {id, password} = user[0];
+                console.log(user)
+                let { id, bcrypt_password, username, email, name, img_url, likes } = user[0];
                 req.session.userId = id;
-                bcrypt.compare(loginPassword, password, (error, response) =>{
-                    (response ? res.status(200): res.status(500))
+                bcrypt.compare(password, bcrypt_password, (error, response) => {
+                    (response ? res.send({ username, email, name, img_url, likes }) : res.status(500).send('Password did not match the username'))
                 })
             })
             .catch(err => res.status(403).send('No user exist with that email'))

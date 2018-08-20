@@ -1,8 +1,16 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 class Profile extends Component {
 
+  componentDidMount(){
+    axios.post('/api/auth/login', {credentials:'test@gmail.com', password: '123'}).then(res => {
+      this.props(res.data)
+    })
+  }
+
   render() {
+    let {user} = this.props;
     return (
       <div className='Content'>
         <div className='grayLine'>
