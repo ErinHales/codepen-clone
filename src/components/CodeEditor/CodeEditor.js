@@ -28,25 +28,10 @@ export default class CodeEditor extends Component {
                 name: response.data.name
             })
         })
-        // this.setState({
-        //     html: '<h1>Hello Erin</h1>'
-        // })
     }
 
-    postPen = () => {
-        // const { user_id, name, forked, html, css, js, scripts } = req.body
-        // add user_id in the backend once we set up sessions
-        let {name, css, html, js} = this.state;
-        let scripts = {
-            html:{
-                html_tag_class: "test\n\t testttttsss", 
-                head_tag: "test\n\t testttttsss"
-            },
-            css: ["asdfasdf"],
-            js: ["asdfasdf","adqwerpsadf"]
-        }
-        let bodyObj = {user_id: 3, name, forked: false, html, css, js, scripts};
-        axios.post('/api/pen/', bodyObj).catch(err => console.log(err));
+    savePen = () => {
+        console.log("This is not set up yet");
     }
 
     updateCSS = (newCode) => {
@@ -103,7 +88,7 @@ export default class CodeEditor extends Component {
                 <iframe className="penFrame" srcDoc={srcdoc} frameBorder="0" title="showPen"></iframe>
                 <div className="penFooter">
                     <button>Console</button>
-                    <button onClick={() => this.postPen()}>Save</button>
+                    <button onClick={() => this.savePen()}>Save</button>
                     <button className="delete">Delete</button>
                 </div>
             </div>

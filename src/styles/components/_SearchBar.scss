@@ -1,0 +1,22 @@
+.searchBar {
+    width: 100vw;
+    height: 0px;
+    overflow: hidden;
+    position: absolute;
+    top: 65px;
+    padding: 0px 50px;
+    background-image: linear-gradient(rgba(34,34,34,1), rgba(34,34,34,1), rgba(34,34,34,1), rgba(34,34,34,0.7), rgba(34,34,34,0));
+    color: #757575;
+    input {
+        background-color: transparent;
+        border: none;
+        font-size: 70px;
+        font-weight: bold;
+    }
+    div {
+        display: flex;
+        h5 {
+            margin: 20px;
+        }
+    }
+}
