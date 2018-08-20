@@ -5,12 +5,13 @@ class Profile extends Component {
 
   componentDidMount(){
     axios.post('/api/auth/login', {credentials:'test@gmail.com', password: '123'}).then(res => {
-      this.props(res.data)
+      this.props = res.data
     })
   }
 
   render() {
     let {user} = this.props;
+    console.log({user})
     return (
       <div className='Content'>
         <div className='grayLine'>
@@ -35,7 +36,7 @@ class Profile extends Component {
             <h1 className='UserName'>UserName</h1>
             <p className='Name2'>@abcd123</p>
             <div className='UserPic'>
-              <h2>Image</h2>
+              {/* <img src={user.image} alt=""/> */}
             </div>
             <h3>City, State</h3>
           </div>

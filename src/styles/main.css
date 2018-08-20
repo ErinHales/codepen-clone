@@ -838,9 +838,6 @@ span {
   margin-left: 15px;
   cursor: pointer; }
 
-.createWindow {
-  background-color: white; }
-
 .createWindow:hover {
   background-color: #EFF0F5;
   cursor: pointer; }
@@ -939,9 +936,6 @@ span {
   position: relative;
   top: 5px;
   margin-right: 4px; }
-
-.link {
-  text-decoration: none; }
 
 .component-account {
   background-color: #191A1D;
