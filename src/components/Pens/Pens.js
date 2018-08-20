@@ -66,7 +66,6 @@ export default class Pens extends Component {
                     if (res.data[0]) {
                         let copy = pens.slice();
                         copy.push(res.data);
-                        console.log(copy);
                         this.setState({
                             pens: copy,
                             currentPage: currentPage + 1

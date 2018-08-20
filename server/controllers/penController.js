@@ -91,5 +91,13 @@ module.exports = {
     },
     deletePen(req, res) {
         res.status(200)
+    },
+    getLikes(req,res) {
+        req.app.get("db").get_num_likes(req.params.penId).then(response => {
+            res.status(200).send(response);
+        }).catch(console.error())
+    },
+    likePen(req,res) {
+        req.app.get("db").post_like(req.params.pen_id, req.session.user_id).then(res.status(200)).catch(console.error);
     }
 }

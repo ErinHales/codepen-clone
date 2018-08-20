@@ -75,10 +75,13 @@ app.delete('/api/pen/:penId', penCntrl.deletePen)
 // STATS
 
 // add a like to the likes table
-app.post('/api/pen/like/:penId/:userId', statsCntrl.addLike)
+app.post('/api/pen/like/:penId', statsCntrl.addLike)
 
 // remove a like from the like table
 app.delete('/api/pen/like/:penId/:userId', statsCntrl.removeLike)
+
+//get likes
+app.get('/api/pen/likes/:penId', penCntrl.getLikes)
 
 //increment view by one for each unique user
 app.put('/api/pen/view/:penId/:userId', statsCntrl.incrementView)
