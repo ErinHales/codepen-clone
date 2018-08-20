@@ -9,6 +9,7 @@ import Login from './components/Login/Login';
 import Comments from './components/Comments/Comments';
 import SearchBar from './components/SearchBar/SearchBar';
 import { Switch, Route } from 'react-router-dom'
+import PenSettings from './components/PenSettings/PenSettings';
 
 class App extends Component {
   render() {
