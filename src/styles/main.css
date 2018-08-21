@@ -680,6 +680,9 @@ span {
   justify-content: space-between;
   width: 100%; }
 
+Link {
+  text-decoration-line: none; }
+
 .nav1 {
   background: black;
   display: flex;
@@ -965,6 +968,11 @@ span {
   top: 5px;
   margin-right: 4px; }
 
+.nav-avatar {
+  height: 44px;
+  width: 44px;
+  border-radius: 5px; }
+
 .component-account {
   background-color: #191A1D;
   min-height: 170vh; }
@@ -1210,7 +1218,7 @@ span {
   min-width: 300px; }
 
 .Content {
-  height: 150vh;
+  height: 155vh;
   width: 100%;
   background: #191A1D; }
 
@@ -1233,7 +1241,8 @@ span {
   font-weight: 600; }
 
 .Name2 {
-  margin-bottom: 18px; }
+  margin-bottom: 18px;
+  font-family: 'Lato', sans-serif; }
 
 .UserPic {
   height: 130px;
@@ -1305,10 +1314,15 @@ span {
 
 .Pens2 {
   color: white;
-  margin-right: 20px; }
+  margin-right: 20px;
+  cursor: pointer; }
 
 .Proj2 {
   margin-right: 20px; }
+
+.Proj2:hover {
+  color: whitesmoke;
+  cursor: pointer; }
 
 .Inp-box {
   height: 30px;
@@ -1337,65 +1351,31 @@ span {
 .Pen-window {
   height: 600px;
   width: 60.2%;
-  background: white;
   border-radius: 10px;
   position: relative;
   top: 6%;
-  left: 19%; }
-
-.footer {
-  height: 200px;
-  width: 100%;
-  background: #111;
-  position: absolute;
-  top: 136vh; }
-
-.nameHolder {
+  left: 19%;
   display: flex;
-  width: 175px;
+  flex-wrap: wrap;
+  justify-content: space-around; }
+
+.avatar {
+  height: 130px; }
+
+.pagination {
+  border-radius: 2px;
+  background-color: transparent;
+  border: 3px solid white;
   color: white;
-  align-items: center;
-  height: 63px;
-  position: relative;
-  left: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-end; }
+  padding: 10px;
+  font-family: "Lato", sans-serif;
+  font-size: 15px;
+  text-align: center;
+  margin: 0px 20px; }
 
-.Name-footer {
-  width: 10%;
-  min-width: 175px;
-  display: flex;
-  align-items: bottom;
-  font-family: 'Lato', sans-serif;
-  color: white;
-  margin-left: 15px;
-  font-size: 24px;
-  position: relative;
-  bottom: 2px;
-  margin-top: 30px;
-  cursor: pointer; }
-
-.icon-footer {
-  height: 26px;
-  margin-left: 2px;
-  margin-right: 2px; }
-
-.demo {
-  font-size: 10px;
-  font-family: 'Lato', sans-serif;
-  margin: 10px;
-  font-style: italic; }
-
-.Clonpen {
-  font-family: 'Lato', sans-serif;
-  margin: 10px;
-  margin-top: 35px;
-  font-size: 12px; }
-
-.Name2 {
-  font-family: 'Lato', sans-serif; }
+.pagination:hover {
+  color: black;
+  background: white; }
 
 .commentsPageContainer {
   background-color: #222222;
@@ -1549,111 +1529,53 @@ span {
     .searchBar div h5 {
       margin: 20px; }
 
-.pen-settings-container {
-  border: 2px solid white;
-  background-color: white;
-  border-radius: 3px;
-  width: 520px;
-  box-sizing: border-box;
-  padding-bottom: 75px; }
-
-.pen-settings-interface {
-  position: relative;
-  padding: 20px; }
-  .pen-settings-interface .pen-settings-heading {
-    font-family: "Lato", sans-serif;
-    font-size: 1.1rem;
-    font-weight: bold; }
-  .pen-settings-interface .pen-settings-description {
-    font-family: "Lato", sans-serif;
-    font-size: 0.8rem;
-    margin-bottom: 8px; }
-
-.pen-settings-nav-header {
-  background-color: #202125;
+.Name-footer {
+  width: 10%;
+  min-width: 175px;
+  display: flex;
+  align-items: bottom;
+  font-family: 'Lato', sans-serif;
   color: white;
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 22px;
-  font-family: "Black Han Sans", sans-serif;
-  font-size: 1.7rem;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px; }
-  .pen-settings-nav-header .pen-settings-nav-close {
-    background-color: #47cf73;
-    color: black;
-    padding: 10px 16px;
-    font-size: 1rem;
-    line-height: 1.2;
-    font-family: "Lato", sans-serif;
-    border-radius: 3px; }
-  .pen-settings-nav-header .pen-settings-nav-title {
-    padding-top: 10px; }
-
-.pen-settings-nav-selection {
-  background-color: black;
-  font-size: 1.1rem;
-  font-family: "Lato", sans-serif;
-  padding: 10px; }
-  .pen-settings-nav-selection .pen-settings-nav-selection-button {
-    padding-right: 10px;
-    background-color: black;
-    color: #9396a4; }
-    .pen-settings-nav-selection .pen-settings-nav-selection-button:hover {
-      color: white;
-      cursor: pointer; }
-  .pen-settings-nav-selection .selected {
-    color: white; }
-
-.pen-settings-input-icon {
-  background-color: #eaeff0;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px; }
-
-.pen-settings-input-container {
-  display: flex;
-  width: 100%; }
-
-.pen-settings-input {
-  background-color: #eaeff0;
-  font-family: "Lato", sans-serif;
-  border: 0;
-  display: inline-block;
+  margin-left: 15px;
+  font-size: 24px;
   position: relative;
-  color: #535557;
-  width: 100%;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-  font-size: .95rem;
-  padding: 1rem; }
+  bottom: 2px;
+  margin-top: 30px;
+  cursor: pointer; }
 
-.pen-settings-cdn-results-container {
-  position: absolute;
-  width: 92%;
+.nameHolder {
   display: flex;
-  max-height: 280px;
-  overflow-x: auto;
-  flex-direction: column; }
-
-.pen-settings-cdn-element {
+  width: 175px;
+  color: white;
+  align-items: center;
+  height: 63px;
+  position: relative;
+  left: 70%;
   display: flex;
   flex-direction: column;
-  min-height: 50px;
-  background-color: #36383f;
-  font-family: "Lato", sans-serif;
-  color: white;
-  padding: 10px;
-  border: 1px solid #6f717a;
-  border-bottom: 0px; }
-  .pen-settings-cdn-element .cdn-element-name-version-container {
-    font-size: 1.1rem;
-    display: flex;
-    justify-content: space-between; }
-  .pen-settings-cdn-element .cdn-element-description {
-    padding-top: 5px;
-    font-size: .8rem;
-    color: #6f717a;
-    text-overflow: ellipsis; }
-  .pen-settings-cdn-element:hover {
-    background-color: black;
-    cursor: pointer; }
+  justify-content: space-between;
+  align-items: flex-end; }
+
+.footer {
+  height: 200px;
+  width: 100%;
+  background: #111;
+  position: relative;
+  top: 20%; }
+
+.icon-footer {
+  height: 26px;
+  margin-left: 2px;
+  margin-right: 2px; }
+
+.demo {
+  font-size: 10px;
+  font-family: 'Lato', sans-serif;
+  margin: 10px;
+  font-style: italic; }
+
+.Clonpen {
+  font-family: 'Lato', sans-serif;
+  margin: 10px;
+  margin-top: 35px;
+  font-size: 12px; }

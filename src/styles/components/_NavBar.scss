@@ -4,6 +4,10 @@
   width: 100%;
 }
 
+Link{
+  text-decoration-line: none;
+}
+
 .nav1{
   background: rgb(0, 0, 0);
   display: flex;
@@ -335,3 +339,8 @@
   margin-right: 4px;
 }
 
+.nav-avatar{
+  height: 44px;
+  width: 44px;
+  border-radius: 5px;
+}

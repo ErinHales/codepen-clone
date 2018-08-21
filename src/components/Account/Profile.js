@@ -1,38 +1,102 @@
 import React, { Component } from 'react'
+import Pen from '../Pen/Pen'
 import axios from 'axios'
+import Footer from '../Footer/Footer'
 import {Link} from 'react-router-dom';
 
 class Profile extends Component {
-  constructor(){
+  constructor() {
     super()
     this.state = {
-      user: {}
+      user: '',
+      pens: '',
+      currentPage: 0
     }
 
   }
 
-  // componentDidMount(){
-  //   axios.post('/api/auth/login', {credentials:'test@gmail.com', password: '123'}).then(res => {
-  //     this.props(res.data)
-  //   })
-  // }
-  componentDidMount(){
+  componentDidMount() {
     axios.get('/api/users').then(res => {
       this.setState({
-        user:res.data
+        user: res.data
       })
-      console.log(res.data)
+    })
+
+    axios.get(`/api/pens/user/3/0?type=new`).then(res => {
+      this.setState({
+        pens: [res.data],
+        currentPage: 0
+      })
     })
   }
 
+  userAvatar() {
+    if (this.state.user.img_url === null) {
+      return (
+        <img className='avatar' src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/default-avatar.png' alt='avatar' />
+      )
+    } else {
+      return (
+        <img className='avatar' src={this.state.user.img_url} alt='avatar' />
+      )
+    }
+  }
+
+
+  nextPage() {
+    let { currentPage, pens } = this.state;
+    axios.get(`/api/pens/user/3/${currentPage + 1}?type=new`)
+      .then(res => {
+        console.log(res.data);
+        if (res.data[0]) {
+          let copy = pens.slice();
+          copy.push(res.data);
+          console.log(copy);
+          this.setState({
+            pens: copy,
+            currentPage: currentPage + 1
+          })
+        }
+      })
+  }
+
+  getPrev() {
+    this.setState({
+        currentPage: this.state.currentPage - 1
+    })
+}
+
+
   render() {
+    let { currentPage, pens } = this.state;
+    if (pens[currentPage]) {
+      var pensList = pens[currentPage].map(pen => {
+        let { pen_id, name, username, img_url, views, comments, likes, scripts, html, css, js } = pen;
+        return (
+          <Pen
+            key={pen_id}
+            id={pen_id}
+            profilePicture={img_url}
+            scripts={scripts}
+            html={html}
+            css={css}
+            js={js}
+            username={username}
+            penName={name}
+            views={views}
+            commentsNum={comments}
+            loves={likes} />
+        );
+      })
+    }
+
     return (
       <div className='Content'>
         <div className='grayLine'>
         </div>
 
         <div className='b-line'>
-            <div className='Hire'>Hire Me</div>
+          <div className='Hire'>Hire Me</div>
           <div className='followers'>
             <h1> 0 Followers</h1>
           </div>
@@ -50,34 +114,30 @@ class Profile extends Component {
             <h1 className='UserName'>{this.state.user.username}</h1>
             <p className='Name2'>{this.state.user.email}</p>
             <div className='UserPic'>
-              {/* <img src={user.image} alt=""/> */}
+              {this.userAvatar()}
             </div>
-              <h3 className='Name2'>{this.state.user.name}</h3>
+            <h3 className='Name2'>{this.state.user.name}</h3>
           </div>
         </div>
 
         <div className='Pen-InputWrapper'>
-          <h2 className='Pens2'>Pens</h2>
-          <h2 className='Proj2'>Projects</h2>
-          <h2 className='Coll2'>Collections</h2>
+          <h2 className='Pens2'>All Pens</h2>
+          <h2 className='Proj2'>Showcase</h2>
+
         </div>
-          <input className='Inp-box' type="text" placeholder='Search These Pens...'/>
+        <input className='Inp-box' type="text" placeholder='Search These Pens...' />
 
         <div className='ligthgray-line'></div>
         <div className='gray-line'></div>
 
         <div className='Pen-window'>
-          <h1>DISPLAY USER PEN HERE</h1>
-            
-        </div>
+          {pensList}
 
-        <div className='footer'>
-          <div className='nameHolder'>
-          <h1 className='Name-footer'>C L <img className='icon-footer' src='http://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Large.png' alt='' /> N E P E N</h1>
-          <p className='Clonpen'>2018 ClonePen</p>
-          <p className='demo'>Demo or it didn't happen</p>
-          </div>
+          <button className="nextButton" style={{ display: this.state.currentPage === 0 ? "none" : "block" }} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
+          <button className='pagination' onClick={() => this.nextPage()}>Next <i className="fa fa-angle-right"></i></button>
+
         </div>
+        <Footer />
 
       </div>
     )
