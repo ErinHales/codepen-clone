@@ -55,7 +55,8 @@ export default class Comments extends Component {
     }
 
     render() {
-        let {html, css, js} = this.state.penInfo;
+        let {stats} = this.state;
+        let {html, css, js, views, comments, loves, name, img_url} = this.state.penInfo;
         const srcDoc = `${html}<style>${css}</style><script>${js}</script>`
         let commentArr = [];
         this.state.comments.forEach(comment => {
@@ -67,21 +68,21 @@ export default class Comments extends Component {
                 <div className="comments">
                     <div className="penInfoBar">
                         <div className="penInfoLeft">
-                            <img className="profileImg" src="http://i66.tinypic.com/5fkgw5.jpg" alt="" />
+                            <img className="profileImg" src={img_url ? img_url : "https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/default-avatar.png"} alt="" />
                             <div>
                                 <h5>A PEN BY</h5>
                                 <section>
-                                    <h3>username</h3>
+                                    <h3>{name}</h3>
                                     <button>follow</button>
                                 </section>
                             </div>
                         </div>
                         <div className="penInfoRight">
-                            <h3><i className="fa fa-eye"></i>254</h3>
+                            <h3><i className="fa fa-eye"></i>{views ? views : 0}</h3>
                             <img src="https://www.drupal.org/files/issues/comment_6.png" alt="" />
-                            <h3>3</h3>
+                            <h3>{comments ? comments : 0}</h3>
                             <img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" alt="" />
-                            <h3>16</h3>
+                            <h3>{loves ? loves : 0}</h3>
                         </div>
                     </div>
                     <div className="commentsContainer">

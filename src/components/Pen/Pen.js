@@ -25,7 +25,6 @@ export default class Pen extends Component {
     }
 
     render() {
-        let {views, comments, loves} = this.state.stats
         const srcDoc = `${this.props.html}<style>${this.props.css}</style><script>${this.props.js}</script>`
         return (
             <div className="showPen">
@@ -50,11 +49,11 @@ export default class Pen extends Component {
                         </div>
                     </div>
                     <div className="penPopularity">
-                        <h3><i className="fa fa-eye"></i>{views}</h3>
+                        <h3><i className="fa fa-eye"></i>{this.props.views}</h3>
                         <Link to={`/comments/${this.props.id}`}><img src="https://www.drupal.org/files/issues/comment_6.png" alt="" /></Link>
-                        <h3>{comments}</h3>
+                        <h3>{this.props.commentsNum}</h3>
                         <img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" alt="" />
-                        <h3>{loves}</h3>
+                        <h3>{this.props.loves}</h3>
                     </div>
                 </div>
             </div>
