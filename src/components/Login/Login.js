@@ -22,13 +22,12 @@ class Login extends Component {
                 // if user exist then direct them the home page
                 if(res.data === 'OK'){
                     // this.props.history.push('/home');
-                    alert('Log In successful')
+                    window.location.hash = "#/pens"
                 }
                 // The user got their username/email or password wrong
                 else{
-                    alert(res.data)
+                    alert("Please try again or go to Sign Up page")
                 }
-               
             })
             .catch(err => console.log(err))
     }
