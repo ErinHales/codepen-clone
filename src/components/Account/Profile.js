@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import {Link} from 'react-router-dom';
 
 class Profile extends Component {
 
@@ -27,7 +28,7 @@ class Profile extends Component {
         </div>
 
         <div className='EditP'>
-          <h1 onClick={() => this.props.history.push('/account')}>Edit Profile</h1>
+          <Link to="/account"><h1 onClick={() => this.props.history.push('/account')}>Edit Profile</h1></Link>
         </div>
 
         <div className='UserInfo'>

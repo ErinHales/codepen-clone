@@ -17,7 +17,6 @@ export default class Pens extends Component {
     getMostViewedPens() {
         axios.get(`/api/pens/0?type=views`)
             .then(res => {
-                // console.log(res.data)
                 this.setState({
                     pens: [res.data],
                     currentPage: 0,
@@ -62,7 +61,6 @@ export default class Pens extends Component {
         if (type !== "user" && !pens[currentPage+1]) {
             axios.get(`/api/pens/${currentPage + 1}?type=${type}`)
                 .then(res => {
-                    console.log(res.data);
                     if (res.data[0]) {
                         let copy = pens.slice();
                         copy.push(res.data);
@@ -104,6 +102,7 @@ export default class Pens extends Component {
 
     render() {
         let { currentPage, pens } = this.state;
+        console.log(pens);
         if (pens[currentPage]) {
             var pensList = pens[currentPage].map(pen => {
                 let { pen_id, name, username, img_url, views, comments, likes, scripts, html, css, js } = pen;
