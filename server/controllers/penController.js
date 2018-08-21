@@ -1,10 +1,27 @@
 const restructureResponsePen = require('./helpers/restructureResponsePen')
+const axios = require('axios')
+
 module.exports = {
     searchCdn(req, res) {
-        res.status(200)
+        const { type } = req.params
+        if(type === 'css' || type === 'js') {
+            const { search } = req.query
+            axios.get(`https://api.cdnjs.com/libraries?search=${search}&fields=version,description`)
+                .then( response => {
+                    res.send(response.data.results.filter( result => result.latest.endsWith(`.${type}`)).slice(0,10)).status(200)
+                })
+                .catch( err => {
+                    console.error(err)
+                    res.sendStatus(500)
+                })
+        }
+        else {
+            res.sendStatus(400)
+        }
     },
     getPen(req, res) {
         // check for pen_id from request
+        console.log(req.session)
         if(!req.params.penId) {
             res.sendStatus(400)
             return
@@ -31,7 +48,9 @@ module.exports = {
         // Setting db Connection to variable
         const dbConn = req.app.get('db')
         // Destructure variables off of body
-        const { user_id, name, forked, html, css, js, scripts } = req.body
+        const { userid } = req.session
+        const user_id = userid
+        const { name, forked, html, css, js, scripts } = req.body
         const html_script = scripts.html
         const css_stylesheet = scripts.css
         const js_script = scripts.js
@@ -78,8 +97,8 @@ module.exports = {
                             })
                     }
                 }
-
-                res.sendStatus(201)
+                console.log('post')
+                res.send(dbResponse).status(201)
             })
             .catch( err => {
                 console.error(err)
@@ -87,6 +106,8 @@ module.exports = {
             })
     },
     updatePen(req, res) {
+        console.log(req.session)
+        console.log('update')
         res.status(200)
     },
     deletePen(req, res) {

@@ -15,16 +15,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar />
+        <PenSettings />
+        {/* <NavBar />
         <SearchBar />
         <Switch>
           <Route exact path="/" component={Login} />
           <Route path="/signup" component={SignUp} />
-          <Route path="/editor/:id" component={CodeEditor} />
+          <Route exact path="/editor/:id" component={CodeEditor} />
+          <Route path="/editor" component={CodeEditor} />
           <Route path="/pens" component={Pens} />
           <Route path="/profile" component={Profile} />
           <Route path="/comments" component={Comments} />
-        </Switch>
+        </Switch> */}
       </div>
     );
   }
