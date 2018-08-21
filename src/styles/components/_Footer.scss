@@ -1,0 +1,57 @@
+.Name-footer{
+  width: 10%;
+  min-width: 175px;
+  display: flex;
+  align-items: bottom;
+  font-family: 'Lato', sans-serif;
+  color: white;
+  margin-left: 15px;
+  font-size: 24px;
+  position: relative;
+  bottom: 2px;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+.nameHolder{
+  display: flex;
+  width: 175px;
+  color: white;
+  align-items: center;
+  height: 63px;
+  position: relative;
+  left: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+
+}
+
+.footer{
+  height: 200px;
+  width: 100%;
+  background: #111;
+  position: relative;
+  top: 20%;
+}
+
+.icon-footer{
+  height: 26px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.demo{
+  font-size: 10px;
+  font-family: 'Lato', sans-serif;
+  margin: 10px;
+  font-style: italic;
+}
+
+.Clonpen{
+  font-family: 'Lato', sans-serif;
+  margin: 10px;
+  margin-top: 35px;
+  font-size: 12px;
+}
