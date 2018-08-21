@@ -8,6 +8,7 @@ import SignUp from './components/SignUp/SignUp';
 import Login from './components/Login/Login';
 import Comments from './components/Comments/Comments';
 import SearchBar from './components/SearchBar/SearchBar';
+import Account from './components/Account/account';
 import { Switch, Route } from 'react-router-dom'
 import PenSettings from './components/PenSettings/PenSettings';
 
@@ -15,15 +16,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar />
+        {/* <PenSettings /> */}
+          <NavBar />
         <SearchBar />
         <Switch>
           <Route exact path="/" component={Login} />
           <Route path="/signup" component={SignUp} />
-          <Route path="/editor/:id" component={CodeEditor} />
+          <Route exact path="/editor/:id" component={CodeEditor} />
+          <Route path="/editor" component={CodeEditor} />
           <Route path="/pens" component={Pens} />
           <Route path="/profile" component={Profile} />
-          <Route path="/comments" component={Comments} />
+          <Route path="/comments/:id" component={Comments} />
+          <Route path="/account" component={Account} />
         </Switch>
       </div>
     );

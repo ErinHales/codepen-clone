@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Pen from '../Pen/Pen'
 import axios from 'axios'
 import Footer from '../Footer/Footer'
+import {Link} from 'react-router-dom';
 
 class Profile extends Component {
   constructor() {
@@ -105,7 +106,7 @@ class Profile extends Component {
         </div>
 
         <div className='EditP'>
-          <h1 onClick={() => this.props.history.push('/account')}>Edit Profile</h1>
+          <Link to="/account"><h1 onClick={() => this.props.history.push('/account')}>Edit Profile</h1></Link>
         </div>
 
         <div className='UserInfo'>

@@ -17,7 +17,6 @@ export default class Pens extends Component {
     getMostViewedPens() {
         axios.get(`/api/pens/0?type=views`)
             .then(res => {
-                // console.log(res.data)
                 this.setState({
                     pens: [res.data],
                     currentPage: 0,
@@ -30,7 +29,6 @@ export default class Pens extends Component {
     getMostRecentPens() {
         axios.get('/api/pens/0?type=new')
             .then(res => {
-                // console.log(res.data);
                 this.setState({
                     pens: [res.data],
                     currentPage: 0,
@@ -62,11 +60,9 @@ export default class Pens extends Component {
         if (type !== "user" && !pens[currentPage+1]) {
             axios.get(`/api/pens/${currentPage + 1}?type=${type}`)
                 .then(res => {
-                    console.log(res.data);
                     if (res.data[0]) {
                         let copy = pens.slice();
                         copy.push(res.data);
-                        console.log(copy);
                         this.setState({
                             pens: copy,
                             currentPage: currentPage + 1
@@ -106,7 +102,7 @@ export default class Pens extends Component {
         let { currentPage, pens } = this.state;
         if (pens[currentPage]) {
             var pensList = pens[currentPage].map(pen => {
-                let { pen_id, name, username, img_url, views, comments, likes, scripts, html, css, js } = pen;
+                let { pen_id, name, username, img_url, views, comments, loves, scripts, html, css, js } = pen;
                 return (
                     <Pen
                         key={pen_id}
@@ -120,7 +116,7 @@ export default class Pens extends Component {
                         penName={name}
                         views={views}
                         commentsNum={comments}
-                        loves={likes} />
+                        loves={loves} />
                 );
             })
         }

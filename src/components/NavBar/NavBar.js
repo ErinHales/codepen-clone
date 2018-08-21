@@ -27,6 +27,10 @@ class NavBar extends Component {
     })
   }
 
+  postPen() {
+    window.location.hash = "#/editor";
+  }
+
   logout(){
     axios.post('/api/auth/logout').then(() => {
       this.setState({user: null});
@@ -114,7 +118,7 @@ class NavBar extends Component {
 
           <div className={this.state.showNav ? 'show-nav createWin' : 'show-nav'}>
             <div className='createWindow'>
-              <h2 className='newPen'> <img className='icon1' src={templateIcon} alt="" /> New Pen</h2>
+              <h2 className='newPen' onClick={() => this.postPen()}> <img className='icon1' src={templateIcon} alt="" /> New Pen</h2>
             </div>
           </div>
 

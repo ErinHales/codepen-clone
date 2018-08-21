@@ -32,6 +32,7 @@ const userCntrl = require('./controllers/userController')
 const penCntrl = require('./controllers/penController')
 const interfaceCntrl = require('./controllers/interfaceController')
 const statsCntrl = require('./controllers/statsController')
+const comCntrl = require('./controllers/commentsController');
 
 // Sign a user up
 app.post('/api/auth/register', (req, res) => loginCntrl.registerUser(req, res, bcrypt));
@@ -82,21 +83,36 @@ app.get('/api/pen/:penId', penCntrl.getPen)
 app.post('/api/pen/', penCntrl.postPen)
 
 // all data, including the id, to be updated will exist on the body of the request
-app.put('/api/pen/', penCntrl.updatePen)
+app.put('/api/pen/:penId', penCntrl.updatePen)
 
 // takes penid and the scripts, comments, likes, and pen associated with penid
 app.delete('/api/pen/:penId', penCntrl.deletePen)
 
 // STATS
 
+//get stats for a pen
+app.get('/api/stats/:penId', statsCntrl.getStats)
+
 // add a like to the likes table
-app.post('/api/pen/like/:penId/:userId', statsCntrl.addLike)
+app.post('/api/pen/like/:penId', statsCntrl.addLike)
 
 // remove a like from the like table
 app.delete('/api/pen/like/:penId/:userId', statsCntrl.removeLike)
 
+//get likes
+app.get('/api/pen/likes/:penId', penCntrl.getLikes)
+
 //increment view by one for each unique user
 app.put('/api/pen/view/:penId/:userId', statsCntrl.incrementView)
+
+
+// COMMENTS
+
+// get all comments for a pen
+app.get('/api/pen/comments/:penId', comCntrl.getComments)
+
+// post comment
+app.post('/api/pen/comment/:penId', comCntrl.comment)
 
 
 
