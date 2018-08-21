@@ -17,10 +17,9 @@
 }
 
 .Content{
-  height: 150vh;
+  height: 155vh;
   width: 100%;
   background: #191A1D;
-
 }
 
 .UserInfo{
@@ -45,6 +44,7 @@
 
 .Name2{
   margin-bottom: 18px;
+  font-family: 'Lato', sans-serif;
 }
 
 .UserPic{
@@ -126,10 +126,16 @@
 .Pens2{
   color: white;
   margin-right: 20px;
+  cursor: pointer;
 }
 
 .Proj2{
   margin-right: 20px;
+}
+
+.Proj2:hover{
+  color: whitesmoke;
+  cursor: pointer;
 }
 
 .Inp-box{
@@ -162,72 +168,33 @@
 .Pen-window{
   height: 600px;
   width: 60.2%;
-  background: white;
   border-radius: 10px;
   position: relative;
   top: 6%;
   left: 19%;
-}
-
-.footer{
-  height: 200px;
-  width: 100%;
-  background: #111;
-  position: absolute;
-  top: 136vh;
-}
-
-.nameHolder{
   display: flex;
-  width: 175px;
-  color: white;
-  align-items: center;
-  height: 63px;
-  position: relative;
-  left: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-end;
+  flex-wrap: wrap;
+  justify-content: space-around
+}
+
+.avatar{
+  height: 130px;
 
 }
 
-.Name-footer{
-  width: 10%;
-  min-width: 175px;
-  display: flex;
-  align-items: bottom;
-  font-family: 'Lato', sans-serif;
-  color: white;
-  margin-left: 15px;
-  font-size: 24px;
-  position: relative;
-  bottom: 2px;
-  margin-top: 30px;
-  cursor: pointer;
+.pagination{
+  border-radius: 2px;
+    background-color: transparent;
+    border: 3px solid white;
+    color: white;
+    padding: 10px;
+    font-family: "Lato", sans-serif;
+    font-size: 15px;
+    text-align: center;
+    margin: 0px 20px;
 }
 
-.icon-footer{
-  height: 26px;
-  margin-left: 2px;
-  margin-right: 2px;
+.pagination:hover{
+  color: black;
+  background: white
 }
-
-.demo{
-  font-size: 10px;
-  font-family: 'Lato', sans-serif;
-  margin: 10px;
-  font-style: italic;
-}
-
-.Clonpen{
-  font-family: 'Lato', sans-serif;
-  margin: 10px;
-  margin-top: 35px;
-  font-size: 12px;
-}
-
-.Name2{
-  font-family: 'Lato', sans-serif;
-}
-

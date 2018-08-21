@@ -4,6 +4,8 @@ import HTML from './HTML';
 import CSS from './CSS';
 import "./Theme.css";
 import axios from 'axios';
+import SignUp from '../SignUp/SignUp'
+import Login from '../Login/Login';
 require('codemirror/lib/codemirror.css');
 
 
@@ -12,7 +14,10 @@ export default class CodeEditor extends Component {
         super();
 
         this.state = {
+            showPopUp: false,
+            showSignUp: false,
             isLoggedIn: false,
+
             name: "name of pen",
             css:  '',
             html: '',
@@ -77,6 +82,10 @@ export default class CodeEditor extends Component {
     }
 
     savePen = () => {
+        if(!this.state.isLoggedIn) {
+            this.setState({showPopUp: true})
+            return
+        }
         const { id } = this.props.match.params
         if(id) {
             axios.put(`/api/pen/${id}`, this.penData())
@@ -106,11 +115,43 @@ export default class CodeEditor extends Component {
             html: newCode
         })
     }
+    closePopUp = (bool = false) => { 
+        if(bool) {
+            this.setState({
+                showPopUp: false,
+                isLoggedIn: true,
+                showSignUp: false
+            })
+            this.savePen()
+        }
+        else {
+            console.log('test')
+            this.setState({showPopUp: false, showSignUp: false})
+        }
+    }
+    popUpSwitch = () => {
+        this.setState({showSignUp: !this.state.showSignUp})
+    }
 
     render() {
+        const popUp = (
+            <div className="signup-popup">
+            <div className="signup-popup-form-container">
+                {this.state.showSignUp? 
+                <SignUp closePopUp={this.closePopUp} />
+                :
+                <Login closePopUp={this.closePopUp} switch={this.popUpSwitch}/>
+                }
+
+            </div>
+            <div onClick={() => this.closePopUp(false)} className="signup-popup-overlay"></div>
+        </div>
+        )
+
         let srcdoc = `${this.state.html}<style>${this.state.css}</style><script>${this.state.js}</script>`;
         return (
             <div className="codeEditor">
+            {this.state.showPopUp ? popUp : null}
                 <div className="editorHead">
                 <section className="editorSection">
                     <div>

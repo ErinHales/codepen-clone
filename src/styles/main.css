@@ -10,6 +10,8 @@
 @import url("https://fonts.googleapis.com/css?family=Lato");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
 @import url("https://fonts.googleapis.com/css?family=Telex");
+@import url("https://fonts.googleapis.com/css?family=Archivo+Black");
+@import url("https://fonts.googleapis.com/css?family=Lato:300");
 .component-login {
   font-family: "Black Han Sans", sans-serif;
   background: url("https://static.codepen.io/assets/logos/codepen-logo-pattern-725360e4ce5b66f968c7f39c80999bdeaa3cbe2f18eac75d58b01f8cf55c26ab.png");
@@ -302,6 +304,31 @@
     box-shadow: 0 0 0 1px #34c864;
     transform: translateY(1px) translateZ(0); }
 
+.codeEditor {
+  overflow: hidden; }
+
+.signup-popup {
+  position: absolute;
+  z-index: 600;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%; }
+  .signup-popup .signup-popup-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    z-index: 601;
+    background-color: rgba(0, 0, 0, 0.349); }
+  .signup-popup .signup-popup-form-container {
+    top: -30px;
+    margin: auto;
+    z-index: 602;
+    width: 720px;
+    position: relative;
+    transform: scale(0.8); }
+
 .editor {
   display: flex;
   text-align: left; }
@@ -435,9 +462,6 @@ span {
 
 .delete:hover {
   background-color: #ED5151; }
-
-.codeEditor {
-  overflow-y: hidden; }
 
 .penInfoContainer {
   display: flex;
@@ -657,6 +681,9 @@ span {
   display: flex;
   justify-content: space-between;
   width: 100%; }
+
+Link {
+  text-decoration-line: none; }
 
 .nav1 {
   background: black;
@@ -943,6 +970,11 @@ span {
   top: 5px;
   margin-right: 4px; }
 
+.nav-avatar {
+  height: 44px;
+  width: 44px;
+  border-radius: 5px; }
+
 .component-account {
   background-color: #191A1D;
   min-height: 170vh; }
@@ -1188,7 +1220,7 @@ span {
   min-width: 300px; }
 
 .Content {
-  height: 150vh;
+  height: 155vh;
   width: 100%;
   background: #191A1D; }
 
@@ -1211,7 +1243,8 @@ span {
   font-weight: 600; }
 
 .Name2 {
-  margin-bottom: 18px; }
+  margin-bottom: 18px;
+  font-family: 'Lato', sans-serif; }
 
 .UserPic {
   height: 130px;
@@ -1283,10 +1316,15 @@ span {
 
 .Pens2 {
   color: white;
-  margin-right: 20px; }
+  margin-right: 20px;
+  cursor: pointer; }
 
 .Proj2 {
   margin-right: 20px; }
+
+.Proj2:hover {
+  color: whitesmoke;
+  cursor: pointer; }
 
 .Inp-box {
   height: 30px;
@@ -1315,65 +1353,31 @@ span {
 .Pen-window {
   height: 600px;
   width: 60.2%;
-  background: white;
   border-radius: 10px;
   position: relative;
   top: 6%;
-  left: 19%; }
-
-.footer {
-  height: 200px;
-  width: 100%;
-  background: #111;
-  position: absolute;
-  top: 136vh; }
-
-.nameHolder {
+  left: 19%;
   display: flex;
-  width: 175px;
+  flex-wrap: wrap;
+  justify-content: space-around; }
+
+.avatar {
+  height: 130px; }
+
+.pagination {
+  border-radius: 2px;
+  background-color: transparent;
+  border: 3px solid white;
   color: white;
-  align-items: center;
-  height: 63px;
-  position: relative;
-  left: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-end; }
+  padding: 10px;
+  font-family: "Lato", sans-serif;
+  font-size: 15px;
+  text-align: center;
+  margin: 0px 20px; }
 
-.Name-footer {
-  width: 10%;
-  min-width: 175px;
-  display: flex;
-  align-items: bottom;
-  font-family: 'Lato', sans-serif;
-  color: white;
-  margin-left: 15px;
-  font-size: 24px;
-  position: relative;
-  bottom: 2px;
-  margin-top: 30px;
-  cursor: pointer; }
-
-.icon-footer {
-  height: 26px;
-  margin-left: 2px;
-  margin-right: 2px; }
-
-.demo {
-  font-size: 10px;
-  font-family: 'Lato', sans-serif;
-  margin: 10px;
-  font-style: italic; }
-
-.Clonpen {
-  font-family: 'Lato', sans-serif;
-  margin: 10px;
-  margin-top: 35px;
-  font-size: 12px; }
-
-.Name2 {
-  font-family: 'Lato', sans-serif; }
+.pagination:hover {
+  color: black;
+  background: white; }
 
 .commentsPageContainer {
   background-color: #222222;
@@ -1526,6 +1530,168 @@ span {
     display: flex; }
     .searchBar div h5 {
       margin: 20px; }
+
+.Name-footer {
+  width: 10%;
+  min-width: 175px;
+  display: flex;
+  align-items: bottom;
+  font-family: 'Lato', sans-serif;
+  color: white;
+  margin-left: 15px;
+  font-size: 24px;
+  position: relative;
+  bottom: 2px;
+  margin-top: 30px;
+  cursor: pointer; }
+
+.nameHolder {
+  display: flex;
+  width: 175px;
+  color: white;
+  align-items: center;
+  height: 63px;
+  position: relative;
+  left: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end; }
+
+.footer {
+  height: 200px;
+  width: 100%;
+  background: #111;
+  position: relative;
+  top: 20%; }
+
+.icon-footer {
+  height: 26px;
+  margin-left: 2px;
+  margin-right: 2px; }
+
+.demo {
+  font-size: 10px;
+  font-family: 'Lato', sans-serif;
+  margin: 10px;
+  font-style: italic; }
+
+.Clonpen {
+  font-family: 'Lato', sans-serif;
+  margin: 10px;
+  margin-top: 35px;
+  font-size: 12px; }
+
+.Backgrnd {
+  height: 155vh;
+  width: 100%;
+  background: #191A1D;
+  display: flex;
+  flex-wrap: wrap; }
+
+.contact {
+  height: 390px;
+  width: 415px;
+  background: whitesmoke;
+  padding: 35px;
+  position: relative;
+  top: 3%;
+  left: 10%; }
+
+.About {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 36px;
+  font-weight: bolder; }
+
+.address {
+  margin-top: 250px;
+  font-family: 'Lato', sans-serif;
+  color: gray; }
+
+.email {
+  margin-top: 20px;
+  font-family: 'Lato', sans-serif;
+  color: gray; }
+
+.wave {
+  height: 20px;
+  margin-right: 8px; }
+
+.description {
+  height: 400px;
+  width: 800px;
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 0;
+  position: relative;
+  left: 14%;
+  top: 4%;
+  line-height: 1.6;
+  font-weight: 200; }
+
+.clonePen {
+  color: yellow; }
+
+.divisions {
+  height: 350px;
+  width: 500px;
+  background: #FFDD40;
+  margin: 40px; }
+
+.divisions1 {
+  height: 250px;
+  width: 500px;
+  background: transparent;
+  color: white;
+  margin: 40px;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.6rem; }
+
+.Devs {
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px;
+  position: absolute;
+  top: 60%;
+  left: 6%; }
+
+.Pic {
+  height: 150px;
+  border: 4px solid #222222;
+  transform: rotate(-10deg);
+  -webkit-filter: grayscale(100%);
+  /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+  transition: .3s ease-out; }
+
+.Devs :hover .Pic {
+  transform: rotate(0deg);
+  -webkit-filter: none; }
+
+.devName {
+  margin-top: 15px;
+  margin-left: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 34px;
+  position: relative;
+  left: 45%;
+  top: -30%; }
+
+.coDev {
+  margin-left: 10px;
+  font-family: 'Lato', sans-serif;
+  position: relative;
+  left: 45%;
+  top: -30%; }
+
+.descrptn {
+  font-family: 'Lato', sans-serif;
+  margin-left: 10px;
+  padding: 15px;
+  margin-bottom: 20px; }
 
 .pen-settings-container {
   border: 2px solid white;

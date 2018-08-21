@@ -11,6 +11,7 @@ import SearchBar from './components/SearchBar/SearchBar';
 import Account from './components/Account/account';
 import { Switch, Route } from 'react-router-dom'
 import PenSettings from './components/PenSettings/PenSettings';
+import About from './components/About/About'
 
 class App extends Component {
   render() {
@@ -28,6 +29,7 @@ class App extends Component {
           <Route path="/profile" component={Profile} />
           <Route path="/comments/:id" component={Comments} />
           <Route path="/account" component={Account} />
+          <Route path="/about" component={About}/>
         </Switch>
       </div>
     );

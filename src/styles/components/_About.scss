@@ -1,0 +1,128 @@
+.Backgrnd{
+  height: 155vh;
+  width: 100%;
+  background: #191A1D;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.contact{
+  height: 390px;
+  width: 415px;
+  background: whitesmoke;
+  padding: 35px;
+  position: relative;
+  top: 3%;
+  left: 10%;
+}
+
+.About{
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 36px;
+  font-weight: bolder;
+}
+
+.address{
+  margin-top: 250px;
+  font-family: 'Lato', sans-serif;
+  color: gray;
+}
+
+.email{
+  margin-top: 20px;
+  font-family: 'Lato', sans-serif;
+  color: gray
+}
+
+.wave{
+  height: 20px;
+  margin-right: 8px;
+}
+
+.description{
+  height: 400px;
+  width: 800px;
+  color: white;
+  font-family:'Lato', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 0;
+  position: relative;
+  left: 14%;
+  top: 4%;
+  line-height: 1.6;
+  font-weight: 200;
+}
+
+.clonePen{
+  color: yellow;
+}
+
+.divisions{
+  height: 350px;
+  width: 500px;
+  background: #FFDD40;
+  margin: 40px;
+
+}
+
+.divisions1{
+  height: 250px;
+  width: 500px;
+  background: transparent;
+  color: white;
+  margin: 40px;
+  font-family:'Lato', sans-serif;
+  font-size: 1.6rem;
+}
+
+.Devs{
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px;
+  position: absolute;
+  top: 60%;
+  left: 6%
+
+}
+
+.Pic{
+  height: 150px;
+  border: 4px solid rgb(34, 34, 34);
+  transform: rotate(-10deg) ;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+    transition: .3s ease-out;
+}
+
+.Devs :hover .Pic{
+  transform: rotate(0deg);
+  -webkit-filter: none;
+}
+
+.devName{
+  margin-top: 15px;
+  margin-left: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 34px;
+  position: relative;
+  left: 45%;
+  top: -30%;
+}
+
+.coDev{
+  margin-left: 10px;
+  font-family: 'Lato', sans-serif;
+  position: relative;
+  left: 45%;
+  top: -30%;
+}
+
+.descrptn{
+  font-family: 'Lato', sans-serif;
+  margin-left: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
