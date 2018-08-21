@@ -25,7 +25,7 @@
 --     html_scripts.head_tag;
 
 
-SELECT * FROM users;
+-- SELECT * FROM users;
 
 SELECT 
     pens.pen_id, 
