@@ -9,8 +9,8 @@ class NavBar extends Component {
     super()
     this.state = {
       togglePenWindow: false,
-      id: null,
-      user: null
+      id: '',
+      user: ''
     }
 
     this.logout = this.logout.bind(this);
@@ -35,6 +35,26 @@ class NavBar extends Component {
     axios.post('/api/auth/logout').then(() => {
       this.setState({user: null});
     })
+  }
+
+  componentDidMount(){
+    axios.get('/api/users').then(res => {
+      this.setState({
+        user:res.data
+      })
+    })
+  }
+
+  userAvatar(){
+    if(this.state.user.img_url === null || ''){
+      return(
+        <img className='nav-avatar' src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/default-avatar.png' alt=''/>
+      )
+    }else{
+      return(
+        <img className='nav-avatar' src={this.state.user.img_url} alt=''/>
+      )
+    }
   }
 
 
@@ -68,10 +88,12 @@ class NavBar extends Component {
             <div className='prj-line'></div>
           </div>
 
+          <Link to='/About' className='link'>
           <div className='divColl'>
             <h1 className='Coll'>About</h1>
             <div className='coll-line'></div>
           </div>
+          </Link>
 
 
 
@@ -91,7 +113,7 @@ class NavBar extends Component {
             </div>
 
             <div className='userIcon' onClick={() => this.toggleUserNav()}>
-              <p>user<br />Pic</p>
+            {this.userAvatar()}
             </div>
           </div>
 
@@ -101,8 +123,6 @@ class NavBar extends Component {
               <h2 className='newPen' onClick={() => this.postPen()}> <img className='icon1' src={templateIcon} alt="" /> New Pen</h2>
             </div>
           </div>
-
-          {/* className={this.state.showNav ? 'show-nav createWin' : 'show-nav'} */}
 
           <div className={this.state.userWindow ? 'show-nav userWin' : 'show-nav'}>
             <div>
