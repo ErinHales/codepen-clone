@@ -12,26 +12,74 @@ export default class CodeEditor extends Component {
         super();
 
         this.state = {
+            isLoggedIn: false,
             name: "name of pen",
-            css: null,
-            html: null,
-            js: null
+            css:  '',
+            html: '',
+            js: ''
         }
     }
 
     componentWillMount() {
-        axios.get(`/api/pen/${this.props.match.params.id}`).then(response => {
-            this.setState({
-                css: response.data.css,
-                html: response.data.html,
-                js: response.data.js,
-                name: response.data.name
+        axios.get('/api/users')
+            .then(response => {
+                if(response.data.username) {
+                    this.setState({isLoggedIn: true})
+                }
             })
-        })
+        const { id } = this.props.match.params
+        if(id) {
+            this.setState({
+                css: null,
+                html: null,
+                js: null
+            })
+            axios.get(`/api/pen/${id}`).then(response => {
+                this.setState({
+                    css: response.data.css,
+                    html: response.data.html,
+                    js: response.data.js,
+                    name: response.data.name
+                })
+            })
+        }
+    }
+
+    penData = () => {
+        const {name, html, css, js} = this.state
+        return {
+            name,
+            forked: false,
+            html,
+            css,
+            js,
+            scripts: {
+                html: {
+                    html_tag_class: '',
+                    head_tag: ''
+                },
+                css: [],
+                js: []
+            }
+        }
+    }
+
+    updatePen = () => {
+        
+        console.log("This is not set up yet");
     }
 
     savePen = () => {
-        console.log("This is not set up yet");
+        const { id } = this.props.match.params
+        if(id) {
+            axios.put(`/api/pen/${id}`, this.penData())
+        }
+        else {
+            axios.post('/api/pen/', this.penData())
+            .then(response => {
+                this.props.match.params.id = response.data[0].pen_id
+            })
+        }
     }
 
     updateCSS = (newCode) => {
