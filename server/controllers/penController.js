@@ -21,6 +21,7 @@ module.exports = {
     },
     getPen(req, res) {
         // check for pen_id from request
+        console.log(req.session)
         if(!req.params.penId) {
             res.sendStatus(400)
             return
@@ -47,7 +48,9 @@ module.exports = {
         // Setting db Connection to variable
         const dbConn = req.app.get('db')
         // Destructure variables off of body
-        const { user_id, name, forked, html, css, js, scripts } = req.body
+        const { userid } = req.session
+        const user_id = userid
+        const { name, forked, html, css, js, scripts } = req.body
         const html_script = scripts.html
         const css_stylesheet = scripts.css
         const js_script = scripts.js
@@ -94,8 +97,8 @@ module.exports = {
                             })
                     }
                 }
-
-                res.sendStatus(201)
+                console.log('post')
+                res.send(dbResponse).status(201)
             })
             .catch( err => {
                 console.error(err)
@@ -104,6 +107,7 @@ module.exports = {
     },
     updatePen(req, res) {
         console.log(req.session)
+        console.log('update')
         res.status(200)
     },
     deletePen(req, res) {
