@@ -56,7 +56,7 @@ module.exports = {
         const js_script = scripts.js
         const { html_tag_class, head_tag } = html_script
         // Create Pen from variables
-        dbConn.post_pen([user_id, name, forked, html, css, js])
+        dbConn.post_pen([req.session.user_id, name, forked, html, css, js])
             .then( dbResponse => {
                 // setting the pen_id from the newly created row to a a variable
                 const { pen_id } = dbResponse[0]
@@ -112,5 +112,13 @@ module.exports = {
     },
     deletePen(req, res) {
         res.status(200)
+    },
+    getLikes(req,res) {
+        req.app.get("db").get_num_likes(req.params.penId).then(response => {
+            res.status(200).send(response);
+        }).catch(console.error())
+    },
+    likePen(req,res) {
+        req.app.get("db").post_like(req.params.pen_id, req.session.user_id).then(res.status(200)).catch(console.error);
     }
 }

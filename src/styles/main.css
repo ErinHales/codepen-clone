@@ -1502,7 +1502,8 @@ span {
 
 .comment {
   background-color: #32333B;
-  padding: 30px; }
+  padding: 30px;
+  margin: 20px 0px; }
   .comment img {
     width: 35px;
     height: 35px;
