@@ -42,7 +42,7 @@ class NavBar extends Component {
   }
 
   userAvatar(){
-    if(this.state.user.img_url === null){
+    if(this.state.user.img_url === null || ''){
       return(
         <img className='nav-avatar' src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/default-avatar.png' alt='avatar'/>
       )
