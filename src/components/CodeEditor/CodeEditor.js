@@ -16,12 +16,9 @@ export default class CodeEditor extends Component {
             name: "name of pen",
             css:  '',
             html: '',
-            js: ''
+            js: '',
+            userid: null
         }
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-
     }
 
     componentWillMount() {
@@ -39,14 +36,20 @@ export default class CodeEditor extends Component {
                 js: null
             })
             axios.get(`/api/pen/${id}`).then(response => {
+                console.log(response);
                 this.setState({
                     css: response.data.css,
                     html: response.data.html,
                     js: response.data.js,
-                    name: response.data.name
+                    name: response.data.name,
+                    userid: response.data.userid
                 })
             })
         }
+    }
+
+    componentDidMount() {
+        axios.put(`/api/pen/view/${this.props.match.params.id}/${this.state.userid}`).catch(console.error());
     }
 
     penData = () => {
