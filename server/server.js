@@ -83,7 +83,7 @@ app.get('/api/pen/:penId', penCntrl.getPen)
 app.post('/api/pen/', penCntrl.postPen)
 
 // all data, including the id, to be updated will exist on the body of the request
-app.put('/api/pen/', penCntrl.updatePen)
+app.put('/api/pen/:penId', penCntrl.updatePen)
 
 // takes penid and the scripts, comments, likes, and pen associated with penid
 app.delete('/api/pen/:penId', penCntrl.deletePen)
