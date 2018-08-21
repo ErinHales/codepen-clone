@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
 import templateIcon from './tempsnip.jpg'
 import { Link } from 'react-router-dom'
-
 import axios from 'axios'
+
 
 class NavBar extends Component {
   constructor() {
     super()
     this.state = {
       togglePenWindow: false,
-      id: null
+      id: null,
+      user: null
     }
+
+    this.logout = this.logout.bind(this);
   }
   toggleNav() {
     this.setState({
@@ -27,6 +30,13 @@ class NavBar extends Component {
   postPen() {
     window.location.hash = "#/editor";
   }
+
+  logout(){
+    axios.post('/api/auth/logout').then(() => {
+      this.setState({user: null});
+    })
+  }
+
 
   render() {
     return (
@@ -103,7 +113,7 @@ class NavBar extends Component {
                   <h1><img className='gearIcon' src='https://cdn2.iconfinder.com/data/icons/web/512/Cog-512.png' alt='gear' />
                     Settings</h1>
                 </div>
-                <div className='setbox'>
+                <div className='setbox' onClick={() => this.logout()}>
                   <h1><img className='logoutIcon' src="https://cdn4.iconfinder.com/data/icons/dashboard-icons/43/icon-logout-512.png" alt="logout" />
                     Log Out</h1>
                 </div>

@@ -40,6 +40,12 @@ app.post('/api/auth/register', (req, res) => loginCntrl.registerUser(req, res, b
 app.post('/api/auth/login', (req, res) => loginCntrl.getUser(req, res, bcrypt))
 
 
+//LOGOUT 
+app.get('/api/auth/logout', (req, res) => {
+    req.session.destroy()
+    res.redirect('http://localhost:3000/#/')
+})
+
 
 // USER
 
