@@ -302,6 +302,31 @@
     box-shadow: 0 0 0 1px #34c864;
     transform: translateY(1px) translateZ(0); }
 
+.codeEditor {
+  overflow: hidden; }
+
+.signup-popup {
+  position: absolute;
+  z-index: 600;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%; }
+  .signup-popup .signup-popup-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    z-index: 601;
+    background-color: rgba(0, 0, 0, 0.349); }
+  .signup-popup .signup-popup-form-container {
+    top: -30px;
+    margin: auto;
+    z-index: 602;
+    width: 720px;
+    position: relative;
+    transform: scale(0.8); }
+
 .editor {
   display: flex;
   text-align: left; }
@@ -435,9 +460,6 @@ span {
 
 .delete:hover {
   background-color: #ED5151; }
-
-.codeEditor {
-  overflow-y: hidden; }
 
 .penInfoContainer {
   display: flex;

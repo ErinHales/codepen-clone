@@ -23,6 +23,9 @@ class Login extends Component {
                 if(res.data === 'OK'){
                     // this.props.history.push('/home');
                     alert('Log In successful')
+                    if(this.props.closePopUp) {
+                        this.props.closePopUp(true)
+                    }
                 }
                 // The user got their username/email or password wrong
                 else{
@@ -107,8 +110,12 @@ class Login extends Component {
                         </div>
                     </div>
                     <div className="login-signup-container">
-                        <p>Need an account?</p>
-                        <Link to="/signup" className="link"><p>Sign up now!</p></Link>
+                        <p>Need an account? </p>
+                        {this.props.switch ? 
+                            <p onClick={this.props.switch} className="link">Sign up now!</p> 
+                            : 
+                            <Link to="/signup" className="link"><p>Sign up now!</p></Link>
+                        }
                     </div>
                 </div>
             </div>

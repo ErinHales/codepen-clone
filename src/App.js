@@ -15,8 +15,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <PenSettings />
-        {/* <NavBar />
+        {/* <PenSettings /> */}
+        <NavBar />
         <SearchBar />
         <Switch>
           <Route exact path="/" component={Login} />
@@ -26,7 +26,7 @@ class App extends Component {
           <Route path="/pens" component={Pens} />
           <Route path="/profile" component={Profile} />
           <Route path="/comments" component={Comments} />
-        </Switch> */}
+        </Switch>
       </div>
     );
   }
