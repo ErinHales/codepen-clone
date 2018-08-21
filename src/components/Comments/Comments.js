@@ -1,11 +1,69 @@
 import React, { Component } from 'react';
 import Comment from '../Comment/Comment';
+import axios from 'axios';
+import { copyFile } from 'fs';
 
 export default class Comments extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            penInfo: {},
+            comments: [],
+            input: ""
+        }
+    }
+
+    componentDidMount() {
+        axios.get(`/api/pen/${this.props.match.params.id}`).then(response => {
+            this.setState({
+                penInfo: response.data
+            })
+        })
+        this.getComments()
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if(prevState.comments !== this.state.comments) {
+            this.getComments();
+        }
+    }
+
+    getComments = () => {
+        axios.get(`/api/pen/comments/${this.props.match.params.id}`).then(response => {
+            this.setState({
+                comments: response.data
+            })
+        })
+    }
+
+    updateInput = (e) => {
+        this.setState({
+            input: e.target.value
+        })
+    }
+
+    leaveComment = () => {
+        axios.post(`/api/pen/comment/${this.props.match.params.id}`, {comment: this.state.input}).then(response => {
+            let copy = this.state.comments.slice();
+            copy.unshift(response.data);
+            this.setState({
+                comments: copy,
+                input: ''
+            })
+        }).catch(console.error);
+    }
+
     render() {
+        let {html, css, js} = this.state.penInfo;
+        const srcDoc = `${html}<style>${css}</style><script>${js}</script>`
+        let commentArr = [];
+        this.state.comments.forEach(comment => {
+            return commentArr.push(<Comment key={comment.id} name={comment.name} image={comment.img_url} comment={comment.comment} />);
+        })
         return (
             <div className="commentsPageContainer">
-                <iframe className="commentsFrame" src="https://ozzy.site" title="comments" frameborder="0"></iframe>
+                <iframe className="commentsFrame" srcDoc={srcDoc} title="comments" frameBorder="0"></iframe>
                 <div className="comments">
                     <div className="penInfoBar">
                         <div className="penInfoLeft">
@@ -46,11 +104,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                         </div>
                         <h2>COMMENTS</h2>
                         <div>
-                            <Comment />
+                            {this.state.comments[0] ? commentArr : <div className="comment" style={{color: 
+                            "white"}}>Sorry, there are no comments for this pen.</div>}
                         </div>
                         <h2 className="leaveComment">LEAVE A COMMENT</h2>
-                        <textarea name="" id="" cols="30" rows="10" placeholder="Be cool."></textarea>
-                        <button className="submitComment">Submit</button>
+                        <textarea name="" id="" cols="30" rows="10" placeholder="Be cool." onChange={(e) => this.updateInput(e)} value={this.state.input}></textarea>
+                        <button className="submitComment" onClick={() => this.state.input ? this.leaveComment() : null}>Submit</button>
                     </div>
                 </div>
             </div>

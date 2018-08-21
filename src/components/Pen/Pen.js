@@ -7,12 +7,24 @@ export default class Pen extends Component {
         super();
 
         this.state = {
-            likes: 0
+            views: 0,
+            comments: 0,
+            likes: 0,
         }
     }
 
     componentDidMount() {
-        axios.get(`/api/pen/likes/${this.props.id}`).then(response => {
+        axios.get(`/api/stats/views/${this.props.id}`).then(response => {
+            this.setState({
+                views: response.data[0].count
+            })
+        })
+        axios.get(`/api/stats/comments/${this.props.id}`).then(response => {
+            this.setState({
+                comments: response.data[0].count
+            })
+        })
+        axios.get(`/api/stats/comments/${this.props.id}`).then(response => {
             this.setState({
                 likes: response.data[0].count
             })
@@ -49,9 +61,9 @@ export default class Pen extends Component {
                         </div>
                     </div>
                     <div className="penPopularity">
-                        <h3><i className="fa fa-eye"></i>{this.props.views}</h3>
-                        <img src="https://www.drupal.org/files/issues/comment_6.png" alt="" onClick={() => this.lovePost()} />
-                        <h3>{this.props.commentsNum}</h3>
+                        <h3><i className="fa fa-eye"></i>{this.state.views}</h3>
+                        <Link to={`/comments/${this.props.id}`}><img src="https://www.drupal.org/files/issues/comment_6.png" alt="" /></Link>
+                        <h3>{this.state.comments}</h3>
                         <img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" alt="" />
                         <h3>{this.state.likes}</h3>
                     </div>

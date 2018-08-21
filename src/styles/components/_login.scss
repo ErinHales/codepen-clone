@@ -1,13 +1,20 @@
 @import '../variables';
 .component-login {
-    font-family: $font-lato; // Background Styles
+    font-family: $font-Black-Han-Sans; // Background Styles
     background: url('https://static.codepen.io/assets/logos/codepen-logo-pattern-725360e4ce5b66f968c7f39c80999bdeaa3cbe2f18eac75d58b01f8cf55c26ab.png');
     background-repeat: repeat;
-    min-height: 110vh; // active styles for all inputs
+    min-height: 105vh; // active styles for all inputs
     overflow-y: hidden;
     padding-bottom: 5rem;
-    input:active {
+    input:focus {
         border: 3px solid $text-grey;
+        outline: 0;
+    }
+    .logo{
+       color: $text-white;
+       font-size: 1.5rem;
+       position: relative;
+       bottom: 8px;
     }
     .login-container {
         width: 60%;

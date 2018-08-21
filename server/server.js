@@ -11,11 +11,11 @@ app.use(bodyParser.json());
 
 const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env;
 
-// app.use(session({
-//     secret: SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: false
-// }));
+app.use(session({
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
 
 massive(CONNECTION_STRING).then(function (db) {
     app.set("db", db);
@@ -32,14 +32,24 @@ const userCntrl = require('./controllers/userController')
 const penCntrl = require('./controllers/penController')
 const interfaceCntrl = require('./controllers/interfaceController')
 const statsCntrl = require('./controllers/statsController')
+const comCntrl = require('./controllers/commentsController');
 
-// LOGIN
+// Sign a user up
 app.post('/api/auth/register', (req, res) => loginCntrl.registerUser(req, res, bcrypt));
+// Check when the user is loggin in
 app.post('/api/auth/login', (req, res) => loginCntrl.getUser(req, res, bcrypt))
 
 
 
 // USER
+
+// get the users information
+app.get('/api/users', (req,res) =>{
+    res.send(req.session);
+});
+
+// Update a users pic
+app.put('/api/user/pic', userCntrl.updateUserImg);
 
 // takes object with new user data and updates database with changes
 app.put('/api/user', userCntrl.updateUser)
@@ -74,6 +84,11 @@ app.delete('/api/pen/:penId', penCntrl.deletePen)
 
 // STATS
 
+//get stats for a pen
+app.get('/api/stats/views/:penId', statsCntrl.getNumViews)
+app.get('/api/stats/comments/:penId', statsCntrl.getNumComments)
+app.get('/api/stats/likes/:penId', statsCntrl.getNumLikes)
+
 // add a like to the likes table
 app.post('/api/pen/like/:penId', statsCntrl.addLike)
 
@@ -85,6 +100,15 @@ app.get('/api/pen/likes/:penId', penCntrl.getLikes)
 
 //increment view by one for each unique user
 app.put('/api/pen/view/:penId/:userId', statsCntrl.incrementView)
+
+
+// COMMENTS
+
+// get all comments for a pen
+app.get('/api/pen/comments/:penId', comCntrl.getComments)
+
+// post comment
+app.post('/api/pen/comment/:penId', comCntrl.comment)
 
 
 

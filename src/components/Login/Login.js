@@ -1,39 +1,58 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import {Link} from 'react-router-dom';
 
 class Login extends Component {
     constructor() {
         super();
         this.state = {
-            login: '',
+            credentials: '',
             password: '',
             showReset: false
         }
     }
-    onInputChange = event => this.setState({ [event.target.name]: event.target.value })
-    showReset = () => {
-        this.setState({ showReset: !this.state.showReset });
+    onInputChange = event => this.setState({ [event.target.name]: event.target.value });
+
+    showReset = () => { this.setState({ showReset: !this.state.showReset }); }
+
+    login = () => {
+        let { credentials, password } = this.state;
+        axios.post('/api/auth/login', { credentials, password })
+            .then(res =>{
+                // if user exist then direct them the home page
+                if(res.data === 'OK'){
+                    // this.props.history.push('/home');
+                    alert('Log In successful')
+                }
+                // The user got their username/email or password wrong
+                else{
+                    alert(res.data)
+                }
+               
+            })
+            .catch(err => console.log(err))
     }
+
     render() {
         return (
             <div className="component-login">
                 <div className="login-container">
                     <div className="login-header">
-                        <h2>Clonepen</h2>
+                    <h2 className="logo">C L <img className='icon' src='http://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Large.png' alt='' /> N E P E N</h2>
                         <h1>Log in!</h1>
                     </div>
                     <div className="login-types">
                         <div className="login-inputs">
                             <div className="input-group">
                                 <h5>USERNAME OR EMAIL</h5>
-                                <input name='login' value={this.state.login} type="text" />
+                                <input onChange={this.onInputChange} name='credentials' value={this.state.login} type="text" />
                             </div>
                             <div className="input-group">
                                 <h5>PASSWORD</h5>
-                                <input name='password' value={this.state.password} type="text" />
+                                <input onChange={this.onInputChange}  name='password' value={this.state.password} type="password" />
                             </div>
                             <div className="login-controls">
-                                <button className="btn-green">Log in</button>
+                                <button onClick={this.login} className="btn-green">Log in</button>
                                 <p onClick={this.showReset}>Forgot Password?</p>
                             </div>
                             <div className={this.state.showReset ? 'reset' : 'hidden'}>
@@ -51,7 +70,6 @@ class Login extends Component {
                         </div>
                         <div className="login-divider">
                             <div className="divider-top">
-
                             </div>
                             <div className="divider-text-container">
                                 <div className="divider-text">
@@ -59,7 +77,6 @@ class Login extends Component {
                                 </div>
                             </div>
                             <div className="divider-bottom">
-
                             </div>
                         </div>
                         <div className="login-socials">

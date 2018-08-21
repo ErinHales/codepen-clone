@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 export default class SignUp extends Component {
     constructor(props) {
         super(props)
-
         this.state = {
             showEmailForm: false,
             name: '',
@@ -11,8 +10,9 @@ export default class SignUp extends Component {
             email: '',
             password: ''
         }
-        this.showEmailFormHandler = this.showEmailFormHandler.bind(this)
-        this.inputEventHandler = this.inputEventHandler.bind(this)
+        this.showEmailFormHandler = this.showEmailFormHandler.bind(this);
+        this.inputEventHandler = this.inputEventHandler.bind(this);
+        this.submitHandler = this.submitHandler.bind(this);
     }
     showEmailFormHandler() {
         this.setState({showEmailForm:!this.state.showEmailForm})
@@ -23,22 +23,33 @@ export default class SignUp extends Component {
             [name]: value
         })
     }
-
-
     submitHandler() {
-
-    }
+        let {name, username, email, password} = this.state;
+        axios.post('/api/auth/register', {name, username, email, password})
+        .then(res =>{
+            console.log(res);
+            // If the response is ok then direct them to the home page
+            if(res.data === 'OK'){
+                // this.props.history.push('/pens')
+                alert('User signedup successfully');
+            }
+            // There is something wrong with the signup do something
+            else{
+                alert('Something wrong with user');
+            }
+        })
+    } 
 
     render() {
         let signUpField = (
             <div>
                 <div className="signup-input-group" >
                     <h5>YOUR NAME</h5>
-                    <input onChange={ event => this.inputEventHandler(event.target.value, "name")} value={this.state.name} className="signup-input" type="text"/>
+                    <input  onChange={ event => this.inputEventHandler(event.target.value, "name")} value={this.state.name} className="signup-input" type="text"/>
                 </div>
                 <div className="signup-input-group" >
                     <h5>CHOOSE A USERNAME</h5>
-                    <input onChange={ event => this.inputEventHandler(event.target.value, "username")}  value={this.state.username} className="signup-input" type="text"/>
+                    <input  onChange={ event => this.inputEventHandler(event.target.value, "username")}  value={this.state.username} className="signup-input" type="text"/>
                 </div>
                 <div className="signup-input-group" >
                     <h5>EMAIL</h5>
@@ -46,7 +57,7 @@ export default class SignUp extends Component {
                 </div>
                 <div className="signup-input-group" >
                     <h5>CHOOSE PASSWORD</h5>
-                    <input onChange={ event => this.inputEventHandler(event.target.value, "password")}  value={this.state.password} className="signup-input" type="text"/>
+                    <input required onChange={ event => this.inputEventHandler(event.target.value, "password")}  value={this.state.password} className="signup-input" type="password"/>
                 </div>
                 <button onClick={this.submitHandler} className="signup-form-submit-button">Submit</button>
             </div>
