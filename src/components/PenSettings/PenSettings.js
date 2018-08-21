@@ -70,16 +70,24 @@ export default class PenSettings extends Component {
 
 
     render() {
+        let { htmlPage, cssPage, jsPage, behaviorPage} = this.state
 
         return (
-            <div>
-                <PenSettingsNav pageHandler={this.pageHandler} />
-                {this.state.htmlPage ? <SettingsHTML /> : null}
-                {this.state.cssPage ? <SettingsCSS /> : null}
-                {this.state.jsPage ? <SettingsJS showPopUp={this.state.toggleJsInfoPopUp} cdnList={this.state.externalJsCdn} cdnHandler={this.jsCdnHandler}
-                /> : null}
-                {this.state.behaviorPage ? <Behavior /> : null}
+            <div style={{ width: "100vw", backgroundColor: "black"}}>
+                <div className="pen-settings-container" >
+                    <PenSettingsNav 
+                        htmlPage={htmlPage} 
+                        cssPage={cssPage}
+                        jsPage={jsPage}
+                        behaviorPage={behaviorPage}
+                        pageHandler={this.pageHandler} />
+                    {this.state.htmlPage ? <SettingsHTML /> : null}
+                    {this.state.cssPage ? <SettingsCSS /> : null}
+                    {this.state.jsPage ? <SettingsJS showPopUp={this.state.toggleJsInfoPopUp} cdnList={this.state.externalJsCdn} cdnHandler={this.jsCdnHandler}
+                    /> : null}
+                    {this.state.behaviorPage ? <Behavior /> : null}
 
+                </div>
             </div>
         )
 

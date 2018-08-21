@@ -1,7 +1,23 @@
 const restructureResponsePen = require('./helpers/restructureResponsePen')
+const axios = require('axios')
+
 module.exports = {
     searchCdn(req, res) {
-        res.status(200)
+        const { type } = req.params
+        if(type === 'css' || type === 'js') {
+            const { search } = req.query
+            axios.get(`https://api.cdnjs.com/libraries?search=${search}&fields=version,description`)
+                .then( response => {
+                    res.send(response.data.results.filter( result => result.latest.endsWith(`.${type}`)).slice(0,10)).status(200)
+                })
+                .catch( err => {
+                    console.error(err)
+                    res.sendStatus(500)
+                })
+        }
+        else {
+            res.sendStatus(400)
+        }
     },
     getPen(req, res) {
         // check for pen_id from request
