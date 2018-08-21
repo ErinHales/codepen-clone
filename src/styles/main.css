@@ -10,6 +10,8 @@
 @import url("https://fonts.googleapis.com/css?family=Lato");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
 @import url("https://fonts.googleapis.com/css?family=Telex");
+@import url("https://fonts.googleapis.com/css?family=Archivo+Black");
+@import url("https://fonts.googleapis.com/css?family=Lato:300");
 .component-login {
   font-family: "Black Han Sans", sans-serif;
   background: url("https://static.codepen.io/assets/logos/codepen-logo-pattern-725360e4ce5b66f968c7f39c80999bdeaa3cbe2f18eac75d58b01f8cf55c26ab.png");
@@ -1579,3 +1581,223 @@ Link {
   margin: 10px;
   margin-top: 35px;
   font-size: 12px; }
+
+.Backgrnd {
+  height: 155vh;
+  width: 100%;
+  background: #191A1D;
+  display: flex;
+  flex-wrap: wrap; }
+
+.contact {
+  height: 390px;
+  width: 415px;
+  background: whitesmoke;
+  padding: 35px;
+  position: relative;
+  top: 3%;
+  left: 10%; }
+
+.About {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 36px;
+  font-weight: bolder; }
+
+.address {
+  margin-top: 250px;
+  font-family: 'Lato', sans-serif;
+  color: gray; }
+
+.email {
+  margin-top: 20px;
+  font-family: 'Lato', sans-serif;
+  color: gray; }
+
+.wave {
+  height: 20px;
+  margin-right: 8px; }
+
+.description {
+  height: 400px;
+  width: 800px;
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 0;
+  position: relative;
+  left: 14%;
+  top: 4%;
+  line-height: 1.6;
+  font-weight: 200; }
+
+.clonePen {
+  color: yellow; }
+
+.divisions {
+  height: 350px;
+  width: 500px;
+  background: #FFDD40;
+  margin: 40px; }
+
+.divisions1 {
+  height: 250px;
+  width: 500px;
+  background: transparent;
+  color: white;
+  margin: 40px;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.6rem; }
+
+.Devs {
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px;
+  position: absolute;
+  top: 60%;
+  left: 6%; }
+
+.Pic {
+  height: 150px;
+  border: 4px solid #222222;
+  transform: rotate(-10deg);
+  -webkit-filter: grayscale(100%);
+  /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+  transition: .3s ease-out; }
+
+.Devs :hover .Pic {
+  transform: rotate(0deg);
+  -webkit-filter: none; }
+
+.devName {
+  margin-top: 15px;
+  margin-left: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 34px;
+  position: relative;
+  left: 45%;
+  top: -30%; }
+
+.coDev {
+  margin-left: 10px;
+  font-family: 'Lato', sans-serif;
+  position: relative;
+  left: 45%;
+  top: -30%; }
+
+.descrptn {
+  font-family: 'Lato', sans-serif;
+  margin-left: 10px;
+  padding: 15px;
+  margin-bottom: 20px; }
+
+.pen-settings-container {
+  border: 2px solid white;
+  background-color: white;
+  border-radius: 3px;
+  width: 520px;
+  box-sizing: border-box;
+  padding-bottom: 75px; }
+
+.pen-settings-interface {
+  position: relative;
+  padding: 20px; }
+  .pen-settings-interface .pen-settings-heading {
+    font-family: "Lato", sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold; }
+  .pen-settings-interface .pen-settings-description {
+    font-family: "Lato", sans-serif;
+    font-size: 0.8rem;
+    margin-bottom: 8px; }
+
+.pen-settings-nav-header {
+  background-color: #202125;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 22px;
+  font-family: "Black Han Sans", sans-serif;
+  font-size: 1.7rem;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px; }
+  .pen-settings-nav-header .pen-settings-nav-close {
+    background-color: #47cf73;
+    color: black;
+    padding: 10px 16px;
+    font-size: 1rem;
+    line-height: 1.2;
+    font-family: "Lato", sans-serif;
+    border-radius: 3px; }
+  .pen-settings-nav-header .pen-settings-nav-title {
+    padding-top: 10px; }
+
+.pen-settings-nav-selection {
+  background-color: black;
+  font-size: 1.1rem;
+  font-family: "Lato", sans-serif;
+  padding: 10px; }
+  .pen-settings-nav-selection .pen-settings-nav-selection-button {
+    padding-right: 10px;
+    background-color: black;
+    color: #9396a4; }
+    .pen-settings-nav-selection .pen-settings-nav-selection-button:hover {
+      color: white;
+      cursor: pointer; }
+  .pen-settings-nav-selection .selected {
+    color: white; }
+
+.pen-settings-input-icon {
+  background-color: #eaeff0;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px; }
+
+.pen-settings-input-container {
+  display: flex;
+  width: 100%; }
+
+.pen-settings-input {
+  background-color: #eaeff0;
+  font-family: "Lato", sans-serif;
+  border: 0;
+  display: inline-block;
+  position: relative;
+  color: #535557;
+  width: 100%;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  font-size: .95rem;
+  padding: 1rem; }
+
+.pen-settings-cdn-results-container {
+  position: absolute;
+  width: 92%;
+  display: flex;
+  max-height: 280px;
+  overflow-x: auto;
+  flex-direction: column; }
+
+.pen-settings-cdn-element {
+  display: flex;
+  flex-direction: column;
+  min-height: 50px;
+  background-color: #36383f;
+  font-family: "Lato", sans-serif;
+  color: white;
+  padding: 10px;
+  border: 1px solid #6f717a;
+  border-bottom: 0px; }
+  .pen-settings-cdn-element .cdn-element-name-version-container {
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between; }
+  .pen-settings-cdn-element .cdn-element-description {
+    padding-top: 5px;
+    font-size: .8rem;
+    color: #6f717a;
+    text-overflow: ellipsis; }
+  .pen-settings-cdn-element:hover {
+    background-color: black;
+    cursor: pointer; }

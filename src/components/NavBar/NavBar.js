@@ -48,11 +48,11 @@ class NavBar extends Component {
   userAvatar(){
     if(this.state.user.img_url === null || ''){
       return(
-        <img className='nav-avatar' src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/default-avatar.png' alt='avatar'/>
+        <img className='nav-avatar' src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/default-avatar.png' alt=''/>
       )
     }else{
       return(
-        <img className='nav-avatar' src={this.state.user.img_url} alt='avatar'/>
+        <img className='nav-avatar' src={this.state.user.img_url} alt=''/>
       )
     }
   }
@@ -88,10 +88,12 @@ class NavBar extends Component {
             <div className='prj-line'></div>
           </div>
 
+          <Link to='/About' className='link'>
           <div className='divColl'>
             <h1 className='Coll'>About</h1>
             <div className='coll-line'></div>
           </div>
+          </Link>
 
 
 
