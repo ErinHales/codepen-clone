@@ -103,6 +103,7 @@ module.exports = {
             })
     },
     updatePen(req, res) {
+        console.log(req.session)
         res.status(200)
     },
     deletePen(req, res) {

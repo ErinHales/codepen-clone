@@ -19,7 +19,12 @@ export default class CodeEditor extends Component {
         }
     }
 
+    componentDidUpdate(prevProps, prevState) {
+
+    }
+
     componentWillMount() {
+        axios.get
         axios.get(`/api/pen/${this.props.match.params.id}`).then(response => {
             this.setState({
                 css: response.data.css,
