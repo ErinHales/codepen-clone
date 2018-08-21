@@ -37,7 +37,7 @@ module.exports = {
         const js_script = scripts.js
         const { html_tag_class, head_tag } = html_script
         // Create Pen from variables
-        dbConn.post_pen([user_id, name, forked, html, css, js])
+        dbConn.post_pen([req.session.user_id, name, forked, html, css, js])
             .then( dbResponse => {
                 // setting the pen_id from the newly created row to a a variable
                 const { pen_id } = dbResponse[0]
@@ -79,7 +79,7 @@ module.exports = {
                     }
                 }
 
-                res.sendStatus(201)
+                res.status(201).send(dbResponse);
             })
             .catch( err => {
                 console.error(err)

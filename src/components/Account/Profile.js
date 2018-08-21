@@ -4,11 +4,11 @@ import {Link} from 'react-router-dom';
 
 class Profile extends Component {
 
-  componentDidMount(){
-    axios.post('/api/auth/login', {credentials:'test@gmail.com', password: '123'}).then(res => {
-      this.props(res.data)
-    })
-  }
+  // componentDidMount(){
+  //   axios.post('/api/auth/login', {credentials:'test@gmail.com', password: '123'}).then(res => {
+  //     this.props(res.data)
+  //   })
+  // }
 
   render() {
     let {user} = this.props;

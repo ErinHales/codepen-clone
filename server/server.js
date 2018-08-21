@@ -85,9 +85,7 @@ app.delete('/api/pen/:penId', penCntrl.deletePen)
 // STATS
 
 //get stats for a pen
-app.get('/api/stats/views/:penId', statsCntrl.getNumViews)
-app.get('/api/stats/comments/:penId', statsCntrl.getNumComments)
-app.get('/api/stats/likes/:penId', statsCntrl.getNumLikes)
+app.get('/api/stats/:penId', statsCntrl.getStats)
 
 // add a like to the likes table
 app.post('/api/pen/like/:penId', statsCntrl.addLike)

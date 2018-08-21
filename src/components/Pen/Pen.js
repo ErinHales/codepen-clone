@@ -7,29 +7,17 @@ export default class Pen extends Component {
         super();
 
         this.state = {
-            views: 0,
-            comments: 0,
-            likes: 0,
+            stats: {}
         }
     }
 
     componentDidMount() {
-        axios.get(`/api/stats/views/${this.props.id}`).then(response => {
+        axios.get(`/api/stats/${this.props.id}`).then(response => {
+            console.log(response.data)
             this.setState({
-                views: response.data[0].count
+                stats: response.data
             })
         })
-        axios.get(`/api/stats/comments/${this.props.id}`).then(response => {
-            this.setState({
-                comments: response.data[0].count
-            })
-        })
-        axios.get(`/api/stats/comments/${this.props.id}`).then(response => {
-            this.setState({
-                likes: response.data[0].count
-            })
-        })
-        // axios.get()
     }
 
     lovePost() {
@@ -37,6 +25,7 @@ export default class Pen extends Component {
     }
 
     render() {
+        let {views, comments, loves} = this.state.stats
         const srcDoc = `${this.props.html}<style>${this.props.css}</style><script>${this.props.js}</script>`
         return (
             <div className="showPen">
@@ -61,11 +50,11 @@ export default class Pen extends Component {
                         </div>
                     </div>
                     <div className="penPopularity">
-                        <h3><i className="fa fa-eye"></i>{this.state.views}</h3>
+                        <h3><i className="fa fa-eye"></i>{views}</h3>
                         <Link to={`/comments/${this.props.id}`}><img src="https://www.drupal.org/files/issues/comment_6.png" alt="" /></Link>
-                        <h3>{this.state.comments}</h3>
+                        <h3>{comments}</h3>
                         <img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" alt="" />
-                        <h3>{this.state.likes}</h3>
+                        <h3>{loves}</h3>
                     </div>
                 </div>
             </div>
