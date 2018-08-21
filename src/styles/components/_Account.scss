@@ -1,9 +1,9 @@
 .component-account {
     background-color: $bg-dark-black;
-    min-height: 150vh;
+    min-height: 170vh;
     .account-container {
         position: relative;
-        top: 4rem;
+        top: 1rem;
         width: 90%;
         margin: 0 auto;
         .account-header {
@@ -21,15 +21,18 @@
             }
             .account-links {
                 display: flex;
+                position: relative;
+                bottom: 5px;
                 p {
                     margin-right: 1rem;
                     color: $text-white;
+                    font-size: 1.1rem;
                 }
             }
         }
         .account-grid {
             border: 1px solid blue;
-            margin-top: 1.5rem;
+            margin-top: 0.75rem;
             display: flex;
             justify-content: space-between;
             .account-avatar {
@@ -75,9 +78,7 @@
                                 &:active {
                                     top: 2px;
                                 }
-                            } // input{
-                            //     background-color: #000;
-                            // }
+                            }
                         }
                     }
                 }
@@ -88,7 +89,8 @@
                 .information-box {
                     background-color: $bg-dark-grey;
                     margin-bottom: 1rem;
-                    padding: 1rem;
+                    padding: 1.25rem;
+                    border-radius: 5px;
                     .box-header {
                         h3 {
                             color: $text-white;
@@ -100,6 +102,7 @@
                     .input-container {
                         border: 1px solid purple;
                         padding-right: 10px;
+                        padding-bottom: 8px;
                         display: flex;
                         flex-direction: column;
                         align-items: flex-end;
@@ -109,7 +112,7 @@
                             border: 1px solid green;
                             width: 83%;
                             justify-content: space-between;
-                            margin-top: 0.5rem;
+                            margin-top: 0.75rem;
                             h5 {
                                 color: $text-light-white;
                                 font-size: 1.1rem;
@@ -119,7 +122,7 @@
                                 margin-right: 0.5rem;
                             }
                             input {
-                                padding: 10px;
+                                padding: 10px 3px;
                                 margin-top: 0.7rem;
                                 border-radius: 5px;
                                 width: 70%;
@@ -130,6 +133,10 @@
                         }
                     }
                 }
+                .bio {
+                    border: 4px solid orange;
+                    height: 191px;
+                }
                 .textarea-group {
                     border: 1px solid red;
                     display: flex;
@@ -137,7 +144,7 @@
                     padding-right: 10px;
                     margin-top: 1rem;
                     .textarea {
-                        width: 60%;
+                        width: 70%;
                         border: 1px solid blue;
                         textarea {
                             width: 100%;
@@ -166,12 +173,80 @@
                     }
                 }
             }
+            .slider-container {
+                border: 1px solid green;
+                margin-top: 1.5rem;
+                padding-left: 0.5rem;
+                display: flex;
+                align-items: center;
+                p {
+                    color: $text-light-white;
+                }
+                .switch {
+                    position: relative;
+                    display: inline-block;
+                    width: 60px;
+                    height: 30px;
+                    margin: 0 10px;
+                }
+                .switch input {
+                    display: none;
+                }
+                .slider {
+                    position: absolute;
+                    cursor: pointer;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-color: #9396A4;
+                    -webkit-transition: .4s;
+                    transition: .4s;
+                }
+                .slider:before {
+                    position: absolute;
+                    content: "";
+                    height: 30px;
+                    width: 30px;
+                    left: 0px;
+                    bottom: 0px;
+                    background-color: white;
+                    -webkit-transition: .4s;
+                    transition: .4s;
+                }
+                input:checked+.slider {
+                    background-color: #9396A4;
+                }
+                input:checked+.slider:before {
+                    -webkit-transform: translateX(26px);
+                    -ms-transform: translateX(26px);
+                    transform: translateX(30px);
+                }
+                /* Rounded sliders */
+                .slider.round {
+                    border-radius: 34px;
+                }
+                .slider.round:before {
+                    border-radius: 50%;
+                }
+            }
+            .hire-text {
+                margin: 1rem 0;
+                p{
+                    color: $text-grey;
+                    font-size: 1.1rem;
+                }
+
+                .link-text{
+                    font-size: 1.1rem;
+                    color: $link-blue;
+                }
+            }
             .account-customize {
                 border: 1px solid orange;
                 width: 20%;
                 .information-box {
                     border: 1px solid red;
-                
                     background-color: $bg-dark-grey;
                     height: 50%;
                     padding: 1rem;
@@ -183,16 +258,16 @@
                             border-bottom: 2px solid $text-grey;
                         }
                     }
-                    .img-placeholder{
+                    .img-placeholder {
                         height: 48%;
                         margin-top: 1rem;
                         width: 100%;
-                        img{
+                        img {
                             height: 100%;
                             width: 100%;
                         }
                     }
-                    button{
+                    button {
                         background-color: $btn-babyblue;
                         width: 100%;
                         padding: 0.8rem;
@@ -200,12 +275,12 @@
                         border-radius: 5px;
                         font-size: 1.1rem;
                         margin-top: 1rem;
-                        &:hover{
+                        &:hover {
                             background-color: #009FDA;
                             cursor: pointer;
                         }
                     }
-                    p{
+                    p {
                         margin-top: 1rem;
                         color: $text-grey;
                     }

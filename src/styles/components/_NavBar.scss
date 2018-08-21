@@ -221,10 +221,6 @@
   cursor: pointer;
 }
 
-.createWindow {
-  background-color: white;
-}
-
 .createWindow:hover{
   background-color: #EFF0F5;
   cursor: pointer;
@@ -260,14 +256,82 @@
   width: 250px;
   background: rgb(206, 204, 204);
   position: absolute;
-  z-index: 1000;
-  right: 164px;
+  z-index: 110;
+  left: 78.2%;
   top: 55px;
   border-radius: 3px;
   display: inline;
-  transition: .8s height ease-out;
+  transition: .5s height ease-out;
+  cursor: pointer;
 }
 
-.link {
-  text-decoration: none;
+.userWin{
+  background: whitesmoke;
+  height: 90px;
+  width: 250px;
+  z-index: 11;
+  position: absolute;
+  border-radius: 3px;
+  left: 86.3%;
+  top: 55px;
+  z-index: 11;
+  display: inline;
+  transition: .5s height ease-out;
 }
+
+.goTo{
+  font-family:  "Lato", "Lucida Grande", "Lucida Sans Unicode";
+  font-size: 11px;
+  margin: 8px;
+  margin-bottom: 3px;
+  color: gray;
+}
+
+.sttngbox{
+  height: 40px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family:  "Lato", "Lucida Grande", "Lucida Sans Unicode";
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.setbox{
+  height: 34px;
+  width: 120px;
+  border-radius: 5px;
+}
+
+.setbox:hover{
+  background: lightgray;
+}
+
+.Profile{
+ height: 30px;
+ display: flex;
+ align-items: center;
+ padding-left: 10px;
+ font-family:  "Lato", "Lucida Grande", "Lucida Sans Unicode";
+ font-size: 14px;
+ cursor: pointer;
+}
+
+.Profile:hover{
+  background: lightgray;
+}
+
+.gearIcon{
+  height: 20px;
+  position: relative;
+  top: 5px;
+  margin-right: 4px;
+}
+
+.logoutIcon{
+  height: 20px;
+  position: relative;
+  top: 5px;
+  margin-right: 4px;
+}
+

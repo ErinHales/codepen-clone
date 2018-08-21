@@ -1,6 +1,23 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 class Profile extends Component {
+  constructor(){
+    super()
+    this.state = {
+      user: {}
+    }
+
+  }
+
+  componentDidMount(){
+    axios.get('/api/users').then(res => {
+      this.setState({
+        user:res.data
+      })
+      console.log(res.data)
+    })
+  }
 
   render() {
     return (
@@ -19,17 +36,17 @@ class Profile extends Component {
         </div>
 
         <div className='EditP'>
-          <h1>Edit Profile</h1>
+          <h1 onClick={() => this.props.history.push('/account')}>Edit Profile</h1>
         </div>
 
         <div className='UserInfo'>
           <div>
-            <h1 className='UserName'>UserName</h1>
-            <p className='Name2'>@abcd123</p>
+            <h1 className='UserName'>{this.state.user.username}</h1>
+            <p className='Name2'>{this.state.user.email}</p>
             <div className='UserPic'>
-              <h2>Image</h2>
+              {/* <img src={user.image} alt=""/> */}
             </div>
-            <h3>City, State</h3>
+              <h3 className='Name2'>{this.state.user.name}</h3>
           </div>
         </div>
 
