@@ -18,8 +18,8 @@ export default class SearchBar extends Component {
     render() {
         let {selected} = this.state;
         return (
-            <div className="searchBar">
-                <input type="text" placeholder="Search" autofocus />
+            <div className="searchBar" style={{display: this.props.display}}>
+                <input type="text" placeholder="Search" autoFocus />
                 <div>
                     <button onClick={() => this.updateSelected('pens')} style={{color: selected === "pens" ? "white" : "#757575"}}>Pens</button>
                     <button onClick={() => this.updateSelected('users')} style={{color: selected === "users" ? "white" : "#757575"}}>Users</button>
