@@ -10,13 +10,15 @@ import Comments from './components/Comments/Comments';
 import SearchBar from './components/SearchBar/SearchBar';
 import { Switch, Route } from 'react-router-dom'
 import PenSettings from './components/PenSettings/PenSettings';
+import Showcase from './components/Account/Showcase';
+import Account from './components/Account/account';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <NavBar />
-        <SearchBar />
+        {/* <SearchBar />
         <Switch>
           <Route exact path="/" component={Login} />
           <Route path="/signup" component={SignUp} />
@@ -24,7 +26,8 @@ class App extends Component {
           <Route path="/pens" component={Pens} />
           <Route path="/profile" component={Profile} />
           <Route path="/comments" component={Comments} />
-        </Switch>
+        </Switch> */}
+        {/* <Showcase /> */}
       </div>
     );
   }

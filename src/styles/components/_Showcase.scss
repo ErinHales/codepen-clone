@@ -1,0 +1,137 @@
+.component-showcase {
+    background-color: $bg-dark-black;
+    min-height: 100vh;
+    padding-top: 3.25rem;
+    .showcase-container {
+        border: 1px solid red;
+        width: 97%;
+        margin: 0 auto;
+        .showcase-grid {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            .row {
+                display: flex;
+            }
+            .row:last-child {
+                margin-top: 1rem;
+            }
+            .grid-item {
+                height: 150px;
+                width: 32%;
+                margin-bottom: 1rem;
+            }
+            .grid-item:nth-child(3n+2) {
+                margin: 0 2%;
+            }
+            img {
+                height: 100%;
+                width: 100%;
+                border-radius: 8px;
+            }
+        }
+        .header {
+            text-align: center;
+            h1 {
+                font-size: 2.5rem;
+                color: $text-white;
+                margin-bottom: 0.5rem;
+            }
+            p {
+                color: $text-grey;
+            }
+        }
+        .showcase-body-container {
+            margin-top: 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            .showcase-header {
+                color: $text-white;
+                text-align: center;
+                border-bottom: 3px solid $text-grey;
+                padding-bottom: 8px;
+                h2 {
+                    font-size: 1.75rem;
+                }
+                p {
+                    font-size: 0.9rem;
+                    margin-bottom: 0.25rem;
+                }
+            }
+            .showcase-pens {
+                // border: 2px solid yellow;
+                width: 45%;
+                border: 1px solid red;
+                height: 100%;
+                background-color: $dark-blue-gray;
+                padding: 20px;
+                border-radius: 5px;
+            }
+            .showcase-layout {
+                width: 47%;
+                background-color: $dark-blue-gray;
+                padding: 20px;
+                border-radius: 5px;
+                .showcase-layout-container {
+                    margin-top: 0.5rem;
+                    .grid-item,
+                    .showcase-main {
+                        border: 1px dashed $text-grey;
+                    }
+                    .grid-item{
+                        width: 31%; 
+                        margin-bottom: 1.5rem;
+                    }
+                    .showcase-main {
+                        width: 100%;
+                        height: 269px;
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                }
+                .delete-container {
+                    text-align: center;
+                    margin-top: 3rem;
+                    margin-bottom: 2rem;
+                    p,
+                    i {
+                        color: $text-white;
+                    }
+                    i {
+                        font-size: 4rem;
+                        margin-bottom: 0.25rem;
+                    }
+                }
+            }
+            .showcase-box {
+                width: 98%;
+                margin: 0 auto;
+                .showcase-filter {
+                    border: 1px solid blue;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-top: 0.75rem;
+                    .filter-links {
+                        display: flex;
+                        p {
+                            color: $text-white;
+                            font-size: 1.25rem;
+                        }
+                        p:last-child {
+                            margin-left: 10px;
+                        }
+                    }
+                    .filter-box {
+                        input {
+                            border-radius: 5px;
+                            padding: 8px 4px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
