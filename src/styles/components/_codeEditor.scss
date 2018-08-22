@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
+.themeSelector {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
 $primary-black: #1D1E22;
 $med-gray: #36383F;
 $light-gray: #C5C8D4;
@@ -80,7 +86,7 @@ $light-gray: #C5C8D4;
 }
 
 span {
-    font-size: 10px;
+    font-size: 15px;
 }
 
 .CodeMirror-gutters {

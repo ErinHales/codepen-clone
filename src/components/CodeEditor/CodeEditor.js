@@ -22,7 +22,8 @@ export default class CodeEditor extends Component {
             css:  '',
             html: '',
             js: '',
-            userid: null
+            userid: null,
+            theme: "abcdef"
         }
     }
 
@@ -56,6 +57,12 @@ export default class CodeEditor extends Component {
 
     componentDidMount() {
         axios.put(`/api/pen/view/${this.props.match.params.id}/${this.state.userid}`).catch(console.error());
+    }
+
+    updateTheme = (e) => {
+        this.setState({
+            theme: e.target.value
+        })
     }
 
     penData = () => {
@@ -157,6 +164,48 @@ export default class CodeEditor extends Component {
         let srcdoc = `${this.state.html}<style>${this.state.css}</style><script>${this.state.js}</script>`;
         return (
             <div className="codeEditor">
+            <select className="themeSelector" onChange={(e) => this.updateTheme(e)}>
+                <option value="abcdef">abcdef</option>
+                <option value="ambiance">ambiance</option>
+                <option value="base16-dark">base16-dark</option>
+                <option value="bespin">bespin</option>
+                <option value="blackboard">blackboard</option>
+                <option value="cobalt">cobalt</option>
+                <option value="colorforth">colorforth</option>
+                <option value="dracula">dracula</option>
+                <option value="duotone-dark">duotone-dark</option>
+                <option value="erlang-dark">erlang-dark</option>
+                <option value="gruvbox-dark">gruvbox-dark</option>
+                <option value="hopscotch">hopscotch</option>
+                <option value="isotope">isotope</option>
+                <option value="lesser-dark">lesser-dark</option>
+                <option value="liquibyte">liquibyte</option>
+                <option value="lucario">lucario</option>
+                <option value="material">material</option>
+                <option value="mbo">mbo</option>
+                <option value="mdn-like">mdn-like</option>
+                <option value="midnight">midnight</option>
+                <option value="monokai">monokai</option>
+                <option value="night">night</option>
+                <option value="oceanic-next">oceanic-next</option>
+                <option value="panda-syntax">panda-syntax</option>
+                <option value="paraiso-dark">paraiso-dark</option>
+                <option value="pastel-on-dark">pastel-on-dark</option>
+                <option value="railscasts">railscasts</option>
+                <option value="rubyblue">rubyblue</option>
+                <option value="seti">seti</option>
+                <option value="shadowfox">shadowfox</option>
+                <option value="the-matrix">the-matrix</option>
+                <option value="tomorrow-night-bright">tomorrow-night-bright</option>
+                <option value="tomorrow-night-eighties">tomorrow-night-eighties</option>
+                <option value="twilight">twilight</option>
+                <option value="vibrant-ink">vibrant-ink</option>
+                <option value="xq-dark">xq-dark</option>
+                <option value="yeti">yeti</option>
+                <option value="zenburn">zenburn</option>
+
+                <option value="xq-light">xq-light</option>
+            </select>
             {this.state.showPopUp ? popUp : null}
                 <div className="editorHead">
                 <section className="editorSection">
@@ -182,9 +231,9 @@ export default class CodeEditor extends Component {
                 </section>
                 </div>
                 { this.state.html !== null ? <div className="editor">
-                    <HTML updateHTML={this.updateHTML} html={this.state.html} />
-                    <CSS updateCSS={this.updateCSS} css={this.state.css} />
-                    <JavaScript updateJS={this.updateJS} js={this.state.js} />
+                    <HTML updateHTML={this.updateHTML} html={this.state.html} theme={this.state.theme} />
+                    <CSS updateCSS={this.updateCSS} css={this.state.css} theme={this.state.theme} />
+                    <JavaScript updateJS={this.updateJS} js={this.state.js} theme={this.state.theme} />
                 </div> : null }
                 <div className="verticalResize"></div>
                 <iframe className="penFrame" srcDoc={srcdoc} frameBorder="0" title="showPen"></iframe>

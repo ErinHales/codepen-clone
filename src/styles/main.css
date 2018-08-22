@@ -304,6 +304,11 @@
     box-shadow: 0 0 0 1px #34c864;
     transform: translateY(1px) translateZ(0); }
 
+.themeSelector {
+  position: absolute;
+  top: 0px;
+  left: 0px; }
+
 .codeEditor {
   overflow: hidden; }
 
@@ -366,7 +371,7 @@
   cursor: col-resize; }
 
 span {
-  font-size: 10px; }
+  font-size: 15px; }
 
 .CodeMirror-gutters {
   margin-right: 30px;
@@ -1514,7 +1519,7 @@ Link {
 
 .searchBar {
   width: 100vw;
-  height: 200px;
+  height: 0px;
   z-index: 30;
   overflow: hidden;
   position: absolute;
