@@ -11,7 +11,7 @@ export default class CSS extends Component {
             mode: 'css',
             autoCloseTags: true,
             autoCloseBrackets: true,
-            theme: 'abcdef'
+            theme: this.props.theme
         };
 
         return (

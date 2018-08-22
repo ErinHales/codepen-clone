@@ -1,9 +1,46 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
+.themeSelector {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
 $primary-black: #1D1E22;
 $med-gray: #36383F;
 $light-gray: #C5C8D4;
+.codeEditor {
+    overflow: hidden;
+    // overflow-y: hidden;
+    
+}
 
+.signup-popup {
+    position: absolute;
+    z-index: 600;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    
+    .signup-popup-overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        z-index: 601;
+        background-color: rgba(0, 0, 0, 0.349);
+
+    }
+    .signup-popup-form-container {
+        top: -30px;
+        margin: auto;
+        z-index: 602;
+        width: 720px;
+        position: relative;
+        transform: scale(.8);
+    }
+}
 .editor {
     display: flex;
     text-align: left; 
@@ -33,7 +70,6 @@ $light-gray: #C5C8D4;
 
 .CodeMirror-scroll {
     width: 33.3vw;
-    background-color: $primary-black;
     padding-top: 30px;
 }
 
@@ -49,19 +85,19 @@ $light-gray: #C5C8D4;
 }
 
 span {
-    font-size: 10px;
+    font-size: 15px;
 }
 
 .CodeMirror-gutters {
     margin-right: 30px;
-    background-color: $primary-black !important;
+    padding-right: 20px;
     border: none !important;
 }
 
 .CodeMirror-linenumber {
     font-size: 10px;
-    color: $med-gray !important;
     line-height: 2;
+    margin-left: 5px;
 }
 
 .CodeMirror-hscrollbar {
@@ -87,6 +123,11 @@ span {
 
 .CodeMirror-vscroll {
     width: 0px !important;
+}
+
+.CodeMirror-line {
+    position: relative;
+    left: 10px;
 }
 
 .penFrame {
@@ -166,6 +207,4 @@ span {
     background-color: #ED5151;
 }
 
-.codeEditor {
-    overflow-y: hidden;
-}
+

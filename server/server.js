@@ -32,12 +32,19 @@ const userCntrl = require('./controllers/userController')
 const penCntrl = require('./controllers/penController')
 const interfaceCntrl = require('./controllers/interfaceController')
 const statsCntrl = require('./controllers/statsController')
+const comCntrl = require('./controllers/commentsController');
 
 // Sign a user up
 app.post('/api/auth/register', (req, res) => loginCntrl.registerUser(req, res, bcrypt));
 // Check when the user is loggin in
 app.post('/api/auth/login', (req, res) => loginCntrl.getUser(req, res, bcrypt))
 
+
+//LOGOUT 
+app.get('/api/auth/logout', (req, res) => {
+    req.session.destroy()
+    res.redirect('http://localhost:3000/#/')
+})
 
 
 // USER
@@ -76,21 +83,43 @@ app.get('/api/pen/:penId', penCntrl.getPen)
 app.post('/api/pen/', penCntrl.postPen)
 
 // all data, including the id, to be updated will exist on the body of the request
-app.put('/api/pen/', penCntrl.updatePen)
+app.put('/api/pen/:penId', penCntrl.updatePen)
 
 // takes penid and the scripts, comments, likes, and pen associated with penid
 app.delete('/api/pen/:penId', penCntrl.deletePen)
 
 // STATS
 
+//get stats for a pen
+app.get('/api/stats/:penId', statsCntrl.getStats)
+
 // add a like to the likes table
-app.post('/api/pen/like/:penId/:userId', statsCntrl.addLike)
+app.post('/api/pen/like/:penId', statsCntrl.addLike)
+app.put(`/api/stats/love/:penId`, statsCntrl.updateLike)
+
+// get pens that a user has liked
+app.get('/api/loved/pens/:penId', statsCntrl.get_loved)
 
 // remove a like from the like table
-app.delete('/api/pen/like/:penId/:userId', statsCntrl.removeLike)
+app.delete('/api/pen/like/:penId', statsCntrl.removeLike) 
 
-//increment view by one for each unique user
+//get likes
+app.get('/api/pen/likes/:penId', penCntrl.getLikes)
+
+//increment view by one for each view
 app.put('/api/pen/view/:penId/:userId', statsCntrl.incrementView)
+
+//update number of comments
+app.put('/api/stats/comments/:penId', statsCntrl.addComment)
+
+
+// COMMENTS
+
+// get all comments for a pen
+app.get('/api/pen/comments/:penId', comCntrl.getComments)
+
+// post comment
+app.post('/api/pen/comment/:penId', comCntrl.comment)
 
 
 

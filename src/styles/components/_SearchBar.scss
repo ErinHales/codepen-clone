@@ -1,22 +1,33 @@
 .searchBar {
     width: 100vw;
-    height: 0px;
+    height: 200px;
+    z-index: 30;
     overflow: hidden;
     position: absolute;
     top: 65px;
-    padding: 0px 50px;
-    background-image: linear-gradient(rgba(34,34,34,1), rgba(34,34,34,1), rgba(34,34,34,1), rgba(34,34,34,0.7), rgba(34,34,34,0));
+    padding: 20px 0px 10px 100px;
+    background-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,1), rgba(0,0,0,1), rgba(0,0,0,0.8), rgba(0,0,0,0.4), rgba(0,0,0,0));
     color: #757575;
     input {
+        z-index: 60;
         background-color: transparent;
         border: none;
         font-size: 70px;
         font-weight: bold;
+        outline: none;
     }
     div {
         display: flex;
-        h5 {
-            margin: 20px;
+        button {
+            margin: 10px 20px 10px 0px;
+            font-size: 20px;
+            font-family: "Lato", sans-serif;
+            background-color: transparent;
+            border: none;
+        }
+        button:hover {
+            color: white;
+            cursor: pointer;
         }
     }
 }

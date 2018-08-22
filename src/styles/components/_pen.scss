@@ -19,7 +19,9 @@ $light-gray: #C5C8D4;
 }
 
 .pens-sizing-container {
-    max-width: 1500px;
+    width: 100%;
+    overflow-x: hidden;
+    // max-width: 1500px;
 }
 
 .pensView {
@@ -52,6 +54,7 @@ $light-gray: #C5C8D4;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    // overflow-y: hidden;
     justify-content: space-around;
 }
 
@@ -158,10 +161,10 @@ $light-gray: #C5C8D4;
     margin-bottom: 12px;
 }
 
-.penPopularity img {
-    width: 10px;
-    height: 10px;
-    margin: 0px 10px;
+.penPopularity .fa {
+    color: lightgray;
+    font-size: 15px;
+    margin: 10px;
     cursor: pointer;
 }
 
