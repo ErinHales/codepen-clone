@@ -17,8 +17,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <PenSettings /> */}
-          <NavBar />
+        <PenSettings />
+          {/* <NavBar />
         <SearchBar />
         <Switch>
           <Route exact path="/" component={Login} />
@@ -30,7 +30,7 @@ class App extends Component {
           <Route path="/comments/:id" component={Comments} />
           <Route path="/account" component={Account} />
           <Route path="/about" component={About}/>
-        </Switch>
+        </Switch> */}
       </div>
     );
   }

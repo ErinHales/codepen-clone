@@ -1,12 +1,11 @@
 import React from 'react';
 
 export default function PenSettingsNav(props) {
-    console.log(props)
     return (
         <div>
             <div className="pen-settings-nav-header">
                 <h1 className="pen-settings-nav-title">Pen Settings</h1>
-                <button className="pen-settings-nav-close">Close</button>
+                <button onClick={props.closeSettingsNav} className="pen-settings-nav-close">Close</button>
             </div>
             <div className="pen-settings-nav-selection">
                 <button className={`pen-settings-nav-selection-button ${props.htmlPage ? ' selected' : ''}`} onClick={() => props.pageHandler('html')}>HTML</button>
