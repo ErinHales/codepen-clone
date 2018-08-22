@@ -90,13 +90,14 @@ span {
 
 .CodeMirror-gutters {
     margin-right: 30px;
-    padding-right: 5px;
+    padding-right: 20px;
     border: none !important;
 }
 
 .CodeMirror-linenumber {
     font-size: 10px;
     line-height: 2;
+    margin-left: 5px;
 }
 
 .CodeMirror-hscrollbar {
@@ -122,6 +123,11 @@ span {
 
 .CodeMirror-vscroll {
     width: 0px !important;
+}
+
+.CodeMirror-line {
+    position: relative;
+    left: 10px;
 }
 
 .penFrame {

@@ -14,7 +14,6 @@ export default class Pen extends Component {
     componentDidMount() {
         if (this.props.id) {
             axios.get(`/api/loved/pens/${this.props.id}`).then(response => {
-                console.log(response);
                 this.setState({
                     loved: response.data
                 })

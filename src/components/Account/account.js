@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Dropzone from 'react-dropzone';
 import customizeImg from './img-customize.svg';
+import EditorSettings from './EditorSettings';
 import axios from 'axios';
 class Account extends Component {
     constructor() {
         super();
         this.state = {
             imgUrl: '',
-            wordCount: 0
+            wordCount: 0,
+            page: "profile"
         }
     }
 
@@ -45,6 +47,13 @@ class Account extends Component {
             })
         });
     }
+
+    updatePage(val) {
+        this.setState({
+            page: val
+        })
+    }
+
     render() {
         return (
             <div className="component-account">
@@ -56,11 +65,13 @@ class Account extends Component {
                         <div className="account-links">
                             {/* <Link path='/settings/profile'>Profile</Link>
                         <Link path='/settings/Account'>Account</Link> */}
-                            <p>Profile</p>
-                            <p>Account</p>
-                            <p>Editor</p>
+                            <p onClick={() => this.updatePage("profile")}>Profile</p>
+                            <p onClick={() => this.updatePage("account")}>Account</p>
+                            <p onClick={() => this.updatePage("editor")}>Editor</p>
                         </div>
                     </div>
+                    {this.state.page === "editor" ? <EditorSettings /> : null }
+                    {this.state.page === "profile" ? (
                     <div className="account-grid">
                         <div className="account-avatar">
                             <div className="img-placeholder">
@@ -164,6 +175,7 @@ class Account extends Component {
                             </div>
                         </div>
                     </div>
+                    ) : null}
                 </div>
             </div>
         )
