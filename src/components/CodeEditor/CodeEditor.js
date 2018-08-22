@@ -34,23 +34,24 @@ export default class CodeEditor extends Component {
                 }
             })
         const { id } = this.props.match.params
-        if(id) {
-            this.setState({
-                css: null,
-                html: null,
-                js: null
-            })
-            axios.get(`/api/pen/${id}`).then(response => {
-                console.log(response);
-                this.setState({
-                    css: response.data.css,
-                    html: response.data.html,
-                    js: response.data.js,
-                    name: response.data.name,
-                    userid: response.data.userid
+            axios.get(`/api/pen/${id}`)
+                .then(response => {
+                    if(id) {
+                        this.setState({
+                            css: null,
+                            html: null,
+                            js: null
+                        })
+                    }
+                    this.setState({
+                        css: response.data.css,
+                        html: response.data.html,
+                        js: response.data.js,
+                        name: response.data.name
+                    })
                 })
-            })
-        }
+                .catch()
+    
     }
 
     componentDidMount() {
@@ -132,6 +133,11 @@ export default class CodeEditor extends Component {
     popUpSwitch = () => {
         this.setState({showSignUp: !this.state.showSignUp})
     }
+    deletePen = () => {
+        axios.delete(`/api/pen/${this.props.match.params.id}`)
+            .then()
+            .catch(console.error)
+    }
 
     render() {
         const popUp = (
@@ -185,7 +191,7 @@ export default class CodeEditor extends Component {
                 <div className="penFooter">
                     <button>Console</button>
                     <button onClick={() => this.savePen()}>Save</button>
-                    <button className="delete">Delete</button>
+                    <button onClick={this.deletePen} className="delete">Delete</button>
                 </div>
             </div>
         )
