@@ -9,9 +9,10 @@ import Login from './components/Login/Login';
 import Comments from './components/Comments/Comments';
 import SearchBar from './components/SearchBar/SearchBar';
 import Account from './components/Account/account';
-import { Switch, Route } from 'react-router-dom'
-import PenSettings from './components/PenSettings/PenSettings';
-import About from './components/About/About'
+import { Switch, Route } from 'react-router-dom';
+// import PenSettings from './components/PenSettings/PenSettings';
+import Footer from './components/Footer/Footer';
+import About from './components/About/About';
 
 class App extends Component {
   render() {
@@ -31,6 +32,7 @@ class App extends Component {
           <Route path="/account" component={Account} />
           <Route path="/about" component={About}/>
         </Switch>
+        <Footer />
       </div>
     );
   }

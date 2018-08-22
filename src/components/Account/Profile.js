@@ -137,7 +137,7 @@ class Profile extends Component {
           <button className='pagination' onClick={() => this.nextPage()}>Next <i className="fa fa-angle-right"></i></button>
 
         </div>
-        <Footer />
+        {/* <Footer /> */}
 
       </div>
     )
