@@ -27,9 +27,9 @@ class Login extends Component {
                     if (this.props.closePopUp) {
                         this.props.closePopUp(true)
                     }
-                    // else {
-                    //    window.location.hash = "#/pens"
-                    // }
+                    else {
+                       window.location.hash = "#/pens"
+                    }
                 }
                 // The user got their username/email or password wrong
                 else {

@@ -14,7 +14,6 @@ export default class Pen extends Component {
     componentDidMount() {
         if (this.props.id) {
             axios.get(`/api/loved/pens/${this.props.id}`).then(response => {
-                console.log(response);
                 this.setState({
                     loved: response.data
                 })
@@ -50,7 +49,7 @@ export default class Pen extends Component {
                     <div className="overlayContainer">
                         <div className="overlayContainer">
                             <div className="pen-iframe-container">
-                                <iframe scrolling="no" className="pen-iframe" srcDoc={srcDoc}></iframe>
+                                <iframe scrolling="no" className="pen-iframe" title={this.props.id} srcDoc={srcDoc}></iframe>
                             </div>
                             <div className="overlay">
                                 <div className="text">This is a description a very long description thei aslfkjas fl sfas flk f sf aslkfj sdlfk sf  f sfkl sfkljs dfk f dksf kasldf sl;fd sl;df sf ksf lksf </div>

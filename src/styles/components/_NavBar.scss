@@ -226,7 +226,8 @@
 }
 
 .createWindow:hover{
-  background-color: #EFF0F5;
+  // background: rgb(206, 204, 204);
+  background-color: #C8C8C8;
   cursor: pointer;
 }
 
@@ -254,12 +255,13 @@
 }
 
 .createWin{
+  transition: all 0.1s linear;
   height: 51px;
   width: 250px;
-  background: rgb(206, 204, 204);
+  background-color: #EFF0F5;
   position: absolute;
   z-index: 110;
-  left: 78.2%;
+  right: 162px;
   top: 55px;
   border-radius: 3px;
   display: inline;
@@ -274,8 +276,8 @@
   z-index: 11;
   position: absolute;
   border-radius: 3px;
-  left: 5%;
-  top: 50px;
+  right: 0px;
+  top: 55px;
   z-index: 11;
   display: inline;
   transition: .1s height ease-out;
@@ -351,3 +353,7 @@
   margin-left: 25px;
 }
 
+.goToLink {
+  color: black;
+  text-decoration: none;
+}

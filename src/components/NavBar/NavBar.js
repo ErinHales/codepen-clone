@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import UserPic from './components/UserPic'
 import SignUpBtn from './components/SignUpBtn'
 import { withRouter } from 'react-router-dom'
+import SearchBar from '../SearchBar/SearchBar';
+import axios from 'axios'
 
 
 class NavBar extends Component {
@@ -11,6 +13,9 @@ class NavBar extends Component {
     super()
     this.state = {
       togglePenWindow: false,
+      id: '',
+      user: '',
+      search: false
     }
 
   }
@@ -40,6 +45,19 @@ class NavBar extends Component {
   }
 
   
+  toggleSearch = () => {
+    if(this.state.search === false) {
+      this.setState({
+        search: true
+      })
+    } else {
+      this.setState({
+        search: false
+      })
+    }
+  }
+
+
   render() {
     console.log(this.props.match)
     return (
@@ -87,9 +105,9 @@ class NavBar extends Component {
             </div>
 
 
-            <div className='divMag'>
+            <button className='divMag' onClick={() => this.toggleSearch()}>
               <img className='mag' src="https://www.shareicon.net/download/2015/09/25/107005_find_512x512.png" alt="magnifier" />
-            </div>
+            </button>
 
             <div>
               {this.componentChange()}
@@ -98,7 +116,7 @@ class NavBar extends Component {
           </div>
 
 
-          <div className={this.state.showNav ? 'show-nav createWin' : 'show-nav'}>
+          <div className={this.state.showNav ? 'show-nav createWin' : 'show-nav'} onClick={() => this.toggleNav()}>
             <div className='createWindow'>
               <h2 className='newPen' onClick={() => this.postPen()}> <img className='icon1' src={templateIcon} alt="" /> New Pen</h2>
             </div>
@@ -106,6 +124,7 @@ class NavBar extends Component {
 
 
         </nav>
+        {this.state.search ? <SearchBar /> : null}
       </div>
     )
   }
