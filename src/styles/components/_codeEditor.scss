@@ -70,7 +70,6 @@ $light-gray: #C5C8D4;
 
 .CodeMirror-scroll {
     width: 33.3vw;
-    background-color: $primary-black;
     padding-top: 30px;
 }
 
@@ -91,13 +90,12 @@ span {
 
 .CodeMirror-gutters {
     margin-right: 30px;
-    background-color: $primary-black !important;
+    padding-right: 5px;
     border: none !important;
 }
 
 .CodeMirror-linenumber {
     font-size: 10px;
-    color: $med-gray !important;
     line-height: 2;
 }
 
