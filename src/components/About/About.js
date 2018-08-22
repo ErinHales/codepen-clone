@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import Footer from '../Footer/Footer'
 import Alan from './Alan.png'
 import Erin from './Erin.PNG'
 import Michael from './Michael.PNG'
 import Anthony from './Anthony.jpg'
+import NavBar from '../NavBar/NavBar'
 
 
 class About extends Component {
@@ -11,6 +11,7 @@ class About extends Component {
   render() {
     return (
       <div>
+        <NavBar/>
         <div className='Backgrnd'>
           <div className='contact'>
             <h1 className='About'>About <br /> ClonePen</h1>
@@ -62,7 +63,6 @@ class About extends Component {
           </div>
 
         </div>
-        {/* <Footer /> */}
       </div>
     )
   }

@@ -219,9 +219,9 @@
 .userIcon{
   height: 44px;;
   width: 44px;
-  background: gray;
   border-radius: 3px;
   margin-left: 15px;
+  z-index: 2;
   cursor: pointer;
 }
 
@@ -274,8 +274,8 @@
   z-index: 11;
   position: absolute;
   border-radius: 3px;
-  left: 86.3%;
-  top: 55px;
+  left: 5%;
+  top: 50px;
   z-index: 11;
   display: inline;
   transition: .1s height ease-out;
@@ -342,3 +342,12 @@
   width: 44px;
   border-radius: 5px;
 }
+
+.signUp{
+  height: 45px;
+  width: 80px;
+  background:#36383F;
+  border-radius: 3px;
+  margin-left: 25px;
+}
+

@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import templateIcon from './tempsnip.jpg'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+import UserPic from './components/UserPic'
+import SignUpBtn from './components/SignUpBtn'
+import { withRouter } from 'react-router-dom'
 
 
 class NavBar extends Component {
@@ -9,11 +11,8 @@ class NavBar extends Component {
     super()
     this.state = {
       togglePenWindow: false,
-      id: '',
-      user: ''
     }
 
-    this.logout = this.logout.bind(this);
   }
   toggleNav() {
     this.setState({
@@ -21,51 +20,28 @@ class NavBar extends Component {
     })
   }
 
-  toggleUserNav() {
-    this.setState({
-      userWindow: !this.state.userWindow
-    })
-  }
 
   postPen() {
     window.location.hash = "#/editor"
-    this.toggleNav() 
+    this.toggleNav()
   }
 
-  logout(){
-    axios.get('/api/logout').then(() => {
-      this.setState({user: ''});
-      this.toggleUserNav()
-      this.userAvatar()
-    })
-  }
-
-  componentDidMount(){
-    axios.get('/api/users').then(res => {
-      this.setState({
-        user:res.data
-      })
-    })
-  }
-
-  userAvatar(){
-    if(this.state.user.img_url === null){
+  componentChange(){
+    if(this.props.match.path !== '/'){
       return(
-        <img className='nav-avatar' src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/default-avatar.png' alt=''/>
+        <UserPic/>
       )
-    }else if(this.state.user === ''){
+    }else if(this.props.match.path === '/'){
       return(
-        <img className='nav-avatar' src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/default-avatar.png' alt=''/>
-      )
-    }else{
-      return(
-        <img className='nav-avatar' src={this.state.user.img_url} alt=''/>
+        <SignUpBtn/>
       )
     }
+    
   }
-  
+
   
   render() {
+    console.log(this.props.match)
     return (
       <div className='Nav'>
         <nav className='nav1'>
@@ -96,10 +72,10 @@ class NavBar extends Component {
           </div>
 
           <Link to='/About' className='link'>
-          <div className='divColl'>
-            <h1 className='Coll'>About</h1>
-            <div className='coll-line'></div>
-          </div>
+            <div className='divColl'>
+              <h1 className='Coll'>About</h1>
+              <div className='coll-line'></div>
+            </div>
           </Link>
 
 
@@ -116,12 +92,9 @@ class NavBar extends Component {
             </div>
 
             <div>
-              <img className='bell' src="https://www.applozic.com/assets/resources/lib/images/icon-bell.png" alt="Bell" />
+              {this.componentChange()}
             </div>
-
-            <div className='userIcon' onClick={() => this.toggleUserNav()}>
-            {this.userAvatar()}
-            </div>
+            
           </div>
 
 
@@ -131,22 +104,6 @@ class NavBar extends Component {
             </div>
           </div>
 
-          <div className={this.state.userWindow ? 'show-nav userWin' : 'show-nav'}>
-            <div>
-              <p className='goTo'> Go to...</p>
-              <Link to='/Profile' onClick={() => this.toggleUserNav() }> <h1 className='Profile'> Your Profile</h1> </Link>
-              <div className='sttngbox'>
-                <div className='setbox'>
-                  <h1><img className='gearIcon' src='https://cdn2.iconfinder.com/data/icons/web/512/Cog-512.png' alt='gear' />
-                    Settings</h1>
-                </div>
-                <div className='setbox' onClick={() => this.logout()}>
-                  <h1><img className='logoutIcon' src="https://cdn4.iconfinder.com/data/icons/dashboard-icons/43/icon-logout-512.png" alt="logout" />
-                    Log Out</h1>
-                </div>
-              </div>
-            </div>
-          </div>
 
         </nav>
       </div>
@@ -154,4 +111,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar
+export default withRouter(NavBar)

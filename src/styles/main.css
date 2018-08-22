@@ -869,9 +869,9 @@ span {
 .userIcon {
   height: 44px;
   width: 44px;
-  background: gray;
   border-radius: 3px;
   margin-left: 15px;
+  z-index: 2;
   cursor: pointer; }
 
 .createWindow:hover {
@@ -918,8 +918,8 @@ span {
   z-index: 11;
   position: absolute;
   border-radius: 3px;
-  left: 86.3%;
-  top: 55px;
+  left: 5%;
+  top: 50px;
   z-index: 11;
   display: inline;
   transition: .1s height ease-out; }
@@ -976,6 +976,13 @@ span {
   height: 44px;
   width: 44px;
   border-radius: 5px; }
+
+.signUp {
+  height: 45px;
+  width: 80px;
+  background: #36383F;
+  border-radius: 3px;
+  margin-left: 25px; }
 
 .component-account {
   background-color: #191A1D;
@@ -1368,6 +1375,7 @@ h1 {
   height: 130px; }
 
 .pagination {
+  width: 80px;
   border-radius: 2px;
   background-color: transparent;
   border: 3px solid white;
@@ -1383,7 +1391,7 @@ h1 {
   background: white; }
 
 .nextButtonContainer {
-  width: 100vw;
+  width: 90vw;
   display: flex;
   justify-content: center;
   padding: 20px; }
@@ -1833,3 +1841,25 @@ h1 {
   .pen-settings-cdn-element:hover {
     background-color: black;
     cursor: pointer; }
+
+.signUpButton {
+  height: 45px;
+  width: 84px;
+  border-radius: 3px;
+  color: white;
+  background: #36383F;
+  font-family: 'Lato';
+  margin-left: 24px;
+  cursor: pointer; }
+
+.signUpButton:hover {
+  background: #6e6d6d; }
+
+.signBtn {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center; }
+
+.container {
+  display: flex; }
