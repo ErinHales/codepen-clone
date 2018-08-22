@@ -254,8 +254,6 @@
 }
 
 .createWin{
-  // transition: height 0.5s linear;
-  transition: all 0.1s linear;
   height: 51px;
   width: 250px;
   background: rgb(206, 204, 204);
@@ -265,7 +263,7 @@
   top: 55px;
   border-radius: 3px;
   display: inline;
-  transition: .5s height ease-out;
+  transition: .1s height ease-in-out;
   cursor: pointer;
 }
 
@@ -280,7 +278,7 @@
   top: 55px;
   z-index: 11;
   display: inline;
-  transition: .5s height ease-out;
+  transition: .1s height ease-out;
 }
 
 .goTo{

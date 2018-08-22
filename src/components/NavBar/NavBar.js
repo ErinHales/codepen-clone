@@ -28,12 +28,15 @@ class NavBar extends Component {
   }
 
   postPen() {
-    window.location.hash = "#/editor";
+    window.location.hash = "#/editor"
+    this.toggleNav() 
   }
 
   logout(){
-    axios.post('/api/auth/logout').then(() => {
-      this.setState({user: null});
+    axios.get('/api/logout').then(() => {
+      this.setState({user: ''});
+      this.toggleUserNav()
+      this.userAvatar()
     })
   }
 
@@ -46,7 +49,11 @@ class NavBar extends Component {
   }
 
   userAvatar(){
-    if(this.state.user.img_url === null || ''){
+    if(this.state.user.img_url === null){
+      return(
+        <img className='nav-avatar' src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/default-avatar.png' alt=''/>
+      )
+    }else if(this.state.user === ''){
       return(
         <img className='nav-avatar' src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/default-avatar.png' alt=''/>
       )
@@ -56,8 +63,8 @@ class NavBar extends Component {
       )
     }
   }
-
-
+  
+  
   render() {
     return (
       <div className='Nav'>
@@ -127,7 +134,7 @@ class NavBar extends Component {
           <div className={this.state.userWindow ? 'show-nav userWin' : 'show-nav'}>
             <div>
               <p className='goTo'> Go to...</p>
-              <Link to='/Profile'> <h1 className='Profile'> Your Profile</h1> </Link>
+              <Link to='/Profile' onClick={() => this.toggleUserNav() }> <h1 className='Profile'> Your Profile</h1> </Link>
               <div className='sttngbox'>
                 <div className='setbox'>
                   <h1><img className='gearIcon' src='https://cdn2.iconfinder.com/data/icons/web/512/Cog-512.png' alt='gear' />

@@ -896,7 +896,6 @@ span {
   overflow: hidden; }
 
 .createWin {
-  transition: all 0.1s linear;
   height: 51px;
   width: 250px;
   background: #cecccc;
@@ -906,7 +905,7 @@ span {
   top: 55px;
   border-radius: 3px;
   display: inline;
-  transition: .5s height ease-out;
+  transition: .1s height ease-in-out;
   cursor: pointer; }
 
 .userWin {
@@ -920,7 +919,7 @@ span {
   top: 55px;
   z-index: 11;
   display: inline;
-  transition: .5s height ease-out; }
+  transition: .1s height ease-out; }
 
 .goTo {
   font-family: "Lato", "Lucida Grande", "Lucida Sans Unicode";
@@ -1226,18 +1225,20 @@ span {
 
 .UserInfo {
   height: 300px;
-  width: 200px;
+  width: 400px;
   display: flex;
-  flex-direction: column;
   color: white;
   position: absolute;
-  left: 45%;
-  top: 174px;
+  left: 40%;
+  top: 150px;
+  flex-direction: column;
   align-items: center;
-  text-align: center; }
+  align-content: center;
+  text-align: center;
+  justify-content: center; }
 
 .UserName {
-  font-size: 36px;
+  font-size: 40px;
   margin-bottom: 15px;
   font-family: 'Telex', sans-serif;
   font-weight: 600; }
@@ -1250,10 +1251,9 @@ span {
   height: 130px;
   width: 130px;
   background: #181818;
-  position: relative;
-  left: 16px;
   border: 4px #2e2d2d solid;
-  box-shadow: 1px 1px #1d1c1c; }
+  box-shadow: 1px 1px #1d1c1c;
+  overflow: hidden; }
 
 .Hire {
   font-family: 'Lato', sans-serif;
@@ -1591,12 +1591,12 @@ h1 {
   font-size: 12px; }
 
 .Backgrnd {
-  height: 310vh;
+  height: 175vh;
   width: 100%;
   background: #191A1D;
   display: flex;
-  max-height: 310vh;
-  min-width: 1000px; }
+  min-width: 1000px;
+  background-repeat: repeat; }
 
 .contact {
   height: 390px;

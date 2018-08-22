@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Pen from '../Pen/Pen'
 import axios from 'axios'
 import Footer from '../Footer/Footer'
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Profile extends Component {
   constructor() {
@@ -20,24 +20,24 @@ class Profile extends Component {
       this.setState({
         user: res.data
       })
-    })
-
-    axios.get(`/api/pens/user/3/0?type=new`).then(res => {
-      this.setState({
-        pens: [res.data],
-        currentPage: 0
+      axios.get(`/api/pens/user/${res.data.userid}/0?type=new`).then(res => {
+        this.setState({
+          pens: [res.data],
+          currentPage: 0
+        })
       })
     })
+
   }
 
   userAvatar() {
     if (this.state.user.img_url === null) {
       return (
-        <img className='avatar' src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/default-avatar.png' alt='avatar' />
+        <img className='avatar' src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/default-avatar.png' alt='' />
       )
     } else {
       return (
-        <img className='avatar' src={this.state.user.img_url} alt='avatar' />
+        <img className='avatar' src={this.state.user.img_url} alt='' />
       )
     }
   }
@@ -45,7 +45,7 @@ class Profile extends Component {
 
   nextPage() {
     let { currentPage, pens } = this.state;
-    axios.get(`/api/pens/user/3/${currentPage + 1}?type=new`)
+    axios.get(`/api/pens/user/${this.state.user.userid}/${currentPage + 1}?type=new`)
       .then(res => {
         console.log(res.data);
         if (res.data[0]) {
@@ -62,9 +62,9 @@ class Profile extends Component {
 
   getPrev() {
     this.setState({
-        currentPage: this.state.currentPage - 1
+      currentPage: this.state.currentPage - 1
     })
-}
+  }
 
 
   render() {
@@ -110,14 +110,12 @@ class Profile extends Component {
         </div>
 
         <div className='UserInfo'>
-          <div>
             <h1 className='UserName'>{this.state.user.username}</h1>
             <p className='Name2'>{this.state.user.email}</p>
             <div className='UserPic'>
               {this.userAvatar()}
             </div>
             <h3 className='Name2'>{this.state.user.name}</h3>
-          </div>
         </div>
 
         <div className='Pen-InputWrapper'>
