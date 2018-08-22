@@ -101,12 +101,22 @@
   border: 3px solid white;
   border-radius: 3px;
   font-size: 15px;
+  text-decoration-color: none; 
   cursor: pointer;
 }
 
 .EditP:hover{
   background: whitesmoke;
+  text-decoration: none;
   color: black;
+}
+
+.link1{
+  text-decoration-color: none;
+}
+
+h1{
+  text-decoration: none;
 }
 
 .Pen-InputWrapper{

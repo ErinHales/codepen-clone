@@ -682,7 +682,7 @@ span {
   justify-content: space-between;
   width: 100%; }
 
-Link {
+.link {
   text-decoration-line: none; }
 
 .nav1 {
@@ -1295,11 +1295,19 @@ Link {
   border: 3px solid white;
   border-radius: 3px;
   font-size: 15px;
+  text-decoration-color: none;
   cursor: pointer; }
 
 .EditP:hover {
   background: whitesmoke;
+  text-decoration: none;
   color: black; }
+
+.link1 {
+  text-decoration-color: none; }
+
+h1 {
+  text-decoration: none; }
 
 .Pen-InputWrapper {
   height: 30px;
@@ -1583,11 +1591,12 @@ Link {
   font-size: 12px; }
 
 .Backgrnd {
-  height: 155vh;
+  height: 310vh;
   width: 100%;
   background: #191A1D;
   display: flex;
-  flex-wrap: wrap; }
+  max-height: 310vh;
+  min-width: 1000px; }
 
 .contact {
   height: 390px;
@@ -1595,7 +1604,7 @@ Link {
   background: whitesmoke;
   padding: 35px;
   position: relative;
-  top: 3%;
+  top: 2%;
   left: 10%; }
 
 .About {
@@ -1604,7 +1613,7 @@ Link {
   font-weight: bolder; }
 
 .address {
-  margin-top: 250px;
+  margin-top: 220px;
   font-family: 'Lato', sans-serif;
   color: gray; }
 
@@ -1628,16 +1637,19 @@ Link {
   left: 14%;
   top: 4%;
   line-height: 1.6;
-  font-weight: 200; }
+  font-weight: 200;
+  min-width: 400px; }
 
 .clonePen {
-  color: yellow; }
+  color: yellow;
+  min-width: 500px; }
 
 .divisions {
   height: 350px;
   width: 500px;
   background: #FFDD40;
-  margin: 40px; }
+  margin: 40px;
+  min-width: 330px; }
 
 .divisions1 {
   height: 250px;
@@ -1650,13 +1662,12 @@ Link {
 
 .Devs {
   height: 40vh;
-  width: 100%;
+  width: 95%;
   display: flex;
   flex-wrap: wrap;
-  margin: 30px;
   position: absolute;
   top: 60%;
-  left: 6%; }
+  left: 5%; }
 
 .Pic {
   height: 150px;
@@ -1672,6 +1683,7 @@ Link {
   -webkit-filter: none; }
 
 .devName {
+  width: 300px;
   margin-top: 15px;
   margin-left: 10px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -1681,6 +1693,7 @@ Link {
   top: -30%; }
 
 .coDev {
+  width: 300px;
   margin-left: 10px;
   font-family: 'Lato', sans-serif;
   position: relative;
