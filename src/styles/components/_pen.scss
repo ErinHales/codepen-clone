@@ -19,7 +19,9 @@ $light-gray: #C5C8D4;
 }
 
 .pens-sizing-container {
-    max-width: 1500px;
+    width: 100%;
+    overflow-x: hidden;
+    // max-width: 1500px;
 }
 
 .pensView {
@@ -52,6 +54,7 @@ $light-gray: #C5C8D4;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    // overflow-y: hidden;
     justify-content: space-around;
 }
 

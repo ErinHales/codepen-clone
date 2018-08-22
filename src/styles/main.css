@@ -483,7 +483,8 @@ span {
   align-items: center; }
 
 .pens-sizing-container {
-  max-width: 1500px; }
+  width: 100%;
+  overflow-x: hidden; }
 
 .pensView {
   background-color: #191A1D;
