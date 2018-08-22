@@ -73,7 +73,6 @@ export default class Pens extends Component {
         } else if (!pens[currentPage+1]) {
             axios.get(`/api/pens/user/3/${currentPage + 1}?type=new`)
                 .then(res => {
-                    // console.log([res.data]);
                     if (res.data[0]) {
                         let copy = pens.slice();
                         copy.push(res.data);

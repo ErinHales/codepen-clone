@@ -123,6 +123,13 @@ app.post('/api/pen/comment/:penId', comCntrl.comment)
 
 
 
+// SEARCH
+
+// search all pens by title and description by popularity or currency
+app.get('/api/search/pens/:pageNum', interfaceCntrl.searchPens)
+
+
+
 
 app.listen(SERVER_PORT, () => {
     console.log(`Server is listening on port: ${SERVER_PORT}`);

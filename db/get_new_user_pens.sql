@@ -50,6 +50,7 @@ SELECT
     pens.pen_id, 
     pens.user_id,
     pens.name,
+    pens.description,
     users.name as username,
     users.img_url,
     stats.views,
