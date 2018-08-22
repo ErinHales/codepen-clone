@@ -58,6 +58,7 @@ class Account extends Component {
                         <Link path='/settings/Account'>Account</Link> */}
                             <p>Profile</p>
                             <p>Account</p>
+                            <p>Editor</p>
                         </div>
                     </div>
                     <div className="account-grid">

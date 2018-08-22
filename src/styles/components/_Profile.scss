@@ -17,7 +17,6 @@
 }
 
 .Content{
-  height: 155vh;
   width: 100%;
   background: #191A1D;
 }
@@ -122,16 +121,19 @@ h1{
 
 .Pen-InputWrapper{
   height: 30px;
-  width: 60%;
+  width: 78%;
   font-family: 'Lato', sans-serif;
   font-size: 18px;
   display: flex;
   align-items: flex-end;
   color: gray;
-  margin-left: 20px;
-  position: relative;
-  left: 18%;
-  top: 6%;
+  margin: 30px 0px;
+  display: flex;
+  justify-content: space-between;
+  div {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .Pens2{
@@ -154,35 +156,26 @@ h1{
   border-radius: 4px;
   z-index: 8;
   position: relative;
-  left: 70%;
-  top: 60px;
+  top: 10px;
 }
 
 .ligthgray-line{
   height: 5px;
-  width: 60.2%;
+  width: 80%;
   background: gray;
-  position: relative;
-  left: 19%;
-  top: 5%;
 }
 
 .gray-line{
   height: 50px;
-  width: 60.2%;
+  width: 80%;
   background: #252527;
-  position: relative;
-  left: 19%;
-  top: 5%;
+  margin-bottom: 20px;
 }
 
 .Pen-window{
   height: 600px;
-  width: 60.2%;
+  width: 80%;
   border-radius: 10px;
-  position: relative;
-  top: 6%;
-  left: 19%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around
@@ -208,4 +201,20 @@ h1{
 .pagination:hover{
   color: black;
   background: white
+}
+
+.nextButtonContainer {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+}
+
+.link:hover {
+  color: black;
 }

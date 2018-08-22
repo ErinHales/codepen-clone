@@ -11,7 +11,7 @@ export default class JavaScript extends Component {
             mode: 'javascript',
             autoCloseTags: true,
             autoCloseBrackets: true,
-            theme: 'abcdef'
+            theme: this.props.theme
         };
         return (
             <div>

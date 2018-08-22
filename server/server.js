@@ -95,15 +95,22 @@ app.get('/api/stats/:penId', statsCntrl.getStats)
 
 // add a like to the likes table
 app.post('/api/pen/like/:penId', statsCntrl.addLike)
+app.put(`/api/stats/love/:penId`, statsCntrl.updateLike)
+
+// get pens that a user has liked
+app.get('/api/loved/pens/:penId', statsCntrl.get_loved)
 
 // remove a like from the like table
-app.delete('/api/pen/like/:penId/:userId', statsCntrl.removeLike)
+app.delete('/api/pen/like/:penId', statsCntrl.removeLike) 
 
 //get likes
 app.get('/api/pen/likes/:penId', penCntrl.getLikes)
 
-//increment view by one for each unique user
+//increment view by one for each view
 app.put('/api/pen/view/:penId/:userId', statsCntrl.incrementView)
+
+//update number of comments
+app.put('/api/stats/comments/:penId', statsCntrl.addComment)
 
 
 // COMMENTS

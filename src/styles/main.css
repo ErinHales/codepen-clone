@@ -304,6 +304,11 @@
     box-shadow: 0 0 0 1px #34c864;
     transform: translateY(1px) translateZ(0); }
 
+.themeSelector {
+  position: absolute;
+  top: 0px;
+  left: 0px; }
+
 .codeEditor {
   overflow: hidden; }
 
@@ -353,7 +358,6 @@
 
 .CodeMirror-scroll {
   width: 33.3vw;
-  background-color: #1D1E22;
   padding-top: 30px; }
 
 .CodeMirror-gutter {
@@ -366,16 +370,15 @@
   cursor: col-resize; }
 
 span {
-  font-size: 10px; }
+  font-size: 15px; }
 
 .CodeMirror-gutters {
   margin-right: 30px;
-  background-color: #1D1E22 !important;
+  padding-right: 5px;
   border: none !important; }
 
 .CodeMirror-linenumber {
   font-size: 10px;
-  color: #36383F !important;
   line-height: 2; }
 
 .CodeMirror-hscrollbar {
@@ -598,10 +601,10 @@ span {
   margin: 10px;
   margin-bottom: 12px; }
 
-.penPopularity img {
-  width: 10px;
-  height: 10px;
-  margin: 0px 10px;
+.penPopularity .fa {
+  color: lightgray;
+  font-size: 15px;
+  margin: 10px;
   cursor: pointer; }
 
 #displayUserName {
@@ -1219,7 +1222,6 @@ span {
   min-width: 300px; }
 
 .Content {
-  height: 155vh;
   width: 100%;
   background: #191A1D; }
 
@@ -1311,16 +1313,18 @@ h1 {
 
 .Pen-InputWrapper {
   height: 30px;
-  width: 60%;
+  width: 78%;
   font-family: 'Lato', sans-serif;
   font-size: 18px;
   display: flex;
   align-items: flex-end;
   color: gray;
-  margin-left: 20px;
-  position: relative;
-  left: 18%;
-  top: 6%; }
+  margin: 30px 0px;
+  display: flex;
+  justify-content: space-between; }
+  .Pen-InputWrapper div {
+    display: flex;
+    align-items: center; }
 
 .Pens2 {
   color: white;
@@ -1339,32 +1343,23 @@ h1 {
   border-radius: 4px;
   z-index: 8;
   position: relative;
-  left: 70%;
-  top: 60px; }
+  top: 10px; }
 
 .ligthgray-line {
   height: 5px;
-  width: 60.2%;
-  background: gray;
-  position: relative;
-  left: 19%;
-  top: 5%; }
+  width: 80%;
+  background: gray; }
 
 .gray-line {
   height: 50px;
-  width: 60.2%;
+  width: 80%;
   background: #252527;
-  position: relative;
-  left: 19%;
-  top: 5%; }
+  margin-bottom: 20px; }
 
 .Pen-window {
   height: 600px;
-  width: 60.2%;
+  width: 80%;
   border-radius: 10px;
-  position: relative;
-  top: 6%;
-  left: 19%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around; }
@@ -1386,6 +1381,19 @@ h1 {
 .pagination:hover {
   color: black;
   background: white; }
+
+.nextButtonContainer {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  padding: 20px; }
+
+.link {
+  text-decoration: none;
+  color: white; }
+
+.link:hover {
+  color: black; }
 
 .commentsPageContainer {
   background-color: #222222;
@@ -1523,21 +1531,32 @@ h1 {
 .searchBar {
   width: 100vw;
   height: 0px;
+  display: none;
+  z-index: 30;
   overflow: hidden;
   position: absolute;
   top: 65px;
-  padding: 0px 50px;
-  background-image: linear-gradient(#222222, #222222, #222222, rgba(34, 34, 34, 0.7), rgba(34, 34, 34, 0));
+  padding: 20px 0px 10px 100px;
+  background-image: linear-gradient(black, black, black, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
   color: #757575; }
   .searchBar input {
+    z-index: 60;
     background-color: transparent;
     border: none;
     font-size: 70px;
-    font-weight: bold; }
+    font-weight: bold;
+    outline: none; }
   .searchBar div {
     display: flex; }
-    .searchBar div h5 {
-      margin: 20px; }
+    .searchBar div button {
+      margin: 10px 20px 10px 0px;
+      font-size: 20px;
+      font-family: "Lato", sans-serif;
+      background-color: transparent;
+      border: none; }
+    .searchBar div button:hover {
+      color: white;
+      cursor: pointer; }
 
 .Name-footer {
   width: 10%;
