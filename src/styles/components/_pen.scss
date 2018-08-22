@@ -158,10 +158,10 @@ $light-gray: #C5C8D4;
     margin-bottom: 12px;
 }
 
-.penPopularity img {
-    width: 10px;
-    height: 10px;
-    margin: 0px 10px;
+.penPopularity .fa {
+    color: lightgray;
+    font-size: 15px;
+    margin: 10px;
     cursor: pointer;
 }
 

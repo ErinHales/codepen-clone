@@ -21,12 +21,10 @@ export default class CodeEditor extends Component {
             name: "name of pen",
             css:  '',
             html: '',
-            js: ''
+            js: '',
+            userid: null,
+            theme: "abcdef"
         }
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-
     }
 
     componentWillMount() {
@@ -55,6 +53,16 @@ export default class CodeEditor extends Component {
                 })
                 .catch()
     
+    }
+
+    componentDidMount() {
+        axios.put(`/api/pen/view/${this.props.match.params.id}/${this.state.userid}`).catch(console.error());
+    }
+
+    updateTheme = (e) => {
+        this.setState({
+            theme: e.target.value
+        })
     }
 
     penData = () => {
@@ -181,9 +189,9 @@ export default class CodeEditor extends Component {
                 </section>
                 </div>
                 { this.state.html !== null ? <div className="editor">
-                    <HTML updateHTML={this.updateHTML} html={this.state.html} />
-                    <CSS updateCSS={this.updateCSS} css={this.state.css} />
-                    <JavaScript updateJS={this.updateJS} js={this.state.js} />
+                    <HTML updateHTML={this.updateHTML} html={this.state.html} theme={this.state.theme} />
+                    <CSS updateCSS={this.updateCSS} css={this.state.css} theme={this.state.theme} />
+                    <JavaScript updateJS={this.updateJS} js={this.state.js} theme={this.state.theme} />
                 </div> : null }
                 <div className="verticalResize"></div>
                 <iframe className="penFrame" srcDoc={srcdoc} frameBorder="0" title="showPen"></iframe>

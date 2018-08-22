@@ -7,28 +7,45 @@ export default class Pen extends Component {
         super();
 
         this.state = {
-            stats: {}
+            loved: false
         }
     }
 
     componentDidMount() {
-        axios.get(`/api/stats/${this.props.id}`).then(response => {
-            console.log(response.data)
-            this.setState({
-                stats: response.data
+        if (this.props.id) {
+            axios.get(`/api/loved/pens/${this.props.id}`).then(response => {
+                this.setState({
+                    loved: response.data
+                })
             })
-        })
+        }
     }
 
     lovePost() {
-        axios.post(`/api/pen/like/${this.props.id}`).catch(console.error());
+        if (this.state.loved === false) {
+            axios.post(`/api/pen/like/${this.props.id}`).then(response => {
+                axios.put(`/api/stats/love/${this.props.id}`, { num: response.data[0].count }).catch(console.error());
+            }).catch(console.error());
+            this.setState({
+                loved: true
+            })
+        } else {
+            axios.delete(`/api/pen/like/${this.props.id}`).then(response => {
+                axios.put(`/api/stats/love/${this.props.id}`, { num: response.data[0].count }).catch(console.error());
+            }).catch(console.error());
+            this.setState({
+                loved: false
+            })
+        }
     }
 
     render() {
-        const srcDoc = `${this.props.html}<style>${this.props.css}</style><script>${this.props.js}</script>`
+        let { loved } = this.state;
+        let { html, css, js, id, profilePicture, penName, username, views, commentsNum, loves } = this.props;
+        const srcDoc = `${html}<style>${css}</style><script>${js}</script>`
         return (
             <div className="showPen">
-                <Link to={`/editor/${this.props.id}`}>
+                <Link to={`/editor/${id}`}>
                     <div className="overlayContainer">
                         <div className="overlayContainer">
                             <div className="pen-iframe-container">
@@ -42,18 +59,19 @@ export default class Pen extends Component {
                 </Link>
                 <div className="penInfoContainer">
                     <div className="penInfo">
-                        <img className="profilePicture" src={this.props.profilePicture} alt="" />
+                        <img className="profilePicture" src={profilePicture} alt="" />
                         <div>
-                            <h3 id="displayUserName">{this.props.penName}</h3>
-                            <h5>{this.props.username}</h5>
+                            <h3 id="displayUserName">{penName}</h3>
+                            <h5>{username}</h5>
                         </div>
                     </div>
                     <div className="penPopularity">
-                        <h3><i className="fa fa-eye"></i>{this.props.views}</h3>
-                        <Link to={`/comments/${this.props.id}`}><img src="https://www.drupal.org/files/issues/comment_6.png" alt="" /></Link>
-                        <h3>{this.props.commentsNum}</h3>
-                        <img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" alt="" />
-                        <h3>{this.props.loves}</h3>
+                        <i className="fa fa-eye"></i>
+                        <h3>{views}</h3>
+                        <Link to={`/comments/${id}`}><i className="fa fa-comment"></i></Link>
+                        <h3>{commentsNum}</h3>
+                        <i style={{color: loved ? "pink" : "lightgray"}} onClick={() => this.lovePost()} className="fa fa-heart"></i>
+                        <h3>{loved ? loves + 1 : loves}</h3>
                     </div>
                 </div>
             </div>
