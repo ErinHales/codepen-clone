@@ -21,7 +21,7 @@ export default class HTML extends Component {
             mode: 'text/html',
             autoCloseTags: true,
             autoCloseBrackets: true,
-            theme: 'abcdef'
+            theme: this.props.theme
         };
         return (
             <div>

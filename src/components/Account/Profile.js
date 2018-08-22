@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Pen from '../Pen/Pen'
 import axios from 'axios'
 import Footer from '../Footer/Footer'
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Profile extends Component {
   constructor() {
@@ -62,16 +62,16 @@ class Profile extends Component {
 
   getPrev() {
     this.setState({
-        currentPage: this.state.currentPage - 1
+      currentPage: this.state.currentPage - 1
     })
-}
+  }
 
 
   render() {
     let { currentPage, pens } = this.state;
     if (pens[currentPage]) {
       var pensList = pens[currentPage].map(pen => {
-        let { pen_id, name, username, img_url, views, comments, likes, scripts, html, css, js } = pen;
+        let { pen_id, name, username, img_url, views, comments, loves, scripts, html, css, js } = pen;
         return (
           <Pen
             key={pen_id}
@@ -85,7 +85,7 @@ class Profile extends Component {
             penName={name}
             views={views}
             commentsNum={comments}
-            loves={likes} />
+            loves={loves} />
         );
       })
     }
@@ -105,9 +105,11 @@ class Profile extends Component {
           </div>
         </div>
 
-        <div className='EditP'>
-          <Link to="/account"><h1 onClick={() => this.props.history.push('/account')}>Edit Profile</h1></Link>
-        </div>
+        <Link to="/account" className="link">
+          <div className='EditP'>
+            <h1 onClick={() => this.props.history.push('/account')}>Edit Profile</h1>
+          </div>
+        </Link>
 
         <div className='UserInfo'>
           <div>
@@ -120,25 +122,27 @@ class Profile extends Component {
           </div>
         </div>
 
-        <div className='Pen-InputWrapper'>
-          <h2 className='Pens2'>All Pens</h2>
-          <h2 className='Proj2'>Showcase</h2>
+        <div className="profileContainer">
 
+          <div className='Pen-InputWrapper'>
+            <div>
+              <h2 className='Pens2'>All Pens</h2>
+              <h2 className='Proj2'>Showcase</h2>
+            </div>
+            <input className='Inp-box' type="text" placeholder='Search These Pens...' />
+          </div>
+
+          <div className='ligthgray-line'></div>
+          <div className='gray-line'></div>
+
+          <div className='Pen-window'>
+            {pensList}
+          </div>
+          <div className="nextButtonContainer">
+            <button className="nextButton" style={{ display: this.state.currentPage === 0 ? "none" : "block" }} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
+            <button className='pagination' onClick={() => this.nextPage()}>Next <i className="fa fa-angle-right"></i></button>
+          </div>
         </div>
-        <input className='Inp-box' type="text" placeholder='Search These Pens...' />
-
-        <div className='ligthgray-line'></div>
-        <div className='gray-line'></div>
-
-        <div className='Pen-window'>
-          {pensList}
-
-          <button className="nextButton" style={{ display: this.state.currentPage === 0 ? "none" : "block" }} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
-          <button className='pagination' onClick={() => this.nextPage()}>Next <i className="fa fa-angle-right"></i></button>
-
-        </div>
-        <Footer />
-
       </div>
     )
   }

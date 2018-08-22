@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
+.themeSelector {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
 $primary-black: #1D1E22;
 $med-gray: #36383F;
 $light-gray: #C5C8D4;
@@ -64,7 +70,6 @@ $light-gray: #C5C8D4;
 
 .CodeMirror-scroll {
     width: 33.3vw;
-    background-color: $primary-black;
     padding-top: 30px;
 }
 
@@ -80,18 +85,17 @@ $light-gray: #C5C8D4;
 }
 
 span {
-    font-size: 10px;
+    font-size: 15px;
 }
 
 .CodeMirror-gutters {
     margin-right: 30px;
-    background-color: $primary-black !important;
+    padding-right: 5px;
     border: none !important;
 }
 
 .CodeMirror-linenumber {
     font-size: 10px;
-    color: $med-gray !important;
     line-height: 2;
 }
 

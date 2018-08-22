@@ -52,10 +52,10 @@ export default class Comments extends Component {
                 input: ''
             })
         }).catch(console.error);
+        axios.put(`/api/stats/comments/${this.props.match.params.id}`, {commentNum: this.state.comments.length+1}).catch(console.error());
     }
 
     render() {
-        let {stats} = this.state;
         let {html, css, js, views, comments, loves, name, img_url} = this.state.penInfo;
         const srcDoc = `${html}<style>${css}</style><script>${js}</script>`
         let commentArr = [];
