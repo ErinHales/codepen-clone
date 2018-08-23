@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import NavBar from '../NavBar/NavBar'
+
 export default class SignUp extends Component {
     constructor(props) {
         super(props)
@@ -72,6 +74,7 @@ export default class SignUp extends Component {
         )
         return (
             <div>
+                <NavBar/>
                 <div className="signup-container">
                     <div className="signup-form-container">
                         <div className="signup-form-highlights">

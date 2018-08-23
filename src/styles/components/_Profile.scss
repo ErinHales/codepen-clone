@@ -23,19 +23,21 @@
 
 .UserInfo{
   height: 300px;
-  width: 200px;
+  width: 400px;
   display: flex;
-  flex-direction: column;
   color: white;
   position: absolute;
-  left: 45%;
-  top: 174px;
+  left: 40%;
+  top: 150px;
+  flex-direction: column;
   align-items: center;
-  text-align: center
+  align-content: center;
+  text-align: center;
+  justify-content: center;
 }
 
 .UserName{
-  font-size: 36px;
+  font-size: 40px;
   margin-bottom: 15px;
   font-family: 'Telex', sans-serif;
   font-weight: 600;
@@ -50,10 +52,9 @@
   height: 130px;
   width: 130px;
   background: rgb(24, 24, 24);
-  position: relative;
-  left: 16px;
   border: 4px rgb(46, 45, 45) solid;
   box-shadow: 1px 1px rgb(29, 28, 28);
+  overflow: hidden;
 }
 
 .Hire{
@@ -100,18 +101,22 @@
   border: 3px solid white;
   border-radius: 3px;
   font-size: 15px;
+  text-decoration-color: none; 
   cursor: pointer;
 }
 
 .EditP:hover{
   background: whitesmoke;
+  text-decoration: none;
   color: black;
 }
 
-.profileContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.link1{
+  text-decoration-color: none;
+}
+
+h1{
+  text-decoration: none;
 }
 
 .Pen-InputWrapper{
@@ -182,15 +187,16 @@
 }
 
 .pagination{
+  width: 80px;
   border-radius: 2px;
-    background-color: transparent;
-    border: 3px solid white;
-    color: white;
-    padding: 10px;
-    font-family: "Lato", sans-serif;
-    font-size: 15px;
-    text-align: center;
-    margin: 0px 20px;
+  background-color: transparent;
+  border: 3px solid white;
+  color: white;
+  padding: 10px;
+  font-family: "Lato", sans-serif;
+  font-size: 15px;
+  text-align: center;
+  margin: 0px 20px;
 }
 
 .pagination:hover{
@@ -199,7 +205,7 @@
 }
 
 .nextButtonContainer {
-  width: 100vw;
+  width: 90vw;
   display: flex;
   justify-content: center;
   padding: 50px;
