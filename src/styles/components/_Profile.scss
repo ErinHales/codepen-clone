@@ -3,7 +3,7 @@
   width: 100%;
   background-image: url(
     https://tponsukcharoen.github.io/KhanAcademyThailand/bg-blue.jpg
-  )
+  );
 }
 
 .b-line{
@@ -22,18 +22,14 @@
 }
 
 .UserInfo{
-  height: 300px;
-  width: 400px;
-  display: flex;
   color: white;
   position: absolute;
-  left: 40%;
-  top: 150px;
+  top: 170px;
+  width: 100vw;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  align-content: center;
   text-align: center;
-  justify-content: center;
 }
 
 .UserName{
@@ -48,13 +44,14 @@
   font-family: 'Lato', sans-serif;
 }
 
-.UserPic{
+#UserPic{
   height: 130px;
   width: 130px;
   background: rgb(24, 24, 24);
   border: 4px rgb(46, 45, 45) solid;
   box-shadow: 1px 1px rgb(29, 28, 28);
   overflow: hidden;
+  margin: auto;
 }
 
 .Hire{
@@ -111,17 +108,10 @@
   color: black;
 }
 
-.link1{
-  text-decoration-color: none;
-}
-
-h1{
-  text-decoration: none;
-}
-
 .Pen-InputWrapper{
   height: 30px;
-  width: 78%;
+  width: 80%;
+  padding-left: 10%;
   font-family: 'Lato', sans-serif;
   font-size: 18px;
   display: flex;
@@ -159,17 +149,12 @@ h1{
   top: 10px;
 }
 
-.ligthgray-line{
-  height: 5px;
-  width: 80%;
-  background: gray;
-}
-
 .gray-line{
   height: 50px;
   width: 80%;
   background: #252527;
-  margin-bottom: 20px;
+  margin: 0px 10% 20px 10%;
+  border-top: 5px solid gray;
 }
 
 .pen-window {
@@ -229,7 +214,7 @@ h1{
 .goMakePens {
   font-family: "Lato", sans-serif;
   color: White;
-  margin: 80px 0px 120px 0px;
+  padding: 80px 0px 120px 0px;
   text-align: center;
   line-height: 1.5;
   h1 {

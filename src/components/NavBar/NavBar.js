@@ -29,7 +29,6 @@ class NavBar extends Component {
   componentWillMount() {
     axios.get('/api/users')
       .then( res => {
-        console.log(res.data.userid)
         if(res.data.userid) {
           this.setState({showYourProfile: true})
         }

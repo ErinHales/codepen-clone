@@ -5,8 +5,8 @@ module.exports = {
                 res.status(200).send(response);
             })
         } else {
-            let {name, img_url, username} = req.session;
-            res.send({name, img_url, username});
+            let {name, img_url, username, userid} = req.session;
+            res.send({name, img_url, username, userid});
         }
     },
     deleteUser(req, res) {

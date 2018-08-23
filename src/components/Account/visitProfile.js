@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Pen from '../Pen/Pen'
 import axios from 'axios'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
+import NavBar from '../NavBar/NavBar'
 
 class Profile extends Component {
     constructor() {
@@ -92,60 +93,63 @@ class Profile extends Component {
         }
         console.log(pensList);
         return (
-            <div className='Content'>
-                <div className='grayLine'>
-                </div>
-
-                <div className='b-line'>
-                    <div className='Hire'>Hire Me</div>
-                    <div className='followers'>
-                        <h1> 0 Followers</h1>
+            <div>
+                <NavBar />
+                <div className='Content'>
+                    <div className='grayLine'>
                     </div>
-                    <div>
-                        <h1 className='followers'> 0 Following</h1>
-                    </div>
-                </div>
 
-                <div className='UserInfo'>
-                    <div>
-                        <h1 className='UserName'>{user.name}</h1>
-                        <p className='Name2'>{user.username}</p>
-                        <div className='UserPic'>
-                            {this.userAvatar()}
+                    <div className='b-line'>
+                        <div className='Hire'>Hire Me</div>
+                        <div className='followers'>
+                            <h1> 0 Followers</h1>
                         </div>
-                        {/* <h3 className='Name2'>{this.state.user.name}</h3> */}
-                    </div>
-                </div>
-
-                <div className="profileContainer">
-
-                    <div className='Pen-InputWrapper'>
                         <div>
-                            <h2 className='Pens2'>All Pens</h2>
-                            <h2 className='Proj2'>Showcase</h2>
+                            <h1 className='followers'> 0 Following</h1>
                         </div>
-                        <input className='Inp-box' type="text" placeholder='Search These Pens...' />
                     </div>
 
-                    <div className='ligthgray-line'></div>
-                    <div className='gray-line'></div>
-
-                    {this.state.pens[0] ? (
-                        <div className="pen-window">
-                            <div>
-                                {pensList}
+                    <div className='UserInfo'>
+                        <div>
+                            <h1 className='UserName'>{user.name}</h1>
+                            <p className='Name2'>{user.username}</p>
+                            <div className='UserPic'>
+                                {this.userAvatar()}
                             </div>
-                            <div className="nextButtonContainer">
-                                <button className="nextButton" style={{ display: this.state.currentPage === 0 ? "none" : "block" }} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
-                                <button className='pagination' onClick={() => this.nextPage()}>Next <i className="fa fa-angle-right"></i></button>
-                            </div>
+                            {/* <h3 className='Name2'>{this.state.user.name}</h3> */}
                         </div>
-                    ) : (
-                            <div className="goMakePens">
-                                <h1>Sorry, this person <br />doesn't have any pens.</h1>
-                                <Link to="/editor"><button>Back to Search</button></Link>
+                    </div>
+
+                    <div className="profileContainer">
+
+                        <div className='Pen-InputWrapper'>
+                            <div>
+                                <h2 className='Pens2'>All Pens</h2>
+                                <h2 className='Proj2'>Showcase</h2>
                             </div>
-                        )}
+                            <input className='Inp-box' type="text" placeholder='Search These Pens...' />
+                        </div>
+
+                        <div className='ligthgray-line'></div>
+                        <div className='gray-line'></div>
+
+                        {this.state.pens[0] ? (
+                            <div className="pen-window">
+                                <div>
+                                    {pensList}
+                                </div>
+                                <div className="nextButtonContainer">
+                                    <button className="nextButton" style={{ display: this.state.currentPage === 0 ? "none" : "block" }} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
+                                    <button className='pagination' onClick={() => this.nextPage()}>Next <i className="fa fa-angle-right"></i></button>
+                                </div>
+                            </div>
+                        ) : (
+                                <div className="goMakePens">
+                                    <h1>Sorry, this person <br />doesn't have any pens.</h1>
+                                    <Link to="/editor"><button>Back to Search</button></Link>
+                                </div>
+                            )}
+                    </div>
                 </div>
             </div>
         )

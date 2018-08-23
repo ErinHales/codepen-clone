@@ -16,17 +16,17 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-      axios.get(`/api/users?type=user`).then(res => {
-        this.setState({
-          user: res.data
-        })
+    axios.get(`/api/users?type=user`).then(res => {
+      this.setState({
+        user: res.data
       })
-      axios.get(`/api/pens/user/0?type=new`).then(res => {
-        this.setState({
-          pens: [res.data],
-          currentPage: 0
-        })
+    })
+    axios.get(`/api/pens/user/0?type=new`).then(res => {
+      this.setState({
+        pens: [res.data],
+        currentPage: 0
       })
+    })
   }
 
   userAvatar() {
@@ -91,37 +91,39 @@ class Profile extends Component {
 
     return (
       <div>
-        <NavBar/>
+        <NavBar />
         <div className='Content'>
           <div className='grayLine'>
           </div>
 
           <div className='b-line'>
             <div className='Hire'>Hire Me</div>
-              <div className='followers'>
-                <h1> 0 Followers</h1>
-              </div>
+            <div className='followers'>
+              <h1> 0 Followers</h1>
             </div>
             <div>
               <h1 className='followers'> 0 Following</h1>
             </div>
           </div>
 
-          <div className='EditP'>
-            <Link className='link1' to="/account"><h1 onClick={() => this.props.history.push('/account')}>Edit Profile</h1></Link>
-          </div>
+          <Link className='link' to="/account">
+            <div className='EditP'>
+              <h1 onClick={() => this.props.history.push('/account')}>Edit Profile</h1>
+            </div>
+          </Link>
 
           <div className='UserInfo'>
             <div>
               <h1 className='UserName'>{user.name}</h1>
               <p className='Name2'>@{user.username}</p>
-              <div className='UserPic'>
+              <div id='UserPic'>
                 {this.userAvatar()}
               </div>
-                {/* <h3 className='Name2'>{this.state.user.name}</h3> */}
+              {/* <h3 className='Name2'>{this.state.user.name}</h3> */}
             </div>
+          </div>
 
-            <div className="profileContainer">
+          <div className="profileContainer">
 
             <div className='Pen-InputWrapper'>
               <div>
@@ -145,12 +147,12 @@ class Profile extends Component {
                 </div>
               </div>
             ) : (
-              <div className="goMakePens">
-                <h1>You haven't <br />made any pens yet!</h1>
-                <Link to="/editor"><button>Create Pen</button></Link>
-              </div>
+                <div className="goMakePens">
+                  <h1>You haven't <br />made any pens yet!</h1>
+                  <Link to="/editor"><button>Create Pen</button></Link>
+                </div>
 
-            )}
+              )}
           </div>
         </div>
       </div>

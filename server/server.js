@@ -52,6 +52,9 @@ app.get('/api/logout', (req, res) => {
 // get the users information
 app.get('/api/users', userCntrl.getUser)
 
+//
+// app.get('/api/loggedin', userCntrl.checkLoggedIn);
+
 // Update a users pic
 app.put('/api/user/pic', userCntrl.updateUserImg)
 
