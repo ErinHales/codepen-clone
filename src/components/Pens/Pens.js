@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Pen from '../Pen/Pen';
 import axios from 'axios';
+import NavBar from '../NavBar/NavBar'
 
 export default class Pens extends Component {
     constructor() {
@@ -57,7 +58,7 @@ export default class Pens extends Component {
 
     nextPage() {
         let { type, currentPage, pens } = this.state;
-        if (type !== "user" && !pens[currentPage+1]) {
+        if (type !== "user" && !pens[currentPage + 1]) {
             axios.get(`/api/pens/${currentPage + 1}?type=${type}`)
                 .then(res => {
                     if (res.data[0]) {
@@ -70,7 +71,7 @@ export default class Pens extends Component {
                     }
                 })
                 .catch(err => console.log(err));
-        } else if (!pens[currentPage+1]) {
+        } else if (!pens[currentPage + 1]) {
             axios.get(`/api/pens/user/3/${currentPage + 1}?type=new`)
                 .then(res => {
                     if (res.data[0]) {
@@ -122,23 +123,26 @@ export default class Pens extends Component {
             })
         }
         return (
-            <div className="pensView">
-                <div className="pens-sizing-container">
-                    <div className="pensHeader">
-                        <h1>Explore Pens</h1>
-                        <h4>View More Pens<i className="fa fa-arrow-right"></i></h4>
-                    </div>
-                    <div className="filterPens">
-                        <button onClick={() => this.getMostRecentPens()} style={{color: this.state.filter === "all" ? "white" : "#8F8F8F"}}>All Pens</button>
-                        <button onClick={() => this.getMostViewedPens()} style={{color: this.state.filter === "popular" ? "white" : null}}>Popular Pens</button>
-                        <button onClick={() => this.getUserPens()} style={{color: this.state.filter === "my" ? "white" : null}}>My Pens</button>
-                    </div>
-                    <div className="pensDisplay">
-                        {pensList ? pensList : null}
-                    </div>
-                    <div className="paginationButtons">
-                        <button className="nextButton" style={{display: this.state.currentPage === 0 ? "none" : "block"}} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
-                        <button className="nextButton" onClick={() => this.nextPage()}>Next<i className="fa fa-angle-right"></i></button>
+            <div>
+             <NavBar/>
+                <div className="pensView">
+                    <div className="pens-sizing-container">
+                        <div className="pensHeader">
+                            <h1>Explore Pens</h1>
+                            <h4>View More Pens<i className="fa fa-arrow-right"></i></h4>
+                        </div>
+                        <div className="filterPens">
+                            <button onClick={() => this.getMostRecentPens()} style={{ color: this.state.filter === "all" ? "white" : "#8F8F8F" }}>All Pens</button>
+                            <button onClick={() => this.getMostViewedPens()} style={{ color: this.state.filter === "popular" ? "white" : null }}>Popular Pens</button>
+                            <button onClick={() => this.getUserPens()} style={{ color: this.state.filter === "my" ? "white" : null }}>My Pens</button>
+                        </div>
+                        <div className="pensDisplay">
+                            {pensList ? pensList : null}
+                        </div>
+                        <div className="paginationButtons">
+                            <button className="nextButton" style={{ display: this.state.currentPage === 0 ? "none" : "block" }} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
+                            <button className="nextButton" onClick={() => this.nextPage()}>Next<i className="fa fa-angle-right"></i></button>
+                        </div>
                     </div>
                 </div>
             </div>

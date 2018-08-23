@@ -20,7 +20,7 @@
 }
 
 .address{
-  margin-top: 250px;
+  margin-top: 220px;
   font-family: 'Lato', sans-serif;
   color: gray;
 }
@@ -46,10 +46,12 @@
   margin-top: 30px;
   line-height: 1.6;
   font-weight: 200;
+  min-width: 400px;
 }
 
 .clonePen{
   color: yellow;
+  min-width: 500px;
 }
 
 .divisions{
@@ -57,6 +59,7 @@
   width: 500px;
   background: #FFDD40;
   margin: 40px;
+  min-width: 330px;
 }
 
 .divisions1{
@@ -93,6 +96,7 @@
 }
 
 .devName{
+  width: 300px;
   margin-top: 15px;
   margin-left: 10px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -100,6 +104,7 @@
 }
 
 .coDev{
+  width: 300px;
   margin-left: 10px;
   font-family: 'Lato', sans-serif;
 }

@@ -4,7 +4,7 @@
   width: 100%;
 }
 
-Link{
+.link{
   text-decoration-line: none;
 }
 
@@ -219,9 +219,9 @@ Link{
 .userIcon{
   height: 44px;;
   width: 44px;
-  background: gray;
   border-radius: 3px;
   margin-left: 15px;
+  z-index: 2;
   cursor: pointer;
 }
 
@@ -265,7 +265,7 @@ Link{
   top: 55px;
   border-radius: 3px;
   display: inline;
-  transition: .5s height ease-out;
+  transition: .1s height ease-in-out;
   cursor: pointer;
 }
 
@@ -280,7 +280,7 @@ Link{
   top: 55px;
   z-index: 11;
   display: inline;
-  transition: .5s height ease-out;
+  transition: .1s height ease-out;
 }
 
 .goTo{
@@ -343,6 +343,14 @@ Link{
   height: 44px;
   width: 44px;
   border-radius: 5px;
+}
+
+.signUp{
+  height: 45px;
+  width: 80px;
+  background:#36383F;
+  border-radius: 3px;
+  margin-left: 25px;
 }
 
 .goToLink {

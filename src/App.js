@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './styles/main.css';
-import NavBar from './components/NavBar/NavBar';
+// import NavBar from './components/NavBar/NavBar';
 import Profile from './components/Account/Profile';
 import visitProfile from './components/Account/visitProfile'
 import CodeEditor from './components/CodeEditor/CodeEditor';
@@ -20,7 +20,6 @@ class App extends Component {
     return (
       <div className="App">
         {/* <PenSettings /> */}
-          <NavBar />
         {/* <SearchBar /> */}
         <Switch>
           <Route exact path="/" component={Login} />

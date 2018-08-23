@@ -312,6 +312,20 @@
 .codeEditor {
   overflow: hidden; }
 
+.pen-settings-popup-container {
+  top: 100px;
+  height: 150%;
+  width: 100%;
+  z-index: 600;
+  position: absolute; }
+  .pen-settings-popup-container .pen-settings-popup-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -40px;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.349); }
+
 .signup-popup {
   position: absolute;
   z-index: 600;
@@ -697,7 +711,7 @@ span {
   justify-content: space-between;
   width: 100%; }
 
-Link {
+.link {
   text-decoration-line: none; }
 
 .nav1 {
@@ -881,9 +895,9 @@ Link {
 .userIcon {
   height: 44px;
   width: 44px;
-  background: gray;
   border-radius: 3px;
   margin-left: 15px;
+  z-index: 2;
   cursor: pointer; }
 
 .createWindow:hover {
@@ -921,7 +935,7 @@ Link {
   top: 55px;
   border-radius: 3px;
   display: inline;
-  transition: .5s height ease-out;
+  transition: .1s height ease-in-out;
   cursor: pointer; }
 
 .userWin {
@@ -935,7 +949,7 @@ Link {
   top: 55px;
   z-index: 11;
   display: inline;
-  transition: .5s height ease-out; }
+  transition: .1s height ease-out; }
 
 .goTo {
   font-family: "Lato", "Lucida Grande", "Lucida Sans Unicode";
@@ -989,6 +1003,13 @@ Link {
   height: 44px;
   width: 44px;
   border-radius: 5px; }
+
+.signUp {
+  height: 45px;
+  width: 80px;
+  background: #36383F;
+  border-radius: 3px;
+  margin-left: 25px; }
 
 .goToLink {
   color: black;
@@ -1245,18 +1266,20 @@ Link {
 
 .UserInfo {
   height: 300px;
-  width: 200px;
+  width: 400px;
   display: flex;
-  flex-direction: column;
   color: white;
   position: absolute;
-  left: 45%;
-  top: 174px;
+  left: 40%;
+  top: 150px;
+  flex-direction: column;
   align-items: center;
-  text-align: center; }
+  align-content: center;
+  text-align: center;
+  justify-content: center; }
 
 .UserName {
-  font-size: 36px;
+  font-size: 40px;
   margin-bottom: 15px;
   font-family: 'Telex', sans-serif;
   font-weight: 600; }
@@ -1269,10 +1292,9 @@ Link {
   height: 130px;
   width: 130px;
   background: #181818;
-  position: relative;
-  left: 16px;
   border: 4px #2e2d2d solid;
-  box-shadow: 1px 1px #1d1c1c; }
+  box-shadow: 1px 1px #1d1c1c;
+  overflow: hidden; }
 
 .Hire {
   font-family: 'Lato', sans-serif;
@@ -1314,16 +1336,19 @@ Link {
   border: 3px solid white;
   border-radius: 3px;
   font-size: 15px;
+  text-decoration-color: none;
   cursor: pointer; }
 
 .EditP:hover {
   background: whitesmoke;
+  text-decoration: none;
   color: black; }
 
-.profileContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center; }
+.link1 {
+  text-decoration-color: none; }
+
+h1 {
+  text-decoration: none; }
 
 .Pen-InputWrapper {
   height: 30px;
@@ -1387,6 +1412,7 @@ Link {
   height: 130px; }
 
 .pagination {
+  width: 80px;
   border-radius: 2px;
   background-color: transparent;
   border: 3px solid white;
@@ -1670,7 +1696,7 @@ Link {
   font-weight: bolder; }
 
 .address {
-  margin-top: 250px;
+  margin-top: 220px;
   font-family: 'Lato', sans-serif;
   color: gray; }
 
@@ -1692,16 +1718,19 @@ Link {
   font-weight: 0;
   margin-top: 30px;
   line-height: 1.6;
-  font-weight: 200; }
+  font-weight: 200;
+  min-width: 400px; }
 
 .clonePen {
-  color: yellow; }
+  color: yellow;
+  min-width: 500px; }
 
 .divisions {
   height: 350px;
   width: 500px;
   background: #FFDD40;
-  margin: 40px; }
+  margin: 40px;
+  min-width: 330px; }
 
 .divisions1 {
   height: 250px;
@@ -1734,12 +1763,14 @@ Link {
   -webkit-filter: none; }
 
 .devName {
+  width: 300px;
   margin-top: 15px;
   margin-left: 10px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 34px; }
 
 .coDev {
+  width: 300px;
   margin-left: 10px;
   font-family: 'Lato', sans-serif; }
 
@@ -1953,6 +1984,28 @@ Link {
 
 .pen-settings-slider-form {
   margin-bottom: 20px; }
+
+.signUpButton {
+  height: 45px;
+  width: 84px;
+  border-radius: 3px;
+  color: white;
+  background: #36383F;
+  font-family: 'Lato';
+  margin-left: 24px;
+  cursor: pointer; }
+
+.signUpButton:hover {
+  background: #6e6d6d; }
+
+.signBtn {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center; }
+
+.container {
+  display: flex; }
 
 .editorSettings {
   display: flex;

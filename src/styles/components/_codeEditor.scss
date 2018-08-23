@@ -10,9 +10,24 @@ $primary-black: #1D1E22;
 $med-gray: #36383F;
 $light-gray: #C5C8D4;
 .codeEditor {
+    // overflow: auto;
     overflow: hidden;
-    // overflow-y: hidden;
     
+}
+.pen-settings-popup-container {
+    top: 100px;
+    height: 150%;
+    width: 100%;
+    z-index: 600;
+    position: absolute;
+    .pen-settings-popup-overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: -40px;
+        z-index: -1;
+        background-color: rgba(0, 0, 0, 0.349);
+    }
 }
 
 .signup-popup {

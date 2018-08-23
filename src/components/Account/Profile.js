@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Pen from '../Pen/Pen'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
+import NavBar from '../NavBar/NavBar'
 
 class Profile extends Component {
   constructor() {
@@ -31,11 +32,11 @@ class Profile extends Component {
   userAvatar() {
     if (this.state.user.img_url === null) {
       return (
-        <img className='avatar' src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/default-avatar.png' alt='avatar' />
+        <img className='avatar' src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/default-avatar.png' alt='' />
       )
     } else {
       return (
-        <img className='avatar' src={this.state.user.img_url} alt='avatar' />
+        <img className='avatar' src={this.state.user.img_url} alt='' />
       )
     }
   }
@@ -89,25 +90,25 @@ class Profile extends Component {
     }
 
     return (
-      <div className='Content'>
-        <div className='grayLine'>
-        </div>
-
-        <div className='b-line'>
-          <div className='Hire'>Hire Me</div>
-          <div className='followers'>
-            <h1> 0 Followers</h1>
+      <div>
+        <NavBar/>
+        <div className='Content'>
+          <div className='grayLine'>
           </div>
-          <div>
-            <h1 className='followers'> 0 Following</h1>
-          </div>
-        </div>
 
-        <Link to="/account" className="link">
+          <div className='b-line'>
+            <div className='Hire'>Hire Me</div>
+            <div className='followers'>
+              <h1> 0 Followers</h1>
+            </div>
+            <div>
+              <h1 className='followers'> 0 Following</h1>
+            </div>
+          </div>
+
           <div className='EditP'>
-            <h1 onClick={() => this.props.history.push('/account')}>Edit Profile</h1>
+            <Link className='link1' to="/account"><h1 onClick={() => this.props.history.push('/account')}>Edit Profile</h1></Link>
           </div>
-        </Link>
 
         <div className='UserInfo'>
           <div>
@@ -118,20 +119,19 @@ class Profile extends Component {
             </div>
             {/* <h3 className='Name2'>{this.state.user.name}</h3> */}
           </div>
-        </div>
 
-        <div className="profileContainer">
+          <div className="profileContainer">
 
-          <div className='Pen-InputWrapper'>
-            <div>
-              <h2 className='Pens2'>All Pens</h2>
-              <h2 className='Proj2'>Showcase</h2>
+            <div className='Pen-InputWrapper'>
+              <div>
+                <h2 className='Pens2'>All Pens</h2>
+                <h2 className='Proj2'>Showcase</h2>
+              </div>
+              <input className='Inp-box' type="text" placeholder='Search These Pens...' />
             </div>
-            <input className='Inp-box' type="text" placeholder='Search These Pens...' />
-          </div>
 
-          <div className='ligthgray-line'></div>
-          <div className='gray-line'></div>
+            <div className='ligthgray-line'></div>
+            <div className='gray-line'></div>
 
           {this.state.pens[0] === [] ? (
             <div className="pen-window">
