@@ -98,8 +98,9 @@ class Profile extends Component {
 
           <div className='b-line'>
             <div className='Hire'>Hire Me</div>
-            <div className='followers'>
-              <h1> 0 Followers</h1>
+              <div className='followers'>
+                <h1> 0 Followers</h1>
+              </div>
             </div>
             <div>
               <h1 className='followers'> 0 Following</h1>
@@ -110,17 +111,17 @@ class Profile extends Component {
             <Link className='link1' to="/account"><h1 onClick={() => this.props.history.push('/account')}>Edit Profile</h1></Link>
           </div>
 
-        <div className='UserInfo'>
-          <div>
-            <h1 className='UserName'>{user.name}</h1>
-            <p className='Name2'>@{user.username}</p>
-            <div className='UserPic'>
-              {this.userAvatar()}
+          <div className='UserInfo'>
+            <div>
+              <h1 className='UserName'>{user.name}</h1>
+              <p className='Name2'>@{user.username}</p>
+              <div className='UserPic'>
+                {this.userAvatar()}
+              </div>
+                {/* <h3 className='Name2'>{this.state.user.name}</h3> */}
             </div>
-            {/* <h3 className='Name2'>{this.state.user.name}</h3> */}
-          </div>
 
-          <div className="profileContainer">
+            <div className="profileContainer">
 
             <div className='Pen-InputWrapper'>
               <div>
@@ -133,23 +134,24 @@ class Profile extends Component {
             <div className='ligthgray-line'></div>
             <div className='gray-line'></div>
 
-          {this.state.pens[0] === [] ? (
-            <div className="pen-window">
-              <div>
-                {pensList}
+            {this.state.pens[0] === [] ? (
+              <div className="pen-window">
+                <div>
+                  {pensList}
+                </div>
+                <div className="nextButtonContainer">
+                  <button className="nextButton" style={{ display: this.state.currentPage === 0 ? "none" : "block" }} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
+                  <button className='pagination' onClick={() => this.nextPage()}>Next <i className="fa fa-angle-right"></i></button>
+                </div>
               </div>
-              <div className="nextButtonContainer">
-                <button className="nextButton" style={{ display: this.state.currentPage === 0 ? "none" : "block" }} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
-                <button className='pagination' onClick={() => this.nextPage()}>Next <i className="fa fa-angle-right"></i></button>
-              </div>
-            </div>
-          ) : (
+            ) : (
               <div className="goMakePens">
                 <h1>You haven't <br />made any pens yet!</h1>
                 <Link to="/editor"><button>Create Pen</button></Link>
               </div>
 
             )}
+          </div>
         </div>
       </div>
     )
