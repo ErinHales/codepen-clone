@@ -48,7 +48,11 @@ module.exports = {
     getUserPens(req, res) {
         const dbConn = req.app.get('db')
         // pagination to be implemented
-        const { userId, pageNum } = req.params
+        let { userId, pageNum } = req.params
+        if(userId === 'undefined') {
+            res.sendStatus(401)
+            return
+        }
         let offset = parseInt(pageNum) * 6;
         if(req.query) {
             if(req.query.type === 'views') {

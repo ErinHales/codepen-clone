@@ -13,6 +13,7 @@ class NavBar extends Component {
     super()
     this.state = {
       togglePenWindow: false,
+      showYourProfile: false,
       id: '',
       user: '',
       search: false
@@ -25,6 +26,16 @@ class NavBar extends Component {
     })
   }
 
+  componentWillMount() {
+    axios.get('/api/users')
+      .then( res => {
+        console.log(res.data.userid)
+        if(res.data.userid) {
+          this.setState({showYourProfile: true})
+        }
+      })
+      .catch(console.error)
+  }
 
   postPen() {
     window.location.hash = "#/editor"
@@ -67,14 +78,17 @@ class NavBar extends Component {
           <div className='Name'>
             <h1>C L <img className='icon' src='http://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Large.png' alt='' /> N E P E N</h1>
           </div>
-
-          <Link to="/profile" className="link">
-            <div className='divProf'>
-              <p className='Your'>YOUR</p>
-              <h1 className='Prof'>Profile</h1>
-              <div className='h-line'></div>
-            </div>
-          </Link>
+          {this.state.showYourProfile ? (
+            <Link to="/profile" className="link">
+              <div className='divProf'>
+                <p className='Your'>YOUR</p>
+                <h1 className='Prof'>Profile</h1>
+                <div className='h-line'></div>
+              </div>
+            </Link>
+          ) : (
+            null
+          )}
 
           <Link to="/pens" className="link">
             <div className='divExp'>
