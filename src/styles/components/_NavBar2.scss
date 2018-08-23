@@ -1,0 +1,161 @@
+.icon2{
+  height: 40px;
+
+}
+
+.APenBy{
+  font-size: 11px;
+  color: gray;
+}
+
+.Name2{
+  width: 20%;
+ min-width: 175px;
+ display: flex;
+ align-items: bottom;
+ font-family: 'Lato', sans-serif;
+ color: white;
+ margin-left: 15px;
+ margin-top: 13px;
+ font-size: 24px;
+ position: relative;
+ bottom: 2px;
+}
+
+.title{
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.heart{
+  height: 38px;
+  width: 50px;
+  border: 3px solid rgb(34, 35, 39);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heart:hover{
+  cursor: pointer;
+  background: rgb(102, 99, 99)
+}
+
+.heartIcon{
+  height: 25px;
+}
+
+
+.save{
+  height: 38px;
+  width: 80px;
+  border: 3px solid rgb(34, 35, 39);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: whitesmoke;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  background: rgb(34, 35, 39);
+}
+
+.save:hover{
+  cursor: pointer;
+  background: rgb(102, 99, 99)
+}
+
+.saveIcon{
+  height: 25px;
+  margin-right: 5px;
+}
+
+
+.forkIcon{
+  height: 30px;
+  transform: rotate(90deg);
+  margin-left: 5px;
+}
+
+.forkBox{
+  height: 38px;
+  width: 80px;
+  border: 3px solid rgb(34, 35, 39);
+  color: whitesmoke;
+  display: flex;
+  margin-left: 10px;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  border-radius: 2px;
+}
+
+.forkBox:hover{
+  cursor: pointer;
+  background: rgb(102, 99, 99)
+}
+
+.SettingsBox{
+  height: 44px;
+  width: 110px;
+  color: whitesmoke;
+  background: rgb(34, 35, 39);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.SettingsBox:hover{
+  cursor: pointer;
+  background: rgb(102, 99, 99);
+}
+
+.settGear{
+  height: 20px;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.HFBox{
+  widows: 300px;
+  display: flex;
+
+}
+
+.userName{
+  margin-left: 5px;
+  color: whitesmoke;
+}
+
+.titleInput{
+  height: 24px;
+  color: whitesmoke;
+  background: black;
+  border: none;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+}
+
+.titleInput::-webkit-input-placeholder{
+  color: whitesmoke;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  -ms-touch-select: none;
+}
+
+.penIcon{
+  height: 12px;
+  margin-left: 5px;
+}
+
+.titleChng{
+  height: 30px;
+  width: 150px;
+  display: flex;
+}
+
+

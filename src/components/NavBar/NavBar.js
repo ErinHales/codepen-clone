@@ -59,7 +59,6 @@ class NavBar extends Component {
 
 
   render() {
-    console.log(this.props.match)
     return (
       <div className='Nav'>
         <nav className='nav1'>
