@@ -167,18 +167,23 @@
   margin-bottom: 20px;
 }
 
-.Pen-window{
-  height: 600px;
-  width: 80%;
-  border-radius: 10px;
+.pen-window {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around
+  flex-direction: column;
+  width: 100vw;
+  justify-content: space-around;
+  align-items: center;
+  > :nth-child(1) {
+    width: 80%;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around
+  }
 }
 
 .avatar{
   height: 130px;
-
 }
 
 .pagination{
@@ -199,11 +204,11 @@
 }
 
 .nextButtonContainer {
+  margin: 50px 0px;
   width: 100vw;
   display: flex;
   justify-content: center;
-  padding: 50px;
-  padding-top: 100px;
+  align-items: center;
 }
 
 .link {
@@ -213,4 +218,34 @@
 
 .link:hover {
   color: black;
+}
+
+.goMakePens {
+  font-family: "Lato", sans-serif;
+  color: White;
+  margin: 80px 0px 120px 0px;
+  text-align: center;
+  line-height: 1.5;
+  h1 {
+    margin: 30px;
+    font-size: 50px;
+    font-weight: bold;
+  }
+  button {
+    background-color: transparent;
+    padding: 10px 20px;
+    border: 3px solid white;
+    color: white;
+    border-radius: 3px;
+    font-size: 20px;
+  }
+  button:hover {
+    color: black;
+    background-color: white;
+    cursor: pointer;
+  }
+}
+
+.profileContainer {
+  min-height: 400px;
 }

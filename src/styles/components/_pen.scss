@@ -253,3 +253,17 @@ $light-gray: #C5C8D4;
     color: white;
     cursor: pointer;
 }
+
+.userLink {
+    color: lightgray;
+    text-decoration: none;
+}
+
+.userLink:hover {
+    color: #0EBEFF;
+    cursor: pointer;
+}
+
+.penLink {
+    text-decoration: none;
+}

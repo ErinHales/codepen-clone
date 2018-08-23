@@ -5,6 +5,7 @@ SELECT
     pens.description,
     users.name as username,
     users.img_url,
+    users.id as user_id,
     count(likes.pen_id) as likes,
     count(pen_comments.pen_id)as comments,
     count (views.pen_id)as views,
@@ -36,6 +37,7 @@ WHERE
 GROUP BY
     users.name,
     users.img_url,
+    users.id,
     pens.pen_id,
     html_scripts.html_tag_class,
     html_scripts.head_tag

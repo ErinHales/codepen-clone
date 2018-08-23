@@ -50,12 +50,10 @@ app.get('/api/auth/logout', (req, res) => {
 // USER
 
 // get the users information
-app.get('/api/users', (req,res) =>{
-    res.send(req.session);
-});
+app.get('/api/users', userCntrl.getUser)
 
 // Update a users pic
-app.put('/api/user/pic', userCntrl.updateUserImg);
+app.put('/api/user/pic', userCntrl.updateUserImg)
 
 // takes object with new user data and updates database with changes
 app.put('/api/user', userCntrl.updateUser)
@@ -70,6 +68,9 @@ app.get('/api/pens/:pageNum', interfaceCntrl.getPens)
 
 // query: ?types=views or likes. will return and array of objects in descending order organized by query type. Limited to user
 app.get('/api/pens/user/:userId/:pageNum', interfaceCntrl.getUserPens)
+
+// get user's own pens
+app.get('/api/pens/user/:pageNum', interfaceCntrl.getUserPens)
 
 // PEN
 

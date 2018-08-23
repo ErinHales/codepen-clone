@@ -1,4 +1,14 @@
 module.exports = {
+    getUser(req,res) {
+        if(req.query.id) {
+            req.app.get("db").get_user(req.query.id).then(response => {
+                res.status(200).send(response);
+            })
+        } else {
+            let {name, img_url, username} = req.session;
+            res.send({name, img_url, username});
+        }
+    },
     deleteUser(req, res) {
         res.status(200)
     },

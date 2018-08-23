@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './styles/main.css';
 import NavBar from './components/NavBar/NavBar';
 import Profile from './components/Account/Profile';
+import visitProfile from './components/Account/visitProfile'
 import CodeEditor from './components/CodeEditor/CodeEditor';
 import Pens from './components/Pens/Pens';
 import SignUp from './components/SignUp/SignUp';
@@ -27,6 +28,7 @@ class App extends Component {
           <Route exact path="/editor/:id" component={CodeEditor} />
           <Route path="/editor" component={CodeEditor} />
           <Route path="/pens" component={Pens} />
+          <Route path="/profile/:id" component={visitProfile} />
           <Route path="/profile" component={Profile} />
           <Route path="/comments/:id" component={Comments} />
           <Route path="/account" component={Account} />

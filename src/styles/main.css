@@ -445,24 +445,23 @@ span {
   background-color: #4E505A; }
 
 .penFooter {
-  height: 30px;
+  height: 50px;
   width: calc(100vw - 50px);
   background-color: #36383F;
   margin-top: -3px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 20px; }
-
-.penFooter button {
-  background-color: #1D1E22;
-  color: white;
-  font-size: 10px;
-  padding: 4px;
-  border-radius: 2px; }
-
-.penFooter button:hover {
-  cursor: pointer; }
+  padding: 0px 20px;
+  font-family: "Lato", sans-serif; }
+  .penFooter button {
+    background-color: #1D1E22;
+    color: white;
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 2px; }
+  .penFooter button:hover {
+    cursor: pointer; }
 
 .delete:hover {
   background-color: #ED5151; }
@@ -681,6 +680,17 @@ span {
 .filterPens button:hover {
   color: white;
   cursor: pointer; }
+
+.userLink {
+  color: lightgray;
+  text-decoration: none; }
+
+.userLink:hover {
+  color: #0EBEFF;
+  cursor: pointer; }
+
+.penLink {
+  text-decoration: none; }
 
 .Nav {
   display: flex;
@@ -1360,13 +1370,18 @@ Link {
   background: #252527;
   margin-bottom: 20px; }
 
-.Pen-window {
-  height: 600px;
-  width: 80%;
-  border-radius: 10px;
+.pen-window {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around; }
+  flex-direction: column;
+  width: 100vw;
+  justify-content: space-around;
+  align-items: center; }
+  .pen-window > :nth-child(1) {
+    width: 80%;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; }
 
 .avatar {
   height: 130px; }
@@ -1387,11 +1402,11 @@ Link {
   background: white; }
 
 .nextButtonContainer {
+  margin: 50px 0px;
   width: 100vw;
   display: flex;
   justify-content: center;
-  padding: 50px;
-  padding-top: 100px; }
+  align-items: center; }
 
 .link {
   text-decoration: none;
@@ -1399,6 +1414,31 @@ Link {
 
 .link:hover {
   color: black; }
+
+.goMakePens {
+  font-family: "Lato", sans-serif;
+  color: White;
+  margin: 80px 0px 120px 0px;
+  text-align: center;
+  line-height: 1.5; }
+  .goMakePens h1 {
+    margin: 30px;
+    font-size: 50px;
+    font-weight: bold; }
+  .goMakePens button {
+    background-color: transparent;
+    padding: 10px 20px;
+    border: 3px solid white;
+    color: white;
+    border-radius: 3px;
+    font-size: 20px; }
+  .goMakePens button:hover {
+    color: black;
+    background-color: white;
+    cursor: pointer; }
+
+.profileContainer {
+  min-height: 400px; }
 
 .commentsPageContainer {
   background-color: #222222;
