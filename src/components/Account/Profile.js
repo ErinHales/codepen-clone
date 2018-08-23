@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Pen from '../Pen/Pen'
 import axios from 'axios'
-import Footer from '../Footer/Footer'
 import { Link } from 'react-router-dom';
+import NavBar from '../NavBar/NavBar'
 
 class Profile extends Component {
   constructor() {
@@ -20,24 +20,24 @@ class Profile extends Component {
       this.setState({
         user: res.data
       })
-    })
-
-    axios.get(`/api/pens/user/3/0?type=new`).then(res => {
-      this.setState({
-        pens: [res.data],
-        currentPage: 0
+      axios.get(`/api/pens/user/${res.data.userid}/0?type=new`).then(res => {
+        this.setState({
+          pens: [res.data],
+          currentPage: 0
+        })
       })
     })
+
   }
 
   userAvatar() {
     if (this.state.user.img_url === null) {
       return (
-        <img className='avatar' src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/default-avatar.png' alt='avatar' />
+        <img className='avatar' src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/default-avatar.png' alt='' />
       )
     } else {
       return (
-        <img className='avatar' src={this.state.user.img_url} alt='avatar' />
+        <img className='avatar' src={this.state.user.img_url} alt='' />
       )
     }
   }
@@ -45,7 +45,7 @@ class Profile extends Component {
 
   nextPage() {
     let { currentPage, pens } = this.state;
-    axios.get(`/api/pens/user/3/${currentPage + 1}?type=new`)
+    axios.get(`/api/pens/user/${this.state.user.userid}/${currentPage + 1}?type=new`)
       .then(res => {
         console.log(res.data);
         if (res.data[0]) {
@@ -91,28 +91,27 @@ class Profile extends Component {
     }
 
     return (
-      <div className='Content'>
-        <div className='grayLine'>
-        </div>
-
-        <div className='b-line'>
-          <div className='Hire'>Hire Me</div>
-          <div className='followers'>
-            <h1> 0 Followers</h1>
+      <div>
+        <NavBar/>
+        <div className='Content'>
+          <div className='grayLine'>
           </div>
-          <div>
-            <h1 className='followers'> 0 Following</h1>
-          </div>
-        </div>
 
-        <Link to="/account" className="link">
+          <div className='b-line'>
+            <div className='Hire'>Hire Me</div>
+            <div className='followers'>
+              <h1> 0 Followers</h1>
+            </div>
+            <div>
+              <h1 className='followers'> 0 Following</h1>
+            </div>
+          </div>
+
           <div className='EditP'>
-            <h1 onClick={() => this.props.history.push('/account')}>Edit Profile</h1>
+            <Link className='link1' to="/account"><h1 onClick={() => this.props.history.push('/account')}>Edit Profile</h1></Link>
           </div>
-        </Link>
 
-        <div className='UserInfo'>
-          <div>
+          <div className='UserInfo'>
             <h1 className='UserName'>{this.state.user.username}</h1>
             <p className='Name2'>{this.state.user.email}</p>
             <div className='UserPic'>
@@ -120,27 +119,27 @@ class Profile extends Component {
             </div>
             <h3 className='Name2'>{this.state.user.name}</h3>
           </div>
-        </div>
 
-        <div className="profileContainer">
+          <div className="profileContainer">
 
-          <div className='Pen-InputWrapper'>
-            <div>
-              <h2 className='Pens2'>All Pens</h2>
-              <h2 className='Proj2'>Showcase</h2>
+            <div className='Pen-InputWrapper'>
+              <div>
+                <h2 className='Pens2'>All Pens</h2>
+                <h2 className='Proj2'>Showcase</h2>
+              </div>
+              <input className='Inp-box' type="text" placeholder='Search These Pens...' />
             </div>
-            <input className='Inp-box' type="text" placeholder='Search These Pens...' />
-          </div>
 
-          <div className='ligthgray-line'></div>
-          <div className='gray-line'></div>
+            <div className='ligthgray-line'></div>
+            <div className='gray-line'></div>
 
-          <div className='Pen-window'>
-            {pensList}
-          </div>
-          <div className="nextButtonContainer">
-            <button className="nextButton" style={{ display: this.state.currentPage === 0 ? "none" : "block" }} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
-            <button className='pagination' onClick={() => this.nextPage()}>Next <i className="fa fa-angle-right"></i></button>
+            <div className='Pen-window'>
+              {pensList}
+            </div>
+            <div className="nextButtonContainer">
+              <button className="nextButton" style={{ display: this.state.currentPage === 0 ? "none" : "block" }} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
+              <button className='pagination' onClick={() => this.nextPage()}>Next <i className="fa fa-angle-right"></i></button>
+            </div>
           </div>
         </div>
       </div>

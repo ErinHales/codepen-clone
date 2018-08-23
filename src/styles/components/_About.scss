@@ -1,10 +1,10 @@
 .Backgrnd{
-  height: 155vh;
+  height: 175vh;
   width: 100%;
   background: #191A1D;
   display: flex;
-  flex-wrap: wrap;
-
+  min-width: 1000px;
+  background-repeat: repeat
 }
 
 .contact{
@@ -13,7 +13,7 @@
   background: whitesmoke;
   padding: 35px;
   position: relative;
-  top: 3%;
+  top: 2%;
   left: 10%;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .address{
-  margin-top: 250px;
+  margin-top: 220px;
   font-family: 'Lato', sans-serif;
   color: gray;
 }
@@ -52,10 +52,12 @@
   top: 4%;
   line-height: 1.6;
   font-weight: 200;
+  min-width: 400px;
 }
 
 .clonePen{
   color: yellow;
+  min-width: 500px;
 }
 
 .divisions{
@@ -63,7 +65,7 @@
   width: 500px;
   background: #FFDD40;
   margin: 40px;
-
+  min-width: 330px;
 }
 
 .divisions1{
@@ -78,14 +80,12 @@
 
 .Devs{
   height: 40vh;
-  width: 100%;
+  width: 95%;
   display: flex;
   flex-wrap: wrap;
-  margin: 30px;
   position: absolute;
   top: 60%;
-  left: 6%
-
+  left: 5%;
 }
 
 .Pic{
@@ -103,6 +103,7 @@
 }
 
 .devName{
+  width: 300px;
   margin-top: 15px;
   margin-left: 10px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -113,6 +114,7 @@
 }
 
 .coDev{
+  width: 300px;
   margin-left: 10px;
   font-family: 'Lato', sans-serif;
   position: relative;

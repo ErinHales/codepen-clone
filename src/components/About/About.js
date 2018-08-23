@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import Footer from '../Footer/Footer'
 import Alan from './Alan.png'
 import Erin from './Erin.PNG'
 import Michael from './Michael.PNG'
 import Anthony from './Anthony.jpg'
+import NavBar from '../NavBar/NavBar'
 
 
 class About extends Component {
@@ -11,6 +11,7 @@ class About extends Component {
   render() {
     return (
       <div>
+        <NavBar/>
         <div className='Backgrnd'>
           <div className='contact'>
             <h1 className='About'>About <br /> ClonePen</h1>
@@ -56,13 +57,12 @@ class About extends Component {
               <h3>We say social, because CodePen is a community. Most creations on ClonePen are public and open source. They are living things that other people and the community can interact with, from a simple hearting, to leaving a comment, to forking and changing for their own needs.</h3>
             </div>
             <div className='divisions1'>
-              <h3>We're trying to make ClonePen a happy and healthy place for front-end designers and developers and the people looking for them, while also being a damn fine place to code. <span>❤️</span></h3>
+              <h3>We're trying to make ClonePen a happy and healthy place for front-end designers and developers and the people looking for them, while also being a damn fine place to code.</h3>
             </div>
 
           </div>
 
         </div>
-        {/* <Footer /> */}
       </div>
     )
   }

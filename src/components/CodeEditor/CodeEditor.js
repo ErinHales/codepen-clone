@@ -6,6 +6,8 @@ import "./Theme.css";
 import axios from 'axios';
 import SignUp from '../SignUp/SignUp'
 import Login from '../Login/Login';
+import NavBar2 from '../NavBar/NavBar2'
+
 require('codemirror/lib/codemirror.css');
 
 
@@ -19,7 +21,7 @@ export default class CodeEditor extends Component {
             isLoggedIn: false,
 
             name: "name of pen",
-            css:  '',
+            css: '',
             html: '',
             js: '',
             userid: null,
@@ -30,29 +32,29 @@ export default class CodeEditor extends Component {
     componentWillMount() {
         axios.get('/api/users')
             .then(response => {
-                if(response.data.username) {
-                    this.setState({isLoggedIn: true})
+                if (response.data.username) {
+                    this.setState({ isLoggedIn: true })
                 }
             })
         const { id } = this.props.match.params
-            axios.get(`/api/pen/${id}`)
-                .then(response => {
-                    if(id) {
-                        this.setState({
-                            css: null,
-                            html: null,
-                            js: null
-                        })
-                    }
+        axios.get(`/api/pen/${id}`)
+            .then(response => {
+                if (id) {
                     this.setState({
-                        css: response.data.css,
-                        html: response.data.html,
-                        js: response.data.js,
-                        name: response.data.name
+                        css: null,
+                        html: null,
+                        js: null
                     })
+                }
+                this.setState({
+                    css: response.data.css,
+                    html: response.data.html,
+                    js: response.data.js,
+                    name: response.data.name
                 })
-                .catch()
-    
+            })
+            .catch()
+
     }
 
     componentDidMount() {
@@ -66,7 +68,7 @@ export default class CodeEditor extends Component {
     }
 
     penData = () => {
-        const {name, html, css, js} = this.state
+        const { name, html, css, js } = this.state
         return {
             name,
             forked: false,
@@ -85,24 +87,24 @@ export default class CodeEditor extends Component {
     }
 
     updatePen = () => {
-        
+
         console.log("This is not set up yet");
     }
 
     savePen = () => {
-        if(!this.state.isLoggedIn) {
-            this.setState({showPopUp: true})
+        if (!this.state.isLoggedIn) {
+            this.setState({ showPopUp: true })
             return
         }
         const { id } = this.props.match.params
-        if(id) {
+        if (id) {
             axios.put(`/api/pen/${id}`, this.penData())
         }
         else {
             axios.post('/api/pen/', this.penData())
-            .then(response => {
-                this.props.match.params.id = response.data[0].pen_id
-            })
+                .then(response => {
+                    this.props.match.params.id = response.data[0].pen_id
+                })
         }
     }
 
@@ -123,8 +125,8 @@ export default class CodeEditor extends Component {
             html: newCode
         })
     }
-    closePopUp = (bool = false) => { 
-        if(bool) {
+    closePopUp = (bool = false) => {
+        if (bool) {
             this.setState({
                 showPopUp: false,
                 isLoggedIn: true,
@@ -134,11 +136,11 @@ export default class CodeEditor extends Component {
         }
         else {
             console.log('test')
-            this.setState({showPopUp: false, showSignUp: false})
+            this.setState({ showPopUp: false, showSignUp: false })
         }
     }
     popUpSwitch = () => {
-        this.setState({showSignUp: !this.state.showSignUp})
+        this.setState({ showSignUp: !this.state.showSignUp })
     }
     deletePen = () => {
         axios.delete(`/api/pen/${this.props.match.params.id}`)
@@ -149,56 +151,59 @@ export default class CodeEditor extends Component {
     render() {
         const popUp = (
             <div className="signup-popup">
-            <div className="signup-popup-form-container">
-                {this.state.showSignUp? 
-                <SignUp closePopUp={this.closePopUp} />
-                :
-                <Login closePopUp={this.closePopUp} switch={this.popUpSwitch}/>
-                }
+                <div className="signup-popup-form-container">
+                    {this.state.showSignUp ?
+                        <SignUp closePopUp={this.closePopUp} />
+                        :
+                        <Login closePopUp={this.closePopUp} switch={this.popUpSwitch} />
+                    }
 
+                </div>
+                <div onClick={() => this.closePopUp(false)} className="signup-popup-overlay"></div>
             </div>
-            <div onClick={() => this.closePopUp(false)} className="signup-popup-overlay"></div>
-        </div>
         )
 
         let srcdoc = `${this.state.html}<style>${this.state.css}</style><script>${this.state.js}</script>`;
         return (
-            <div className="codeEditor">
-            {this.state.showPopUp ? popUp : null}
-                <div className="editorHead">
-                <section className="editorSection">
-                    <div>
-                        <button><img className="settingsImg" src="http://www.clker.com/cliparts/5/t/n/f/d/T/white-gear-hi.png" alt="settings"/></button>
-                        <h3>HTML</h3>
+            <div>
+               <NavBar2/>
+                <div className="codeEditor">
+                    {this.state.showPopUp ? popUp : null}
+                    <div className="editorHead">
+                        <section className="editorSection">
+                            <div>
+                                <button><img className="settingsImg" src="http://www.clker.com/cliparts/5/t/n/f/d/T/white-gear-hi.png" alt="settings" /></button>
+                                <h3>HTML</h3>
+                            </div>
+                            <button><img className="settingsImg" src="http://i66.tinypic.com/2gufexh.jpg" alt="down arrow" /></button>
+                        </section>
+                        <section className="editorSection">
+                            <div>
+                                <button><img className="settingsImg" src="http://www.clker.com/cliparts/5/t/n/f/d/T/white-gear-hi.png" alt="settings" /></button>
+                                <h3>CSS</h3>
+                            </div>
+                            <button><img className="settingsImg" src="http://i66.tinypic.com/2gufexh.jpg" alt="down arrow" /></button>
+                        </section>
+                        <section className="editorSection">
+                            <div>
+                                <button><img className="settingsImg" src="http://www.clker.com/cliparts/5/t/n/f/d/T/white-gear-hi.png" alt="settings" /></button>
+                                <h3>JS</h3>
+                            </div>
+                            <button><img className="settingsImg" src="http://i66.tinypic.com/2gufexh.jpg" alt="down arrow" /></button>
+                        </section>
                     </div>
-                    <button><img className="settingsImg" src="http://i66.tinypic.com/2gufexh.jpg" alt="down arrow" /></button>
-                </section>
-                <section className="editorSection">
-                    <div>
-                        <button><img className="settingsImg" src="http://www.clker.com/cliparts/5/t/n/f/d/T/white-gear-hi.png" alt="settings"/></button>
-                        <h3>CSS</h3>
+                    {this.state.html !== null ? <div className="editor">
+                        <HTML updateHTML={this.updateHTML} html={this.state.html} theme={this.state.theme} />
+                        <CSS updateCSS={this.updateCSS} css={this.state.css} theme={this.state.theme} />
+                        <JavaScript updateJS={this.updateJS} js={this.state.js} theme={this.state.theme} />
+                    </div> : null}
+                    <div className="verticalResize"></div>
+                    <iframe className="penFrame" srcDoc={srcdoc} frameBorder="0" title="showPen"></iframe>
+                    <div className="penFooter">
+                        <button>Console</button>
+                        <button onClick={() => this.savePen()}>Save</button>
+                        <button onClick={this.deletePen} className="delete">Delete</button>
                     </div>
-                    <button><img className="settingsImg" src="http://i66.tinypic.com/2gufexh.jpg" alt="down arrow" /></button>
-                </section>
-                <section className="editorSection">
-                    <div>
-                        <button><img className="settingsImg" src="http://www.clker.com/cliparts/5/t/n/f/d/T/white-gear-hi.png" alt="settings"/></button>
-                        <h3>JS</h3>
-                    </div>
-                    <button><img className="settingsImg" src="http://i66.tinypic.com/2gufexh.jpg" alt="down arrow" /></button>
-                </section>
-                </div>
-                { this.state.html !== null ? <div className="editor">
-                    <HTML updateHTML={this.updateHTML} html={this.state.html} theme={this.state.theme} />
-                    <CSS updateCSS={this.updateCSS} css={this.state.css} theme={this.state.theme} />
-                    <JavaScript updateJS={this.updateJS} js={this.state.js} theme={this.state.theme} />
-                </div> : null }
-                <div className="verticalResize"></div>
-                <iframe className="penFrame" srcDoc={srcdoc} frameBorder="0" title="showPen"></iframe>
-                <div className="penFooter">
-                    <button>Console</button>
-                    <button onClick={() => this.savePen()}>Save</button>
-                    <button onClick={this.deletePen} className="delete">Delete</button>
                 </div>
             </div>
         )
