@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Pen from '../Pen/Pen';
 import axios from 'axios';
 
@@ -54,16 +54,19 @@ export default class Search extends Component {
         }
         return (
             <div className="search">
-                <input type="text" placeholder="Search Pens" value={this.state.input} onChange={(e) => this.handleUpdate(e)} onKeyUp={(e) => e.keyCode === "13" ? this.search() : null}/>
-                <button onClick={() => this.search()}>search</button>
-                <div>
+                <input type="text" placeholder="Search Pens" value={this.state.input} onChange={(e) => this.handleUpdate(e)} onKeyUp={(e) => e.keyCode === 13 ? this.search() : null} />
+                <div className="bar">
                     <h3>Pens</h3>
                     <h3>Users</h3>
                 </div>
-                <h4>Order results by</h4>
-                <div>
-                    <h4>Relevance & Popularity</h4>
-                    <h4>Newest First</h4>
+                <div className="filters">
+                    <h4>Order results by</h4>
+                    <div className="filterContainer">
+                        <input name="filter" type="radio" value="popularity" id="popularity" onChange={(e) => this.updateTheme(e)} defaultChecked></input>
+                        <label for="popularity">Relevance & Popularity</label>
+                        <input name="filter" type="radio" value="currency" id="currency" onChange={(e) => this.updateTheme(e)}></input>
+                        <label for="currency">Newest First</label>
+                    </div>
                 </div>
                 <div className="penContainer">
                     {pensList}

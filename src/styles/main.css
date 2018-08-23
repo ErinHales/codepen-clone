@@ -1895,7 +1895,44 @@ Link {
 .search {
   display: flex;
   flex-direction: column;
-  align-items: center; }
+  align-items: center;
+  background-color: #191A1D;
+  font-family: "Lato", sans-serif;
+  color: lightgray;
+  min-height: calc(100vh - 200px);
+  padding-top: 50px; }
+  .search .bar {
+    display: flex;
+    width: 70%;
+    background-color: #252527;
+    border-top: 5px solid gray; }
+    .search .bar h3 {
+      margin: 20px; }
+    .search .bar h3:hover {
+      color: white;
+      cursor: pointer; }
+  .search input {
+    width: 70%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 50px;
+    font-weight: bold;
+    color: white; }
+  .search .filters {
+    width: 70%;
+    margin: 20px; }
+    .search .filters h4 {
+      font-size: 30px;
+      font-weight: bold;
+      color: white;
+      margin-left: 20px; }
+    .search .filters input {
+      margin: 0px 10px 0px 25px; }
+
+.filterContainer {
+  margin: 10px 0px;
+  float: left; }
 
 .penContainer {
   display: flex;
