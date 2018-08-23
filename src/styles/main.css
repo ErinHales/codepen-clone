@@ -401,10 +401,6 @@ span {
 .CodeMirror-vscroll {
   width: 0px !important; }
 
-.CodeMirror-line {
-  position: relative;
-  left: 10px; }
-
 .penFrame {
   width: calc(100vw - 10px);
   min-height: calc(100vh - 100px); }
@@ -573,7 +569,7 @@ span {
 
 .overlayContainer .text {
   color: white;
-  font-size: 15px;
+  font-size: 20px;
   line-height: 1.5;
   margin: 10px; }
 
@@ -1596,9 +1592,7 @@ Link {
 .footer {
   height: 200px;
   width: 100%;
-  background: #111;
-  position: relative;
-  top: 20%; }
+  background: #111; }
 
 .icon-footer {
   height: 26px;
@@ -1618,20 +1612,17 @@ Link {
   font-size: 12px; }
 
 .Backgrnd {
-  height: 155vh;
   width: 100%;
   background: #191A1D;
   display: flex;
-  flex-wrap: wrap; }
+  flex-direction: column;
+  height: 1800px; }
 
 .contact {
   height: 390px;
-  width: 415px;
+  width: 30vw;
   background: whitesmoke;
-  padding: 35px;
-  position: relative;
-  top: 3%;
-  left: 10%; }
+  padding: 35px; }
 
 .About {
   font-family: 'Archivo Black', sans-serif;
@@ -1654,14 +1645,12 @@ Link {
 
 .description {
   height: 400px;
-  width: 800px;
+  width: 50vw;
   color: white;
   font-family: 'Lato', sans-serif;
   font-size: 1.6rem;
   font-weight: 0;
-  position: relative;
-  left: 14%;
-  top: 4%;
+  margin-top: 30px;
   line-height: 1.6;
   font-weight: 200; }
 
@@ -1685,13 +1674,11 @@ Link {
 
 .Devs {
   height: 40vh;
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex-wrap: wrap;
-  margin: 30px;
-  position: absolute;
-  top: 60%;
-  left: 6%; }
+  justify-content: space-around;
+  margin-top: 50px; }
 
 .Pic {
   height: 150px;
@@ -1710,23 +1697,27 @@ Link {
   margin-top: 15px;
   margin-left: 10px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 34px;
-  position: relative;
-  left: 45%;
-  top: -30%; }
+  font-size: 34px; }
 
 .coDev {
   margin-left: 10px;
-  font-family: 'Lato', sans-serif;
-  position: relative;
-  left: 45%;
-  top: -30%; }
+  font-family: 'Lato', sans-serif; }
 
 .descrptn {
   font-family: 'Lato', sans-serif;
-  margin-left: 10px;
-  padding: 15px;
-  margin-bottom: 20px; }
+  margin: 50px 20px 20px 20px; }
+
+.row {
+  width: 100vw;
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-around; }
+
+.devInfo {
+  float: right;
+  text-align: left;
+  width: 280px;
+  margin-top: 50px; }
 
 .pen-settings-container {
   border: 2px solid white;
@@ -1990,7 +1981,7 @@ Link {
   padding-top: 50px; }
   .search .bar {
     display: flex;
-    width: 70%;
+    width: 80%;
     background-color: #252527;
     border-top: 5px solid gray; }
     .search .bar h3 {
@@ -1999,7 +1990,7 @@ Link {
       color: white;
       cursor: pointer; }
   .search input {
-    width: 70%;
+    width: 80%;
     background-color: transparent;
     border: none;
     outline: none;
@@ -2007,7 +1998,7 @@ Link {
     font-weight: bold;
     color: white; }
   .search .filters {
-    width: 70%;
+    width: 80%;
     margin: 20px; }
     .search .filters h4 {
       font-size: 30px;
@@ -2016,10 +2007,32 @@ Link {
       margin-left: 20px; }
     .search .filters input {
       margin: 0px 10px 0px 25px; }
+  .search .user {
+    background-color: black;
+    width: 30%;
+    margin: 20px 0px;
+    padding: 10px 0px; }
+    .search .user img {
+      width: 50px;
+      height: 50px;
+      display: inline-block;
+      margin: 20px; }
+    .search .user h3 {
+      display: inline-block;
+      color: #0EBEFF;
+      font-size: 20px;
+      position: relative;
+      bottom: 30px; }
 
 .filterContainer {
   margin: 10px 0px;
-  float: left; }
+  display: flex;
+  align-items: center;
+  width: 500px; }
+  .filterContainer input {
+    width: 20px; }
+  .filterContainer label {
+    width: 100px; }
 
 .penContainer {
   display: flex;

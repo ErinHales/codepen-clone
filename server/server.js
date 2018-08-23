@@ -128,6 +128,9 @@ app.post('/api/pen/comment/:penId', comCntrl.comment)
 // search all pens by title and description by popularity or currency
 app.get('/api/search/pens/:pageNum', interfaceCntrl.searchPens)
 
+// search all users
+app.get('/api/search/users', userCntrl.searchUser)
+
 
 
 

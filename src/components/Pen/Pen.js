@@ -52,7 +52,7 @@ export default class Pen extends Component {
                                 <iframe scrolling="no" className="pen-iframe" title={this.props.id} srcDoc={srcDoc}></iframe>
                             </div>
                             <div className="overlay">
-                                <div className="text">This is a description a very long description thei aslfkjas fl sfas flk f sf aslkfj sdlfk sf  f sfkl sfkljs dfk f dksf kasldf sl;fd sl;df sf ksf lksf </div>
+                                <div className="text">{this.props.description}</div>
                             </div>
                         </div>
                     </div>

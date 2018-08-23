@@ -101,7 +101,7 @@ export default class Pens extends Component {
         let { currentPage, pens } = this.state;
         if (pens[currentPage]) {
             var pensList = pens[currentPage].map(pen => {
-                let { pen_id, name, username, img_url, views, comments, loves, scripts, html, css, js } = pen;
+                let { pen_id, name, username, img_url, description, views, comments, loves, scripts, html, css, js } = pen;
                 return (
                     <Pen
                         key={pen_id}
@@ -115,7 +115,8 @@ export default class Pens extends Component {
                         penName={name}
                         views={views}
                         commentsNum={comments}
-                        loves={loves} />
+                        loves={loves}
+                        description={description} />
                 );
             })
         }

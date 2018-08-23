@@ -59,17 +59,17 @@ class NavBar extends Component {
     }
   }
 
-  toggleSearch = () => {
-    if(this.state.search === false) {
-      this.setState({
-        search: true
-      })
-    } else {
-      this.setState({
-        search: false
-      })
-    }
-  }
+  // toggleSearch = () => {
+  //   if(this.state.search === false) {
+  //     this.setState({
+  //       search: true
+  //     })
+  //   } else {
+  //     this.setState({
+  //       search: false
+  //     })
+  //   }
+  // }
 
 
   render() {
@@ -118,9 +118,11 @@ class NavBar extends Component {
             </div>
 
 
-            <button className='divMag' onClick={() => this.toggleSearch()}>
-              <img className='mag' src="https://www.shareicon.net/download/2015/09/25/107005_find_512x512.png" alt="magnifier" />
-            </button>
+            <Link to="/search">
+              <button className='divMag'>
+                <img className='mag' src="https://www.shareicon.net/download/2015/09/25/107005_find_512x512.png" alt="magnifier" />
+              </button>
+            </Link>
 
             <div>
               <img className='bell' src="https://www.applozic.com/assets/resources/lib/images/icon-bell.png" alt="Bell" />
@@ -158,7 +160,7 @@ class NavBar extends Component {
           </div>
 
         </nav>
-        {this.state.search ? <SearchBar /> : null}
+        {/* {this.state.search ? <SearchBar /> : null} */}
       </div>
     )
   }
