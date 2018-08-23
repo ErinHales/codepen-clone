@@ -483,7 +483,8 @@ span {
   align-items: center; }
 
 .pens-sizing-container {
-  max-width: 1500px; }
+  width: 100%;
+  overflow-x: hidden; }
 
 .pensView {
   background-color: #191A1D;
@@ -1732,16 +1733,21 @@ Link {
   background-color: white;
   border-radius: 3px;
   width: 520px;
+  margin: auto;
+  max-height: 550px;
   box-sizing: border-box;
-  padding-bottom: 75px; }
+  padding-bottom: 10px;
+  min-height: 385px; }
 
 .pen-settings-interface {
+  max-height: 475px;
   position: relative;
   padding: 20px; }
   .pen-settings-interface .pen-settings-heading {
     font-family: "Lato", sans-serif;
     font-size: 1.1rem;
-    font-weight: bold; }
+    font-weight: bold;
+    margin-bottom: .3rem; }
   .pen-settings-interface .pen-settings-description {
     font-family: "Lato", sans-serif;
     font-size: 0.8rem;
@@ -1764,7 +1770,10 @@ Link {
     font-size: 1rem;
     line-height: 1.2;
     font-family: "Lato", sans-serif;
-    border-radius: 3px; }
+    border-radius: 3px;
+    cursor: pointer; }
+    .pen-settings-nav-header .pen-settings-nav-close:hover {
+      background-color: #2fb45a; }
   .pen-settings-nav-header .pen-settings-nav-title {
     padding-top: 10px; }
 
@@ -1792,10 +1801,27 @@ Link {
   display: flex;
   width: 100%; }
 
+.popup {
+  padding: 1px 4px;
+  font-size: 13px;
+  border-radius: 3px;
+  font-weight: bolder;
+  font-family: "Lato", sans-serif;
+  background-color: #666666;
+  color: white;
+  float: right;
+  user-select: none; }
+  .popup:hover {
+    background-color: #8a8a8a; }
+
+.show-popup {
+  color: blue; }
+
 .pen-settings-input {
   background-color: #eaeff0;
   font-family: "Lato", sans-serif;
   border: 0;
+  outline: 0;
   display: inline-block;
   position: relative;
   color: #535557;
@@ -1805,9 +1831,37 @@ Link {
   font-size: .95rem;
   padding: 1rem; }
 
+.pen-settings-cdn-selected-element-remove {
+  float: right;
+  padding: 1px 3px 3px 3px;
+  border-radius: 3px;
+  font-weight: bolder;
+  font-family: "Lato", sans-serif;
+  background-color: #C5C8D4;
+  user-select: none; }
+  .pen-settings-cdn-selected-element-remove:hover {
+    cursor: pointer;
+    color: red;
+    background: black; }
+
+.pen-settings-cdn-selected-container {
+  margin-top: 30px; }
+
+.pen-settings-cdn-selected-element {
+  background-color: #eaeff0;
+  color: #222;
+  padding: 7px;
+  margin-bottom: 10px;
+  max-height: 35px;
+  margin-right: 15px;
+  font-size: 13px;
+  font-family: "Lato", sans-serif;
+  border: 3px solid #eaeff0;
+  border-radius: 3px; }
+
 .pen-settings-cdn-results-container {
-  position: absolute;
-  width: 92%;
+  position: relative;
+  width: 100%;
   display: flex;
   max-height: 280px;
   overflow-x: auto;
@@ -1835,6 +1889,39 @@ Link {
   .pen-settings-cdn-element:hover {
     background-color: black;
     cursor: pointer; }
+
+.pen-settings-textarea {
+  color: #222;
+  background-color: #eaeff0;
+  outline: 0;
+  border: 3px solid #eaeff0;
+  border-radius: 3px;
+  width: 465px;
+  height: 95px;
+  resize: vertical;
+  max-height: 237px; }
+  .pen-settings-textarea:focus {
+    border: 3px solid #616574; }
+
+.hint {
+  color: #9396a4;
+  font-size: .8em;
+  padding-top: 3px;
+  padding-left: 16px;
+  line-height: 1.3;
+  padding-bottom: 10px; }
+
+.pen-settings-label {
+  font-family: "Lato", sans-serif;
+  padding-left: 4px; }
+
+.tab-label {
+  position: relative;
+  bottom: 12px;
+  display: inline; }
+
+.pen-settings-slider-form {
+  margin-bottom: 20px; }
 
 .editorSettings {
   display: flex;

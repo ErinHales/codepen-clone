@@ -7,30 +7,51 @@ export default class SettingsJs extends Component {
         this.state = {
             showPopUp: false,
             cdnInput: '',
+            jsCdnList: [], 
             externalCdnList: []
         }
         this.cdnInputHandler = this.cdnInputHandler.bind(this)
         this.showPopUp = this.showPopUp.bind(this)
         this.getExternalCdnList = this.getExternalCdnList.bind(this)
     }
+    
+    //// ON CLICK OUTSIDE OF INPUT OR EXTERNAL CDN ELEMENT
+    componentWillMount() {
+        document.addEventListener('mousedown', this.clearExternalResults, false)
+    }
 
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', this.clearExternalResults, false)
+    }
+
+    clearExternalResults = (e) => {
+        // if both refs arent being interacted with clear external cdn list
+        if( !this.results.contains(e.target) && !this.input.contains(e.target)) {
+            this.setState({externalCdnList: []})
+        }
+    }
+    ///////////
     showPopUp() {
         this.setState({showPopUp:!this.state.showPopUp})
+    }
+
+    jsCdnSelectHandler(data) {
+        this.props.jsCdnSelectHandler(data)
+        this.setState({externalCdnList: [], cdnInput: ''})
     }
 
     cdnInputHandler(value) {
         this.setState({cdnInput: value})
         this.getExternalCdnList()
     }
+
     getExternalCdnList() {
-        if(!this.state.cdnInput) {
-            this.setState({externalCdnList: []})
-            return
-        }
         axios.get(`/api/pen/searchcdn/js?search=${this.state.cdnInput}`)
             .then( res => {
                 this.setState({
-                    externalCdnList: res.data
+                    externalCdnList: res.data.filter(element => {
+                        return this.props.jsCdnList.indexOf(element.latest) === -1
+                    })
                 })
             })
             .catch(console.error)
@@ -39,7 +60,7 @@ export default class SettingsJs extends Component {
     render() {
         const externalCdnList = this.state.externalCdnList.map( cdn => {
             return(
-                <div className="pen-settings-cdn-element">
+                <div key={cdn.name} onClick={() => this.jsCdnSelectHandler(cdn)} className="pen-settings-cdn-element">
                     <div className="cdn-element-name-version-container">
                         <div>
                             {cdn.name}
@@ -52,18 +73,22 @@ export default class SettingsJs extends Component {
                 </div>
             )
         })
-        const cdnList = this.props.cdnList.map( item => {
+        const cdnList = this.props.jsCdnList.map( item => {
             return (
-                <div>
-                    {item}
+                <div key={item} className="pen-settings-cdn-selected-element-container">
+                    <div onClick={() => this.props.removeJsCdn(item)} className="pen-settings-cdn-selected-element-remove">x</div>
+                    <div className="pen-settings-cdn-selected-element">
+                        {item}
+                    </div>
                 </div>
             )
         })
         return (
             <div className="pen-settings-interface">
-                <h3 className="pen-settings-heading">Add External Scripts</h3> <div onClick={this.showPopUp} className={`popup${this.state.showPopUp ? ' show-popup' : ""}`}>asdf</div>
+                <div onClick={this.showPopUp} className={`popup${this.state.showPopUp ? ' show-popup' : ""}`}>?</div>
+                <h3 className="pen-settings-heading">Add External Scripts</h3> 
                 <p className="pen-settings-description">Any URL's added here will be added as {'<script>'}s in order, and run before the JavaScript in the editor. You can use the URL of any other Pen and it will include the JavaScript from that Pen.</p>
-                <div className="pen-settings-input-container">
+                <div ref={input => this.input = input} className="pen-settings-input-container">
                     <div className="pen-settings-input-icon">
                         <i 
                         style={{
@@ -81,10 +106,12 @@ export default class SettingsJs extends Component {
                         value={this.state.cdnInput} 
                         onChange={(event) => this.cdnInputHandler(event.target.value)} type="text"/>
                 </div>
-                <div className="pen-settings-cdn-results-container">
+                <div ref={results => this.results = results} className="pen-settings-cdn-results-container">
                     {externalCdnList}
                 </div>
-                {cdnList}
+                <div className="pen-settings-cdn-selected-container">
+                    {cdnList}
+                </div>
             </div>
         )
     }
