@@ -1046,18 +1046,15 @@ span {
         font-size: 1.1rem;
         cursor: pointer; }
     .component-account .account-container .account-grid {
-      border: 1px solid blue;
       margin-top: 0.75rem;
       display: flex;
       justify-content: space-between; }
       .component-account .account-container .account-grid .account-avatar {
         width: 14%;
-        border: 1px solid green;
         height: 25rem;
         background-color: #32333B;
         padding: 1rem; }
         .component-account .account-container .account-grid .account-avatar .img-placeholder {
-          border: 1px solid yellow;
           height: 45%; }
           .component-account .account-container .account-grid .account-avatar .img-placeholder img {
             height: 100%;
@@ -1090,7 +1087,6 @@ span {
                 .component-account .account-container .account-grid .account-avatar .dropzone .dropzone-container .dropzone-input button:active {
                   top: 2px; }
       .component-account .account-container .account-grid .account-information {
-        border: 1px solid red;
         width: 58%; }
         .component-account .account-container .account-grid .account-information .information-box {
           background-color: #32333B;
@@ -1103,7 +1099,6 @@ span {
             padding-bottom: 0.5rem;
             border-bottom: 2px solid #9396A4; }
           .component-account .account-container .account-grid .account-information .information-box .input-container {
-            border: 1px solid purple;
             padding-right: 10px;
             padding-bottom: 8px;
             display: flex;
@@ -1112,7 +1107,6 @@ span {
             .component-account .account-container .account-grid .account-information .information-box .input-container .input-group {
               display: flex;
               align-items: center;
-              border: 1px solid green;
               width: 83%;
               justify-content: space-between;
               margin-top: 0.75rem; }
@@ -1130,17 +1124,14 @@ span {
                 width: 70%;
                 margin-top: 0; }
         .component-account .account-container .account-grid .account-information .bio {
-          border: 4px solid orange;
           height: 191px; }
         .component-account .account-container .account-grid .account-information .textarea-group {
-          border: 1px solid red;
           display: flex;
           justify-content: space-between;
           padding-right: 10px;
           margin-top: 1rem; }
           .component-account .account-container .account-grid .account-information .textarea-group .textarea {
-            width: 70%;
-            border: 1px solid blue; }
+            width: 70%; }
             .component-account .account-container .account-grid .account-information .textarea-group .textarea textarea {
               width: 100%;
               height: 90px;
@@ -1161,7 +1152,6 @@ span {
               font-size: 1.1rem;
               text-transform: uppercase; }
       .component-account .account-container .account-grid .slider-container {
-        border: 1px solid green;
         margin-top: 1.5rem;
         padding-left: 0.5rem;
         display: flex;
@@ -1216,10 +1206,8 @@ span {
           font-size: 1.1rem;
           color: #75D8FC; }
       .component-account .account-container .account-grid .account-customize {
-        border: 1px solid orange;
         width: 20%; }
         .component-account .account-container .account-grid .account-customize .information-box {
-          border: 1px solid red;
           background-color: #32333B;
           height: 50%;
           padding: 1rem; }
@@ -2188,3 +2176,73 @@ span {
   height: 30px;
   width: 150px;
   display: flex; }
+
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #191A1D;
+  font-family: "Lato", sans-serif;
+  color: lightgray;
+  min-height: calc(100vh - 200px);
+  padding-top: 50px; }
+  .search .bar {
+    display: flex;
+    width: 80%;
+    background-color: #252527;
+    border-top: 5px solid gray; }
+    .search .bar h3 {
+      margin: 20px; }
+    .search .bar h3:hover {
+      color: white;
+      cursor: pointer; }
+  .search input {
+    width: 80%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 50px;
+    font-weight: bold;
+    color: white; }
+  .search .filters {
+    width: 80%;
+    margin: 20px; }
+    .search .filters h4 {
+      font-size: 30px;
+      font-weight: bold;
+      color: white;
+      margin-left: 20px; }
+    .search .filters input {
+      margin: 0px 10px 0px 25px; }
+  .search .user {
+    background-color: black;
+    width: 30%;
+    margin: 20px 0px;
+    padding: 10px 0px; }
+    .search .user img {
+      width: 50px;
+      height: 50px;
+      display: inline-block;
+      margin: 20px; }
+    .search .user h3 {
+      display: inline-block;
+      color: #0EBEFF;
+      font-size: 20px;
+      position: relative;
+      bottom: 30px; }
+
+.filterContainer {
+  margin: 10px 0px;
+  display: flex;
+  align-items: center;
+  width: 500px; }
+  .filterContainer input {
+    width: 20px; }
+  .filterContainer label {
+    width: 100px; }
+
+.penContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 80%; }

@@ -35,6 +35,7 @@ class UserPic extends Component{
       this.toggleUserNav()
       this.userAvatar()
     })
+    window.location.hash = "#/";
   }
 
   userAvatar(){
