@@ -76,17 +76,18 @@ module.exports = {
                     .catch( err => {
                         console.error(err)
                         res.sendStatus(500)
-                    })                        
+                    })
             }
             else if(req.query.type === 'new') {
                 dbConn.get_new_user_pens([id, offset])
                     .then( dbResponse => {
+                        console.log(dbResponse);
                         res.status(200).send(dbResponse.map( pen => restructureResponsePen(pen)))
                     })
                     .catch( err => {
                         console.error(err)
                         res.sendStatus(500)
-                    })                        
+                    })
             }
             else {
                 res.sendStatus(400)

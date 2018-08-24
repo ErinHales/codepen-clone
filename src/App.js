@@ -14,6 +14,7 @@ import { Switch, Route } from 'react-router-dom';
 // import PenSettings from './components/PenSettings/PenSettings';
 import Footer from './components/Footer/Footer';
 import About from './components/About/About';
+import Showcase from './components/Account/Showcase';
 
 class App extends Component {
   render() {
@@ -21,8 +22,8 @@ class App extends Component {
       <div className="App">
         {/* <PenSettings /> */}
         {/* <SearchBar /> */}
-        <Switch>
-          <Route exact path="/" component={Login} />
+        {/* {/* <Switch> */}
+          {/* <Route exact path="/" component={Login} />
           <Route path="/signup" component={SignUp} />
           <Route exact path="/editor/:id" component={CodeEditor} />
           <Route path="/editor" component={CodeEditor} />
@@ -34,10 +35,11 @@ class App extends Component {
           <Route path="/about" component={About}/>
           <Route path="/search" component={Search} />
         </Switch>
-        <Footer />
+        <Footer /> */}
+        <Showcase />
       </div>
     );
   }
 }
 
-export default App;
+ export default App;
