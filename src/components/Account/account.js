@@ -221,7 +221,7 @@ class Account extends Component {
                                         <div className="img-placeholder">
                                             <img src={customizeImg} alt="cusomize img" />
                                         </div>
-                                        <button>Organize!</button>
+                                        <Link to="/showcase"><button>Organize!</button></Link>
                                         <p>You can choose and arrange the Pens displayed
                                             on your profile.
                                 </p>

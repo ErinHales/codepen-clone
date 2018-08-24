@@ -2058,7 +2058,6 @@ span {
   min-height: 100vh;
   padding-top: 3.25rem; }
   .component-showcase .showcase-container {
-    border: 1px solid red;
     width: 97%;
     margin: 0 auto; }
     .component-showcase .showcase-container .showcase-grid {
@@ -2072,7 +2071,6 @@ span {
       .component-showcase .showcase-container .showcase-grid .grid-item {
         height: 150px;
         width: 31%;
-        border: 1px solid red;
         margin-bottom: 1rem; }
         .component-showcase .showcase-container .showcase-grid .grid-item:hover {
           cursor: all-scroll; }
@@ -2212,7 +2210,6 @@ span {
         width: 98%;
         margin: 0 auto; }
         .component-showcase .showcase-container .showcase-body-container .showcase-box .showcase-filter {
-          border: 1px solid blue;
           display: flex;
           justify-content: space-between;
           align-items: center;
