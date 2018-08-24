@@ -46,9 +46,6 @@ export default class Pen extends Component {
         const { css: cssList, html: htmlScripts, js: jsList } = scripts
         let { html_tag_class: htmlClassTag, head_tag: head } = htmlScripts
         // removing null
-        if(!head.isNull) {
-            head = ''
-        }
         console.log(11111, htmlClassTag)
         if(!htmlClassTag){
             console.log('fired')
@@ -63,10 +60,10 @@ export default class Pen extends Component {
         }, '')
 
         let srcDoc = `
-        <html class='${htmlClassTag}'>
+        <html class='${htmlClassTag || ''}'>
             <head>
                 ${stylesheetString}
-                ${head}            
+                ${head || ''}            
             </head>
             <body>${html}</body>
             <style>${css}</style>
@@ -80,7 +77,7 @@ export default class Pen extends Component {
                     <div className="overlayContainer">
                         <div className="overlayContainer">
                             <div className="pen-iframe-container">
-                                <iframe scrolling="no" className="pen-iframe" title={this.props.id} srcDoc={srcDoc}></iframe>
+                                <iframe style={{backgroundColor: 'white'}} scrolling="no" className="pen-iframe" title={this.props.id} srcDoc={srcDoc}></iframe>
                             </div>
                             <div className="overlay">
                                 <div className="text">This is a description a very long description thei aslfkjas fl sfas flk f sf aslkfj sdlfk sf  f sfkl sfkljs dfk f dksf kasldf sl;fd sl;df sf ksf lksf </div>

@@ -369,7 +369,7 @@ export default class CodeEditor extends Component {
             </div>
         )
 
-        let stylesheetString = this.state.cssSettings.cssCdnList.reduce((string, element) => {
+        let stylesheetString = this.state.cssSettings.cssCdnList.filter(element => element).reduce((string, element) => {
             return string  + `<link rel='stylesheet' href='${element}'>`
         }, '')
 
@@ -378,10 +378,10 @@ export default class CodeEditor extends Component {
         }, '')
         console.log(jsLibraryString)
         let srcdoc = `
-        <html class='${this.state.htmlSettings.htmlClassTag}'>
+        <html class='${this.state.htmlSettings.htmlClassTag || ''}'>
             <head>
                 ${stylesheetString}
-                ${this.state.htmlSettings.head}            
+                ${this.state.htmlSettings.head || ''}            
             </head>
             <body>${this.state.html}</body>
             <style>${this.state.css}</style>
