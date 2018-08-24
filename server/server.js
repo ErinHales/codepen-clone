@@ -145,6 +145,23 @@ app.get('/api/search/users', userCntrl.searchUser)
 
 
 
+// get user info for profile page
+app.get('/api/userinfo', userCntrl.getUserInfo)
+
+// add user's info into database
+app.post('/api/setuserinfo', userCntrl.createUserInfo)
+
+// updates user's info
+app.put('/api/update/userinfo', userCntrl.updateUserInfo)
+
+// update user name
+app.put('/api/update/name', userCntrl.updateUserName)
+
+// update user theme
+app.put('/api/user/theme', userCntrl.updateTheme)
+
+
+
 app.listen(SERVER_PORT, () => {
     console.log(`Server is listening on port: ${SERVER_PORT}`);
 })

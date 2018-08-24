@@ -22,8 +22,8 @@ class App extends Component {
       <div className="App">
         {/* <PenSettings /> */}
         {/* <SearchBar /> */}
-        {/* {/* <Switch> */}
-          {/* <Route exact path="/" component={Login} />
+        <Switch>
+          <Route exact path="/" component={Login} />
           <Route path="/signup" component={SignUp} />
           <Route exact path="/editor/:id" component={CodeEditor} />
           <Route path="/editor" component={CodeEditor} />
@@ -34,9 +34,10 @@ class App extends Component {
           <Route path="/account" component={Account} />
           <Route path="/about" component={About}/>
           <Route path="/search" component={Search} />
+          <Route path="/showcase" component={Showcase} />
         </Switch>
-        <Footer /> */}
-        <Showcase />
+        <Footer />
+        {/* <Showcase /> */}
       </div>
     );
   }
