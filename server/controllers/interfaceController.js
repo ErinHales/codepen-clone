@@ -56,7 +56,6 @@ module.exports = {
         } else {
             id = req.session.userid
         }
-        console.log(id)
         let offset = parseInt(pageNum) * 6;
         if(req.query) {
             if(req.query.type === 'views') {
@@ -96,6 +95,25 @@ module.exports = {
         }
         else {
             res.sendStatus(400)
+        }
+    },
+    searchPens(req,res) {
+        let offset = req.params.pageNum * 6;
+        let searchParam = `%${req.query.search}%`
+        if(req.query.type === "popularity") {
+            req.app.get("db").search_by_popularity([offset, searchParam]).then(response => {
+                res.status(200).send(response);
+            }).catch(err => {
+                res.status(500);
+                console.error();
+            })
+        } else {
+            req.app.get("db").search_by_currency([offset, searchParam]).then(response => {
+                res.status(200).send(response);
+            }).catch(err => {
+                res.status(500);
+                console.error();
+            })
         }
     }
 }

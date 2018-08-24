@@ -1,0 +1,21 @@
+.signUpButton{
+  height: 45px;
+  width: 84px;
+  border-radius: 3px;
+  color:white;
+  background: #36383F;
+  font-family: 'Lato';
+  margin-left: 24px; 
+  cursor: pointer; 
+}
+
+.signUpButton:hover{
+  background: rgb(110, 109, 109)
+}
+
+.signBtn{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}

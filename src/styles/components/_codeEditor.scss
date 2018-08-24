@@ -10,9 +10,24 @@ $primary-black: #1D1E22;
 $med-gray: #36383F;
 $light-gray: #C5C8D4;
 .codeEditor {
+    // overflow: auto;
     overflow: hidden;
-    // overflow-y: hidden;
     
+}
+.pen-settings-popup-container {
+    top: 100px;
+    height: 150%;
+    width: 100%;
+    z-index: 600;
+    position: absolute;
+    .pen-settings-popup-overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: -40px;
+        z-index: -1;
+        background-color: rgba(0, 0, 0, 0.349);
+    }
 }
 
 .signup-popup {
@@ -125,11 +140,6 @@ span {
     width: 0px !important;
 }
 
-.CodeMirror-line {
-    position: relative;
-    left: 10px;
-}
-
 .penFrame {
     width: calc(100vw - 10px);
     min-height: calc(100vh - 100px);
@@ -181,7 +191,7 @@ span {
 
 
 .penFooter {
-    height: 30px;
+    height: 50px;
     width: calc(100vw - 50px);
     background-color: $med-gray;
     margin-top: -3px;
@@ -189,18 +199,17 @@ span {
     justify-content: space-between;
     align-items: center;
     padding: 0px 20px;
-}
-
-.penFooter button {
-    background-color: $primary-black;
-    color: white;
-    font-size: 10px;
-    padding: 4px;
-    border-radius: 2px;
-}
-
-.penFooter button:hover {
-    cursor: pointer;
+    font-family: "Lato", sans-serif;
+    button {
+        background-color: $primary-black;
+        color: white;
+        font-size: 20px;
+        padding: 5px 10px;
+        border-radius: 2px;
+    }
+    button:hover {
+        cursor: pointer;
+    }
 }
 
 .delete:hover {

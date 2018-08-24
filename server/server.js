@@ -33,6 +33,7 @@ const penCntrl = require('./controllers/penController')
 const interfaceCntrl = require('./controllers/interfaceController')
 const statsCntrl = require('./controllers/statsController')
 const comCntrl = require('./controllers/commentsController');
+const profileCntrl = require('./controllers/profileLayoutController');
 
 // Sign a user up
 app.post('/api/auth/register', (req, res) => loginCntrl.registerUser(req, res, bcrypt));
@@ -41,21 +42,28 @@ app.post('/api/auth/login', (req, res) => loginCntrl.getUser(req, res, bcrypt))
 
 
 //LOGOUT 
-app.get('/api/auth/logout', (req, res) => {
+app.get('/api/logout', (req, res) => {
     req.session.destroy()
-    res.redirect('http://localhost:3000/#/')
+    // res.redirect('http://localhost:3000/#/')
 })
+
+
+// Profile Layout 
+app.post('/api/layout', profileCntrl.insertIntoLayout);
+app.delete('/api/layout/:penId', profileCntrl.deleteFromLayout);
+app.put('/api/layout/', profileCntrl.updateLayout);
 
 
 // USER
 
 // get the users information
-app.get('/api/users', (req,res) =>{
-    res.send(req.session);
-});
+app.get('/api/users', userCntrl.getUser)
+
+//
+// app.get('/api/loggedin', userCntrl.checkLoggedIn);
 
 // Update a users pic
-app.put('/api/user/pic', userCntrl.updateUserImg);
+app.put('/api/user/pic', userCntrl.updateUserImg)
 
 // takes object with new user data and updates database with changes
 app.put('/api/user', userCntrl.updateUser)
@@ -70,6 +78,9 @@ app.get('/api/pens/:pageNum', interfaceCntrl.getPens)
 
 // query: ?types=views or likes. will return and array of objects in descending order organized by query type. Limited to user
 app.get('/api/pens/user/:userId/:pageNum', interfaceCntrl.getUserPens)
+
+// get user's own pens
+// app.get('/api/pens/user/:pageNum', interfaceCntrl.getUserPens)
 
 // PEN
 
@@ -120,6 +131,16 @@ app.get('/api/pen/comments/:penId', comCntrl.getComments)
 
 // post comment
 app.post('/api/pen/comment/:penId', comCntrl.comment)
+
+
+
+// SEARCH
+
+// search all pens by title and description by popularity or currency
+app.get('/api/search/pens/:pageNum', interfaceCntrl.searchPens)
+
+// search all users
+app.get('/api/search/users', userCntrl.searchUser)
 
 
 

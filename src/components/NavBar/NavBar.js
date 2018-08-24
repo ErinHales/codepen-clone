@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import templateIcon from './tempsnip.jpg'
 import { Link } from 'react-router-dom'
+import UserPic from './components/UserPic'
+import SignUpBtn from './components/SignUpBtn'
+import { withRouter } from 'react-router-dom'
 import SearchBar from '../SearchBar/SearchBar';
 import axios from 'axios'
 
@@ -10,12 +13,12 @@ class NavBar extends Component {
     super()
     this.state = {
       togglePenWindow: false,
+      showYourProfile: false,
       id: '',
       user: '',
       search: false
     }
 
-    this.logout = this.logout.bind(this);
   }
   toggleNav() {
     this.setState({
@@ -23,53 +26,45 @@ class NavBar extends Component {
     })
   }
 
-  toggleUserNav() {
-    this.setState({
-      userWindow: !this.state.userWindow
-    })
+  componentWillMount() {
+    axios.get('/api/users')
+      .then( res => {
+        if(res.data.userid) {
+          this.setState({showYourProfile: true})
+        }
+      })
+      .catch(console.error)
   }
 
   postPen() {
-    window.location.hash = "#/editor";
+    window.location.hash = "#/editor"
+    this.toggleNav()
   }
 
-  logout() {
-    axios.post('/api/auth/logout').then(() => {
-      this.setState({ user: null });
-    })
-  }
-
-  componentDidMount() {
-    axios.get('/api/users').then(res => {
-      this.setState({
-        user: res.data
-      })
-    })
-  }
-
-  userAvatar() {
-    if (this.state.user.img_url === null || '') {
-      return (
-        <img className='nav-avatar' src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/default-avatar.png' alt='' />
+  componentChange(){
+    if(this.props.match.path !== '/'){
+      return(
+        <UserPic/>
       )
-    } else {
-      return (
-        <img className='nav-avatar' src={this.state.user.img_url} alt='' />
+    }else if(this.props.match.path === '/'){
+      return(
+        <SignUpBtn/>
       )
     }
+    
   }
 
-  toggleSearch = () => {
-    if(this.state.search === false) {
-      this.setState({
-        search: true
-      })
-    } else {
-      this.setState({
-        search: false
-      })
-    }
-  }
+  // toggleSearch = () => {
+  //   if(this.state.search === false) {
+  //     this.setState({
+  //       search: true
+  //     })
+  //   } else {
+  //     this.setState({
+  //       search: false
+  //     })
+  //   }
+  // }
 
 
   render() {
@@ -78,16 +73,19 @@ class NavBar extends Component {
         <nav className='nav1'>
 
           <div className='Name'>
-            <h1>C L <img className='icon' src='http://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Large.png' alt='' /> N E P E N</h1>
+            <Link to='/' className='link'><h1 className='clonepen'>C L <img className='icon' src='http://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Large.png' alt='' /> N E P E N</h1></Link>
           </div>
-
-          <Link to="/profile" className="link">
-            <div className='divProf'>
-              <p className='Your'>YOUR</p>
-              <h1 className='Prof'>Profile</h1>
-              <div className='h-line'></div>
-            </div>
-          </Link>
+          {this.state.showYourProfile ? (
+            <Link to="/profile" className="link">
+              <div className='divProf'>
+                <p className='Your'>YOUR</p>
+                <h1 className='Prof'>Profile</h1>
+                <div className='h-line'></div>
+              </div>
+            </Link>
+          ) : (
+            null
+          )}
 
           <Link to="/pens" className="link">
             <div className='divExp'>
@@ -118,17 +116,16 @@ class NavBar extends Component {
             </div>
 
 
-            <button className='divMag' onClick={() => this.toggleSearch()}>
-              <img className='mag' src="https://www.shareicon.net/download/2015/09/25/107005_find_512x512.png" alt="magnifier" />
-            </button>
+            <Link to="/search">
+              <button className='divMag'>
+                <img className='mag' src="https://www.shareicon.net/download/2015/09/25/107005_find_512x512.png" alt="magnifier" />
+              </button>
+            </Link>
 
             <div>
-              <img className='bell' src="https://www.applozic.com/assets/resources/lib/images/icon-bell.png" alt="Bell" />
+              {this.componentChange()}
             </div>
-
-            <div className='userIcon' onClick={() => this.toggleUserNav()}>
-              {this.userAvatar()}
-            </div>
+            
           </div>
 
 
@@ -138,30 +135,12 @@ class NavBar extends Component {
             </div>
           </div>
 
-          <div className={this.state.userWindow ? 'show-nav userWin' : 'show-nav'} onClick={() => this.toggleUserNav()}>
-            <div>
-              <p className='goTo'> Go to...</p>
-              <Link className="goToLink" to='/Profile'> <h1 className='Profile'> Your Profile</h1> </Link>
-              <div className='sttngbox'>
-                <Link to="/account" className="goToLink">
-                  <div className='setbox'>
-                    <h1><img className='gearIcon' src='https://cdn2.iconfinder.com/data/icons/web/512/Cog-512.png' alt='gear' />
-                      Settings</h1>
-                  </div>
-                </Link>
-                <div className='setbox' onClick={() => this.logout()}>
-                  <h1><img className='logoutIcon' src="https://cdn4.iconfinder.com/data/icons/dashboard-icons/43/icon-logout-512.png" alt="logout" />
-                    Log Out</h1>
-                </div>
-              </div>
-            </div>
-          </div>
 
         </nav>
-        {this.state.search ? <SearchBar /> : null}
+        {/* {this.state.search ? <SearchBar /> : null} */}
       </div>
     )
   }
 }
 
-export default NavBar
+export default withRouter(NavBar)

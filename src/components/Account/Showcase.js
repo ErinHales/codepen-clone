@@ -19,9 +19,8 @@ class Showcase extends Component {
         }
     }
     getUserPens = () => {
-        axios.get('/api/pens/user/3/0?type=new')
+        axios.get('/api/pens/user/3/2?type=new')
             .then(res => {
-                console.log(res)
                 this.setState({
                     pens: res.data
                 })

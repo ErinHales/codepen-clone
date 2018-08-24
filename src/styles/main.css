@@ -312,6 +312,20 @@
 .codeEditor {
   overflow: hidden; }
 
+.pen-settings-popup-container {
+  top: 100px;
+  height: 150%;
+  width: 100%;
+  z-index: 600;
+  position: absolute; }
+  .pen-settings-popup-container .pen-settings-popup-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -40px;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.349); }
+
 .signup-popup {
   position: absolute;
   z-index: 600;
@@ -401,10 +415,6 @@ span {
 .CodeMirror-vscroll {
   width: 0px !important; }
 
-.CodeMirror-line {
-  position: relative;
-  left: 10px; }
-
 .penFrame {
   width: calc(100vw - 10px);
   min-height: calc(100vh - 100px); }
@@ -449,24 +459,23 @@ span {
   background-color: #4E505A; }
 
 .penFooter {
-  height: 30px;
+  height: 50px;
   width: calc(100vw - 50px);
   background-color: #36383F;
   margin-top: -3px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 20px; }
-
-.penFooter button {
-  background-color: #1D1E22;
-  color: white;
-  font-size: 10px;
-  padding: 4px;
-  border-radius: 2px; }
-
-.penFooter button:hover {
-  cursor: pointer; }
+  padding: 0px 20px;
+  font-family: "Lato", sans-serif; }
+  .penFooter button {
+    background-color: #1D1E22;
+    color: white;
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 2px; }
+  .penFooter button:hover {
+    cursor: pointer; }
 
 .delete:hover {
   background-color: #ED5151; }
@@ -573,7 +582,7 @@ span {
 
 .overlayContainer .text {
   color: white;
-  font-size: 15px;
+  font-size: 20px;
   line-height: 1.5;
   margin: 10px; }
 
@@ -686,13 +695,27 @@ span {
   color: white;
   cursor: pointer; }
 
+.userLink {
+  color: lightgray;
+  text-decoration: none; }
+
+.userLink:hover {
+  color: #0EBEFF;
+  cursor: pointer; }
+
+.penLink {
+  text-decoration: none; }
+
 .Nav {
   display: flex;
   justify-content: space-between;
   width: 100%; }
 
-Link {
+.link {
   text-decoration-line: none; }
+
+.clonepen:hover {
+  color: white; }
 
 .nav1 {
   background: black;
@@ -875,9 +898,9 @@ Link {
 .userIcon {
   height: 44px;
   width: 44px;
-  background: gray;
-  border-radius: 3px;
+  border-radius: 2px;
   margin-left: 15px;
+  z-index: 2;
   cursor: pointer; }
 
 .createWindow:hover {
@@ -915,7 +938,7 @@ Link {
   top: 55px;
   border-radius: 3px;
   display: inline;
-  transition: .5s height ease-out;
+  transition: .1s height ease-in-out;
   cursor: pointer; }
 
 .userWin {
@@ -924,12 +947,12 @@ Link {
   width: 250px;
   z-index: 11;
   position: absolute;
-  border-radius: 3px;
+  border-radius: 2px;
   right: 0px;
   top: 55px;
   z-index: 11;
   display: inline;
-  transition: .5s height ease-out; }
+  transition: .1s height ease-out; }
 
 .goTo {
   font-family: "Lato", "Lucida Grande", "Lucida Sans Unicode";
@@ -962,7 +985,8 @@ Link {
   padding-left: 10px;
   font-family: "Lato", "Lucida Grande", "Lucida Sans Unicode";
   font-size: 14px;
-  cursor: pointer; }
+  cursor: pointer;
+  color: black; }
 
 .Profile:hover {
   background: lightgray; }
@@ -982,7 +1006,14 @@ Link {
 .nav-avatar {
   height: 44px;
   width: 44px;
-  border-radius: 5px; }
+  border-radius: 3px; }
+
+.signUp {
+  height: 45px;
+  width: 80px;
+  background: #36383F;
+  border-radius: 3px;
+  margin-left: 25px; }
 
 .goToLink {
   color: black;
@@ -1015,18 +1046,15 @@ Link {
         font-size: 1.1rem;
         cursor: pointer; }
     .component-account .account-container .account-grid {
-      border: 1px solid blue;
       margin-top: 0.75rem;
       display: flex;
       justify-content: space-between; }
       .component-account .account-container .account-grid .account-avatar {
         width: 14%;
-        border: 1px solid green;
         height: 25rem;
         background-color: #32333B;
         padding: 1rem; }
         .component-account .account-container .account-grid .account-avatar .img-placeholder {
-          border: 1px solid yellow;
           height: 45%; }
           .component-account .account-container .account-grid .account-avatar .img-placeholder img {
             height: 100%;
@@ -1059,7 +1087,6 @@ Link {
                 .component-account .account-container .account-grid .account-avatar .dropzone .dropzone-container .dropzone-input button:active {
                   top: 2px; }
       .component-account .account-container .account-grid .account-information {
-        border: 1px solid red;
         width: 58%; }
         .component-account .account-container .account-grid .account-information .information-box {
           background-color: #32333B;
@@ -1072,7 +1099,6 @@ Link {
             padding-bottom: 0.5rem;
             border-bottom: 2px solid #9396A4; }
           .component-account .account-container .account-grid .account-information .information-box .input-container {
-            border: 1px solid purple;
             padding-right: 10px;
             padding-bottom: 8px;
             display: flex;
@@ -1081,7 +1107,6 @@ Link {
             .component-account .account-container .account-grid .account-information .information-box .input-container .input-group {
               display: flex;
               align-items: center;
-              border: 1px solid green;
               width: 83%;
               justify-content: space-between;
               margin-top: 0.75rem; }
@@ -1099,17 +1124,14 @@ Link {
                 width: 70%;
                 margin-top: 0; }
         .component-account .account-container .account-grid .account-information .bio {
-          border: 4px solid orange;
           height: 191px; }
         .component-account .account-container .account-grid .account-information .textarea-group {
-          border: 1px solid red;
           display: flex;
           justify-content: space-between;
           padding-right: 10px;
           margin-top: 1rem; }
           .component-account .account-container .account-grid .account-information .textarea-group .textarea {
-            width: 70%;
-            border: 1px solid blue; }
+            width: 70%; }
             .component-account .account-container .account-grid .account-information .textarea-group .textarea textarea {
               width: 100%;
               height: 90px;
@@ -1130,7 +1152,6 @@ Link {
               font-size: 1.1rem;
               text-transform: uppercase; }
       .component-account .account-container .account-grid .slider-container {
-        border: 1px solid green;
         margin-top: 1.5rem;
         padding-left: 0.5rem;
         display: flex;
@@ -1185,10 +1206,8 @@ Link {
           font-size: 1.1rem;
           color: #75D8FC; }
       .component-account .account-container .account-grid .account-customize {
-        border: 1px solid orange;
         width: 20%; }
         .component-account .account-container .account-grid .account-customize .information-box {
-          border: 1px solid red;
           background-color: #32333B;
           height: 50%;
           padding: 1rem; }
@@ -1238,19 +1257,17 @@ Link {
   background: #191A1D; }
 
 .UserInfo {
-  height: 300px;
-  width: 200px;
-  display: flex;
-  flex-direction: column;
   color: white;
   position: absolute;
-  left: 45%;
-  top: 174px;
+  top: 170px;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   text-align: center; }
 
 .UserName {
-  font-size: 36px;
+  font-size: 40px;
   margin-bottom: 15px;
   font-family: 'Telex', sans-serif;
   font-weight: 600; }
@@ -1259,14 +1276,14 @@ Link {
   margin-bottom: 18px;
   font-family: 'Lato', sans-serif; }
 
-.UserPic {
+#UserPic {
   height: 130px;
   width: 130px;
   background: #181818;
-  position: relative;
-  left: 16px;
   border: 4px #2e2d2d solid;
-  box-shadow: 1px 1px #1d1c1c; }
+  box-shadow: 1px 1px #1d1c1c;
+  overflow: hidden;
+  margin: auto; }
 
 .Hire {
   font-family: 'Lato', sans-serif;
@@ -1308,20 +1325,18 @@ Link {
   border: 3px solid white;
   border-radius: 3px;
   font-size: 15px;
+  text-decoration-color: none;
   cursor: pointer; }
 
 .EditP:hover {
   background: whitesmoke;
+  text-decoration: none;
   color: black; }
-
-.profileContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center; }
 
 .Pen-InputWrapper {
   height: 30px;
-  width: 78%;
+  width: 80%;
+  padding-left: 10%;
   font-family: 'Lato', sans-serif;
   font-size: 18px;
   display: flex;
@@ -1353,29 +1368,31 @@ Link {
   position: relative;
   top: 10px; }
 
-.ligthgray-line {
-  height: 5px;
-  width: 80%;
-  background: gray; }
-
 .gray-line {
   height: 50px;
   width: 80%;
   background: #252527;
-  margin-bottom: 20px; }
+  margin: 0px 10% 20px 10%;
+  border-top: 5px solid gray; }
 
-.Pen-window {
-  height: 600px;
-  width: 80%;
-  border-radius: 10px;
+.pen-window {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around; }
+  flex-direction: column;
+  width: 100vw;
+  justify-content: space-around;
+  align-items: center; }
+  .pen-window > :nth-child(1) {
+    width: 80%;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; }
 
 .avatar {
   height: 130px; }
 
 .pagination {
+  width: 80px;
   border-radius: 2px;
   background-color: transparent;
   border: 3px solid white;
@@ -1391,11 +1408,11 @@ Link {
   background: white; }
 
 .nextButtonContainer {
+  margin: 50px 0px;
   width: 100vw;
   display: flex;
   justify-content: center;
-  padding: 50px;
-  padding-top: 100px; }
+  align-items: center; }
 
 .link {
   text-decoration: none;
@@ -1403,6 +1420,31 @@ Link {
 
 .link:hover {
   color: black; }
+
+.goMakePens {
+  font-family: "Lato", sans-serif;
+  color: White;
+  padding: 80px 0px 120px 0px;
+  text-align: center;
+  line-height: 1.5; }
+  .goMakePens h1 {
+    margin: 30px;
+    font-size: 50px;
+    font-weight: bold; }
+  .goMakePens button {
+    background-color: transparent;
+    padding: 10px 20px;
+    border: 3px solid white;
+    color: white;
+    border-radius: 3px;
+    font-size: 20px; }
+  .goMakePens button:hover {
+    color: black;
+    background-color: white;
+    cursor: pointer; }
+
+.profileContainer {
+  min-height: 400px; }
 
 .commentsPageContainer {
   background-color: #222222;
@@ -1596,9 +1638,7 @@ Link {
 .footer {
   height: 200px;
   width: 100%;
-  background: #111;
-  position: relative;
-  top: 20%; }
+  background: #111; }
 
 .icon-footer {
   height: 26px;
@@ -1618,20 +1658,17 @@ Link {
   font-size: 12px; }
 
 .Backgrnd {
-  height: 155vh;
   width: 100%;
   background: #191A1D;
   display: flex;
-  flex-wrap: wrap; }
+  flex-direction: column;
+  height: 1800px; }
 
 .contact {
   height: 390px;
-  width: 415px;
+  width: 30vw;
   background: whitesmoke;
-  padding: 35px;
-  position: relative;
-  top: 3%;
-  left: 10%; }
+  padding: 35px; }
 
 .About {
   font-family: 'Archivo Black', sans-serif;
@@ -1639,7 +1676,7 @@ Link {
   font-weight: bolder; }
 
 .address {
-  margin-top: 250px;
+  margin-top: 220px;
   font-family: 'Lato', sans-serif;
   color: gray; }
 
@@ -1654,25 +1691,26 @@ Link {
 
 .description {
   height: 400px;
-  width: 800px;
+  width: 50vw;
   color: white;
   font-family: 'Lato', sans-serif;
   font-size: 1.6rem;
   font-weight: 0;
-  position: relative;
-  left: 14%;
-  top: 4%;
+  margin-top: 30px;
   line-height: 1.6;
-  font-weight: 200; }
+  font-weight: 200;
+  min-width: 400px; }
 
 .clonePen {
-  color: yellow; }
+  color: yellow;
+  min-width: 500px; }
 
 .divisions {
   height: 350px;
   width: 500px;
   background: #FFDD40;
-  margin: 40px; }
+  margin: 40px;
+  min-width: 330px; }
 
 .divisions1 {
   height: 250px;
@@ -1685,13 +1723,11 @@ Link {
 
 .Devs {
   height: 40vh;
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex-wrap: wrap;
-  margin: 30px;
-  position: absolute;
-  top: 60%;
-  left: 6%; }
+  justify-content: space-around;
+  margin-top: 50px; }
 
 .Pic {
   height: 150px;
@@ -1707,26 +1743,32 @@ Link {
   -webkit-filter: none; }
 
 .devName {
+  width: 300px;
   margin-top: 15px;
   margin-left: 10px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 34px;
-  position: relative;
-  left: 45%;
-  top: -30%; }
+  font-size: 34px; }
 
 .coDev {
+  width: 300px;
   margin-left: 10px;
-  font-family: 'Lato', sans-serif;
-  position: relative;
-  left: 45%;
-  top: -30%; }
+  font-family: 'Lato', sans-serif; }
 
 .descrptn {
   font-family: 'Lato', sans-serif;
-  margin-left: 10px;
-  padding: 15px;
-  margin-bottom: 20px; }
+  margin: 50px 20px 20px 20px; }
+
+.row {
+  width: 100vw;
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-around; }
+
+.devInfo {
+  float: right;
+  text-align: left;
+  width: 280px;
+  margin-top: 50px; }
 
 .pen-settings-container {
   border: 2px solid white;
@@ -1922,6 +1964,28 @@ Link {
 
 .pen-settings-slider-form {
   margin-bottom: 20px; }
+
+.signUpButton {
+  height: 45px;
+  width: 84px;
+  border-radius: 3px;
+  color: white;
+  background: #36383F;
+  font-family: 'Lato';
+  margin-left: 24px;
+  cursor: pointer; }
+
+.signUpButton:hover {
+  background: #6e6d6d; }
+
+.signBtn {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center; }
+
+.container {
+  display: flex; }
 
 .editorSettings {
   display: flex;
@@ -2153,3 +2217,207 @@ Link {
           .component-showcase .showcase-container .showcase-body-container .showcase-box .showcase-filter .filter-box input {
             border-radius: 5px;
             padding: 8px 4px; }
+
+.icon2 {
+  height: 40px; }
+
+.APenBy {
+  font-size: 11px;
+  color: gray; }
+
+.Name2 {
+  width: 20%;
+  min-width: 175px;
+  display: flex;
+  align-items: bottom;
+  font-family: 'Lato', sans-serif;
+  color: white;
+  margin-left: 15px;
+  margin-top: 13px;
+  font-size: 24px;
+  position: relative;
+  bottom: 2px; }
+
+.title {
+  margin-left: 8px;
+  cursor: pointer; }
+
+.heart {
+  height: 38px;
+  width: 50px;
+  border: 3px solid #222327;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.heart:hover {
+  cursor: pointer;
+  background: #666363; }
+
+.heartIcon {
+  height: 25px; }
+
+.save {
+  height: 38px;
+  width: 80px;
+  border: 3px solid #222327;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: whitesmoke;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  background: #222327; }
+
+.save:hover {
+  cursor: pointer;
+  background: #666363; }
+
+.saveIcon {
+  height: 25px;
+  margin-right: 5px; }
+
+.forkIcon {
+  height: 30px;
+  transform: rotate(90deg);
+  margin-left: 5px; }
+
+.forkBox {
+  height: 38px;
+  width: 80px;
+  border: 3px solid #222327;
+  color: whitesmoke;
+  display: flex;
+  margin-left: 10px;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  border-radius: 2px; }
+
+.forkBox:hover {
+  cursor: pointer;
+  background: #666363; }
+
+.SettingsBox {
+  height: 44px;
+  width: 110px;
+  color: whitesmoke;
+  background: #222327;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px; }
+
+.SettingsBox:hover {
+  cursor: pointer;
+  background: #666363; }
+
+.settGear {
+  height: 20px;
+  margin-left: 10px;
+  margin-right: 5px; }
+
+.HFBox {
+  widows: 300px;
+  display: flex; }
+
+.userName {
+  margin-left: 5px;
+  color: whitesmoke; }
+
+.titleInput {
+  height: 24px;
+  color: whitesmoke;
+  background: black;
+  border: none;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px; }
+
+.titleInput::-webkit-input-placeholder {
+  color: whitesmoke;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  -ms-touch-select: none; }
+
+.penIcon {
+  height: 12px;
+  margin-left: 5px; }
+
+.titleChng {
+  height: 30px;
+  width: 150px;
+  display: flex; }
+
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #191A1D;
+  font-family: "Lato", sans-serif;
+  color: lightgray;
+  min-height: calc(100vh - 200px);
+  padding-top: 50px; }
+  .search .bar {
+    display: flex;
+    width: 80%;
+    background-color: #252527;
+    border-top: 5px solid gray; }
+    .search .bar h3 {
+      margin: 20px; }
+    .search .bar h3:hover {
+      color: white;
+      cursor: pointer; }
+  .search input {
+    width: 80%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 50px;
+    font-weight: bold;
+    color: white; }
+  .search .filters {
+    width: 80%;
+    margin: 20px; }
+    .search .filters h4 {
+      font-size: 30px;
+      font-weight: bold;
+      color: white;
+      margin-left: 20px; }
+    .search .filters input {
+      margin: 0px 10px 0px 25px; }
+  .search .user {
+    background-color: black;
+    width: 30%;
+    margin: 20px 0px;
+    padding: 10px 0px; }
+    .search .user img {
+      width: 50px;
+      height: 50px;
+      display: inline-block;
+      margin: 20px; }
+    .search .user h3 {
+      display: inline-block;
+      color: #0EBEFF;
+      font-size: 20px;
+      position: relative;
+      bottom: 30px; }
+
+.filterContainer {
+  margin: 10px 0px;
+  display: flex;
+  align-items: center;
+  width: 500px; }
+  .filterContainer input {
+    width: 20px; }
+  .filterContainer label {
+    width: 100px; }
+
+.penContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 80%; }

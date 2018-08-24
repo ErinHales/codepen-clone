@@ -1,20 +1,16 @@
 .Backgrnd{
-  height: 155vh;
   width: 100%;
   background: #191A1D;
   display: flex;
-  flex-wrap: wrap;
-
+  flex-direction: column;
+  height: 1800px;
 }
 
 .contact{
   height: 390px;
-  width: 415px;
+  width: 30vw;
   background: whitesmoke;
   padding: 35px;
-  position: relative;
-  top: 3%;
-  left: 10%;
 }
 
 .About{
@@ -24,7 +20,7 @@
 }
 
 .address{
-  margin-top: 250px;
+  margin-top: 220px;
   font-family: 'Lato', sans-serif;
   color: gray;
 }
@@ -42,20 +38,20 @@
 
 .description{
   height: 400px;
-  width: 800px;
+  width: 50vw;
   color: white;
   font-family:'Lato', sans-serif;
   font-size: 1.6rem;
   font-weight: 0;
-  position: relative;
-  left: 14%;
-  top: 4%;
+  margin-top: 30px;
   line-height: 1.6;
   font-weight: 200;
+  min-width: 400px;
 }
 
 .clonePen{
   color: yellow;
+  min-width: 500px;
 }
 
 .divisions{
@@ -63,7 +59,7 @@
   width: 500px;
   background: #FFDD40;
   margin: 40px;
-
+  min-width: 330px;
 }
 
 .divisions1{
@@ -78,14 +74,11 @@
 
 .Devs{
   height: 40vh;
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex-wrap: wrap;
-  margin: 30px;
-  position: absolute;
-  top: 60%;
-  left: 6%
-
+  justify-content: space-around;
+  margin-top: 50px;
 }
 
 .Pic{
@@ -103,26 +96,34 @@
 }
 
 .devName{
+  width: 300px;
   margin-top: 15px;
   margin-left: 10px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 34px;
-  position: relative;
-  left: 45%;
-  top: -30%;
 }
 
 .coDev{
+  width: 300px;
   margin-left: 10px;
   font-family: 'Lato', sans-serif;
-  position: relative;
-  left: 45%;
-  top: -30%;
 }
 
 .descrptn{
   font-family: 'Lato', sans-serif;
-  margin-left: 10px;
-  padding: 15px;
-  margin-bottom: 20px;
+  margin: 50px 20px 20px 20px;
+}
+
+.row {
+  width: 100vw;
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.devInfo {
+  float: right;
+  text-align: left;
+  width: 280px;
+  margin-top: 50px;
 }

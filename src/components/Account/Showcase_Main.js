@@ -11,30 +11,16 @@ function collectTarget(connect, monitor) {
 }
 const dropSource = {
     drop(props, monitor, component) {
-        // console.log(props);
-        // console.log(monitor.getItem());
-        // console.log(component);
         let { html, css, js, penId } = monitor.getItem();
-        // component.state.penId = penId;
-        // component.state.css = css;
-        // component.state.html = html;
-        // component.state.js = js;
-
-        props.addShowcaseMain(penId, css, html, js);
-        // if (monitor.getItem().pen) {
-        //     let currentPenId = props.penId
-        //     let receivingPenId = monitor.getItem().pen.id;
-        //     if (currentPenId != receivingPenId) {
-        //         props.addShowcaseMain(monitor.getItem().pen.imgUrl, monitor.getItem().pen.id);
-        //     }
-        // }
-        // else{
-        //     let incomingPenId = monitor.getItem().penId;
-        //     let showcasePenId = component.props.penId;
-        //     let {gridItem, imgUrl} = monitor.getItem();
-        //     let showcaseImg = component.props.img;
-        //     props.switchShowcase(gridItem, imgUrl, showcaseImg, showcasePenId, incomingPenId);
-        // }
+        if (monitor.getItem().gridItem) {
+            let grid = monitor.getItem();
+            let showcase = component.state;
+            props.switchShowcase(grid, showcase);
+        }
+        else {
+            let { html, css, js, penId } = monitor.getItem();
+            props.addShowcaseMain(penId, css, html, js);
+        }
     }
 }
 
@@ -68,25 +54,13 @@ class Showcase_Main extends Component {
         }
     }
     componentDidUpdate(prevProps, prevState) {
-        console.log(this.props);
-        // console.log(this.props)
-        // if (this.props.penId !== prevProps.penId) {
-        //     console.log(this.props.item)
-        //     // let { penId, css, js, html } = this.props;
-        //     // console.log(this.props);
-        //     // this.setState({
-        //     //     penId, css, js, html
-        //     // })
-        // }
-        // console.log(this.props)
+        if (prevProps.penId !== this.props.penId) {
+            let { penId, css, html, js } = this.props;
+            this.setState({
+                penId, css, html, js
+            })
+        }
 
-        // if( prevState.penId !== this.props.item.penId){
-        //     let {penId, css, html, js} = this.props.item;
-        //     this.setState({
-        //         penId, css, html, js
-        //     })
-        // }
-        // console.log(prevState)
     }
 
     render() {

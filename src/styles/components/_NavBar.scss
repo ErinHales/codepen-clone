@@ -4,8 +4,12 @@
   width: 100%;
 }
 
-Link{
+.link{
   text-decoration-line: none;
+}
+
+.clonepen:hover{
+  color: white;
 }
 
 .nav1{
@@ -219,9 +223,9 @@ Link{
 .userIcon{
   height: 44px;;
   width: 44px;
-  background: gray;
-  border-radius: 3px;
+  border-radius: 2px;
   margin-left: 15px;
+  z-index: 2;
   cursor: pointer;
 }
 
@@ -265,7 +269,7 @@ Link{
   top: 55px;
   border-radius: 3px;
   display: inline;
-  transition: .5s height ease-out;
+  transition: .1s height ease-in-out;
   cursor: pointer;
 }
 
@@ -275,12 +279,12 @@ Link{
   width: 250px;
   z-index: 11;
   position: absolute;
-  border-radius: 3px;
+  border-radius: 2px;
   right: 0px;
   top: 55px;
   z-index: 11;
   display: inline;
-  transition: .5s height ease-out;
+  transition: .1s height ease-out;
 }
 
 .goTo{
@@ -319,6 +323,7 @@ Link{
  font-family:  "Lato", "Lucida Grande", "Lucida Sans Unicode";
  font-size: 14px;
  cursor: pointer;
+ color: black;
 }
 
 .Profile:hover{
@@ -342,7 +347,15 @@ Link{
 .nav-avatar{
   height: 44px;
   width: 44px;
-  border-radius: 5px;
+  border-radius: 3px;
+}
+
+.signUp{
+  height: 45px;
+  width: 80px;
+  background:#36383F;
+  border-radius: 3px;
+  margin-left: 25px;
 }
 
 .goToLink {
