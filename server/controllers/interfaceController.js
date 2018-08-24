@@ -101,14 +101,14 @@ module.exports = {
         let searchParam = `%${req.query.search}%`
         if(req.query.type === "popularity") {
             req.app.get("db").search_by_popularity([offset, searchParam]).then(response => {
-                res.status(200).send(response);
+                res.status(200).send(response.map( pen => restructureResponsePen(pen)));
             }).catch(err => {
                 res.status(500);
                 console.error();
             })
         } else {
             req.app.get("db").search_by_currency([offset, searchParam]).then(response => {
-                res.status(200).send(response);
+                res.status(200).send(response.map( pen => restructureResponsePen(pen)));
             }).catch(err => {
                 res.status(500);
                 console.error();
