@@ -1,58 +1,89 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import templateIcon from './tempsnip.jpg'
+import UserPic from './components/UserPic'
+import axios from 'axios'
+import { withRouter } from 'react-router-dom'
+import Fork from './components/Fork';
+import Save from './components/Save'
 
 class NavBar2 extends Component {
+  constructor(){
+    super()
+    this.state={
+      user: '',
+      pen:'',
+      input: 'Untitled Pen'
+    }
+  }
 
+  componentDidMount(){
+    axios.get('/api/users').then(res => {
+      this.setState({
+        user:res.data
+      })
+    })
+  }
+
+  componentChange(){
+    if(this.props.match.path !== '/editor'){
+      return(
+        <Fork/>
+      )
+    }else if(this.props.match.path === '/editor'){
+      return(
+        <Save/>
+      )
+    }
+    
+  }
+
+  titleChanger(){
+    return(
+      <div className='titleChng'>
+      <input type='text' className='titleInput' placeholder={this.state.input}/>
+      <img src="https://vignette.wikia.nocookie.net/freestyle2/images/7/79/Icon_edit.png/revision/latest?cb=20160907075220" alt="" className='penIcon' onClick={() => this.changeTitle()}/>
+      </div>
+    )
+  }
+
+  changeTitle(){
+    this.setState({
+      input:''
+    })
+  }
+  
+  
   render() {
     return (
       <div>
+      {/* <input type={this.state.input} className='titleInput'/> */}
         <div className='Nav'>
           <nav className='nav1'>
 
-            <div className='Name'>
-              <h1>C L <img className='icon' src='http://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Large.png' alt='' /> N E P E N</h1>
+            <div className='Name2'>
+              <img className='icon2' src='http://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Large.png' alt='' />
+              <div className='title'>
+                {this.titleChanger()}
+                <p className='APenBy'>A PEN BY 
+                 <Link to='/profile' className='link'><span className='userName'>{this.state.user.username}</span></Link></p>
+              </div>
+
             </div>
-
-            <Link to="/profile" className="link">
-              <div className='divProf'>
-                <p className='Your'>YOUR</p>
-                <h1 className='Prof'>Profile</h1>
-                <div className='h-line'></div>
-              </div>
-            </Link>
-
-            <Link to="/pens" className="link">
-              <div className='divExp'>
-                <h1 className='Exp'>EXPLORE</h1>
-                <h1 className='Prof'>Pens</h1>
-                <div className='p-line'></div>
-              </div>
-            </Link>
-
-            <div className='divProj'>
-              <h1 className='Proj'>Challenges</h1>
-              <div className='prj-line'></div>
-            </div>
-
-            <Link to='/About' className='link'>
-              <div className='divColl'>
-                <h1 className='Coll'>About</h1>
-                <div className='coll-line'></div>
-              </div>
-            </Link>
 
 
 
             <div className='nav2'>
-              <div className='create' onClick={() => this.toggleNav()}>
-                <h1>Create</h1>
-                <img className='arrow' src="https://static.wixstatic.com/media/0a9ac5_ada821b214df43feabfc80e16eebcbdb~mv2.gif" alt="arrow" />
+
+             {this.componentChange()}
+
+              <div className='SettingsBox'>
+                <img className='settGear' src="https://cdn2.iconfinder.com/data/icons/web/512/Cog-512.png" alt=""/>
+                <p>Settings</p>
+
               </div>
-
-
-              <div className='divMag'>
-                <img className='mag' src="https://www.shareicon.net/download/2015/09/25/107005_find_512x512.png" alt="magnifier" />
+              
+              <div>
+                <UserPic/>
               </div>
 
 
@@ -69,4 +100,4 @@ class NavBar2 extends Component {
   }
 }
 
-export default NavBar2
+export default withRouter(NavBar2)

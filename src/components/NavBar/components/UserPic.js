@@ -67,7 +67,7 @@ class UserPic extends Component{
         <div className={this.state.userWindow ? 'show-nav userWin' : 'show-nav'}>
             <div>
               <p className='goTo'> Go to...</p>
-              <Link to='/Profile' onClick={() => this.toggleUserNav() }> <h1 className='Profile'> Your Profile</h1> </Link>
+              <Link className='link' to='/Profile' onClick={() => this.toggleUserNav() }> <h1 className='Profile'> Your Profile</h1> </Link>
               <div className='sttngbox'>
                 <div className='setbox'>
                   <h1><img className='gearIcon' src='https://cdn2.iconfinder.com/data/icons/web/512/Cog-512.png' alt='gear' />
