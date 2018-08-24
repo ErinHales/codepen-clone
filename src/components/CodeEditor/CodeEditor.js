@@ -21,13 +21,14 @@ export default class CodeEditor extends Component {
             showPopUp: false,
             showSignUp: false,
             isLoggedIn: false,
+            visitingUsersId:null,
 
             name: "name of pen",
             css: '',
             html: '',
             js: '',
-            userid: null,
             theme: "twilight",
+            penUserId: null,
 
             behaviorSettings: {
                 tabSize: 0,
@@ -72,7 +73,10 @@ export default class CodeEditor extends Component {
         axios.get('/api/users')
             .then(response => {
                 if (response.data.username) {
-                    this.setState({ isLoggedIn: true })
+                    this.setState({ 
+                        isLoggedIn: true,
+                        visitingUserId: response.data.userid
+                    })
                 }
             })
         const { id } = this.props.match.params
@@ -84,11 +88,13 @@ export default class CodeEditor extends Component {
                     html: null,
                     js: null
                 })
-                const { html, css, js, name, scripts} = response.data;
+                console.log(response.data)
+                const { user_id: penUserId, html, css, js, name, scripts} = response.data;
                 const { css: cssList, html: htmlScripts, js: jsList } = scripts
                 const { html_tag_class, head_tag } = htmlScripts
                 
                 this.setState({
+                    penUserId,
                     css,
                     html,
                     js,
@@ -440,7 +446,12 @@ export default class CodeEditor extends Component {
                     <div className="penFooter">
                         <button>Console</button>
                         <button onClick={() => this.savePen()}>Save</button>
+                        {console.log(this.state.visitingUserId, this.state.penUserId)}
+                    { this.state.visitingUserId === this.state.penUserId ? (
                         <button onClick={this.deletePen} className="delete">Delete</button>
+                    ) : (
+                        null
+                    )}  
                     </div>
                 </div>
             </div>

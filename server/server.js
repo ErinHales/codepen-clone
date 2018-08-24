@@ -33,6 +33,7 @@ const penCntrl = require('./controllers/penController')
 const interfaceCntrl = require('./controllers/interfaceController')
 const statsCntrl = require('./controllers/statsController')
 const comCntrl = require('./controllers/commentsController');
+const profileCntrl = require('./controllers/profileLayoutController');
 
 // Sign a user up
 app.post('/api/auth/register', (req, res) => loginCntrl.registerUser(req, res, bcrypt));
@@ -45,6 +46,12 @@ app.get('/api/logout', (req, res) => {
     req.session.destroy()
     // res.redirect('http://localhost:3000/#/')
 })
+
+
+// Profile Layout 
+app.post('/api/layout', profileCntrl.insertIntoLayout);
+app.delete('/api/layout/:penId', profileCntrl.deleteFromLayout);
+app.put('/api/layout/', profileCntrl.updateLayout);
 
 
 // USER
