@@ -76,23 +76,37 @@ export default class CodeEditor extends Component {
                 }
             })
         const { id } = this.props.match.params
-        axios.get(`/api/pen/${id}`)
+        if(id) {
+            axios.get(`/api/pen/${id}`)
             .then(response => {
-                if (id) {
-                    this.setState({
-                        css: null,
-                        html: null,
-                        js: null
-                    })
-                }
                 this.setState({
-                    css: response.data.css,
-                    html: response.data.html,
-                    js: response.data.js,
-                    name: response.data.name
+                    css: null,
+                    html: null,
+                    js: null
+                })
+                const { html, css, js, name, scripts} = response.data;
+                const { css: cssList, html: htmlScripts, js: jsList } = scripts
+                const { html_tag_class, head_tag } = htmlScripts
+                
+                this.setState({
+                    css,
+                    html,
+                    js,
+                    name,
+                    jsSettings: {
+                        jsCdnList: jsList
+                    },
+                    cssSettings: {
+                        cssCdnList: cssList
+                    },
+                    htmlSettings: {
+                        htmlClassTag: html_tag_class,
+                        head: head_tag
+                    }
                 })
             })
             .catch()
+        }  
 
     }
 
@@ -355,7 +369,7 @@ export default class CodeEditor extends Component {
             </div>
         )
 
-        let stylesheetString = this.state.cssSettings.cssCdnList.reduce((string, element) => {
+        let stylesheetString = this.state.cssSettings.cssCdnList.filter(element => element).reduce((string, element) => {
             return string  + `<link rel='stylesheet' href='${element}'>`
         }, '')
 
@@ -364,10 +378,10 @@ export default class CodeEditor extends Component {
         }, '')
         console.log(jsLibraryString)
         let srcdoc = `
-        <html class='${this.state.htmlSettings.htmlClassTag}'>
+        <html class='${this.state.htmlSettings.htmlClassTag || ''}'>
             <head>
                 ${stylesheetString}
-                ${this.state.htmlSettings.head}            
+                ${this.state.htmlSettings.head || ''}            
             </head>
             <body>${this.state.html}</body>
             <style>${this.state.css}</style>
