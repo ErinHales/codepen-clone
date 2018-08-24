@@ -6,9 +6,13 @@ const itemSource = {
         return props;
     },
     endDrag(props, monitor, component) {
-        if(!monitor.didDrop()){
+        if (monitor.didDrop()) {
+        //     console.log(props);
+        // console.log(monitor);
+        // console.log(component);
             return;
         }
+        
         // return props.handleDrop(props.pen.id);
     }
 }
@@ -21,13 +25,20 @@ function collect(connect, monitor) {
     }
 }
 
+
+
 class Showcase_Pens extends Component {
     render() {
-        const { isDragging, connectDragSource, item } = this.props;
+        const { isDragging, connectDragSource, item, html, css, js } = this.props;
+        console.log(html);
+        console.log(css);
         const opacity = isDragging ? 0 : 1;
+        const srcDoc = `${html}<style>${css}</style><script>${js}</script>`;
         return connectDragSource(
-            <div className="grid-item" style={{ opacity }}>
-                <img src={this.props.pen.imgUrl} alt="" />
+            <div style={{ opacity }} className="grid-item" >
+                <div className="frame-overlay">
+                    <iframe scrolling="no" className="pen-iframe" srcDoc={srcDoc}></iframe>
+                </div>
             </div>
         )
     }
