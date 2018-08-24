@@ -47,16 +47,18 @@ module.exports = {
     },
     getUserPens(req, res) {
         const dbConn = req.app.get('db')
-        // pagination to be implemented
-        let { userId, pageNum } = req.params
-        if(userId === 'undefined') {
-            res.sendStatus(401)
-            return
+        const { userId, pageNum } = req.params;
+        let id;
+        if (userId) {
+            id = userId
+        } else {
+            id = req.session.userId
         }
+        console.log(req.session);
         let offset = parseInt(pageNum) * 6;
         if(req.query) {
             if(req.query.type === 'views') {
-                dbConn.get_most_viewed_user_pens([userId, offset])
+                dbConn.get_most_viewed_user_pens([id, offset])
                     .then( dbResponse => {
                         res.status(200).send(dbResponse.map( pen => restructureResponsePen(pen)))
                     })
@@ -66,7 +68,7 @@ module.exports = {
                     })
             }
             else if(req.query.type === 'likes') {
-                dbConn.get_most_liked_user_pens([userId, offset])
+                dbConn.get_most_liked_user_pens([id, offset])
                     .then( dbResponse => {
                         res.status(200).send(dbResponse.map( pen => restructureResponsePen(pen)))
                     })
@@ -76,7 +78,7 @@ module.exports = {
                     })                        
             }
             else if(req.query.type === 'new') {
-                dbConn.get_new_user_pens([userId, offset])
+                dbConn.get_new_user_pens([id, offset])
                     .then( dbResponse => {
                         res.status(200).send(dbResponse.map( pen => restructureResponsePen(pen)))
                     })
@@ -91,6 +93,25 @@ module.exports = {
         }
         else {
             res.sendStatus(400)
+        }
+    },
+    searchPens(req,res) {
+        let offset = req.params.pageNum * 6;
+        let searchParam = `%${req.query.search}%`
+        if(req.query.type === "popularity") {
+            req.app.get("db").search_by_popularity([offset, searchParam]).then(response => {
+                res.status(200).send(response);
+            }).catch(err => {
+                res.status(500);
+                console.error();
+            })
+        } else {
+            req.app.get("db").search_by_currency([offset, searchParam]).then(response => {
+                res.status(200).send(response);
+            }).catch(err => {
+                res.status(500);
+                console.error();
+            })
         }
     }
 }

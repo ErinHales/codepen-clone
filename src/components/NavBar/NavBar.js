@@ -29,7 +29,6 @@ class NavBar extends Component {
   componentWillMount() {
     axios.get('/api/users')
       .then( res => {
-        console.log(res.data.userid)
         if(res.data.userid) {
           this.setState({showYourProfile: true})
         }
@@ -55,22 +54,21 @@ class NavBar extends Component {
     
   }
 
-  
-  toggleSearch = () => {
-    if(this.state.search === false) {
-      this.setState({
-        search: true
-      })
-    } else {
-      this.setState({
-        search: false
-      })
-    }
-  }
+  // toggleSearch = () => {
+  //   if(this.state.search === false) {
+  //     this.setState({
+  //       search: true
+  //     })
+  //   } else {
+  //     this.setState({
+  //       search: false
+  //     })
+  //   }
+  // }
 
 
   render() {
-    console.log(this.props.match)
+    // console.log(this.props.match)
     return (
       <div className='Nav'>
         <nav className='nav1'>
@@ -119,9 +117,11 @@ class NavBar extends Component {
             </div>
 
 
-            <button className='divMag' onClick={() => this.toggleSearch()}>
-              <img className='mag' src="https://www.shareicon.net/download/2015/09/25/107005_find_512x512.png" alt="magnifier" />
-            </button>
+            <Link to="/search">
+              <button className='divMag'>
+                <img className='mag' src="https://www.shareicon.net/download/2015/09/25/107005_find_512x512.png" alt="magnifier" />
+              </button>
+            </Link>
 
             <div>
               {this.componentChange()}
@@ -138,7 +138,7 @@ class NavBar extends Component {
 
 
         </nav>
-        {this.state.search ? <SearchBar /> : null}
+        {/* {this.state.search ? <SearchBar /> : null} */}
       </div>
     )
   }

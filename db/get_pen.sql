@@ -24,9 +24,6 @@
 --     html_scripts.html_tag_class,
 --     html_scripts.head_tag;
 
-
--- SELECT * FROM users;
-
 SELECT 
     pens.pen_id, 
     pens.user_id,

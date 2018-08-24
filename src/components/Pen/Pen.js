@@ -80,7 +80,7 @@ export default class Pen extends Component {
                                 <iframe style={{backgroundColor: 'white'}} scrolling="no" className="pen-iframe" title={this.props.id} srcDoc={srcDoc}></iframe>
                             </div>
                             <div className="overlay">
-                                <div className="text">This is a description a very long description thei aslfkjas fl sfas flk f sf aslkfj sdlfk sf  f sfkl sfkljs dfk f dksf kasldf sl;fd sl;df sf ksf lksf </div>
+                                <div className="text">{this.props.description}</div>
                             </div>
                         </div>
                     </div>
@@ -89,8 +89,8 @@ export default class Pen extends Component {
                     <div className="penInfo">
                         <img className="profilePicture" src={profilePicture} alt="" />
                         <div>
-                            <h3 id="displayUserName">{penName}</h3>
-                            <h5>{username}</h5>
+                            <Link className="penLink" to={`/editor/${id}`}><h3 id="displayUserName">{penName}</h3></Link>
+                            <Link className="userLink" to={`/profile/${user_id}`}><h5>{username}</h5></Link>
                         </div>
                     </div>
                     <div className="penPopularity">
