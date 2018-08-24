@@ -32,18 +32,15 @@
             }
         }
         .account-grid {
-            border: 1px solid blue;
             margin-top: 0.75rem;
             display: flex;
             justify-content: space-between;
             .account-avatar {
                 width: 14%;
-                border: 1px solid green;
                 height: 25rem;
                 background-color: $bg-dark-grey;
                 padding: 1rem;
                 .img-placeholder {
-                    border: 1px solid yellow;
                     height: 45%;
                     img {
                         height: 100%;
@@ -85,7 +82,6 @@
                 }
             }
             .account-information {
-                border: 1px solid red;
                 width: 58%;
                 .information-box {
                     background-color: $bg-dark-grey;
@@ -101,7 +97,6 @@
                         }
                     }
                     .input-container {
-                        border: 1px solid purple;
                         padding-right: 10px;
                         padding-bottom: 8px;
                         display: flex;
@@ -110,7 +105,6 @@
                         .input-group {
                             display: flex;
                             align-items: center;
-                            border: 1px solid green;
                             width: 83%;
                             justify-content: space-between;
                             margin-top: 0.75rem;
@@ -135,18 +129,15 @@
                     }
                 }
                 .bio {
-                    border: 4px solid orange;
                     height: 191px;
                 }
                 .textarea-group {
-                    border: 1px solid red;
                     display: flex;
                     justify-content: space-between;
                     padding-right: 10px;
                     margin-top: 1rem;
                     .textarea {
                         width: 70%;
-                        border: 1px solid blue;
                         textarea {
                             width: 100%;
                             height: 90px;
@@ -175,7 +166,6 @@
                 }
             }
             .slider-container {
-                border: 1px solid green;
                 margin-top: 1.5rem;
                 padding-left: 0.5rem;
                 display: flex;
@@ -244,10 +234,8 @@
                 }
             }
             .account-customize {
-                border: 1px solid orange;
                 width: 20%;
                 .information-box {
-                    border: 1px solid red;
                     background-color: $bg-dark-grey;
                     height: 50%;
                     padding: 1rem;

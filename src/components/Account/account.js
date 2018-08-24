@@ -11,19 +11,24 @@ class Account extends Component {
         super();
         this.state = {
             imgUrl: '',
-            wordCount: 0,
-            page: "profile"
+            page: "profile",
+            name: '',
+            location: '',
+            bio: '',
+            link1: '',
+            link2: '',
+            link3: '',
+            forHire: ''
         }
     }
 
     componentDidMount() {
         axios.get('/api/users')
-            .then(res => this.setState({ imgUrl: res.data.img_url }))
+            .then(res => this.setState({ 
+                imgUrl: res.data.img_url,
+                name: res.data.name
+            }))
             .catch(err => console.log(err));
-    }
-
-    updateWordCount = () => {
-        this.setState({ wordCount: ++this.state.wordCount })
     }
 
     onDrop = files => {
@@ -76,7 +81,6 @@ class Account extends Component {
                         </div>
                         {this.state.page === "editor" ? <EditorSettings /> : null}
                         {this.state.page === "profile" ? (
-                           
                                 <div className="account-grid">
                                     <div className="account-avatar">
                                         <div className="img-placeholder">
@@ -89,7 +93,7 @@ class Account extends Component {
                                                         To change your avatar, select a new file
                                                         below or drag-and-drop one here. 512X512
                                                         is awesome, but we'll resize it.
-                                         </p>
+                                        </p>
                                                     <div className="dropzone-input">
                                                         <p>Or,</p>
                                                         <button>Select File(s)</button>
@@ -106,7 +110,7 @@ class Account extends Component {
                                             <div className="input-container">
                                                 <div className="input-group">
                                                     <h5>Profile Name</h5>
-                                                    <input type="text" />
+                                                    <input type="text" value={this.state.name} />
                                                 </div>
                                                 <div className="input-group">
                                                     <h5>Location</h5>

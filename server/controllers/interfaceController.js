@@ -47,14 +47,15 @@ module.exports = {
     },
     getUserPens(req, res) {
         const dbConn = req.app.get('db')
+        // console.log(req.params);
         const { userId, pageNum } = req.params;
+        // console.log(userId, pageNum);
         let id;
-        if (userId) {
-            id = userId
+        if (parseInt(userId) !== 0) {
+            id = parseInt(userId)
         } else {
-            id = req.session.userId
+            id = req.session.userid
         }
-        console.log(req.session);
         let offset = parseInt(pageNum) * 6;
         if(req.query) {
             if(req.query.type === 'views') {

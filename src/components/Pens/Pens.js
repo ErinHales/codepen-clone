@@ -100,6 +100,7 @@ export default class Pens extends Component {
 
     render() {
         let { currentPage, pens } = this.state;
+        console.log(pens);
         if (pens[currentPage]) {
             var pensList = pens[currentPage].map(pen => {
                 let { pen_id, user_id, name, username, img_url, description, views, comments, loves, scripts, html, css, js } = pen;

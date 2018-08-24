@@ -43,7 +43,7 @@ app.post('/api/auth/login', (req, res) => loginCntrl.getUser(req, res, bcrypt))
 //LOGOUT 
 app.get('/api/logout', (req, res) => {
     req.session.destroy()
-    res.redirect('http://localhost:3000/#/')
+    // res.redirect('http://localhost:3000/#/')
 })
 
 
@@ -73,7 +73,7 @@ app.get('/api/pens/:pageNum', interfaceCntrl.getPens)
 app.get('/api/pens/user/:userId/:pageNum', interfaceCntrl.getUserPens)
 
 // get user's own pens
-app.get('/api/pens/user/:pageNum', interfaceCntrl.getUserPens)
+// app.get('/api/pens/user/:pageNum', interfaceCntrl.getUserPens)
 
 // PEN
 

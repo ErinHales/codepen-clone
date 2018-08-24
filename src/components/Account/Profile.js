@@ -21,7 +21,8 @@ class Profile extends Component {
         user: res.data
       })
     })
-    axios.get(`/api/pens/user/0?type=new`).then(res => {
+    axios.get(`/api/pens/user/0/0?type=new`).then(res => {
+      console.log(res.data);
       this.setState({
         pens: [res.data],
         currentPage: 0
@@ -46,7 +47,6 @@ class Profile extends Component {
     let { currentPage, pens } = this.state;
     axios.get(`/api/pens/user/${currentPage + 1}?type=new`)
       .then(res => {
-        console.log(res.data);
         if (res.data[0]) {
           let copy = pens.slice();
           copy.push(res.data);
@@ -136,7 +136,7 @@ class Profile extends Component {
             <div className='ligthgray-line'></div>
             <div className='gray-line'></div>
 
-            {this.state.pens[0] === [] ? (
+            {this.state.pens[0] ? (
               <div className="pen-window">
                 <div>
                   {pensList}

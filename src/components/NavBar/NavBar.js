@@ -68,13 +68,12 @@ class NavBar extends Component {
 
 
   render() {
-    // console.log(this.props.match)
     return (
       <div className='Nav'>
         <nav className='nav1'>
 
           <div className='Name'>
-            <h1>C L <img className='icon' src='http://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Large.png' alt='' /> N E P E N</h1>
+            <Link to='/' className='link'><h1 className='clonepen'>C L <img className='icon' src='http://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Large.png' alt='' /> N E P E N</h1></Link>
           </div>
           {this.state.showYourProfile ? (
             <Link to="/profile" className="link">
