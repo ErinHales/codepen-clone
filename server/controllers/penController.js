@@ -59,8 +59,9 @@ module.exports = {
         const css_stylesheet = scripts.css
         const js_script = scripts.js
         const { html_tag_class, head_tag } = html_script
+
         // Create Pen from variables
-        console.log(11111111, user_id)
+        console.log('userid', user_id,'name', name, forked, html, css, js)
         dbConn.post_pen([user_id, name, forked, html, css, js])
             .then( dbResponse => {
                 // setting the pen_id from the newly created row to a a variable
@@ -72,36 +73,39 @@ module.exports = {
                         res.sendStatus(500)
                     })
                 // check to see if the request from the client contains any html settings content
-                if(html_tag_class || head_tag) {
+                console.log('html tag and head', html_tag_class, head_tag)
+                // if(html_tag_class || head_tag) {
                     //Adding the content if it exists
                     dbConn.post_html_scripts([pen_id, html_tag_class, head_tag])
                         .catch( err => {
                             console.error(err)
                             res.sendStatus(500)
                         })
-                }
+                // }
                 // check to see if the request from the client contains any css settings content
-                if(css_stylesheet[0]) {
+                console.log('stylesheet', css_stylesheet)
+                // if(css_stylesheet[0]) {
                     //Adding the content if it exists
-                    for(let i = 0; i < css_stylesheet.length; i++) {
+                    for(let i = 0; i <= css_stylesheet.length; i++) {
                         dbConn.post_css_stylesheet([pen_id, css_stylesheet[i]])
                             .catch( err => {
                                 console.error(err)
                                 res.sendStatus(500)
                             }) 
                     }
-                }
+                // }
                 // check to see if the request from the client contains any javascript settings content
-                if(js_script[0]) {
+                console.log('jsscript', js_script)
+                // if(js_script[0]) {
                     //Adding the content if it exists
-                    for(let i = 0; i < js_script.length; i++) {
+                    for(let i = 0; i <= js_script.length; i++) {
                         dbConn.post_js_scripts([pen_id, js_script[i]])
                             .catch( err => {
                                 console.error(err)
                                 res.sendStatus(500)
                             })
                     }
-                }
+                // }
                 console.log('post')
                 res.send(dbResponse).status(201)
             })

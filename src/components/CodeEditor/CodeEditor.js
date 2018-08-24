@@ -76,23 +76,37 @@ export default class CodeEditor extends Component {
                 }
             })
         const { id } = this.props.match.params
-        axios.get(`/api/pen/${id}`)
+        if(id) {
+            axios.get(`/api/pen/${id}`)
             .then(response => {
-                if (id) {
-                    this.setState({
-                        css: null,
-                        html: null,
-                        js: null
-                    })
-                }
                 this.setState({
-                    css: response.data.css,
-                    html: response.data.html,
-                    js: response.data.js,
-                    name: response.data.name
+                    css: null,
+                    html: null,
+                    js: null
+                })
+                const { html, css, js, name, scripts} = response.data;
+                const { css: cssList, html: htmlScripts, js: jsList } = scripts
+                const { html_tag_class, head_tag } = htmlScripts
+                
+                this.setState({
+                    css,
+                    html,
+                    js,
+                    name,
+                    jsSettings: {
+                        jsCdnList: jsList
+                    },
+                    cssSettings: {
+                        cssCdnList: cssList
+                    },
+                    htmlSettings: {
+                        htmlClassTag: html_tag_class,
+                        head: head_tag
+                    }
                 })
             })
             .catch()
+        }  
 
     }
 
@@ -209,14 +223,17 @@ export default class CodeEditor extends Component {
         console.log('tag handler fired')
         this.setState({
             htmlSettings: {
-                htmlClassTag: value
+                htmlClassTag: value,
+                head: this.state.htmlSettings.head
             }
         })
     }
     headStuffHandler(value) {
+        console.log('head stuff fired')
         this.setState({
             htmlSettings: {
-                head: value
+                head: value,
+                htmlClassTag: this.state.htmlSettings.htmlClassTag 
             }
         })
     }
@@ -352,7 +369,26 @@ export default class CodeEditor extends Component {
             </div>
         )
 
-        let srcdoc = `${this.state.html}<style>${this.state.css}</style><script>${this.state.js}</script>`;
+        let stylesheetString = this.state.cssSettings.cssCdnList.filter(element => element).reduce((string, element) => {
+            return string  + `<link rel='stylesheet' href='${element}'>`
+        }, '')
+
+        let jsLibraryString = this.state.jsSettings.jsCdnList.reduce((string, element) => {
+            return string  + `<script type='text/javascript' src='${element}'></script>`
+        }, '')
+        console.log(jsLibraryString)
+        let srcdoc = `
+        <html class='${this.state.htmlSettings.htmlClassTag || ''}'>
+            <head>
+                ${stylesheetString}
+                ${this.state.htmlSettings.head || ''}            
+            </head>
+            <body>${this.state.html}</body>
+            <style>${this.state.css}</style>
+            ${jsLibraryString}
+            
+            <script>${this.state.js}</script>
+        </html>`;
         return (
             <div>
                 <NavBar2/>

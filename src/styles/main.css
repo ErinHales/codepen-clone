@@ -415,10 +415,6 @@ span {
 .CodeMirror-vscroll {
   width: 0px !important; }
 
-.CodeMirror-line {
-  position: relative;
-  left: 10px; }
-
 .penFrame {
   width: calc(100vw - 10px);
   min-height: calc(100vh - 100px); }
@@ -463,24 +459,23 @@ span {
   background-color: #4E505A; }
 
 .penFooter {
-  height: 30px;
+  height: 50px;
   width: calc(100vw - 50px);
   background-color: #36383F;
   margin-top: -3px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 20px; }
-
-.penFooter button {
-  background-color: #1D1E22;
-  color: white;
-  font-size: 10px;
-  padding: 4px;
-  border-radius: 2px; }
-
-.penFooter button:hover {
-  cursor: pointer; }
+  padding: 0px 20px;
+  font-family: "Lato", sans-serif; }
+  .penFooter button {
+    background-color: #1D1E22;
+    color: white;
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 2px; }
+  .penFooter button:hover {
+    cursor: pointer; }
 
 .delete:hover {
   background-color: #ED5151; }
@@ -587,7 +582,7 @@ span {
 
 .overlayContainer .text {
   color: white;
-  font-size: 15px;
+  font-size: 20px;
   line-height: 1.5;
   margin: 10px; }
 
@@ -699,6 +694,17 @@ span {
 .filterPens button:hover {
   color: white;
   cursor: pointer; }
+
+.userLink {
+  color: lightgray;
+  text-decoration: none; }
+
+.userLink:hover {
+  color: #0EBEFF;
+  cursor: pointer; }
+
+.penLink {
+  text-decoration: none; }
 
 .Nav {
   display: flex;
@@ -1263,18 +1269,14 @@ span {
   background: #191A1D; }
 
 .UserInfo {
-  height: 300px;
-  width: 400px;
-  display: flex;
   color: white;
   position: absolute;
-  left: 40%;
-  top: 150px;
+  top: 170px;
+  width: 100vw;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  align-content: center;
-  text-align: center;
-  justify-content: center; }
+  text-align: center; }
 
 .UserName {
   font-size: 40px;
@@ -1286,13 +1288,14 @@ span {
   margin-bottom: 18px;
   font-family: 'Lato', sans-serif; }
 
-.UserPic {
+#UserPic {
   height: 130px;
   width: 130px;
   background: #181818;
   border: 4px #2e2d2d solid;
   box-shadow: 1px 1px #1d1c1c;
-  overflow: hidden; }
+  overflow: hidden;
+  margin: auto; }
 
 .Hire {
   font-family: 'Lato', sans-serif;
@@ -1342,15 +1345,10 @@ span {
   text-decoration: none;
   color: black; }
 
-.link1 {
-  text-decoration-color: none; }
-
-h1 {
-  text-decoration: none; }
-
 .Pen-InputWrapper {
   height: 30px;
-  width: 78%;
+  width: 80%;
+  padding-left: 10%;
   font-family: 'Lato', sans-serif;
   font-size: 18px;
   display: flex;
@@ -1382,24 +1380,25 @@ h1 {
   position: relative;
   top: 10px; }
 
-.ligthgray-line {
-  height: 5px;
-  width: 80%;
-  background: gray; }
-
 .gray-line {
   height: 50px;
   width: 80%;
   background: #252527;
-  margin-bottom: 20px; }
+  margin: 0px 10% 20px 10%;
+  border-top: 5px solid gray; }
 
-.Pen-window {
-  height: 600px;
-  width: 80%;
-  border-radius: 10px;
+.pen-window {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around; }
+  flex-direction: column;
+  width: 100vw;
+  justify-content: space-around;
+  align-items: center; }
+  .pen-window > :nth-child(1) {
+    width: 80%;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; }
 
 .avatar {
   height: 130px; }
@@ -1421,11 +1420,11 @@ h1 {
   background: white; }
 
 .nextButtonContainer {
-  width: 90vw;
+  margin: 50px 0px;
+  width: 100vw;
   display: flex;
   justify-content: center;
-  padding: 50px;
-  padding-top: 100px; }
+  align-items: center; }
 
 .link {
   text-decoration: none;
@@ -1433,6 +1432,31 @@ h1 {
 
 .link:hover {
   color: black; }
+
+.goMakePens {
+  font-family: "Lato", sans-serif;
+  color: White;
+  padding: 80px 0px 120px 0px;
+  text-align: center;
+  line-height: 1.5; }
+  .goMakePens h1 {
+    margin: 30px;
+    font-size: 50px;
+    font-weight: bold; }
+  .goMakePens button {
+    background-color: transparent;
+    padding: 10px 20px;
+    border: 3px solid white;
+    color: white;
+    border-radius: 3px;
+    font-size: 20px; }
+  .goMakePens button:hover {
+    color: black;
+    background-color: white;
+    cursor: pointer; }
+
+.profileContainer {
+  min-height: 400px; }
 
 .commentsPageContainer {
   background-color: #222222;
@@ -1626,9 +1650,7 @@ h1 {
 .footer {
   height: 200px;
   width: 100%;
-  background: #111;
-  position: relative;
-  top: 20%; }
+  background: #111; }
 
 .icon-footer {
   height: 26px;
@@ -1648,21 +1670,17 @@ h1 {
   font-size: 12px; }
 
 .Backgrnd {
-  height: 175vh;
   width: 100%;
   background: #191A1D;
   display: flex;
-  min-width: 1000px;
-  background-repeat: repeat; }
+  flex-direction: column;
+  height: 1800px; }
 
 .contact {
   height: 390px;
-  width: 415px;
+  width: 30vw;
   background: whitesmoke;
-  padding: 35px;
-  position: relative;
-  top: 2%;
-  left: 10%; }
+  padding: 35px; }
 
 .About {
   font-family: 'Archivo Black', sans-serif;
@@ -1685,14 +1703,12 @@ h1 {
 
 .description {
   height: 400px;
-  width: 800px;
+  width: 50vw;
   color: white;
   font-family: 'Lato', sans-serif;
   font-size: 1.6rem;
   font-weight: 0;
-  position: relative;
-  left: 14%;
-  top: 4%;
+  margin-top: 30px;
   line-height: 1.6;
   font-weight: 200;
   min-width: 400px; }
@@ -1719,12 +1735,11 @@ h1 {
 
 .Devs {
   height: 40vh;
-  width: 95%;
+  width: 100vw;
   display: flex;
   flex-wrap: wrap;
-  position: absolute;
-  top: 60%;
-  left: 5%; }
+  justify-content: space-around;
+  margin-top: 50px; }
 
 .Pic {
   height: 150px;
@@ -1744,24 +1759,28 @@ h1 {
   margin-top: 15px;
   margin-left: 10px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 34px;
-  position: relative;
-  left: 45%;
-  top: -30%; }
+  font-size: 34px; }
 
 .coDev {
   width: 300px;
   margin-left: 10px;
-  font-family: 'Lato', sans-serif;
-  position: relative;
-  left: 45%;
-  top: -30%; }
+  font-family: 'Lato', sans-serif; }
 
 .descrptn {
   font-family: 'Lato', sans-serif;
-  margin-left: 10px;
-  padding: 15px;
-  margin-bottom: 20px; }
+  margin: 50px 20px 20px 20px; }
+
+.row {
+  width: 100vw;
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-around; }
+
+.devInfo {
+  float: right;
+  text-align: left;
+  width: 280px;
+  margin-top: 50px; }
 
 .pen-settings-container {
   border: 2px solid white;

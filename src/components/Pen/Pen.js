@@ -41,18 +41,46 @@ export default class Pen extends Component {
 
     render() {
         let { loved } = this.state;
-        let { html, css, js, id, profilePicture, penName, username, views, commentsNum, loves } = this.props;
-        const srcDoc = `${html}<style>${css}</style><script>${js}</script>`
+        let { user_id, html, css, js, id, profilePicture, penName, scripts, username, views, commentsNum, loves } = this.props;
+        // const srcDoc = `${html}<style>${css}</style><script>${js}</script>`
+        const { css: cssList, html: htmlScripts, js: jsList } = scripts
+        let { html_tag_class: htmlClassTag, head_tag: head } = htmlScripts
+        // removing null
+        console.log(11111, htmlClassTag)
+        if(!htmlClassTag){
+            console.log('fired')
+            htmlClassTag= ''
+        }
+        let stylesheetString = cssList.reduce((string, element) => {
+            return string  + `<link rel='stylesheet' href='${element}'>`
+        }, '')
+
+        let jsLibraryString = jsList.reduce((string, element) => {
+            return string  + `<script type='text/javascript' src='${element}'></script>`
+        }, '')
+
+        let srcDoc = `
+        <html class='${htmlClassTag || ''}'>
+            <head>
+                ${stylesheetString}
+                ${head || ''}            
+            </head>
+            <body>${html}</body>
+            <style>${css}</style>
+            ${jsLibraryString}
+            
+            <script>${js}</script>
+        </html>`;
         return (
             <div className="showPen">
                 <Link to={`/editor/${id}`}>
                     <div className="overlayContainer">
                         <div className="overlayContainer">
                             <div className="pen-iframe-container">
-                                <iframe scrolling="no" className="pen-iframe" title={this.props.id} srcDoc={srcDoc}></iframe>
+                                <iframe style={{backgroundColor: 'white'}} scrolling="no" className="pen-iframe" title={this.props.id} srcDoc={srcDoc}></iframe>
                             </div>
                             <div className="overlay">
-                                <div className="text">This is a description a very long description thei aslfkjas fl sfas flk f sf aslkfj sdlfk sf  f sfkl sfkljs dfk f dksf kasldf sl;fd sl;df sf ksf lksf </div>
+                                <div className="text">{this.props.description}</div>
                             </div>
                         </div>
                     </div>
@@ -61,8 +89,8 @@ export default class Pen extends Component {
                     <div className="penInfo">
                         <img className="profilePicture" src={profilePicture} alt="" />
                         <div>
-                            <h3 id="displayUserName">{penName}</h3>
-                            <h5>{username}</h5>
+                            <Link className="penLink" to={`/editor/${id}`}><h3 id="displayUserName">{penName}</h3></Link>
+                            <Link className="userLink" to={`/profile/${user_id}`}><h5>{username}</h5></Link>
                         </div>
                     </div>
                     <div className="penPopularity">

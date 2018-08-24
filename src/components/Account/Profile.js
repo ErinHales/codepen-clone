@@ -16,18 +16,17 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    axios.get('/api/users').then(res => {
+    axios.get(`/api/users?type=user`).then(res => {
       this.setState({
         user: res.data
       })
-      axios.get(`/api/pens/user/${res.data.userid}/0?type=new`).then(res => {
-        this.setState({
-          pens: [res.data],
-          currentPage: 0
-        })
+    })
+    axios.get(`/api/pens/user/0?type=new`).then(res => {
+      this.setState({
+        pens: [res.data],
+        currentPage: 0
       })
     })
-
   }
 
   userAvatar() {
@@ -45,7 +44,7 @@ class Profile extends Component {
 
   nextPage() {
     let { currentPage, pens } = this.state;
-    axios.get(`/api/pens/user/${this.state.user.userid}/${currentPage + 1}?type=new`)
+    axios.get(`/api/pens/user/${currentPage + 1}?type=new`)
       .then(res => {
         console.log(res.data);
         if (res.data[0]) {
@@ -66,12 +65,11 @@ class Profile extends Component {
     })
   }
 
-
   render() {
-    let { currentPage, pens } = this.state;
+    let { currentPage, pens, user } = this.state;
     if (pens[currentPage]) {
       var pensList = pens[currentPage].map(pen => {
-        let { pen_id, name, username, img_url, views, comments, loves, scripts, html, css, js } = pen;
+        let { pen_id, name, username, img_url, description, views, comments, loves, scripts, html, css, js } = pen;
         return (
           <Pen
             key={pen_id}
@@ -81,6 +79,7 @@ class Profile extends Component {
             html={html}
             css={css}
             js={js}
+            description={description}
             username={username}
             penName={name}
             views={views}
@@ -92,7 +91,7 @@ class Profile extends Component {
 
     return (
       <div>
-        <NavBar/>
+        <NavBar />
         <div className='Content'>
           <div className='grayLine'>
           </div>
@@ -107,17 +106,21 @@ class Profile extends Component {
             </div>
           </div>
 
-          <div className='EditP'>
-            <Link className='link1' to="/account"><h1 onClick={() => this.props.history.push('/account')}>Edit Profile</h1></Link>
-          </div>
+          <Link className='link' to="/account">
+            <div className='EditP'>
+              <h1 onClick={() => this.props.history.push('/account')}>Edit Profile</h1>
+            </div>
+          </Link>
 
           <div className='UserInfo'>
-            <h1 className='UserName'>{this.state.user.username}</h1>
-            <p className='Name2'>{this.state.user.email}</p>
-            <div className='UserPic'>
-              {this.userAvatar()}
+            <div>
+              <h1 className='UserName'>{user.name}</h1>
+              <p className='Name2'>@{user.username}</p>
+              <div id='UserPic'>
+                {this.userAvatar()}
+              </div>
+              {/* <h3 className='Name2'>{this.state.user.name}</h3> */}
             </div>
-            <h3 className='Name2'>{this.state.user.name}</h3>
           </div>
 
           <div className="profileContainer">
@@ -133,13 +136,23 @@ class Profile extends Component {
             <div className='ligthgray-line'></div>
             <div className='gray-line'></div>
 
-            <div className='Pen-window'>
-              {pensList}
-            </div>
-            <div className="nextButtonContainer">
-              <button className="nextButton" style={{ display: this.state.currentPage === 0 ? "none" : "block" }} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
-              <button className='pagination' onClick={() => this.nextPage()}>Next <i className="fa fa-angle-right"></i></button>
-            </div>
+            {this.state.pens[0] === [] ? (
+              <div className="pen-window">
+                <div>
+                  {pensList}
+                </div>
+                <div className="nextButtonContainer">
+                  <button className="nextButton" style={{ display: this.state.currentPage === 0 ? "none" : "block" }} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
+                  <button className='pagination' onClick={() => this.nextPage()}>Next <i className="fa fa-angle-right"></i></button>
+                </div>
+              </div>
+            ) : (
+                <div className="goMakePens">
+                  <h1>You haven't <br />made any pens yet!</h1>
+                  <Link to="/editor"><button>Create Pen</button></Link>
+                </div>
+
+              )}
           </div>
         </div>
       </div>

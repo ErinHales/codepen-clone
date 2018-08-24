@@ -13,6 +13,7 @@ class NavBar extends Component {
     super()
     this.state = {
       togglePenWindow: false,
+      showYourProfile: false,
       id: '',
       user: '',
       search: false
@@ -25,6 +26,15 @@ class NavBar extends Component {
     })
   }
 
+  componentWillMount() {
+    axios.get('/api/users')
+      .then( res => {
+        if(res.data.userid) {
+          this.setState({showYourProfile: true})
+        }
+      })
+      .catch(console.error)
+  }
 
   postPen() {
     window.location.hash = "#/editor"
@@ -44,18 +54,17 @@ class NavBar extends Component {
     
   }
 
-  
-  toggleSearch = () => {
-    if(this.state.search === false) {
-      this.setState({
-        search: true
-      })
-    } else {
-      this.setState({
-        search: false
-      })
-    }
-  }
+  // toggleSearch = () => {
+  //   if(this.state.search === false) {
+  //     this.setState({
+  //       search: true
+  //     })
+  //   } else {
+  //     this.setState({
+  //       search: false
+  //     })
+  //   }
+  // }
 
 
   render() {
@@ -66,14 +75,17 @@ class NavBar extends Component {
           <div className='Name'>
             <Link to='/' className='link'><h1 className='clonepen'>C L <img className='icon' src='http://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Large.png' alt='' /> N E P E N</h1></Link>
           </div>
-
-          <Link to="/profile" className="link">
-            <div className='divProf'>
-              <p className='Your'>YOUR</p>
-              <h1 className='Prof'>Profile</h1>
-              <div className='h-line'></div>
-            </div>
-          </Link>
+          {this.state.showYourProfile ? (
+            <Link to="/profile" className="link">
+              <div className='divProf'>
+                <p className='Your'>YOUR</p>
+                <h1 className='Prof'>Profile</h1>
+                <div className='h-line'></div>
+              </div>
+            </Link>
+          ) : (
+            null
+          )}
 
           <Link to="/pens" className="link">
             <div className='divExp'>
@@ -104,9 +116,11 @@ class NavBar extends Component {
             </div>
 
 
-            <button className='divMag' onClick={() => this.toggleSearch()}>
-              <img className='mag' src="https://www.shareicon.net/download/2015/09/25/107005_find_512x512.png" alt="magnifier" />
-            </button>
+            <Link to="/search">
+              <button className='divMag'>
+                <img className='mag' src="https://www.shareicon.net/download/2015/09/25/107005_find_512x512.png" alt="magnifier" />
+              </button>
+            </Link>
 
             <div>
               {this.componentChange()}
@@ -123,7 +137,7 @@ class NavBar extends Component {
 
 
         </nav>
-        {this.state.search ? <SearchBar /> : null}
+        {/* {this.state.search ? <SearchBar /> : null} */}
       </div>
     )
   }
