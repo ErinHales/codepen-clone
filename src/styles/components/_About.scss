@@ -1,20 +1,16 @@
 .Backgrnd{
-  height: 175vh;
   width: 100%;
   background: #191A1D;
   display: flex;
-  min-width: 1000px;
-  background-repeat: repeat
+  flex-direction: column;
+  height: 1800px;
 }
 
 .contact{
   height: 390px;
-  width: 415px;
+  width: 30vw;
   background: whitesmoke;
   padding: 35px;
-  position: relative;
-  top: 2%;
-  left: 10%;
 }
 
 .About{
@@ -42,14 +38,12 @@
 
 .description{
   height: 400px;
-  width: 800px;
+  width: 50vw;
   color: white;
   font-family:'Lato', sans-serif;
   font-size: 1.6rem;
   font-weight: 0;
-  position: relative;
-  left: 14%;
-  top: 4%;
+  margin-top: 30px;
   line-height: 1.6;
   font-weight: 200;
   min-width: 400px;
@@ -80,12 +74,11 @@
 
 .Devs{
   height: 40vh;
-  width: 95%;
+  width: 100vw;
   display: flex;
   flex-wrap: wrap;
-  position: absolute;
-  top: 60%;
-  left: 5%;
+  justify-content: space-around;
+  margin-top: 50px;
 }
 
 .Pic{
@@ -108,23 +101,29 @@
   margin-left: 10px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 34px;
-  position: relative;
-  left: 45%;
-  top: -30%;
 }
 
 .coDev{
   width: 300px;
   margin-left: 10px;
   font-family: 'Lato', sans-serif;
-  position: relative;
-  left: 45%;
-  top: -30%;
 }
 
 .descrptn{
   font-family: 'Lato', sans-serif;
-  margin-left: 10px;
-  padding: 15px;
-  margin-bottom: 20px;
+  margin: 50px 20px 20px 20px;
+}
+
+.row {
+  width: 100vw;
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.devInfo {
+  float: right;
+  text-align: left;
+  width: 280px;
+  margin-top: 50px;
 }

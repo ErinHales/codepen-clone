@@ -74,7 +74,6 @@ export default class Pens extends Component {
         } else if (!pens[currentPage + 1]) {
             axios.get(`/api/pens/user/3/${currentPage + 1}?type=new`)
                 .then(res => {
-                    // console.log([res.data]);
                     if (res.data[0]) {
                         let copy = pens.slice();
                         copy.push(res.data);
@@ -103,7 +102,7 @@ export default class Pens extends Component {
         let { currentPage, pens } = this.state;
         if (pens[currentPage]) {
             var pensList = pens[currentPage].map(pen => {
-                let { pen_id, name, username, img_url, views, comments, loves, scripts, html, css, js } = pen;
+                let { pen_id, user_id, name, username, img_url, description, views, comments, loves, scripts, html, css, js } = pen;
                 return (
                     <Pen
                         key={pen_id}
@@ -114,10 +113,12 @@ export default class Pens extends Component {
                         css={css}
                         js={js}
                         username={username}
+                        user_id={user_id}
                         penName={name}
                         views={views}
                         commentsNum={comments}
-                        loves={loves} />
+                        loves={loves}
+                        description={description} />
                 );
             })
         }
