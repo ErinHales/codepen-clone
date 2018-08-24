@@ -275,7 +275,7 @@
 
 .userWin{
   background: whitesmoke;
-  height: 90px;
+  height: 100px;
   width: 250px;
   z-index: 11;
   position: absolute;
@@ -295,23 +295,7 @@
   color: gray;
 }
 
-.sttngbox{
-  height: 40px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-family:  "Lato", "Lucida Grande", "Lucida Sans Unicode";
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.setbox{
-  height: 34px;
-  width: 120px;
-  border-radius: 5px;
-}
-
-.setbox:hover{
+.logout:hover{
   background: lightgray;
 }
 
@@ -361,4 +345,21 @@
 .goToLink {
   color: black;
   text-decoration: none;
+}
+
+
+.settingsCtn {
+  display: flex;
+  justify-content: space-around;
+  :nth-child(1) {
+    margin-top: 0px;
+  }
+  div {
+    padding: 5px 20px;
+    border-radius: 3px;
+  }
+  div:hover {
+    background-color: lightgray;
+    cursor: pointer;
+  }
 }

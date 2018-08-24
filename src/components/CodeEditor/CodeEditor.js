@@ -27,7 +27,7 @@ export default class CodeEditor extends Component {
             html: '',
             js: '',
             userid: null,
-            theme: "abcdef",
+            theme: "twilight",
 
             behaviorSettings: {
                 tabSize: 0,
@@ -111,6 +111,12 @@ export default class CodeEditor extends Component {
     }
 
     componentDidMount() {
+        axios.get('/api/userinfo').then(response => {
+            // console.log(response.data);
+            this.setState({
+                theme: response.data[0].theme
+            })
+        })
         axios.put(`/api/pen/view/${this.props.match.params.id}/${this.state.userid}`).catch(console.error());
     }
 

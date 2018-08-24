@@ -14,9 +14,11 @@ export default class Pen extends Component {
     componentDidMount() {
         if (this.props.id) {
             axios.get(`/api/loved/pens/${this.props.id}`).then(response => {
-                this.setState({
-                    loved: response.data
-                })
+                if (response.data[0]) {
+                    this.setState({
+                        loved: true
+                    })
+                }
             })
         }
     }
@@ -46,17 +48,15 @@ export default class Pen extends Component {
         const { css: cssList, html: htmlScripts, js: jsList } = scripts
         let { html_tag_class: htmlClassTag, head_tag: head } = htmlScripts
         // removing null
-        console.log(11111, htmlClassTag)
-        if(!htmlClassTag){
-            console.log('fired')
-            htmlClassTag= ''
+        if (!htmlClassTag) {
+            htmlClassTag = ''
         }
         let stylesheetString = cssList.reduce((string, element) => {
-            return string  + `<link rel='stylesheet' href='${element}'>`
+            return string + `<link rel='stylesheet' href='${element}'>`
         }, '')
 
         let jsLibraryString = jsList.reduce((string, element) => {
-            return string  + `<script type='text/javascript' src='${element}'></script>`
+            return string + `<script type='text/javascript' src='${element}'></script>`
         }, '')
 
         let srcDoc = `
@@ -77,7 +77,7 @@ export default class Pen extends Component {
                     <div className="overlayContainer">
                         <div className="overlayContainer">
                             <div className="pen-iframe-container">
-                                <iframe style={{backgroundColor: 'white'}} scrolling="no" className="pen-iframe" title={this.props.id} srcDoc={srcDoc}></iframe>
+                                <iframe style={{ backgroundColor: 'white' }} scrolling="no" className="pen-iframe" title={this.props.id} srcDoc={srcDoc}></iframe>
                             </div>
                             <div className="overlay">
                                 <div className="text">{this.props.description}</div>
@@ -98,7 +98,7 @@ export default class Pen extends Component {
                         <h3>{views}</h3>
                         <Link to={`/comments/${id}`}><i className="fa fa-comment"></i></Link>
                         <h3>{commentsNum}</h3>
-                        <i style={{color: loved ? "pink" : "lightgray"}} onClick={() => this.lovePost()} className="fa fa-heart"></i>
+                        <i style={{ color: loved ? "pink" : "lightgray" }} onClick={() => this.lovePost()} className="fa fa-heart"></i>
                         <h3>{loved ? loves + 1 : loves}</h3>
                     </div>
                 </div>
