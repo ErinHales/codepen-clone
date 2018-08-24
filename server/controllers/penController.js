@@ -74,38 +74,38 @@ module.exports = {
                     })
                 // check to see if the request from the client contains any html settings content
                 console.log('html tag and head', html_tag_class, head_tag)
-                if(html_tag_class || head_tag) {
+                // if(html_tag_class || head_tag) {
                     //Adding the content if it exists
                     dbConn.post_html_scripts([pen_id, html_tag_class, head_tag])
                         .catch( err => {
                             console.error(err)
                             res.sendStatus(500)
                         })
-                }
+                // }
                 // check to see if the request from the client contains any css settings content
                 console.log('stylesheet', css_stylesheet)
-                if(css_stylesheet[0]) {
+                // if(css_stylesheet[0]) {
                     //Adding the content if it exists
-                    for(let i = 0; i < css_stylesheet.length; i++) {
+                    for(let i = 0; i <= css_stylesheet.length; i++) {
                         dbConn.post_css_stylesheet([pen_id, css_stylesheet[i]])
                             .catch( err => {
                                 console.error(err)
                                 res.sendStatus(500)
                             }) 
                     }
-                }
+                // }
                 // check to see if the request from the client contains any javascript settings content
                 console.log('jsscript', js_script)
-                if(js_script[0]) {
+                // if(js_script[0]) {
                     //Adding the content if it exists
-                    for(let i = 0; i < js_script.length; i++) {
+                    for(let i = 0; i <= js_script.length; i++) {
                         dbConn.post_js_scripts([pen_id, js_script[i]])
                             .catch( err => {
                                 console.error(err)
                                 res.sendStatus(500)
                             })
                     }
-                }
+                // }
                 console.log('post')
                 res.send(dbResponse).status(201)
             })
