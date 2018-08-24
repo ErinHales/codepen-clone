@@ -708,6 +708,9 @@ span {
 .link {
   text-decoration-line: none; }
 
+.clonepen:hover {
+  color: white; }
+
 .nav1 {
   background: black;
   display: flex;
