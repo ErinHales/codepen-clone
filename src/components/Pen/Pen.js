@@ -41,8 +41,39 @@ export default class Pen extends Component {
 
     render() {
         let { loved } = this.state;
-        let { html, css, js, id, profilePicture, penName, username, views, commentsNum, loves } = this.props;
-        const srcDoc = `${html}<style>${css}</style><script>${js}</script>`
+        let { html, css, js, id, profilePicture, penName, scripts, username, views, commentsNum, loves } = this.props;
+        // const srcDoc = `${html}<style>${css}</style><script>${js}</script>`
+        const { css: cssList, html: htmlScripts, js: jsList } = scripts
+        let { html_tag_class: htmlClassTag, head_tag: head } = htmlScripts
+        // removing null
+        if(!head.isNull) {
+            head = ''
+        }
+        console.log(11111, htmlClassTag)
+        if(!htmlClassTag){
+            console.log('fired')
+            htmlClassTag= ''
+        }
+        let stylesheetString = cssList.reduce((string, element) => {
+            return string  + `<link rel='stylesheet' href='${element}'>`
+        }, '')
+
+        let jsLibraryString = jsList.reduce((string, element) => {
+            return string  + `<script type='text/javascript' src='${element}'></script>`
+        }, '')
+
+        let srcDoc = `
+        <html class='${htmlClassTag}'>
+            <head>
+                ${stylesheetString}
+                ${head}            
+            </head>
+            <body>${html}</body>
+            <style>${css}</style>
+            ${jsLibraryString}
+            
+            <script>${js}</script>
+        </html>`;
         return (
             <div className="showPen">
                 <Link to={`/editor/${id}`}>

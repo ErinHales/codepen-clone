@@ -1,2 +1,2 @@
-DELETE FROM css_stylesheets
-WHERE pen_id = $1;
+INSERT INTO css_stylesheets (pen_id, stylesheet)
+VALUES ($1, $2);
