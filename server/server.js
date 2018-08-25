@@ -8,6 +8,7 @@ require('dotenv').config();
 const app = express();
 app.use(bodyParser.json());
 
+app.use(express.static( __dirname+'/../build'))
 
 const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env;
 
