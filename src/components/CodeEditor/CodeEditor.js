@@ -403,7 +403,7 @@ export default class CodeEditor extends Component {
         </html>`;
         return (
             <div>
-                <NavBar2/>
+                <NavBar2 isLoggedIn={this.state.isLoggedIn} showSettings={this.state.showSettings} settingsPopUpHandler={this.settingsPopUpHandler}/>
                 <div className="codeEditor">
                 {this.state.showPopUp ? popUp : null}
                 {this.state.showSettings ? settingsMenu : null}

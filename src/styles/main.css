@@ -1660,8 +1660,7 @@ span {
   width: 100%;
   background: #191A1D;
   display: flex;
-  flex-direction: column;
-  height: 1800px; }
+  flex-direction: column; }
 
 .contact {
   height: 390px;
@@ -1721,8 +1720,7 @@ span {
   font-size: 1.6rem; }
 
 .Devs {
-  height: 40vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -1758,7 +1756,7 @@ span {
   margin: 50px 20px 20px 20px; }
 
 .row {
-  width: 100vw;
+  width: 100%;
   margin-top: 40px;
   display: flex;
   justify-content: space-around; }
