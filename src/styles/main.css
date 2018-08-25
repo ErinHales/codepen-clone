@@ -943,7 +943,7 @@ span {
 
 .userWin {
   background: whitesmoke;
-  height: 90px;
+  height: 100px;
   width: 250px;
   z-index: 11;
   position: absolute;
@@ -961,21 +961,7 @@ span {
   margin-bottom: 3px;
   color: gray; }
 
-.sttngbox {
-  height: 40px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-family: "Lato", "Lucida Grande", "Lucida Sans Unicode";
-  font-size: 14px;
-  cursor: pointer; }
-
-.setbox {
-  height: 34px;
-  width: 120px;
-  border-radius: 5px; }
-
-.setbox:hover {
+.logout:hover {
   background: lightgray; }
 
 .Profile {
@@ -1018,6 +1004,18 @@ span {
 .goToLink {
   color: black;
   text-decoration: none; }
+
+.settingsCtn {
+  display: flex;
+  justify-content: space-around; }
+  .settingsCtn :nth-child(1) {
+    margin-top: 0px; }
+  .settingsCtn div {
+    padding: 5px 20px;
+    border-radius: 3px; }
+  .settingsCtn div:hover {
+    background-color: lightgray;
+    cursor: pointer; }
 
 .component-account {
   background-color: #191A1D;
@@ -1272,9 +1270,10 @@ span {
   font-family: 'Telex', sans-serif;
   font-weight: 600; }
 
-.Name2 {
-  margin-bottom: 18px;
-  font-family: 'Lato', sans-serif; }
+#Name2 {
+  font-size: 20px;
+  font-family: 'Lato', sans serif;
+  margin-bottom: 10px; }
 
 #UserPic {
   height: 130px;
@@ -1985,6 +1984,12 @@ span {
 .container {
   display: flex; }
 
+.accountLink {
+  text-decoration: none;
+  color: black;
+  margin-top: -10px;
+  display: flex; }
+
 .editorSettings {
   display: flex;
   justify-content: space-around;
@@ -2040,6 +2045,183 @@ span {
   .sampleEditor .CodeMirror-gutter {
     height: 110%;
     margin: 0px; }
+
+.theme-save {
+  position: absolute;
+  top: 100px;
+  right: 30px; }
+
+.component-showcase {
+  background-color: #191A1D;
+  min-height: 100vh;
+  padding-top: 3.25rem; }
+  .component-showcase .showcase-container {
+    width: 97%;
+    margin: 0 auto; }
+    .component-showcase .showcase-container .showcase-grid {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap; }
+      .component-showcase .showcase-container .showcase-grid .row {
+        display: flex; }
+      .component-showcase .showcase-container .showcase-grid .row:last-child {
+        margin-top: 1rem; }
+      .component-showcase .showcase-container .showcase-grid .grid-item {
+        height: 150px;
+        width: 31%;
+        margin-bottom: 1rem; }
+        .component-showcase .showcase-container .showcase-grid .grid-item:hover {
+          cursor: all-scroll; }
+        .component-showcase .showcase-container .showcase-grid .grid-item .frame-overlay {
+          position: relative;
+          width: 100%;
+          height: 0;
+          padding-bottom: 90%; }
+          .component-showcase .showcase-container .showcase-grid .grid-item .frame-overlay:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0; }
+          .component-showcase .showcase-container .showcase-grid .grid-item .frame-overlay:hover {
+            cursor: all-scroll; }
+          .component-showcase .showcase-container .showcase-grid .grid-item .frame-overlay .pen-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%; }
+            .component-showcase .showcase-container .showcase-grid .grid-item .frame-overlay .pen-iframe a {
+              cursor: all-scroll; }
+      .component-showcase .showcase-container .showcase-grid .grid-item:nth-child(3n+2) {
+        margin: 0 2%; }
+      .component-showcase .showcase-container .showcase-grid img {
+        height: 100%;
+        width: 100%;
+        border-radius: 8px; }
+    .component-showcase .showcase-container .header {
+      text-align: center; }
+      .component-showcase .showcase-container .header h1 {
+        font-size: 2.5rem;
+        color: #FFFFFF;
+        margin-bottom: 0.5rem; }
+      .component-showcase .showcase-container .header p {
+        color: #9396A4; }
+    .component-showcase .showcase-container .showcase-body-container {
+      margin-top: 2.5rem;
+      display: flex;
+      justify-content: space-between; }
+      .component-showcase .showcase-container .showcase-body-container .showcase-header {
+        color: #FFFFFF;
+        text-align: center;
+        border-bottom: 3px solid #9396A4;
+        padding-bottom: 8px; }
+        .component-showcase .showcase-container .showcase-body-container .showcase-header h2 {
+          font-size: 1.75rem; }
+        .component-showcase .showcase-container .showcase-body-container .showcase-header p {
+          font-size: 0.9rem;
+          margin-bottom: 0.25rem; }
+      .component-showcase .showcase-container .showcase-body-container .showcase-pens {
+        width: 45%;
+        height: 100%;
+        background-color: #32333B;
+        padding: 20px;
+        border-radius: 5px; }
+      .component-showcase .showcase-container .showcase-body-container .showcase-layout {
+        width: 47%;
+        background-color: #32333B;
+        padding: 20px;
+        border-radius: 5px; }
+        .component-showcase .showcase-container .showcase-body-container .showcase-layout .frame-overlay {
+          position: relative;
+          width: 100%;
+          height: 0;
+          padding-bottom: 90%; }
+          .component-showcase .showcase-container .showcase-body-container .showcase-layout .frame-overlay:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0; }
+          .component-showcase .showcase-container .showcase-body-container .showcase-layout .frame-overlay:hover {
+            cursor: all-scroll; }
+          .component-showcase .showcase-container .showcase-body-container .showcase-layout .frame-overlay .pen-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%; }
+            .component-showcase .showcase-container .showcase-body-container .showcase-layout .frame-overlay .pen-iframe a {
+              cursor: all-scroll; }
+        .component-showcase .showcase-container .showcase-body-container .showcase-layout .showcase-layout-container {
+          margin-top: 0.5rem; }
+          .component-showcase .showcase-container .showcase-body-container .showcase-layout .showcase-layout-container .grid-item,
+          .component-showcase .showcase-container .showcase-body-container .showcase-layout .showcase-layout-container .showcase-main {
+            border: 1px dashed #9396A4; }
+          .component-showcase .showcase-container .showcase-body-container .showcase-layout .showcase-layout-container .grid-item {
+            width: 31%;
+            margin-bottom: 1.5rem; }
+          .component-showcase .showcase-container .showcase-body-container .showcase-layout .showcase-layout-container .showcase-main {
+            width: 100%;
+            height: 269px; }
+            .component-showcase .showcase-container .showcase-body-container .showcase-layout .showcase-layout-container .showcase-main img {
+              width: 100%;
+              height: 100%; }
+            .component-showcase .showcase-container .showcase-body-container .showcase-layout .showcase-layout-container .showcase-main .frame-overlay {
+              position: relative;
+              width: 100%;
+              height: 0;
+              padding-bottom: 46.5%; }
+              .component-showcase .showcase-container .showcase-body-container .showcase-layout .showcase-layout-container .showcase-main .frame-overlay:after {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0; }
+              .component-showcase .showcase-container .showcase-body-container .showcase-layout .showcase-layout-container .showcase-main .frame-overlay:hover {
+                cursor: all-scroll; }
+              .component-showcase .showcase-container .showcase-body-container .showcase-layout .showcase-layout-container .showcase-main .frame-overlay .pen-iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 200%;
+                height: 200%; }
+                .component-showcase .showcase-container .showcase-body-container .showcase-layout .showcase-layout-container .showcase-main .frame-overlay .pen-iframe a {
+                  cursor: all-scroll; }
+        .component-showcase .showcase-container .showcase-body-container .showcase-layout .delete-container {
+          text-align: center;
+          margin-top: 3rem;
+          margin-bottom: 2rem; }
+          .component-showcase .showcase-container .showcase-body-container .showcase-layout .delete-container p,
+          .component-showcase .showcase-container .showcase-body-container .showcase-layout .delete-container i {
+            color: #FFFFFF; }
+          .component-showcase .showcase-container .showcase-body-container .showcase-layout .delete-container i {
+            font-size: 4rem;
+            margin-bottom: 0.25rem; }
+      .component-showcase .showcase-container .showcase-body-container .showcase-box {
+        width: 98%;
+        margin: 0 auto; }
+        .component-showcase .showcase-container .showcase-body-container .showcase-box .showcase-filter {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 0.75rem; }
+          .component-showcase .showcase-container .showcase-body-container .showcase-box .showcase-filter .filter-links {
+            display: flex; }
+            .component-showcase .showcase-container .showcase-body-container .showcase-box .showcase-filter .filter-links p {
+              color: #FFFFFF;
+              font-size: 1.25rem; }
+            .component-showcase .showcase-container .showcase-body-container .showcase-box .showcase-filter .filter-links p:last-child {
+              margin-left: 10px; }
+          .component-showcase .showcase-container .showcase-body-container .showcase-box .showcase-filter .filter-box input {
+            border-radius: 5px;
+            padding: 8px 4px; }
 
 .icon2 {
   height: 40px; }

@@ -33,6 +33,7 @@ const penCntrl = require('./controllers/penController')
 const interfaceCntrl = require('./controllers/interfaceController')
 const statsCntrl = require('./controllers/statsController')
 const comCntrl = require('./controllers/commentsController');
+const profileCntrl = require('./controllers/profileLayoutController');
 
 // Sign a user up
 app.post('/api/auth/register', (req, res) => loginCntrl.registerUser(req, res, bcrypt));
@@ -45,6 +46,12 @@ app.get('/api/logout', (req, res) => {
     req.session.destroy()
     // res.redirect('http://localhost:3000/#/')
 })
+
+
+// Profile Layout 
+app.post('/api/layout', profileCntrl.insertIntoLayout);
+app.delete('/api/layout/:penId', profileCntrl.deleteFromLayout);
+app.put('/api/layout/', profileCntrl.updateLayout);
 
 
 // USER
@@ -135,6 +142,23 @@ app.get('/api/search/pens/:pageNum', interfaceCntrl.searchPens)
 // search all users
 app.get('/api/search/users', userCntrl.searchUser)
 
+
+
+
+// get user info for profile page
+app.get('/api/userinfo', userCntrl.getUserInfo)
+
+// add user's info into database
+app.post('/api/setuserinfo', userCntrl.createUserInfo)
+
+// updates user's info
+app.put('/api/update/userinfo', userCntrl.updateUserInfo)
+
+// update user name
+app.put('/api/update/name', userCntrl.updateUserName)
+
+// update user theme
+app.put('/api/user/theme', userCntrl.updateTheme)
 
 
 
