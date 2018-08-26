@@ -29,7 +29,6 @@ class Showcase_Layout2 extends Component {
 
     }
     addItem = (gridId, css, html, js, penId) => {
-
         let gridIndex = this.state.showCaseLayout[gridId - 1];
         if (gridIndex.penId) {
             console.log('test');
@@ -64,28 +63,31 @@ class Showcase_Layout2 extends Component {
     }
     switchShowcase = (grid, showcase) => {
         // This is the index that the showcase is going to be switched with
-        let index = this.state.showCaseLayout.findIndex(e => e.id === grid.gridItem);
-        let layout = this.state.showCaseLayout.slice();
-        layout[index].html = showcase.html;
-        layout[index].css = showcase.css;
-        layout[index].js = showcase.js
-        layout[index].penId = showcase.penId;
+        axios.put('/api/layout/showcase', { penId: grid.penId, gridId: grid.gridItem, showcasePen: showcase.penId })
+            .then(() => {
+                let index = this.state.showCaseLayout.findIndex(e => e.id === grid.gridItem);
+                let layout = this.state.showCaseLayout.slice();
+                layout[index].html = showcase.html;
+                layout[index].css = showcase.css;
+                layout[index].js = showcase.js
+                layout[index].penId = showcase.penId;
 
-        let showCase = this.state.showCaseMain;
-        showCase.penId = grid.penId;
-        showCase.html = grid.html;
-        showCase.css = grid.css;
-        showCase.js = grid.js;
-        this.setState({
-            showCaseLayout: layout,
-            showCaseMain: showCase
-        })
+                let showCase = this.state.showCaseMain;
+                showCase.penId = grid.penId;
+                showCase.html = grid.html;
+                showCase.css = grid.css;
+                showCase.js = grid.js;
+                this.setState({
+                    showCaseLayout: layout,
+                    showCaseMain: showCase
+                })
 
+            })
     }
     addShowcaseMain = (penId, css, html, js) => {
         // Before adding to the showcase check the grid if it exists
         if (this.state.showCaseLayout.findIndex(e => e.penId === penId) === -1) {
-            axios.post('/api/layout', { penId, gridItem: 0 })
+            axios.post('/api/layout', { penId, gridId: 0 })
                 .then(() => {
                     let obj = this.state.showCaseMain;
                     obj.penId = penId;
