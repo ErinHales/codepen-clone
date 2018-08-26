@@ -29,8 +29,7 @@ function collectTarget(connect, monitor) {
 }
 const dropSource = {
     drop(props, monitor, component) {
-        console.log(props);
-        if (monitor.getItem().penId) {
+        if (!monitor.getItem().hasOwnProperty('addShowcaseMain')) {
             let showcasePenId = props.showcase.penId;
             let gridPenId = monitor.getItem().penId;
             // Check if the item is already in the showcase
@@ -41,6 +40,10 @@ const dropSource = {
                     props.addItem(props.gridItem, css, html, js, gridPenId);
                 }
             }
+        }
+        else if(monitor.getItem().hasOwnProperty('addShowcaseMain') && props.penId){
+            console.log('test');
+           monitor.getItem().switchShowcase(props, monitor.getItem());
         }        
     }
 }

@@ -29,11 +29,15 @@ class Showcase_Layout2 extends Component {
 
     }
     addItem = (gridId, css, html, js, penId) => {
-        let gridIndex = this.state.showCaseLayout[gridId - 1];
-        console.log(gridId);
         console.log(penId);
+        console.log(gridId);
+        let gridIndex = this.state.showCaseLayout[gridId - 1];
+        // IF the showcase is empty and item to showcase
+        if (!this.state.showCaseMain.penId) {
+            this.addShowcaseMain(penId, css, html, js);
+        }
         // This is to replace a grid item fromt the left side
-        if (gridIndex.penId) {
+        else if (gridIndex.penId) {
             axios.put('/api/layout', { penId, gridId })
                 .then(() => {
                     let index = gridId - 1;
@@ -48,14 +52,20 @@ class Showcase_Layout2 extends Component {
                 })
         }
         // This ensures that there arent any duplicates 
-        else if(this.state.showCaseLayout.findIndex(item => item.penId === penId) === -1) {
-            let index = gridId - 1;
+        else if (this.state.showCaseLayout.findIndex(item => item.penId === penId) === -1) {
+            let gridIndex = 0;
+            for(let i = 0; i < this.state.showCaseLayout.length; i++){
+                if(!this.state.showCaseLayout[i].penId){
+                    gridIndex = i;
+                    break;
+                }
+            }
             let layout = this.state.showCaseLayout.slice();
-            layout[index].penId = penId;
-            layout[index].html = html;
-            layout[index].css = css;
-            layout[index].js = js;
-            axios.post('/api/layout', { penId, gridId })
+            layout[gridIndex].penId = penId;
+            layout[gridIndex].html = html;
+            layout[gridIndex].css = css;
+            layout[gridIndex].js = js;
+            axios.post('/api/layout', { penId, gridId: gridIndex + 1 })
                 .then(() => {
                     this.setState({
                         showCaseLayout: layout
