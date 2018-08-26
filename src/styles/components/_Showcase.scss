@@ -3,7 +3,7 @@
     min-height: 100vh;
     padding-top: 3.25rem;
     .showcase-container {
-        border: 1px solid red;
+        // border: 1px solid red;
         width: 97%;
         margin: 0 auto;
         .showcase-grid {
@@ -19,7 +19,7 @@
             .grid-item {
                 height: 150px;
                 width: 31%;
-                border: 1px solid red;
+                // border: 1px solid red;
                 margin-bottom: 1rem;
                 &:hover {
                     cursor: all-scroll;
@@ -196,7 +196,7 @@
                 width: 98%;
                 margin: 0 auto;
                 .showcase-filter {
-                    border: 1px solid blue;
+                    // border: 1px solid blue;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;

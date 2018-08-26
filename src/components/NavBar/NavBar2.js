@@ -65,7 +65,7 @@ class NavBar2 extends Component {
               <div className='title'>
                 {this.titleChanger()}
                 <p className='APenBy'>A PEN BY 
-                 <Link to='/profile' className='link'><span className='userName'>{this.state.user.username}</span></Link></p>
+                  <Link to='/profile' className='link'><span className='userName'>{this.state.user.username}</span></Link></p>
               </div>
 
             </div>
@@ -74,9 +74,9 @@ class NavBar2 extends Component {
 
             <div className='nav2'>
 
-             {this.componentChange()}
+              {this.componentChange()}
 
-              <div className='SettingsBox'>
+              <div onClick={() => this.props.settingsPopUpHandler(!this.props.showSettings)} className='SettingsBox'>
                 <img className='settGear' src="https://cdn2.iconfinder.com/data/icons/web/512/Cog-512.png" alt=""/>
                 <p>Settings</p>
 
