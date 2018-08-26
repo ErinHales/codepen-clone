@@ -29,10 +29,15 @@ class Showcase_Layout2 extends Component {
 
     }
     addItem = (gridId, css, html, js, penId) => {
-
+        console.log(penId);
+        console.log(gridId);
         let gridIndex = this.state.showCaseLayout[gridId - 1];
-        if (gridIndex.penId) {
-            console.log('test');
+        // IF the showcase is empty and item to showcase
+        if (!this.state.showCaseMain.penId) {
+            this.addShowcaseMain(penId, css, html, js);
+        }
+        // This is to replace a grid item fromt the left side
+        else if (gridIndex.penId) {
             axios.put('/api/layout', { penId, gridId })
                 .then(() => {
                     let index = gridId - 1;
@@ -46,14 +51,21 @@ class Showcase_Layout2 extends Component {
                     })
                 })
         }
-        else {
-            let index = gridId - 1;
+        // This ensures that there arent any duplicates 
+        else if (this.state.showCaseLayout.findIndex(item => item.penId === penId) === -1) {
+            let gridIndex = 0;
+            for(let i = 0; i < this.state.showCaseLayout.length; i++){
+                if(!this.state.showCaseLayout[i].penId){
+                    gridIndex = i;
+                    break;
+                }
+            }
             let layout = this.state.showCaseLayout.slice();
-            layout[index].penId = penId;
-            layout[index].html = html;
-            layout[index].css = css;
-            layout[index].js = js;
-            axios.post('/api/layout', { penId, gridId })
+            layout[gridIndex].penId = penId;
+            layout[gridIndex].html = html;
+            layout[gridIndex].css = css;
+            layout[gridIndex].js = js;
+            axios.post('/api/layout', { penId, gridId: gridIndex + 1 })
                 .then(() => {
                     this.setState({
                         showCaseLayout: layout
@@ -64,28 +76,31 @@ class Showcase_Layout2 extends Component {
     }
     switchShowcase = (grid, showcase) => {
         // This is the index that the showcase is going to be switched with
-        let index = this.state.showCaseLayout.findIndex(e => e.id === grid.gridItem);
-        let layout = this.state.showCaseLayout.slice();
-        layout[index].html = showcase.html;
-        layout[index].css = showcase.css;
-        layout[index].js = showcase.js
-        layout[index].penId = showcase.penId;
+        axios.put('/api/layout/showcase', { penId: grid.penId, gridId: grid.gridItem, showcasePen: showcase.penId })
+            .then(() => {
+                let index = this.state.showCaseLayout.findIndex(e => e.id === grid.gridItem);
+                let layout = this.state.showCaseLayout.slice();
+                layout[index].html = showcase.html;
+                layout[index].css = showcase.css;
+                layout[index].js = showcase.js
+                layout[index].penId = showcase.penId;
 
-        let showCase = this.state.showCaseMain;
-        showCase.penId = grid.penId;
-        showCase.html = grid.html;
-        showCase.css = grid.css;
-        showCase.js = grid.js;
-        this.setState({
-            showCaseLayout: layout,
-            showCaseMain: showCase
-        })
+                let showCase = this.state.showCaseMain;
+                showCase.penId = grid.penId;
+                showCase.html = grid.html;
+                showCase.css = grid.css;
+                showCase.js = grid.js;
+                this.setState({
+                    showCaseLayout: layout,
+                    showCaseMain: showCase
+                })
 
+            })
     }
     addShowcaseMain = (penId, css, html, js) => {
         // Before adding to the showcase check the grid if it exists
         if (this.state.showCaseLayout.findIndex(e => e.penId === penId) === -1) {
-            axios.post('/api/layout', { penId, gridItem: 0 })
+            axios.post('/api/layout', { penId, gridId: 0 })
                 .then(() => {
                     let obj = this.state.showCaseMain;
                     obj.penId = penId;
