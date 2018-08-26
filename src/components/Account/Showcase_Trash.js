@@ -18,11 +18,6 @@ const dropSource = {
             console.log(monitor.getItem())
             monitor.getItem().deleteItem(monitor.getItem().penId);
         }
-
-
-
-
-
     }
 }
 class Showcase_Trash extends Component {

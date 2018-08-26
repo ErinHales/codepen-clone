@@ -12,10 +12,20 @@ module.exports = {
             .then(() => res.sendStatus(200))
             .catch(err => res.status(500).send(err))
     },
-    updateLayout: (req,res) =>{
-        let {penId, gridId} = req.body;
+    updateLayout: (req, res) => {
+        let { penId, gridId } = req.body;
         req.app.get('db').update_layout([penId, gridId])
-        .then(() => res.sendStatus(200))
-        .catch(err => res.status(500).send(err))
+            .then(() => res.sendStatus(200))
+            .catch(err => res.status(500).send(err))
+    },
+    updateShowcase: (req, res) => {
+        let { penId, gridId, showcasePen } = req.body;
+        let db = req.app.get('db');
+        db.switch_showcase([penId, 0])
+            .then(() => db.switch_showcase([showcasePen, gridId])
+                .then(() => res.sendStatus(200))
+                .catch(err => res.status(500).send(err))
+            )
+            .catch(err => res.status(500).send(err))
     }
 }

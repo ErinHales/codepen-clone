@@ -24,10 +24,6 @@ class Showcase extends Component {
                 this.setState({
                     pens: res.data
                 })
-                // this.setState({
-                //     pens: [res.data],
-                //     currentPage: 0,
-                // })
             })
             .catch(err => console.log(err));
     }
