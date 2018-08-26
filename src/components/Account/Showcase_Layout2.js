@@ -30,8 +30,10 @@ class Showcase_Layout2 extends Component {
     }
     addItem = (gridId, css, html, js, penId) => {
         let gridIndex = this.state.showCaseLayout[gridId - 1];
+        console.log(gridId);
+        console.log(penId);
+        // This is to replace a grid item fromt the left side
         if (gridIndex.penId) {
-            console.log('test');
             axios.put('/api/layout', { penId, gridId })
                 .then(() => {
                     let index = gridId - 1;
@@ -45,7 +47,8 @@ class Showcase_Layout2 extends Component {
                     })
                 })
         }
-        else {
+        // This ensures that there arent any duplicates 
+        else if(this.state.showCaseLayout.findIndex(item => item.penId === penId) === -1) {
             let index = gridId - 1;
             let layout = this.state.showCaseLayout.slice();
             layout[index].penId = penId;
