@@ -9,7 +9,7 @@ class Profile extends Component {
     super()
     this.state = {
       user: '',
-      pens: '',
+      pens: [],
       currentPage: 0,
       userInfo: {}
     }
@@ -145,7 +145,7 @@ class Profile extends Component {
             <div className='ligthgray-line'></div>
             <div className='gray-line'></div>
 
-            {this.state.pens[0] ? (
+            {pensList === undefined ? (
               <div className="pen-window">
                 <div>
                   {pensList}
