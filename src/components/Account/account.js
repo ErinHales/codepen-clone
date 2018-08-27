@@ -32,7 +32,8 @@ class Account extends Component {
             }))
             .catch(err => console.log(err));
         axios.get('/api/userinfo').then(res => {
-            // if (res.data[0]) {
+            console.log(res.data)
+            if (res.data[0]) {
             this.setState({
                 location: res.data[0].location,
                 bio: res.data[0].bio,
@@ -42,7 +43,7 @@ class Account extends Component {
                 forHire: res.data[0].for_hire,
                 userInfoExists: true
             })
-            // }
+            }
         })
     }
     

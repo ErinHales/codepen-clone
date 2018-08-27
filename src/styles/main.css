@@ -500,7 +500,8 @@ span {
   color: #C5C8D4;
   display: flex;
   flex-direction: column;
-  align-items: center; }
+  align-items: center;
+  min-height: 80vh; }
 
 .pensHeader {
   border-bottom: 3px solid #0EBEFF;

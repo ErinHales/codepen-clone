@@ -118,7 +118,7 @@ export default class CodeEditor extends Component {
 
     componentDidMount() {
         axios.get('/api/userinfo').then(response => {
-            // console.log(response.data);
+            console.log(response.data);
             this.setState({
                 theme: response.data[0].theme
             })
@@ -170,7 +170,9 @@ export default class CodeEditor extends Component {
 
     deletePen = () => {
         axios.delete(`/api/pen/${this.props.match.params.id}`)
-            .then()
+            .then(() => {
+                this.props.history.push('/pens')
+            })
             .catch(console.error)
     }
 
