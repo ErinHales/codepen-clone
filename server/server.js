@@ -53,7 +53,8 @@ app.get('/api/logout', (req, res) => {
 app.post('/api/layout', profileCntrl.insertIntoLayout);
 app.delete('/api/layout/:penId', profileCntrl.deleteFromLayout);
 app.put('/api/layout/', profileCntrl.updateLayout);
-app.put('/api/layout/showcase', profileCntrl.updateShowcase);
+app.put('/api/layout/position', profileCntrl.updateLayoutPosition);
+app.put('/api/showcase', profileCntrl.updateShowcase);
 
 
 // USER

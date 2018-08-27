@@ -11,11 +11,9 @@ function collectTarget(connect, monitor) {
 const dropSource = {
     drop(props, monitor, component) {
         if (monitor.getItem().deleteShowcase) {
-            console.log(monitor.getItem())
             monitor.getItem().deleteShowcase(monitor.getItem().penId);
         }
         else {
-            console.log(monitor.getItem())
             monitor.getItem().deleteItem(monitor.getItem().penId);
         }
     }

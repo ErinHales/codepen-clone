@@ -11,7 +11,7 @@ function collectTarget(connect, monitor) {
 }
 const dropSource = {
     drop(props, monitor, component) {
-        let { html, css, js, penId } = monitor.getItem();
+
         if (monitor.getItem().gridItem) {
             let grid = monitor.getItem();
             let showcase = component.state;
