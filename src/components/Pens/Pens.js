@@ -26,7 +26,7 @@ export default class Pens extends Component {
                     filter: "popular"
                 })
             })
-            .catch(err => console.log(err))
+            .catch(console.error)
     }
 
     getMostRecentPens() {
@@ -38,20 +38,19 @@ export default class Pens extends Component {
                     filter: "all"
                 })
             })
-            .catch(err => console.log(err));
+            .catch(console.error);
     }
 
     getUserPens() {
         axios.get('/api/pens/user/3/0?type=new')
             .then(res => {
-                // console.log(res.data);
                 this.setState({
                     pens: [res.data],
                     currentPage: 0,
                     filter: "my"
                 })
             })
-            .catch(err => console.log(err));
+            .catch(console.error);
     }
 
     componentDidMount() {
@@ -62,7 +61,6 @@ export default class Pens extends Component {
     getUserInfo() {
         axios.get('/api/users')
             .then( res => {
-                console.log(res.data)
                 this.setState({
                     userData: res.data
                 })
@@ -84,21 +82,20 @@ export default class Pens extends Component {
                         })
                     }
                 })
-                .catch(err => console.log(err));
+                .catch(console.error);
         } else if (!pens[currentPage + 1]) {
             axios.get(`/api/pens/user/3/${currentPage + 1}?type=new`)
                 .then(res => {
                     if (res.data[0]) {
                         let copy = pens.slice();
                         copy.push(res.data);
-                        console.log(copy);
                         this.setState({
                             pens: copy,
                             currentPage: currentPage + 1
                         })
                     }
                 })
-                .catch(err => console.log(err));
+                .catch(console.error);
         } else {
             this.setState({
                 currentPage: currentPage + 1
@@ -114,7 +111,6 @@ export default class Pens extends Component {
 
     render() {
         let { currentPage, pens } = this.state;
-        console.log(pens);
         if (pens[currentPage]) {
             var pensList = pens[currentPage].map(pen => {
                 let { pen_id, user_id, name, username, img_url, description, views, comments, loves, scripts, html, css, js } = pen;

@@ -41,6 +41,7 @@ export default class Search extends Component {
         this.setState({
             [prop]: e.target.value
         })
+        this.search()
     }
 
     updateSearch(val) {

@@ -91,9 +91,12 @@ export default class CodeEditor extends Component {
                         js: null,
                         name: response.data.name
                     })
+
                     const { user_id: penUserId, html, css, js, username, scripts } = response.data;
-                    const { css: cssList, html: htmlScripts, js: jsList } = scripts
+                    let { css: cssList, html: htmlScripts, js: jsList } = scripts
                     const { html_tag_class, head_tag } = htmlScripts
+                    if (!cssList[0]) cssList = []
+                    if (!jsList[0]) jsList = []
 
 
                     this.setState({
@@ -130,7 +133,6 @@ export default class CodeEditor extends Component {
     // }
     componentDidMount() {
         axios.get('/api/userinfo').then(response => {
-            // console.log(response.data);
             if (response.data[0]) {
                 this.setState({
                     theme: response.data[0].theme
@@ -216,7 +218,6 @@ export default class CodeEditor extends Component {
     //////////// SETTINGS MENU //////////////////
     //JS page Handlers
     jsCdnSelectHandler(data) {
-        console.log(data)
         this.setState({
             jsSettings: {
                 jsCdnList: [...this.state.jsSettings.jsCdnList, data.latest]
@@ -224,7 +225,6 @@ export default class CodeEditor extends Component {
         })
     }
     removeJsCdn(value) {
-        console.log('fired')
         this.setState({
             jsSettings: {
                 jsCdnList: this.state.jsSettings.jsCdnList.filter(e => !e.startsWith(value))
@@ -234,7 +234,6 @@ export default class CodeEditor extends Component {
 
     //CSS page Handlers
     cssCdnSelectHandler(data) {
-        console.log(data)
         this.setState({
             cssSettings: {
                 cssCdnList: [...this.state.cssSettings.cssCdnList, data.latest]
@@ -251,7 +250,6 @@ export default class CodeEditor extends Component {
 
     //HTML Page Handlers
     classTagHandler(value) {
-        console.log('tag handler fired')
         this.setState({
             htmlSettings: {
                 htmlClassTag: value,
@@ -260,7 +258,6 @@ export default class CodeEditor extends Component {
         })
     }
     headStuffHandler(value) {
-        console.log('head stuff fired')
         this.setState({
             htmlSettings: {
                 head: value,
@@ -271,7 +268,6 @@ export default class CodeEditor extends Component {
 
     // Behavior Page Handlers
     autoSaveHandler(value) {
-        console.log(2222, value)
         this.setState({
             behaviorSettings: Object.assign({}, this.state.behaviorSettings, { autoSave: value })
         })
@@ -346,7 +342,6 @@ export default class CodeEditor extends Component {
             this.savePen()
         }
         else {
-            console.log('test')
             this.setState({ showPopUp: false, showSignUp: false })
         }
     }
@@ -417,7 +412,6 @@ export default class CodeEditor extends Component {
         let jsLibraryString = this.state.jsSettings.jsCdnList.reduce((string, element) => {
             return string + `<script type='text/javascript' src='${element}'></script>`
         }, '')
-        console.log(jsLibraryString)
         let srcdoc = `
         <html class='${this.state.htmlSettings.htmlClassTag || ''}'>
             <head>
