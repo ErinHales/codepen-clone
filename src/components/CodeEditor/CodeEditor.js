@@ -363,6 +363,8 @@ export default class CodeEditor extends Component {
 
                     pageSelection={this.state.pageSelection}
                     pageHandler={this.settingsPageSelectionHandler}
+
+                    savePen={this.savePen}
                 />
                 <div onClick={() => this.settingsPopUpHandler(false)} className="pen-settings-popup-overlay"></div>
             </div>
@@ -405,7 +407,7 @@ export default class CodeEditor extends Component {
         </html>`;
         return (
             <div>
-                <NavBar2 isLoggedIn={this.state.isLoggedIn} showSettings={this.state.showSettings} settingsPopUpHandler={this.settingsPopUpHandler}/>
+                <NavBar2 isLoggedIn={this.state.isLoggedIn} showSettings={this.state.showSettings} settingsPopUpHandler={this.settingsPopUpHandler} savePen={this.savePen}/>
                 <div className="codeEditor">
                     {this.state.showPopUp ? popUp : null}
                     {this.state.showSettings ? settingsMenu : null}
