@@ -3,6 +3,7 @@ import Pen from '../Pen/Pen'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar'
+import ShowCaseProfile from './ShowCaseProfile';
 
 class Profile extends Component {
   constructor() {
@@ -11,7 +12,8 @@ class Profile extends Component {
       user: '',
       pens: [],
       currentPage: 0,
-      userInfo: {}
+      userInfo: {},
+      showcase: []
     }
 
   }
@@ -38,6 +40,12 @@ class Profile extends Component {
     axios.get('/api/userinfo').then(res => {
       this.setState({
         userInfo: res.data
+      })
+    })
+    axios.get('/api/layout').then(res => {
+      console.log(res.data)
+      this.setState({
+        showcase: res.data
       })
     })
   }
@@ -152,7 +160,9 @@ class Profile extends Component {
             <div className='ligthgray-line'></div>
             <div className='gray-line'></div>
 
-            {this.state.pens ? (
+            <ShowCaseProfile showcase={this.state.showcase} />
+
+            {/* {this.state.pens ? (
               <div className="pen-window">
                 <div>
                   {pensList}
@@ -168,7 +178,7 @@ class Profile extends Component {
                   <Link to="/editor"><button>Create Pen</button></Link>
                 </div>
 
-              )}
+              )} */}
           </div>
         </div>
       </div>

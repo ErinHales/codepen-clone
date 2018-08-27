@@ -45,7 +45,6 @@ export default class Pen extends Component {
         let { loved } = this.state;
         let { user_id, html, js, css, id, profilePicture, penName, scripts, username, views, commentsNum, loves } = this.props;
         // const srcDoc = `${html}<style>${css}</style><script>${js}</script>`
-        console.log(scripts)
         const { css: cssList, html: htmlScripts, js: jsList } = scripts
         let { html_tag_class: htmlClassTag, head_tag: head } = htmlScripts
         // removing null
