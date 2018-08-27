@@ -256,6 +256,7 @@
   width: 0;
   height: 0;
   overflow: hidden;
+  z-index: 2000;
 }
 
 .createWin{
@@ -281,8 +282,8 @@
   position: absolute;
   border-radius: 2px;
   right: 0px;
-  top: 55px;
-  z-index: 11;
+  top: 45px;
+  z-index: 2000;
   display: inline;
   transition: .1s height ease-out;
 }
