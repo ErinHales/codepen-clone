@@ -1,0 +1,15 @@
+.showCaseContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.showCaseContainer .showPen:nth-child(1) {
+    width: 80vw;
+}
+
+.displayPensList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

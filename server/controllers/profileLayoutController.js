@@ -1,3 +1,5 @@
+let restructureResponsePen = require('./helpers/restructureResponsePen');
+
 module.exports = {
     insertIntoLayout: (req, res) => {
         let { penId, gridId } = req.body;
@@ -49,7 +51,10 @@ module.exports = {
     },
     getLayoutPens : (req,res) =>{
         req.app.get('db').get_showcase_pens()
-        .then(pens => res.send(pens))
+        .then(pens => {
+            console.log(pens);
+            res.status(200).send(pens.map(pen => restructureResponsePen(pen)));
+        })
         .catch(err => res.status(500).send(err))
     }
 }
