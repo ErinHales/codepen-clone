@@ -13,13 +13,7 @@ class UserPic extends Component {
 
     this.logout = this.logout.bind(this);
   }
-  getDerivedStateFromProps(nextProps) {
-    console.log('1fired')
-    if(nextProps.isLoggedIn === true) {
-      console.log('2fired')
-      this.forceUpdate()
-    }
-  }
+
 
   componentDidMount() {
     axios.get('/api/users').then(res => {
@@ -46,7 +40,6 @@ class UserPic extends Component {
 
   userAvatar(){
     if(this.state.user.userid) {
-      console.log('fired')
         if(this.state.user.img_url === null){
           return(
             <img className='nav-avatar' src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/default-avatar.png' alt=''/>
@@ -64,7 +57,6 @@ class UserPic extends Component {
   }
 
   render() {
-    console.log(this.state.user.userid)
     return (
       <div className='container'>
         <div>
@@ -78,8 +70,7 @@ class UserPic extends Component {
             null
           )
         }
-
-
+        
         <div className={this.state.userWindow ? 'show-nav userWin' : 'show-nav'}>
           <div>
             <p className='goTo'> Go to...</p>
