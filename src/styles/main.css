@@ -1990,6 +1990,10 @@ span {
   margin-top: -10px;
   display: flex; }
 
+.set-logout {
+  margin-left: 2px;
+  font-family: 'Lato', sans-serif; }
+
 .editorSettings {
   display: flex;
   justify-content: space-around;
@@ -2340,7 +2344,8 @@ span {
   background: black;
   border: none;
   font-family: 'Lato', sans-serif;
-  font-size: 18px; }
+  font-size: 18px;
+  width: 140px; }
 
 .titleInput::-webkit-input-placeholder {
   color: whitesmoke;
@@ -2354,8 +2359,9 @@ span {
 
 .titleChng {
   height: 30px;
-  width: 150px;
-  display: flex; }
+  width: 175px;
+  display: flex;
+  flex-wrap: wrap; }
 
 .search {
   display: flex;

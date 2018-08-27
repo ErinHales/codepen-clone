@@ -11,6 +11,7 @@ class NavBar2 extends Component {
     super()
     this.state={
       user: '',
+      penUser: '',
       pen:'',
       input: 'Untitled Pen'
     }
@@ -22,6 +23,16 @@ class NavBar2 extends Component {
         user:res.data
       })
     })
+
+    const {id} = this.props.match.params
+    axios.get(`/api/penInfo/${id}`).then(response => {
+      this.setState({
+          pen: response.data,
+          penUser: response.data,
+      })
+  })
+  .catch()
+
   }
 
   componentChange(){
@@ -37,13 +48,26 @@ class NavBar2 extends Component {
     
   }
 
+  
   titleChanger(){
+
+    if(this.props.match.path === '/editor'){
     return(
       <div className='titleChng'>
-      <input type='text' className='titleInput' placeholder={this.state.input}/>
+      <input type='text' className='titleInput' placeholder={this.state.input} onChange={(e) => this.props.updateName(e)}/>
       <img src="https://vignette.wikia.nocookie.net/freestyle2/images/7/79/Icon_edit.png/revision/latest?cb=20160907075220" alt="" className='penIcon' onClick={() => this.changeTitle()}/>
+      <p className='APenBy'>A PEN BY 
+        <Link to='/profile' className='link'><span className='userName'>{this.state.user.name}</span></Link></p>
       </div>
-    )
+    )}else if(this.props.match.path === '/editor/:id'){
+      return(
+        <div className='titleChng'>
+          <p>{this.props.penName}{console.log(this.props.penName)}</p>
+          <p className='APenBy'>A PEN BY 
+            <Link to='/profile' className='link'><span className='userName'>{this.props.userName}</span></Link></p>
+      </div>
+      )
+    }
   }
 
   changeTitle(){
@@ -56,7 +80,6 @@ class NavBar2 extends Component {
   render() {
     return (
       <div>
-      {/* <input type={this.state.input} className='titleInput'/> */}
         <div className='Nav'>
           <nav className='nav1'>
 
@@ -64,8 +87,8 @@ class NavBar2 extends Component {
               <img className='icon2' src='http://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Large.png' alt='' />
               <div className='title'>
                 {this.titleChanger()}
-                <p className='APenBy'>A PEN BY 
-                  <Link to='/profile' className='link'><span className='userName'>{this.state.user.username}</span></Link></p>
+                {/* <p className='APenBy'>A PEN BY 
+                  <Link to='/profile' className='link'><span className='userName'>{this.props.userName}</span></Link></p> */}
               </div>
 
             </div>

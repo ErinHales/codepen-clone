@@ -22,6 +22,7 @@ export default class CodeEditor extends Component {
             showSignUp: false,
             isLoggedIn: false,
             visitingUsersId:null,
+            userName: '',
 
             name: "name of pen",
             css: '',
@@ -67,6 +68,7 @@ export default class CodeEditor extends Component {
         this.autoSaveHandler = this.autoSaveHandler.bind(this)
         this.autoUpdateHandler = this.autoUpdateHandler.bind(this)
         this.tabSizeHandler = this.tabSizeHandler.bind(this)
+        this.updateName = this.updateName.bind(this)
     }
 
     componentWillMount() {
@@ -86,19 +88,20 @@ export default class CodeEditor extends Component {
                 this.setState({
                     css: null,
                     html: null,
-                    js: null
+                    js: null,
+                    name: response.data.name
                 })
-                console.log(response.data)
-                const { user_id: penUserId, html, css, js, name, scripts} = response.data;
+                const { user_id: penUserId, html, css, js, username, scripts} = response.data;
                 const { css: cssList, html: htmlScripts, js: jsList } = scripts
                 const { html_tag_class, head_tag } = htmlScripts
+
                 
                 this.setState({
                     penUserId,
                     css,
                     html,
                     js,
-                    name,
+                    userName: username,
                     jsSettings: {
                         jsCdnList: jsList
                     },
@@ -116,15 +119,15 @@ export default class CodeEditor extends Component {
 
     }
 
-    componentDidMount() {
-        axios.get('/api/userinfo').then(response => {
-            // console.log(response.data);
-            this.setState({
-                theme: response.data[0].theme
-            })
-        })
-        axios.put(`/api/pen/view/${this.props.match.params.id}/${this.state.userid}`).catch(console.error());
-    }
+    // componentDidMount() {
+    //     axios.get('/api/userinfo').then(response => {
+    //         // console.log(response.data);
+    //         this.setState({
+    //             theme: response.data[0].theme
+    //         })
+    //     })
+    //     axios.put(`/api/pen/view/${this.props.match.params.id}/${this.state.userid}`).catch(console.error());
+    // }
 
     updateTheme = (e) => {
         this.setState({
@@ -336,6 +339,12 @@ export default class CodeEditor extends Component {
     }
     ///////////////////////////////
 
+    updateName(e){
+        this.setState({
+            name: e.target.value
+        })
+    }
+
     render() {
         
         const settingsMenu = (
@@ -403,7 +412,11 @@ export default class CodeEditor extends Component {
         </html>`;
         return (
             <div>
-                <NavBar2 isLoggedIn={this.state.isLoggedIn} showSettings={this.state.showSettings} settingsPopUpHandler={this.settingsPopUpHandler}/>
+                <NavBar2 
+                userName = {this.state.userName}
+                updateName = {this.updateName}
+                penName = {this.state.name}
+                isLoggedIn={this.state.isLoggedIn} showSettings={this.state.showSettings} settingsPopUpHandler={this.settingsPopUpHandler}/>
                 <div className="codeEditor">
                 {this.state.showPopUp ? popUp : null}
                 {this.state.showSettings ? settingsMenu : null}
