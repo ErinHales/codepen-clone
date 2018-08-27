@@ -30,7 +30,7 @@ module.exports = {
             req.session.name = name;
         }).catch(err => {
             res.status(500);
-            console.log(err);
+            console.error(err);
         })
     },
     searchUser(req, res) {
@@ -55,7 +55,9 @@ module.exports = {
         req.app.get("db").search_user_pens([id, pageNum, search])
     },
     getUserInfo(req, res) {
+        console.log(req.session)
         req.app.get("db").get_user_info(req.session.userid).then(response => {
+            console.log(response)
             res.status(200).send(response);
         })
     },

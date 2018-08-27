@@ -125,7 +125,10 @@ export default class CodeEditor extends Component {
                 })
             }
         })
-        axios.put(`/api/pen/view/${this.props.match.params.id}/${this.state.userid}`).catch(console.error());
+        if(this.props.match.params.id) {
+            axios.put(`/api/pen/view/${this.props.match.params.id}/${this.state.userid}`)
+                .catch(console.error());
+        }
     }
 
     updateTheme = (e) => {
@@ -172,7 +175,9 @@ export default class CodeEditor extends Component {
 
     deletePen = () => {
         axios.delete(`/api/pen/${this.props.match.params.id}`)
-            .then()
+            .then(() => {
+                this.props.history.push('/pens')
+            })
             .catch(console.error)
     }
 
