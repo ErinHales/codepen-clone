@@ -61,7 +61,8 @@ app.put('/api/showcase', profileCntrl.updateShowcase);
 // USER
 
 // get the users information
-app.get('/api/users', userCntrl.getUser)
+
+
 
 //
 // app.get('/api/loggedin', userCntrl.checkLoggedIn);
