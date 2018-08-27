@@ -8,11 +8,13 @@ export default class Pens extends Component {
         super();
 
         this.state = {
+            userData: [],
             pens: [],
             currentPage: 0,
             type: "new",
             filter: "all"  // popular, my
         }
+        this.getUserInfo = this.getUserInfo.bind(this)
     }
 
     getMostViewedPens() {
@@ -54,6 +56,18 @@ export default class Pens extends Component {
 
     componentDidMount() {
         this.getMostRecentPens();
+        this.getUserInfo()
+    }
+
+    getUserInfo() {
+        axios.get('/api/users')
+            .then( res => {
+                console.log(res.data)
+                this.setState({
+                    userData: res.data
+                })
+            })
+            .catch(console.error)
     }
 
     nextPage() {
@@ -135,7 +149,11 @@ export default class Pens extends Component {
                         <div className="filterPens">
                             <button onClick={() => this.getMostRecentPens()} style={{ color: this.state.filter === "all" ? "white" : "#8F8F8F" }}>All Pens</button>
                             <button onClick={() => this.getMostViewedPens()} style={{ color: this.state.filter === "popular" ? "white" : null }}>Popular Pens</button>
-                            <button onClick={() => this.getUserPens()} style={{ color: this.state.filter === "my" ? "white" : null }}>My Pens</button>
+                            {this.state.userData.userid ? (
+                                <button onClick={() => this.getUserPens()} style={{ color: this.state.filter === "my" ? "white" : null }}>My Pens</button>
+                            ) : (
+                                null
+                            )}
                         </div>
                         <div className="pensDisplay">
                             {pensList ? pensList : null}

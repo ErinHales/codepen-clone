@@ -51,6 +51,7 @@ app.get('/api/logout', (req, res) => {
 
 // Profile Layout 
 app.post('/api/layout', profileCntrl.insertIntoLayout);
+app.get('/api/layout', profileCntrl.getLayoutPens);
 app.delete('/api/layout/:penId', profileCntrl.deleteFromLayout);
 app.put('/api/layout/', profileCntrl.updateLayout);
 app.put('/api/layout/position', profileCntrl.updateLayoutPosition);
@@ -60,6 +61,7 @@ app.put('/api/showcase', profileCntrl.updateShowcase);
 // USER
 
 // get the users information
+
 app.get('/api/users', userCntrl.getUser)
 
 //

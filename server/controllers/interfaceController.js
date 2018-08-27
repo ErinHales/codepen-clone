@@ -81,7 +81,7 @@ module.exports = {
             else if(req.query.type === 'new') {
                 dbConn.get_new_user_pens([id, offset])
                     .then( dbResponse => {
-                        console.log(dbResponse);
+                        // console.log(dbResponse);
                         res.status(200).send(dbResponse.map( pen => restructureResponsePen(pen)))
                     })
                     .catch( err => {

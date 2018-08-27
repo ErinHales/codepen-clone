@@ -23,7 +23,6 @@ class Login extends Component {
                 // if user exist then direct them the home page
                 if (res.data === 'OK') {
                     // this.props.history.push('/home');
-                    alert('Log In successful')
                     if (this.props.closePopUp) {
                         this.props.closePopUp(true)
                     }
@@ -42,7 +41,11 @@ class Login extends Component {
     render() {
         return (
             <div>
+            { this.props.closePopUp ? (
+                null
+            ) : (
                 <NavBar/>
+            )}
                 <div className="component-login">
                     <div className="login-container">
                         <div className="login-header">

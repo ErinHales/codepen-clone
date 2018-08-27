@@ -42,7 +42,7 @@ class NavBar2 extends Component {
       )
     }else if(this.props.match.path === '/editor'){
       return(
-        <Save/>
+        <Save savePen={this.props.savePen}/>
       )
     }
     

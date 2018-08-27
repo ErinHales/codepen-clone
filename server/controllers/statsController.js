@@ -4,7 +4,7 @@ module.exports = {
             res.status(200).send(response);
         }).catch(err => {
             res.sendStatus(500);
-            console.log(err)
+            console.error(err)
         });
     },
     updateLike(req,res) {
