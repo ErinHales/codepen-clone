@@ -79,12 +79,12 @@ class UserPic extends Component {
             <div className='settingsCtn'>
               <Link to="/account" className="accountLink">
                 <div>
-                  <h1><img className='icon' src='https://cdn2.iconfinder.com/data/icons/web/512/Cog-512.png' alt='gear' />
+                  <h1 className='set-logout'><img className='icon' src='https://cdn2.iconfinder.com/data/icons/web/512/Cog-512.png' alt='gear' />
                     Settings</h1>
                 </div>
               </Link>
               <div onClick={() => this.logout()}>
-                <h1><img className='icon' src="https://cdn4.iconfinder.com/data/icons/dashboard-icons/43/icon-logout-512.png" alt="logout" />
+                <h1  className='set-logout'><img className='icon' src="https://cdn4.iconfinder.com/data/icons/dashboard-icons/43/icon-logout-512.png" alt="logout" />
                   Log Out</h1>
               </div>
             </div>

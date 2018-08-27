@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import UserPic from './components/UserPic'
 import SignUpBtn from './components/SignUpBtn'
 import { withRouter } from 'react-router-dom'
-import SearchBar from '../SearchBar/SearchBar';
+// import SearchBar from '../SearchBar/SearchBar';
 import axios from 'axios'
 
 

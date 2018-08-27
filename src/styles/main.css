@@ -928,7 +928,8 @@ span {
 .show-nav {
   width: 0;
   height: 0;
-  overflow: hidden; }
+  overflow: hidden;
+  z-index: 2000; }
 
 .createWin {
   transition: all 0.1s linear;
@@ -952,8 +953,8 @@ span {
   position: absolute;
   border-radius: 2px;
   right: 0px;
-  top: 55px;
-  z-index: 11;
+  top: 45px;
+  z-index: 2000;
   display: inline;
   transition: .1s height ease-out; }
 
@@ -1993,6 +1994,10 @@ span {
   margin-top: -10px;
   display: flex; }
 
+.set-logout {
+  margin-left: 2px;
+  font-family: 'Lato', sans-serif; }
+
 .editorSettings {
   display: flex;
   justify-content: space-around;
@@ -2343,7 +2348,8 @@ span {
   background: black;
   border: none;
   font-family: 'Lato', sans-serif;
-  font-size: 18px; }
+  font-size: 18px;
+  width: 140px; }
 
 .titleInput::-webkit-input-placeholder {
   color: whitesmoke;
@@ -2357,8 +2363,9 @@ span {
 
 .titleChng {
   height: 30px;
-  width: 150px;
-  display: flex; }
+  width: 175px;
+  display: flex;
+  flex-wrap: wrap; }
 
 .search {
   display: flex;
