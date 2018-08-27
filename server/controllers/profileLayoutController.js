@@ -46,5 +46,10 @@ module.exports = {
                 .catch(err => res.status(500).send(err));
         }
 
+    },
+    getLayoutPens : (req,res) =>{
+        req.app.get('db').get_showcase_pens()
+        .then(pens => res.send(pens))
+        .catch(err => res.status(500).send(err))
     }
 }
