@@ -21,15 +21,7 @@ class Showcase_Layout2 extends Component {
         if (index === updatedGrid.length - 1) {
             axios.delete(`/api/layout/${penId}`)
                 .then(() => {
-                    let index = this.state.showCaseLayout.findIndex(e => e.penId === penId);
-                    let layout = this.state.showCaseLayout.slice();
-                    layout[index].html = '';
-                    layout[index].css = '';
-                    layout[index].js = '';
-                    layout[index].penId = '';
-                    this.setState({
-                        showCaseLayout: layout
-                    })
+                    this.updateGrid();
                 })
                 .catch(err => console.log(err))
         }
@@ -41,17 +33,8 @@ class Showcase_Layout2 extends Component {
             await axios.delete(`/api/layout/${penId}`);
             await axios.put('/api/layout/position', { updatedGrid })
                 .then(() => {
-                    let index = this.state.showCaseLayout.findIndex(e => e.penId === penId);
-                    let layout = this.state.showCaseLayout.slice();
-                    layout[index].html = '';
-                    layout[index].css = '';
-                    layout[index].js = '';
-                    layout[index].penId = '';
-                    this.setState({
-                        showCaseLayout: layout
-                    })
+                    this.updateGrid();
                 })
-
         }
     }
     addItem = (gridId, css, html, js, penId) => {
@@ -64,15 +47,7 @@ class Showcase_Layout2 extends Component {
         else if (gridIndex.penId) {
             axios.put('/api/layout', { penId, gridId })
                 .then(() => {
-                    let index = gridId - 1;
-                    let layout = this.state.showCaseLayout.slice();
-                    layout[index].penId = penId;
-                    layout[index].html = html;
-                    layout[index].css = css;
-                    layout[index].js = js;
-                    this.setState({
-                        showCaseLayout: layout
-                    })
+                    this.updateGrid();
                 })
         }
         // This ensures that there arent any duplicates 
@@ -84,16 +59,9 @@ class Showcase_Layout2 extends Component {
                     break;
                 }
             }
-            let layout = this.state.showCaseLayout.slice();
-            layout[gridIndex].penId = penId;
-            layout[gridIndex].html = html;
-            layout[gridIndex].css = css;
-            layout[gridIndex].js = js;
             axios.post('/api/layout', { penId, gridId: gridIndex + 1 })
                 .then(() => {
-                    this.setState({
-                        showCaseLayout: layout
-                    })
+                    this.updateGrid();
                 })
                 .catch(err => console.log(err));
         }
@@ -102,23 +70,7 @@ class Showcase_Layout2 extends Component {
         // This is the index that the showcase is going to be switched with
         axios.put('/api/showcase', { penId: grid.penId, gridId: grid.gridItem, showcasePen: showcase.penId })
             .then(() => {
-                let index = this.state.showCaseLayout.findIndex(e => e.id === grid.gridItem);
-                let layout = this.state.showCaseLayout.slice();
-                layout[index].html = showcase.html;
-                layout[index].css = showcase.css;
-                layout[index].js = showcase.js
-                layout[index].penId = showcase.penId;
-
-                let showCase = this.state.showCaseMain;
-                showCase.penId = grid.penId;
-                showCase.html = grid.html;
-                showCase.css = grid.css;
-                showCase.js = grid.js;
-                this.setState({
-                    showCaseLayout: layout,
-                    showCaseMain: showCase
-                })
-
+                this.updateGrid();
             })
     }
     addShowcaseMain = (penId, css, html, js) => {
@@ -128,29 +80,48 @@ class Showcase_Layout2 extends Component {
             if (this.state.showCaseMain.penId) {
                 axios.put('/api/showcase', { penId })
                     .then(() => {
-                        let obj = this.state.showCaseMain;
-                        obj.penId = penId;
-                        obj.css = css;
-                        obj.html = html;
-                        obj.js = js;
-                        this.setState({ showcaseMain: obj });
+                        this.updateGrid();
                     })
             }
             // Showcase is empty and there is no other items on the grid
             else {
                 axios.post('/api/layout', { penId, gridId: 0 })
                     .then(() => {
-                        let obj = this.state.showCaseMain;
-                        obj.penId = penId;
-                        obj.css = css;
-                        obj.html = html;
-                        obj.js = js;
-                        this.setState({ showcaseMain: obj });
+                        this.updateGrid();
                     })
                     .catch(err => console.log(err));
             }
 
         }
+    }
+    updateGrid() {
+        // let showcaseLayoutCopy = this.state.showCaseLayout.slice().map(e => {
+        //     return Object.assign({}, e);
+        // });
+        let showcaseLayoutCopy = [{ id: 1, html: '', css: '', js: '', penId: '' }, { id: 2, html: '', css: '', js: '', penId: '' }, { id: 3, html: '', css: '', js: '', penId: '' }, { id: 4, html: '', css: '', js: '', penId: '' }, { id: 5, html: '', css: '', js: '', penId: '' }, { id: 6, html: '', css: '', js: '', penId: '' }];
+        let showcaseMainCopy = Object.assign({}, this.state.showCaseMain);
+        axios.get('/api/layout')
+            .then(res => {
+                res.data.forEach((item, index) => {
+                    if (index === 0) {
+                        showcaseMainCopy.penId = item.pen_id;
+                        showcaseMainCopy.css = item.css;
+                        showcaseMainCopy.html = item.html;
+                        showcaseMainCopy.js = item.js;
+                    }
+                    else {
+                        showcaseLayoutCopy[index - 1].penId = item.pen_id;
+                        showcaseLayoutCopy[index - 1].css = item.css;
+                        showcaseLayoutCopy[index - 1].html = item.html;
+                        showcaseLayoutCopy[index - 1].js = item.js;
+                    }
+                })
+                this.setState({
+                    showCaseLayout: showcaseLayoutCopy,
+                    showCaseMain: showcaseMainCopy
+                })
+            })
+            .catch(err => console.log(err))
     }
     deleteShowcase = async (penId) => {
         let obj = { penId: '', css: '', html: '', js: '' };
@@ -165,16 +136,19 @@ class Showcase_Layout2 extends Component {
                 .catch(err => console.log(err));
             await axios.put('/api/layout/position', { updatedGrid })
                 .then(() => {
-                    this.setState({ showCaseMain: obj })
+                    this.updateGrid();
                 })
         }
         else {
             axios.delete(`/api/layout/${penId}`)
                 .then(() => {
-                    this.setState({ showCaseMain: obj })
+                    this.updateGrid()
                 })
                 .catch(err => console.log(err));
         }
+    }
+    componentDidMount() {
+        this.updateGrid();
     }
     render() {
         return (
