@@ -12,11 +12,20 @@ module.exports = {
             .then(() => res.sendStatus(200))
             .catch(err => res.status(500).send(err))
     },
-    updateLayout: (req, res) => {
+    updateLayout: async (req, res) => {
         let { penId, gridId } = req.body;
-        req.app.get('db').update_layout([penId, gridId])
+        let db = req.app.get('db');
+        db.update_layout([penId, gridId])
             .then(() => res.sendStatus(200))
             .catch(err => res.status(500).send(err))
+    },
+    updateLayoutPosition: async (req, res) => {
+        let { updatedGrid } = req.body;
+        let db = req.app.get('db');
+        await updatedGrid.forEach(grid => {
+            db.update_layout_order([grid.id, grid.penId])
+        });
+        res.sendStatus(200);
     },
     updateShowcase: (req, res) => {
         let { penId, gridId, showcasePen } = req.body;
@@ -31,10 +40,10 @@ module.exports = {
                 .catch(err => res.status(500).send(err))
         }
         // Otherwise we are going to update showcase with a new pen
-        else{
+        else {
             db.switch_showcase([penId, 0])
-            .then(() => res.sendStatus(200))
-            .catch(err => res.status(500).send(err));
+                .then(() => res.sendStatus(200))
+                .catch(err => res.status(500).send(err));
         }
 
     }

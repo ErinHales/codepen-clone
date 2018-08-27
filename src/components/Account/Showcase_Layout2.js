@@ -11,26 +11,50 @@ class Showcase_Layout2 extends Component {
             showCaseMain: { id: 0, penId: '', css: '', html: '', js: '' }
         }
     }
-    deleteItem = penId => {
-        console.log(penId);
-        axios.delete(`/api/layout/${penId}`)
-            .then(() => {
-                let index = this.state.showCaseLayout.findIndex(e => e.penId === penId);
-                let layout = this.state.showCaseLayout.slice();
-                layout[index].html = '';
-                layout[index].css = '';
-                layout[index].js = '';
-                layout[index].penId = '';
-                this.setState({
-                    showCaseLayout: layout
+    deleteItem = async penId => {
+        let updatedGrid = this.state.showCaseLayout.filter(e => e.penId != '').map(e => {
+            let { id, penId } = e;
+            return Object.assign({}, { id: id, penId });
+        });
+        let index = updatedGrid.findIndex(e => e.penId === penId);
+        // if the deleted item is last in the grid then you could just delte
+        if (index === updatedGrid.length - 1) {
+            axios.delete(`/api/layout/${penId}`)
+                .then(() => {
+                    let index = this.state.showCaseLayout.findIndex(e => e.penId === penId);
+                    let layout = this.state.showCaseLayout.slice();
+                    layout[index].html = '';
+                    layout[index].css = '';
+                    layout[index].js = '';
+                    layout[index].penId = '';
+                    this.setState({
+                        showCaseLayout: layout
+                    })
                 })
-            })
-            .catch(err => console.log(err))
+                .catch(err => console.log(err))
+        }
+        else {
+            updatedGrid.splice(index, 1);
+            for (let i = index; i < updatedGrid.length; i++) {
+                updatedGrid[i].id -= 1;
+            }
+            await axios.delete(`/api/layout/${penId}`);
+            await axios.put('/api/layout/position', { updatedGrid })
+                .then(() => {
+                    let index = this.state.showCaseLayout.findIndex(e => e.penId === penId);
+                    let layout = this.state.showCaseLayout.slice();
+                    layout[index].html = '';
+                    layout[index].css = '';
+                    layout[index].js = '';
+                    layout[index].penId = '';
+                    this.setState({
+                        showCaseLayout: layout
+                    })
+                })
 
+        }
     }
     addItem = (gridId, css, html, js, penId) => {
-        console.log(penId);
-        console.log(gridId);
         let gridIndex = this.state.showCaseLayout[gridId - 1];
         // IF the showcase is empty and item to showcase
         if (!this.state.showCaseMain.penId) {
@@ -128,15 +152,30 @@ class Showcase_Layout2 extends Component {
 
         }
     }
-    deleteShowcase = (penId) => {
+    deleteShowcase = async (penId) => {
         let obj = { penId: '', css: '', html: '', js: '' };
-        axios.delete(`/api/layout/${penId}`)
-            .then(() => {
-                this.setState({ showCaseMain: obj })
-            })
-            .catch(err => console.log(err));
+        // If the showcase is deleted than all items on grid have to move one position
+        let gridItems = this.state.showCaseLayout.slice();
+        let updatedGrid = gridItems.filter(e => e.penId != '').map(e => {
+            let { id, penId } = e;
+            return Object.assign({}, { id: --id, penId });
+        });
+        if (updatedGrid.length > 0) {
+            await axios.delete(`/api/layout/${penId}`)
+                .catch(err => console.log(err));
+            await axios.put('/api/layout/position', { updatedGrid })
+                .then(() => {
+                    this.setState({ showCaseMain: obj })
+                })
+        }
+        else {
+            axios.delete(`/api/layout/${penId}`)
+                .then(() => {
+                    this.setState({ showCaseMain: obj })
+                })
+                .catch(err => console.log(err));
+        }
     }
-
     render() {
         return (
             <div className="showcase-layout">

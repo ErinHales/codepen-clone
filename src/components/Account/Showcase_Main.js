@@ -11,15 +11,13 @@ function collectTarget(connect, monitor) {
 }
 const dropSource = {
     drop(props, monitor, component) {
-        let { html, css, js, penId } = monitor.getItem();
+
         if (monitor.getItem().gridItem) {
             let grid = monitor.getItem();
             let showcase = component.state;
             props.switchShowcase(grid, showcase);
         }
         else {
-            console.log(props);
-            console.log(monitor.getItem());
             let { html, css, js, penId } = monitor.getItem();
             props.addShowcaseMain(penId, css, html, js);
         }
