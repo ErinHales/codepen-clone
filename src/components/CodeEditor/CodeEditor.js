@@ -378,6 +378,7 @@ export default class CodeEditor extends Component {
 
         const popUp = (
             <div className="signup-popup">
+            <div className="signup-popup-container-postition">
                 <div className="signup-popup-form-container">
                     {this.state.showSignUp ?
                         <SignUp closePopUp={this.closePopUp} />
@@ -386,6 +387,7 @@ export default class CodeEditor extends Component {
                     }
 
                 </div>
+            </div>
                 <div onClick={() => this.closePopUp(false)} className="signup-popup-overlay"></div>
             </div>
         )

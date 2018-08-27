@@ -41,7 +41,11 @@ class Login extends Component {
     render() {
         return (
             <div>
+            { this.props.closePopUp ? (
+                null
+            ) : (
                 <NavBar/>
+            )}
                 <div className="component-login">
                     <div className="login-container">
                         <div className="login-header">

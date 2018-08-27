@@ -334,19 +334,21 @@
   width: 100%;
   height: 100%; }
   .signup-popup .signup-popup-overlay {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     top: 0px;
     z-index: 601;
     background-color: rgba(0, 0, 0, 0.349); }
+  .signup-popup .signup-popup-container-postition {
+    width: 50vw;
+    margin: 0 auto; }
   .signup-popup .signup-popup-form-container {
-    top: -30px;
-    margin: auto;
+    transform: scale(0.8);
     z-index: 602;
-    width: 720px;
-    position: relative;
-    transform: scale(0.8); }
+    overflow: hidden;
+    margin: 0 auto;
+    position: fixed; }
 
 .editor {
   display: flex;
