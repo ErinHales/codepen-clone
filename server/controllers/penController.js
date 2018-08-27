@@ -21,7 +21,7 @@ module.exports = {
     },
     getPen(req, res) {
         // check for pen_id from request
-        console.log(req.session)
+        //console.log(req.session)
         if(!req.params.penId) {
             res.sendStatus(400)
             return
@@ -61,7 +61,7 @@ module.exports = {
         const { html_tag_class, head_tag } = html_script
 
         // Create Pen from variables
-        console.log('userid', user_id,'name', name, forked, html, css, js)
+        //console.log('userid', user_id,'name', name, forked, html, css, js)
         dbConn.post_pen([user_id, name, forked, html, css, js])
             .then( dbResponse => {
                 // setting the pen_id from the newly created row to a a variable
@@ -73,7 +73,7 @@ module.exports = {
                         res.sendStatus(500)
                     })
                 // check to see if the request from the client contains any html settings content
-                console.log('html tag and head', html_tag_class, head_tag)
+                //console.log('html tag and head', html_tag_class, head_tag)
                 // if(html_tag_class || head_tag) {
                     //Adding the content if it exists
                     dbConn.post_html_scripts([pen_id, html_tag_class, head_tag])
@@ -83,7 +83,7 @@ module.exports = {
                         })
                 // }
                 // check to see if the request from the client contains any css settings content
-                console.log('stylesheet', css_stylesheet)
+                //console.log('stylesheet', css_stylesheet)
                 // if(css_stylesheet[0]) {
                     //Adding the content if it exists
                     for(let i = 0; i <= css_stylesheet.length; i++) {
@@ -95,7 +95,7 @@ module.exports = {
                     }
                 // }
                 // check to see if the request from the client contains any javascript settings content
-                console.log('jsscript', js_script)
+                //console.log('jsscript', js_script)
                 // if(js_script[0]) {
                     //Adding the content if it exists
                     for(let i = 0; i <= js_script.length; i++) {
@@ -127,12 +127,12 @@ module.exports = {
             const js_script = scripts.js
             const { html_tag_class, head_tag } = html_script
             // Create Pen from variables
-            console.log(user_id)
+            //console.log(user_id)
             dbConn.update_pen([name, html, css, js, +pen_id])
                 .then( () => {
                     // check to see if the request from the client contains any html settings content
                     if(html_tag_class || head_tag) {
-                        console.log('html class fired')
+                        //console.log('html class fired')
                         //Adding the content if it exists
                         dbConn.delete_html_scripts([pen_id])
                             .then(() => {
@@ -178,7 +178,7 @@ module.exports = {
                             })
                             .catch(console.error)
                     }
-                    console.log('update')
+                    //console.log('update')
                     res.sendStatus(201)
                 })
                 .catch( err => {
@@ -194,7 +194,7 @@ module.exports = {
         const dbConn = req.app.get('db')
         const { userid: user_id } = req.session
         const { penId: pen_id } = req.params
-        console.log(pen_id)
+        //console.log(pen_id)
         dbConn.get_pen([pen_id])
             .then( response => {
                 if( user_id === response[0].user_id) {
