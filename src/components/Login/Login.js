@@ -27,7 +27,7 @@ class Login extends Component {
                         this.props.closePopUp(true)
                     }
                     else {
-                       window.location.hash = "#/pens"
+                        window.location.hash = "#/pens"
                     }
                 }
                 // The user got their username/email or password wrong
@@ -41,7 +41,11 @@ class Login extends Component {
     render() {
         return (
             <div>
+            { this.props.closePopUp ? (
+                null
+            ) : (
                 <NavBar/>
+            )}
                 <div className="component-login">
                     <div className="login-container">
                         <div className="login-header">

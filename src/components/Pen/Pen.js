@@ -45,12 +45,16 @@ export default class Pen extends Component {
         let { loved } = this.state;
         let { user_id, html, js, css, id, profilePicture, penName, scripts, username, views, commentsNum, loves } = this.props;
         // const srcDoc = `${html}<style>${css}</style><script>${js}</script>`
-        const { css: cssList, html: htmlScripts, js: jsList } = scripts
+        let { css: cssList, html: htmlScripts, js: jsList } = scripts
         let { html_tag_class: htmlClassTag, head_tag: head } = htmlScripts
+        
         // removing null
+        if (!cssList[0]) cssList = []
+        if (!jsList[0]) jsList = []
         if (!htmlClassTag) {
             htmlClassTag = ''
         }
+        
         let stylesheetString = cssList.reduce((string, element) => {
             return string + `<link rel='stylesheet' href='${element}'>`
         }, '')
