@@ -2,47 +2,179 @@ import React, { Component } from 'react';
 import Showcase_Layout from './Showcase_Layout';
 import Showcase_Main from './Showcase_Main';
 import Showcase_Trash from './Showcase_Trash';
-
+import axios from 'axios';
 class Showcase_Layout2 extends Component {
     constructor() {
         super();
         this.state = {
-            showCaseLayout: [{ id: 2, imgUrl: '', penId: '' }, { id: 3, imgUrl: '', penId: '' }, { id: 4, imgUrl: '', penId: '' }, { id: 5, imgUrl: '', penId: '' }, { id: 6, imgUrl: '', penId: '' }, { id: 7, imgUrl: '', penId: '' }],
-            showCaseMain: { imgUrl: '', penId: '' },
+            showCaseLayout: [{ id: 1, html: '', css: '', js: '', penId: '' }, { id: 2, html: '', css: '', js: '', penId: '' }, { id: 3, html: '', css: '', js: '', penId: '' }, { id: 4, html: '', css: '', js: '', penId: '' }, { id: 5, html: '', css: '', js: '', penId: '' }, { id: 6, html: '', css: '', js: '', penId: '' }],
+            showCaseMain: { id: 0, penId: '', css: '', html: '', js: '' }
         }
     }
-    deleteItem = deleteId => {
-        let index = this.state.showCaseLayout.findIndex(e => e.id === deleteId);
-        let layout = this.state.showCaseLayout.slice();
-        layout[index].imgUrl = '';
-        this.setState({
-            showCaseLayout: layout
-        })
+    deleteItem = async penId => {
+        let updatedGrid = this.state.showCaseLayout.filter(e => e.penId != '').map(e => {
+            let { id, penId } = e;
+            return Object.assign({}, { id: id, penId });
+        });
+        let index = updatedGrid.findIndex(e => e.penId === penId);
+        // if the deleted item is last in the grid then you could just delte
+        if (index === updatedGrid.length - 1) {
+            axios.delete(`/api/layout/${penId}`)
+                .then(() => {
+                    let index = this.state.showCaseLayout.findIndex(e => e.penId === penId);
+                    let layout = this.state.showCaseLayout.slice();
+                    layout[index].html = '';
+                    layout[index].css = '';
+                    layout[index].js = '';
+                    layout[index].penId = '';
+                    this.setState({
+                        showCaseLayout: layout
+                    })
+                })
+                .catch(err => console.log(err))
+        }
+        else {
+            updatedGrid.splice(index, 1);
+            for (let i = index; i < updatedGrid.length; i++) {
+                updatedGrid[i].id -= 1;
+            }
+            await axios.delete(`/api/layout/${penId}`);
+            await axios.put('/api/layout/position', { updatedGrid })
+                .then(() => {
+                    let index = this.state.showCaseLayout.findIndex(e => e.penId === penId);
+                    let layout = this.state.showCaseLayout.slice();
+                    layout[index].html = '';
+                    layout[index].css = '';
+                    layout[index].js = '';
+                    layout[index].penId = '';
+                    this.setState({
+                        showCaseLayout: layout
+                    })
+                })
+
+        }
     }
-    addItem = (gridItem, imgUrl, penId) => {
-        let index = this.state.showCaseLayout.findIndex(e => e.id === gridItem);
-        let layout = this.state.showCaseLayout.slice();
-        layout[index].imgUrl = imgUrl;
-        layout[index].penId = penId;
-        this.setState({
-            showCaseLayout: layout
-        })
+    addItem = (gridId, css, html, js, penId) => {
+        let gridIndex = this.state.showCaseLayout[gridId - 1];
+        // IF the showcase is empty and item to showcase
+        if (!this.state.showCaseMain.penId) {
+            this.addShowcaseMain(penId, css, html, js);
+        }
+        // This is to replace a grid item fromt the left side
+        else if (gridIndex.penId) {
+            axios.put('/api/layout', { penId, gridId })
+                .then(() => {
+                    let index = gridId - 1;
+                    let layout = this.state.showCaseLayout.slice();
+                    layout[index].penId = penId;
+                    layout[index].html = html;
+                    layout[index].css = css;
+                    layout[index].js = js;
+                    this.setState({
+                        showCaseLayout: layout
+                    })
+                })
+        }
+        // This ensures that there arent any duplicates 
+        else if (this.state.showCaseLayout.findIndex(item => item.penId === penId) === -1) {
+            let gridIndex = 0;
+            for (let i = 0; i < this.state.showCaseLayout.length; i++) {
+                if (!this.state.showCaseLayout[i].penId) {
+                    gridIndex = i;
+                    break;
+                }
+            }
+            let layout = this.state.showCaseLayout.slice();
+            layout[gridIndex].penId = penId;
+            layout[gridIndex].html = html;
+            layout[gridIndex].css = css;
+            layout[gridIndex].js = js;
+            axios.post('/api/layout', { penId, gridId: gridIndex + 1 })
+                .then(() => {
+                    this.setState({
+                        showCaseLayout: layout
+                    })
+                })
+                .catch(err => console.log(err));
+        }
     }
-    switchShowcase = (gridItem, gridImg, showcaseImg, showcasePenId, gridPenId) => {
+    switchShowcase = (grid, showcase) => {
         // This is the index that the showcase is going to be switched with
-        let index = this.state.showCaseLayout.findIndex(e => e.id === gridItem);
-        let layout = this.state.showCaseLayout.slice();
-        layout[index].imgUrl = showcaseImg;
-        layout[index].penId = showcasePenId;
-        let obj = { imgUrl: gridImg, penId: gridPenId }
-        this.setState({
-            showCaseLayout: layout,
-            showCaseMain: obj
-        })
+        axios.put('/api/showcase', { penId: grid.penId, gridId: grid.gridItem, showcasePen: showcase.penId })
+            .then(() => {
+                let index = this.state.showCaseLayout.findIndex(e => e.id === grid.gridItem);
+                let layout = this.state.showCaseLayout.slice();
+                layout[index].html = showcase.html;
+                layout[index].css = showcase.css;
+                layout[index].js = showcase.js
+                layout[index].penId = showcase.penId;
+
+                let showCase = this.state.showCaseMain;
+                showCase.penId = grid.penId;
+                showCase.html = grid.html;
+                showCase.css = grid.css;
+                showCase.js = grid.js;
+                this.setState({
+                    showCaseLayout: layout,
+                    showCaseMain: showCase
+                })
+
+            })
     }
-    addShowcaseMain = (img, penId) => {
-        let obj = { imgUrl: img, penId: penId }
-        this.setState({ showCaseMain: obj })
+    addShowcaseMain = (penId, css, html, js) => {
+        // before adding something to the showcase check if it exist in the gird
+        if (this.state.showCaseLayout.findIndex(e => e.penId === penId) === -1) {
+            // If it the item is in the grid and wants to be showcase then showcase needs to be update
+            if (this.state.showCaseMain.penId) {
+                axios.put('/api/showcase', { penId })
+                    .then(() => {
+                        let obj = this.state.showCaseMain;
+                        obj.penId = penId;
+                        obj.css = css;
+                        obj.html = html;
+                        obj.js = js;
+                        this.setState({ showcaseMain: obj });
+                    })
+            }
+            // Showcase is empty and there is no other items on the grid
+            else {
+                axios.post('/api/layout', { penId, gridId: 0 })
+                    .then(() => {
+                        let obj = this.state.showCaseMain;
+                        obj.penId = penId;
+                        obj.css = css;
+                        obj.html = html;
+                        obj.js = js;
+                        this.setState({ showcaseMain: obj });
+                    })
+                    .catch(err => console.log(err));
+            }
+
+        }
+    }
+    deleteShowcase = async (penId) => {
+        let obj = { penId: '', css: '', html: '', js: '' };
+        // If the showcase is deleted than all items on grid have to move one position
+        let gridItems = this.state.showCaseLayout.slice();
+        let updatedGrid = gridItems.filter(e => e.penId != '').map(e => {
+            let { id, penId } = e;
+            return Object.assign({}, { id: --id, penId });
+        });
+        if (updatedGrid.length > 0) {
+            await axios.delete(`/api/layout/${penId}`)
+                .catch(err => console.log(err));
+            await axios.put('/api/layout/position', { updatedGrid })
+                .then(() => {
+                    this.setState({ showCaseMain: obj })
+                })
+        }
+        else {
+            axios.delete(`/api/layout/${penId}`)
+                .then(() => {
+                    this.setState({ showCaseMain: obj })
+                })
+                .catch(err => console.log(err));
+        }
     }
     render() {
         return (
@@ -52,11 +184,11 @@ class Showcase_Layout2 extends Component {
                     <h2>Over Here</h2>
                 </div>
                 <div className="showcase-layout-container">
-                    <Showcase_Main switchShowcase={this.switchShowcase} penId={this.state.showCaseMain.penId} img={this.state.showCaseMain.imgUrl} addShowcaseMain={this.addShowcaseMain} />
+                    <Showcase_Main deleteShowcase={this.deleteShowcase} switchShowcase={this.switchShowcase} penId={this.state.showCaseMain.penId} css={this.state.showCaseMain.css} html={this.state.showCaseMain.html} js={this.state.showCaseMain.js} addShowcaseMain={this.addShowcaseMain} />
                     <div className="showcase-grid">
                         {this.state.showCaseLayout.map(item => {
                             return (
-                                <Showcase_Layout penId={item.penId} addItem={this.addItem} key={item.id} deleteItem={this.deleteItem} gridItem={item.id} imgUrl={item.imgUrl} />
+                                <Showcase_Layout showcase={this.state.showCaseMain} penId={item.penId} addItem={this.addItem} key={item.id} deleteItem={this.deleteItem} gridItem={item.id} css={item.css} html={item.html} js={item.js} />
                             )
                         })}
                     </div>

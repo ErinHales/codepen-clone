@@ -8,6 +8,7 @@ require('dotenv').config();
 const app = express();
 app.use(bodyParser.json());
 
+app.use(express.static( __dirname+'/../build'))
 
 const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env;
 
@@ -33,6 +34,7 @@ const penCntrl = require('./controllers/penController')
 const interfaceCntrl = require('./controllers/interfaceController')
 const statsCntrl = require('./controllers/statsController')
 const comCntrl = require('./controllers/commentsController');
+const profileCntrl = require('./controllers/profileLayoutController');
 
 // Sign a user up
 app.post('/api/auth/register', (req, res) => loginCntrl.registerUser(req, res, bcrypt));
@@ -43,8 +45,16 @@ app.post('/api/auth/login', (req, res) => loginCntrl.getUser(req, res, bcrypt))
 //LOGOUT 
 app.get('/api/logout', (req, res) => {
     req.session.destroy()
-    res.redirect('http://localhost:3000/#/')
+    // res.redirect('http://localhost:3000/#/')
 })
+
+
+// Profile Layout 
+app.post('/api/layout', profileCntrl.insertIntoLayout);
+app.delete('/api/layout/:penId', profileCntrl.deleteFromLayout);
+app.put('/api/layout/', profileCntrl.updateLayout);
+app.put('/api/layout/position', profileCntrl.updateLayoutPosition);
+app.put('/api/showcase', profileCntrl.updateShowcase);
 
 
 // USER
@@ -73,7 +83,7 @@ app.get('/api/pens/:pageNum', interfaceCntrl.getPens)
 app.get('/api/pens/user/:userId/:pageNum', interfaceCntrl.getUserPens)
 
 // get user's own pens
-app.get('/api/pens/user/:pageNum', interfaceCntrl.getUserPens)
+// app.get('/api/pens/user/:pageNum', interfaceCntrl.getUserPens)
 
 // PEN
 
@@ -135,6 +145,23 @@ app.get('/api/search/pens/:pageNum', interfaceCntrl.searchPens)
 // search all users
 app.get('/api/search/users', userCntrl.searchUser)
 
+
+
+
+// get user info for profile page
+app.get('/api/userinfo', userCntrl.getUserInfo)
+
+// add user's info into database
+app.post('/api/setuserinfo', userCntrl.createUserInfo)
+
+// updates user's info
+app.put('/api/update/userinfo', userCntrl.updateUserInfo)
+
+// update user name
+app.put('/api/update/name', userCntrl.updateUserName)
+
+// update user theme
+app.put('/api/user/theme', userCntrl.updateTheme)
 
 
 

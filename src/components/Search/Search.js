@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Pen from '../Pen/Pen';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import NavBar from '../NavBar/NavBar';
+import { Link } from 'react-router-dom';
 
 export default class Search extends Component {
     constructor() {
@@ -50,7 +51,7 @@ export default class Search extends Component {
     }
 
     nextPage() {
-        let {currentPage, filter, input, pens} = this.state;
+        let { currentPage, filter, input, pens } = this.state;
         axios.get(`/api/search/pens/${currentPage + 1}?type=${filter}&search=${input}`).then(response => {
             if (response.data[0]) {
                 let copy = pens.slice();
@@ -102,30 +103,33 @@ export default class Search extends Component {
             })
         }
         return (
-            <div className="search">
-                <input type="text" placeholder={search === "pens" ? "Search Pens" : "Search Users"} value={this.state.input} onChange={(e) => this.handleUpdate(e, "input")} onKeyUp={(e) => e.keyCode === 13 ? this.search() : null} />
-                <div className="bar">
-                    <h3 onClick={() => this.updateSearch("pens")} style={{ color: search === "pens" ? "white" : "lightgray" }}>Pens</h3>
-                    <h3 onClick={() => this.updateSearch("users")} style={{ color: search === "users" ? "white" : "lightgray" }}>Users</h3>
-                </div>
-                <div className="filters">
-                    <h4>Order results by</h4>
-                    <div className="filterContainer">
-                        <input name="filter" type="radio" value="popularity" id="popularity" onChange={(e) => this.handleUpdate(e, "filter")} defaultChecked></input>
-                        <label for="popularity">Relevance & Popularity</label>
-                        <input name="filter" type="radio" value="currency" id="currency" onChange={(e) => this.handleUpdate(e, "filter")}></input>
-                        <label for="currency">Newest First</label>
+            <div>
+                <NavBar />
+                <div className="search">
+                    <input type="text" placeholder={search === "pens" ? "Search Pens" : "Search Users"} value={this.state.input} onChange={(e) => this.handleUpdate(e, "input")} onKeyUp={(e) => e.keyCode === 13 ? this.search() : null} />
+                    <div className="bar">
+                        <h3 onClick={() => this.updateSearch("pens")} style={{ color: search === "pens" ? "white" : "lightgray" }}>Pens</h3>
+                        <h3 onClick={() => this.updateSearch("users")} style={{ color: search === "users" ? "white" : "lightgray" }}>Users</h3>
                     </div>
-                </div>
-                <div className="penContainer">
-                    {search === "users" ? usersList : pensList}
-                </div>
-                {search === "pens" && pens[0] ? (
-                    <div className="paginationButtons">
-                        <button className="nextButton" style={{ display: this.state.currentPage === 0 ? "none" : "block" }} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
-                        <button className="nextButton" onClick={() => this.nextPage()}>Next<i className="fa fa-angle-right"></i></button>
+                    <div className="filters">
+                        <h4>Order results by</h4>
+                        <div className="filterContainer">
+                            <input name="filter" type="radio" value="popularity" id="popularity" onChange={(e) => this.handleUpdate(e, "filter")} defaultChecked></input>
+                            <label for="popularity">Relevance & Popularity</label>
+                            <input name="filter" type="radio" value="currency" id="currency" onChange={(e) => this.handleUpdate(e, "filter")}></input>
+                            <label for="currency">Newest First</label>
+                        </div>
                     </div>
-                ) : null }
+                    <div className="penContainer">
+                        {search === "users" ? usersList : pensList}
+                    </div>
+                    {search === "pens" && pens[0] ? (
+                        <div className="paginationButtons">
+                            <button className="nextButton" style={{ display: this.state.currentPage === 0 ? "none" : "block" }} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
+                            <button className="nextButton" onClick={() => this.nextPage()}>Next<i className="fa fa-angle-right"></i></button>
+                        </div>
+                    ) : null}
+                </div>
             </div>
         )
     }

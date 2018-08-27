@@ -10,7 +10,8 @@ class Profile extends Component {
     this.state = {
       user: '',
       pens: '',
-      currentPage: 0
+      currentPage: 0,
+      userInfo: {}
     }
 
   }
@@ -21,10 +22,15 @@ class Profile extends Component {
         user: res.data
       })
     })
-    axios.get(`/api/pens/user/0?type=new`).then(res => {
+    axios.get(`/api/pens/user/0/0?type=new`).then(res => {
       this.setState({
         pens: [res.data],
         currentPage: 0
+      })
+    })
+    axios.get('/api/userinfo').then(res => {
+      this.setState({
+        userInfo: res.data
       })
     })
   }
@@ -44,9 +50,8 @@ class Profile extends Component {
 
   nextPage() {
     let { currentPage, pens } = this.state;
-    axios.get(`/api/pens/user/${currentPage + 1}?type=new`)
+    axios.get(`/api/pens/user/0/${currentPage + 1}?type=new`)
       .then(res => {
-        console.log(res.data);
         if (res.data[0]) {
           let copy = pens.slice();
           copy.push(res.data);
@@ -88,7 +93,6 @@ class Profile extends Component {
         );
       })
     }
-
     return (
       <div>
         <NavBar />
@@ -97,6 +101,9 @@ class Profile extends Component {
           </div>
 
           <div className='b-line'>
+            <div>{this.state.userInfo.link1}</div>
+            <div>{this.state.userInfo.link2}</div>
+            <div>{this.state.userInfo.link3}</div>
             <div className='Hire'>Hire Me</div>
             <div className='followers'>
               <h1> 0 Followers</h1>
@@ -115,13 +122,15 @@ class Profile extends Component {
           <div className='UserInfo'>
             <div>
               <h1 className='UserName'>{user.name}</h1>
-              <p className='Name2'>@{user.username}</p>
+              <p id='Name2'>@{user.username}</p>
               <div id='UserPic'>
                 {this.userAvatar()}
               </div>
-              {/* <h3 className='Name2'>{this.state.user.name}</h3> */}
+              <h3 className='Name2'>{this.state.userInfo.location}</h3>
             </div>
           </div>
+
+          <div className="bio">{this.state.userInfo.bio}</div>
 
           <div className="profileContainer">
 
@@ -136,7 +145,7 @@ class Profile extends Component {
             <div className='ligthgray-line'></div>
             <div className='gray-line'></div>
 
-            {this.state.pens[0] === [] ? (
+            {this.state.pens[0] ? (
               <div className="pen-window">
                 <div>
                   {pensList}

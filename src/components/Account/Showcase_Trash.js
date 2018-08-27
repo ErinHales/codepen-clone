@@ -10,32 +10,12 @@ function collectTarget(connect, monitor) {
 }
 const dropSource = {
     drop(props, monitor, component) {
-        // console.log(props);
-        console.log(monitor.getItem());
-        monitor.getItem().deleteItem(monitor.getItem().gridItem);
-        // console.log(monitor)
-        // console.log(component);
-        // console.log(monitor);
-        // // console.log(monitor.getItem());
-        // let gridItem = props.gridItem.id;
-
-        // let targetId = monitor.targetId;
-        // if (monitor.getItem().gridItem) {
-        //     console.log('hello');
-        //     return;
-        // }
-        // else {
-        //     let url = monitor.getItem().pen.imgUrl;
-        //     let urls = []
-        //     monitor.internalMonitor.registry.dropTargets.forEach(e => {
-        //         urls.push(e.ref.current.state.imgUrl);
-        //     });
-        //     if (component.state.imgUrl !== url && urls.indexOf(url) === -1) {
-        //         component.state.imgUrl = url;
-        //     }
-        //     return;
-        // }
-
+        if (monitor.getItem().deleteShowcase) {
+            monitor.getItem().deleteShowcase(monitor.getItem().penId);
+        }
+        else {
+            monitor.getItem().deleteItem(monitor.getItem().penId);
+        }
     }
 }
 class Showcase_Trash extends Component {
@@ -44,7 +24,7 @@ class Showcase_Trash extends Component {
         return connectDropTarget(
             <div className="delete-container">
                 <i className="fa fa-trash"></i>
-                <p>Drap Pens here to remove from your showcase</p>
+                <p>Drag Pens here to remove from your showcase</p>
             </div>
         )
     }

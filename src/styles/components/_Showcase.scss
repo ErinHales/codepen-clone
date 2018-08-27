@@ -3,7 +3,7 @@
     min-height: 100vh;
     padding-top: 3.25rem;
     .showcase-container {
-        border: 1px solid red;
+        // border: 1px solid red;
         width: 97%;
         margin: 0 auto;
         .showcase-grid {
@@ -18,8 +18,40 @@
             }
             .grid-item {
                 height: 150px;
-                width: 32%;
+                width: 31%;
+                // border: 1px solid red;
                 margin-bottom: 1rem;
+                &:hover {
+                    cursor: all-scroll;
+                }
+                .frame-overlay {
+                    position: relative;
+                    width: 100%;
+                    height: 0;
+                    padding-bottom: 90%;
+                    &:after {
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                    }
+                    &:hover {
+                        cursor: all-scroll;
+                    }
+                    .pen-iframe {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 200%;
+                        height: 200%;
+                        a {
+                            cursor: all-scroll;
+                        }
+                    }
+                }
             }
             .grid-item:nth-child(3n+2) {
                 margin: 0 2%;
@@ -61,7 +93,6 @@
             .showcase-pens {
                 // border: 2px solid yellow;
                 width: 45%;
-                border: 1px solid red;
                 height: 100%;
                 background-color: $dark-blue-gray;
                 padding: 20px;
@@ -72,14 +103,42 @@
                 background-color: $dark-blue-gray;
                 padding: 20px;
                 border-radius: 5px;
+                .frame-overlay {
+                    position: relative;
+                    width: 100%;
+                    height: 0;
+                    padding-bottom: 90%;
+                    &:after {
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                    }
+                    &:hover {
+                        cursor: all-scroll;
+                    }
+                    .pen-iframe {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 200%;
+                        height: 200%;
+                        a {
+                            cursor: all-scroll;
+                        }
+                    }
+                }
                 .showcase-layout-container {
                     margin-top: 0.5rem;
                     .grid-item,
                     .showcase-main {
                         border: 1px dashed $text-grey;
                     }
-                    .grid-item{
-                        width: 31%; 
+                    .grid-item {
+                        width: 31%;
                         margin-bottom: 1.5rem;
                     }
                     .showcase-main {
@@ -88,6 +147,34 @@
                         img {
                             width: 100%;
                             height: 100%;
+                        }
+                        .frame-overlay {
+                            position: relative;
+                            width: 100%;
+                            height: 0;
+                            padding-bottom: 46.5%;
+                            &:after {
+                                content: "";
+                                display: block;
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                right: 0;
+                                bottom: 0;
+                            }
+                            &:hover {
+                                cursor: all-scroll;
+                            }
+                            .pen-iframe {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 200%;
+                                height: 200%;
+                                a {
+                                    cursor: all-scroll;
+                                }
+                            }
                         }
                     }
                 }
@@ -109,7 +196,7 @@
                 width: 98%;
                 margin: 0 auto;
                 .showcase-filter {
-                    border: 1px solid blue;
+                    // border: 1px solid blue;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;

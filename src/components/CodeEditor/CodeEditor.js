@@ -21,13 +21,14 @@ export default class CodeEditor extends Component {
             showPopUp: false,
             showSignUp: false,
             isLoggedIn: false,
+            visitingUsersId:null,
 
             name: "name of pen",
             css: '',
             html: '',
             js: '',
-            userid: null,
-            theme: "abcdef",
+            theme: "twilight",
+            penUserId: null,
 
             behaviorSettings: {
                 tabSize: 0,
@@ -72,7 +73,10 @@ export default class CodeEditor extends Component {
         axios.get('/api/users')
             .then(response => {
                 if (response.data.username) {
-                    this.setState({ isLoggedIn: true })
+                    this.setState({ 
+                        isLoggedIn: true,
+                        visitingUserId: response.data.userid
+                    })
                 }
             })
         const { id } = this.props.match.params
@@ -84,11 +88,13 @@ export default class CodeEditor extends Component {
                     html: null,
                     js: null
                 })
-                const { html, css, js, name, scripts} = response.data;
+                console.log(response.data)
+                const { user_id: penUserId, html, css, js, name, scripts} = response.data;
                 const { css: cssList, html: htmlScripts, js: jsList } = scripts
                 const { html_tag_class, head_tag } = htmlScripts
                 
                 this.setState({
+                    penUserId,
                     css,
                     html,
                     js,
@@ -111,6 +117,12 @@ export default class CodeEditor extends Component {
     }
 
     componentDidMount() {
+        axios.get('/api/userinfo').then(response => {
+            // console.log(response.data);
+            this.setState({
+                theme: response.data[0].theme
+            })
+        })
         axios.put(`/api/pen/view/${this.props.match.params.id}/${this.state.userid}`).catch(console.error());
     }
 
@@ -391,7 +403,7 @@ export default class CodeEditor extends Component {
         </html>`;
         return (
             <div>
-                <NavBar2/>
+                <NavBar2 isLoggedIn={this.state.isLoggedIn} showSettings={this.state.showSettings} settingsPopUpHandler={this.settingsPopUpHandler}/>
                 <div className="codeEditor">
                 {this.state.showPopUp ? popUp : null}
                 {this.state.showSettings ? settingsMenu : null}
@@ -434,7 +446,12 @@ export default class CodeEditor extends Component {
                     <div className="penFooter">
                         <button>Console</button>
                         <button onClick={() => this.savePen()}>Save</button>
+                        {console.log(this.state.visitingUserId, this.state.penUserId)}
+                    { this.state.visitingUserId === this.state.penUserId ? (
                         <button onClick={this.deletePen} className="delete">Delete</button>
+                    ) : (
+                        null
+                    )}  
                     </div>
                 </div>
             </div>

@@ -3,6 +3,7 @@ import { DropTarget, DragSource } from 'react-dnd';
 import flow from 'lodash.flow';
 const itemSource = {
     beginDrag(props) {
+      
         return props;
     },
     endDrag(props, monitor, component) {
@@ -28,37 +29,58 @@ function collectTarget(connect, monitor) {
 }
 const dropSource = {
     drop(props, monitor, component) {
-        if (!component.state.imgUrl) {
-            props.addItem(props.gridItem, monitor.getItem().pen.imgUrl, monitor.getItem().pen.id);      
+        if (!monitor.getItem().hasOwnProperty('addShowcaseMain')) {
+            let showcasePenId = props.showcase.penId;
+            let gridPenId = monitor.getItem().penId;
+            // Check if the item is already in the showcase
+            if (showcasePenId !== gridPenId) {
+                // This checks for duplicates in the small boxes
+                let { css, html, js } = monitor.getItem();
+                if (!component.state.imgUrl) {
+                    props.addItem(props.gridItem, css, html, js, gridPenId);
+                }
+            }
         }
+        else if(monitor.getItem().hasOwnProperty('addShowcaseMain') && props.penId){
+            console.log('test');
+           monitor.getItem().switchShowcase(props, monitor.getItem());
+        }        
     }
 }
 class Showcase_Layout extends Component {
     constructor() {
         super();
         this.state = {
-            imgUrl: '',
-            gridItems: [],
-            penId: []
+            penId: '',
+            css: '',
+            js: '',
+            html: '',
+            penId: ''
         }
     }
+
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.imgUrl !== prevProps.imgUrl) {
-            this.setState({ imgUrl: this.props.imgUrl })
+        if (this.props.penId !== prevProps.penId) {
+            this.setState({
+                penId: this.props.penId,
+                css: this.props.css,
+                js: this.props.js,
+                html: this.props.html
+            })
         }
     }
-    componentDidMount() {
-        this.setState({
-            imgUrl: this.props.imgUrl
-        })
-    }
+
     render() {
         const { connectDropTarget, connectDragSource, hovered, item, isDragging } = this.props;
         const opacity = isDragging ? 0 : 1;
+        const srcDoc = `${this.state.html}<style>${this.state.css}</style><script>${this.state.js}</script>`;
         return connectDropTarget(
             connectDragSource(
-                <div className="grid-item" >
-                    <img style={{ opacity }} src={this.state.imgUrl ? this.state.imgUrl : ''} alt="" />
+                <div styles={{ opacity }} className="grid-item"  >
+                    <div   className="frame-overlay">
+                        <iframe  scrolling="no" className="pen-iframe" srcDoc={srcDoc}></iframe>
+                    </div>
+                    {/* <img style={{ opacity }} src={this.state.imgUrl ? this.state.imgUrl : ''} alt="" /> */}
                 </div>
             )
         )
