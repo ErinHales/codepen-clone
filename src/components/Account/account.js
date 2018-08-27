@@ -34,13 +34,13 @@ class Account extends Component {
         axios.get('/api/userinfo').then(res => {
             // if (res.data[0]) {
             this.setState({
-                location: res.data[0].location,
-                bio: res.data[0].bio,
-                link1: res.data[0].link1,
-                link2: res.data[0].link2,
-                link3: res.data[0].link3,
-                forHire: res.data[0].for_hire,
-                userInfoExists: true
+                // location: res.data[0].location,
+                // bio: res.data[0].bio,
+                // link1: res.data[0].link1,
+                // link2: res.data[0].link2,
+                // link3: res.data[0].link3,
+                // forHire: res.data[0].for_hire,
+                // userInfoExists: true
             })
             // }
         })

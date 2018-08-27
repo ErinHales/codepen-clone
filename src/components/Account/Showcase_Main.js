@@ -18,6 +18,8 @@ const dropSource = {
             props.switchShowcase(grid, showcase);
         }
         else {
+            console.log(props);
+            console.log(monitor.getItem());
             let { html, css, js, penId } = monitor.getItem();
             props.addShowcaseMain(penId, css, html, js);
         }

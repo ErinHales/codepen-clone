@@ -54,8 +54,8 @@ class Showcase_Layout2 extends Component {
         // This ensures that there arent any duplicates 
         else if (this.state.showCaseLayout.findIndex(item => item.penId === penId) === -1) {
             let gridIndex = 0;
-            for(let i = 0; i < this.state.showCaseLayout.length; i++){
-                if(!this.state.showCaseLayout[i].penId){
+            for (let i = 0; i < this.state.showCaseLayout.length; i++) {
+                if (!this.state.showCaseLayout[i].penId) {
                     gridIndex = i;
                     break;
                 }
@@ -76,7 +76,7 @@ class Showcase_Layout2 extends Component {
     }
     switchShowcase = (grid, showcase) => {
         // This is the index that the showcase is going to be switched with
-        axios.put('/api/layout/showcase', { penId: grid.penId, gridId: grid.gridItem, showcasePen: showcase.penId })
+        axios.put('/api/showcase', { penId: grid.penId, gridId: grid.gridItem, showcasePen: showcase.penId })
             .then(() => {
                 let index = this.state.showCaseLayout.findIndex(e => e.id === grid.gridItem);
                 let layout = this.state.showCaseLayout.slice();
@@ -98,18 +98,34 @@ class Showcase_Layout2 extends Component {
             })
     }
     addShowcaseMain = (penId, css, html, js) => {
-        // Before adding to the showcase check the grid if it exists
+        // before adding something to the showcase check if it exist in the gird
         if (this.state.showCaseLayout.findIndex(e => e.penId === penId) === -1) {
-            axios.post('/api/layout', { penId, gridId: 0 })
-                .then(() => {
-                    let obj = this.state.showCaseMain;
-                    obj.penId = penId;
-                    obj.css = css;
-                    obj.html = html;
-                    obj.js = js;
-                    this.setState({ showcaseMain: obj });
-                })
-                .catch(err => console.log(err));
+            // If it the item is in the grid and wants to be showcase then showcase needs to be update
+            if (this.state.showCaseMain.penId) {
+                axios.put('/api/showcase', { penId })
+                    .then(() => {
+                        let obj = this.state.showCaseMain;
+                        obj.penId = penId;
+                        obj.css = css;
+                        obj.html = html;
+                        obj.js = js;
+                        this.setState({ showcaseMain: obj });
+                    })
+            }
+            // Showcase is empty and there is no other items on the grid
+            else {
+                axios.post('/api/layout', { penId, gridId: 0 })
+                    .then(() => {
+                        let obj = this.state.showCaseMain;
+                        obj.penId = penId;
+                        obj.css = css;
+                        obj.html = html;
+                        obj.js = js;
+                        this.setState({ showcaseMain: obj });
+                    })
+                    .catch(err => console.log(err));
+            }
+
         }
     }
     deleteShowcase = (penId) => {

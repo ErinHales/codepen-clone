@@ -21,11 +21,21 @@ module.exports = {
     updateShowcase: (req, res) => {
         let { penId, gridId, showcasePen } = req.body;
         let db = req.app.get('db');
-        db.switch_showcase([penId, 0])
-            .then(() => db.switch_showcase([showcasePen, gridId])
-                .then(() => res.sendStatus(200))
+        // If gridId exist then we are going to switch the showcase with one of the grid items
+        if (gridId) {
+            db.switch_showcase([penId, 0])
+                .then(() => db.switch_showcase([showcasePen, gridId])
+                    .then(() => res.sendStatus(200))
+                    .catch(err => res.status(500).send(err))
+                )
                 .catch(err => res.status(500).send(err))
-            )
-            .catch(err => res.status(500).send(err))
+        }
+        // Otherwise we are going to update showcase with a new pen
+        else{
+            db.switch_showcase([penId, 0])
+            .then(() => res.sendStatus(200))
+            .catch(err => res.status(500).send(err));
+        }
+
     }
 }
