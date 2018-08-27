@@ -32,21 +32,20 @@ class Account extends Component {
             }))
             .catch(err => console.log(err));
         axios.get('/api/userinfo').then(res => {
-            console.log(res.data)
             if (res.data[0]) {
-            this.setState({
-                location: res.data[0].location,
-                bio: res.data[0].bio,
-                link1: res.data[0].link1,
-                link2: res.data[0].link2,
-                link3: res.data[0].link3,
-                forHire: res.data[0].for_hire,
-                userInfoExists: true
-            })
+                this.setState({
+                    location: res.data[0].location,
+                    bio: res.data[0].bio,
+                    link1: res.data[0].link1,
+                    link2: res.data[0].link2,
+                    link3: res.data[0].link3,
+                    forHire: res.data[0].for_hire,
+                    userInfoExists: true
+                })
             }
         })
     }
-    
+
 
     onDrop = files => {
         let { REACT_APP_UPLOAD_PRESET, CLOUDINARY_API_KEY, REACT_APP_CLOUD_NAME } = process.env;
@@ -87,11 +86,11 @@ class Account extends Component {
     saveInfo() {
         let { location, bio, link1, link2, link3, forHire } = this.state;
         if (this.state.userInfoExists) {
-            axios.put('/api/update/userinfo', {location, bio, link1, link2, link3, forHire}).then(console.log("User information successfully updated"))
+            axios.put('/api/update/userinfo', { location, bio, link1, link2, link3, forHire }).then(console.log("User information successfully updated"))
         } else {
             axios.post('/api/setuserinfo', { location, bio, link1, link2, link3, forHire }).then(console.log("User information successfully added"));
         }
-        axios.put('/api/update/name', {name: this.state.name}).then(console.log("User name successfully updated"));
+        axios.put('/api/update/name', { name: this.state.name }).then(console.log("User name successfully updated"));
         window.location.hash = "#/profile";
     }
 
@@ -102,7 +101,7 @@ class Account extends Component {
     }
 
     saveTheme() {
-        axios.put('/api/user/theme', {theme: this.state.theme}).then(console.log("User's theme successfully updated!"));
+        axios.put('/api/user/theme', { theme: this.state.theme }).then(console.log("User's theme successfully updated!"));
         window.location.hash = "#/profile";
     }
 
@@ -115,7 +114,7 @@ class Account extends Component {
                     <div className="account-container">
                         <div className="account-header">
                             <div className="account-save">
-        {this.state.page === "profile" ? <button onClick={() => this.saveInfo()}>Save All Settings</button> : <button onClick={() => this.saveTheme()}>Save Theme</button> }
+                                {this.state.page === "profile" ? <button onClick={() => this.saveInfo()}>Save All Settings</button> : <button onClick={() => this.saveTheme()}>Save Theme</button>}
                             </div>
                             <div className="account-links">
                                 {/* <Link path='/settings/profile'>Profile</Link>

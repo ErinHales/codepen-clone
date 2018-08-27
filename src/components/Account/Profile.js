@@ -9,7 +9,7 @@ class Profile extends Component {
     super()
     this.state = {
       user: '',
-      pens: '',
+      pens: [],
       currentPage: 0,
       userInfo: {}
     }
@@ -23,10 +23,17 @@ class Profile extends Component {
       })
     })
     axios.get(`/api/pens/user/0/0?type=new`).then(res => {
-      this.setState({
-        pens: [res.data],
-        currentPage: 0
-      })
+      if (res.data[0]) {
+        this.setState({
+          pens: [res.data],
+          currentPage: 0
+        })
+      } else {
+        this.setState({
+          pens: false,
+          currentPage: 0
+        })
+      }
     })
     axios.get('/api/userinfo').then(res => {
       this.setState({
@@ -145,7 +152,7 @@ class Profile extends Component {
             <div className='ligthgray-line'></div>
             <div className='gray-line'></div>
 
-            {this.state.pens[0] ? (
+            {this.state.pens ? (
               <div className="pen-window">
                 <div>
                   {pensList}
