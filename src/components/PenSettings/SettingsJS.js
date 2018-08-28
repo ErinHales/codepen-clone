@@ -88,7 +88,7 @@ export default class SettingsJs extends Component {
                 <div onClick={this.showPopUp} className={`popup${this.state.showPopUp ? ' show-popup' : ""}`}>?</div>
                 <h3 className="pen-settings-heading">Add External Scripts</h3> 
                 <p className="pen-settings-description">Any URL's added here will be added as {'<script>'}s in order, and run before the JavaScript in the editor. You can use the URL of any other Pen and it will include the JavaScript from that Pen.</p>
-                <div ref={input => this.input = input} className="pen-settings-input-container">
+                <div ref={input => this.input = input} className="pen-settings-input-container highlight">
                     <div className="pen-settings-input-icon">
                         <i 
                         style={{

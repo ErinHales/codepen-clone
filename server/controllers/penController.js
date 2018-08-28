@@ -54,7 +54,7 @@ module.exports = {
         const dbConn = req.app.get('db')
         // Destructure variables off of body
         const { userid:user_id } = req.session
-        const { name, forked, html, css, js, scripts } = req.body
+        const { name, description, forked, html, css, js, scripts } = req.body
         const html_script = scripts.html
         const css_stylesheet = scripts.css
         const js_script = scripts.js
@@ -62,7 +62,7 @@ module.exports = {
 
         // Create Pen from variables
         //console.log('userid', user_id,'name', name, forked, html, css, js)
-        dbConn.post_pen([user_id, name, forked, html, css, js])
+        dbConn.post_pen([user_id, name, description, forked, html, css, js])
             .then( dbResponse => {
                 // setting the pen_id from the newly created row to a a variable
                 const { pen_id } = dbResponse[0]
@@ -121,14 +121,14 @@ module.exports = {
             const dbConn = req.app.get('db')
             // Destructure variables off of body
             const { penId: pen_id} = req.params
-            const { name, html, css, js, scripts } = req.body
+            const { name, description, html, css, js, scripts } = req.body
             const html_script = scripts.html
             const css_stylesheet = scripts.css
             const js_script = scripts.js
             const { html_tag_class, head_tag } = html_script
             // Create Pen from variables
             //console.log(user_id)
-            dbConn.update_pen([name, html, css, js, +pen_id])
+            dbConn.update_pen([name, description, html, css, js, +pen_id])
                 .then( () => {
                     // check to see if the request from the client contains any html settings content
                     if(html_tag_class || head_tag) {
