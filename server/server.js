@@ -21,9 +21,7 @@ app.use(session({
 massive(CONNECTION_STRING).then(function (db) {
     app.set("db", db);
     console.log("db is connected");
-}).catch(err => {
-    console.log(err);
-})
+}).catch(console.error)
 
 
 //////// ENDPOINTS //////////

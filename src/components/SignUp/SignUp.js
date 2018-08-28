@@ -33,8 +33,7 @@ export default class SignUp extends Component {
                 console.log(res);
                 // If the response is ok then direct them to the home page
                 if(res.data === 'OK'){
-                    // this.props.history.push('/pens')
-                    alert('User signedup successfully');
+                    this.props.history.push('/pens') 
                     if(this.props.closePopUp) {
                         this.props.closePopUp(true)
                     }

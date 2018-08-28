@@ -3,9 +3,9 @@ const restructureResponsePen = require('./helpers/restructureResponsePen')
 module.exports = {
     getPens(req, res) {
         const dbConn = req.app.get('db')
-        // to be implemented
         let {pageNum} = req.params;
         let offset = parseInt(pageNum) * 6;
+
         if(req.query) {
             if(req.query.type === 'views') {
                 dbConn.get_most_viewed_pens(offset)
@@ -47,9 +47,7 @@ module.exports = {
     },
     getUserPens(req, res) {
         const dbConn = req.app.get('db')
-        // console.log(req.params);
         const { userId, pageNum } = req.params;
-        // console.log(userId, pageNum);
         let id;
         if (parseInt(userId) !== 0) {
             id = parseInt(userId)
@@ -81,7 +79,6 @@ module.exports = {
             else if(req.query.type === 'new') {
                 dbConn.get_new_user_pens([id, offset])
                     .then( dbResponse => {
-                        // console.log(dbResponse);
                         res.status(200).send(dbResponse.map( pen => restructureResponsePen(pen)))
                     })
                     .catch( err => {

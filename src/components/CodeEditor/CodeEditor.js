@@ -69,6 +69,8 @@ export default class CodeEditor extends Component {
         this.autoUpdateHandler = this.autoUpdateHandler.bind(this)
         this.tabSizeHandler = this.tabSizeHandler.bind(this)
         this.updateName = this.updateName.bind(this)
+
+        this.fork = this.fork.bind(this)
     }
 
     componentWillMount() {
@@ -134,9 +136,11 @@ export default class CodeEditor extends Component {
     componentDidMount() {
         axios.get('/api/userinfo').then(response => {
             if (response.data[0]) {
-                this.setState({
-                    theme: response.data[0].theme
-                })
+                if(response.data[0].theme) {
+                    this.setState({
+                        theme: response.data[0].theme
+                    })
+                }
             }
         })
         if(this.props.match.params.id) {
@@ -356,6 +360,24 @@ export default class CodeEditor extends Component {
         })
     }
 
+    fork() {
+        //show login pop up if not logged in , if logged in 
+        if (!this.state.isLoggedIn) {
+            this.setState({ showPopUp: true })
+            return
+        }
+        else {
+            let penData = this.penData()
+            penData.forked = true
+            axios.post('/api/pen/', penData)
+                .then(response => {
+                    // window.location.hash =`#/editor/${response.data[0].pen_id}`
+                    this.props.history.push(`/editor/${response.data[0].pen_id}`)
+                    this.forceUpdate()
+                })
+        }
+    }
+
     render() {
 
         const settingsMenu = (
@@ -426,12 +448,18 @@ export default class CodeEditor extends Component {
         </html>`;
         return (
             <div>
-        <NavBar2
-            history={this.props.history}
-            userName={this.state.userName}
-            updateName={this.updateName}
-            penName={this.state.name}
-            isLoggedIn={this.state.isLoggedIn} showSettings={this.state.showSettings} settingsPopUpHandler={this.settingsPopUpHandler} />
+            <NavBar2
+                savePen={this.savePen}
+                isUser={this.state.visitingUserId === this.state.penUserId}
+                history={this.props.history}
+                userName={this.state.userName}
+                updateName={this.updateName}
+                penName={this.state.name}
+                isLoggedIn={this.state.isLoggedIn} 
+                showSettings={this.state.showSettings} 
+                settingsPopUpHandler={this.settingsPopUpHandler} 
+                fork={this.fork}
+            />
             <div className="codeEditor">
                 {this.state.showPopUp ? popUp : null}
                 {this.state.showSettings ? settingsMenu : null}
@@ -472,14 +500,17 @@ export default class CodeEditor extends Component {
                 <div className="verticalResize"></div>
                 <iframe className="penFrame" srcDoc={srcdoc} frameBorder="0" title="showPen"></iframe>
                 <div className="penFooter">
-                    <button>Console</button>
-                    <button onClick={() => this.savePen()}>Save</button>
-                    {console.log(this.state.visitingUserId, this.state.penUserId)}
-                    {/* {this.state.visitingUserId === this.state.penUserId ? ( */}
-                        <button onClick={this.deletePen} className="delete">Delete</button>
-                    {/* ) : (
+                    {/* <button>Console</button> */}
+                    {this.state.visitingUserId === this.state.penUserId ? (
+                        <button onClick={() => this.savePen()}>Save</button>
+                    ) : (
                             null
-                        )} */}
+                        )}
+                    {this.state.visitingUserId === this.state.penUserId ? (
+                        <button onClick={this.deletePen} className="delete">Delete</button>
+                    ) : (
+                            null
+                        )}
                 </div>
             </div>
             </div >

@@ -20,6 +20,7 @@ class NavBar2 extends Component {
 
   componentDidMount(){
     axios.get('/api/users').then(res => {
+      console.log(res.data)
       this.setState({
         user:res.data
       })
@@ -39,7 +40,7 @@ class NavBar2 extends Component {
   componentChange(){
     if(this.props.match.path !== '/editor'){
       return(
-        <Fork/>
+        <Fork fork={this.props.fork}/>
       )
     }else if(this.props.match.path === '/editor'){
       return(
@@ -54,16 +55,16 @@ class NavBar2 extends Component {
   }
   
   titleChanger(){
-
-    if(this.props.match.path === '/editor'){
+    console.log(this.props.isUser)
+    if(this.props.isUser){
     return(
       <div className='titleChng'>
-      <input type='text' className='titleInput' placeholder={this.state.input} onChange={(e) => this.props.updateName(e)}/>
-      <img src="https://vignette.wikia.nocookie.net/freestyle2/images/7/79/Icon_edit.png/revision/latest?cb=20160907075220" alt="" className='penIcon' onClick={() => this.changeTitle()}/>
+      <input type='text' className='titleInput' value={this.props.penName} onKeyDown={(e) => e.keyCode === 13 ? this.props.savePen() : null } onChange={(e) => this.props.updateName(e)}/>
+      <img src="https://vignette.wikia.nocookie.net/freestyle2/images/7/79/Icon_edit.png/revision/latest?cb=20160907075220" alt="" className='penIcon' onClick={this.props.savePen}/>
       <p className='APenBy'>A PEN BY 
         <Link to='/profile' className='link'><span className='userName'>{this.state.user.name}</span></Link></p>
       </div>
-    )}else if(this.props.match.path === '/editor/:id'){
+    )}else {
       return(
         <div className='titleChng'>
           <p>{this.props.penName}{console.log(this.props.penName)}</p>

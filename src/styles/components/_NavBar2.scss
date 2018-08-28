@@ -1,6 +1,8 @@
 .icon2{
   height: 40px;
-
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .APenBy{
@@ -10,16 +12,16 @@
 
 .Name2{
   width: 20%;
- min-width: 175px;
- display: flex;
- align-items: bottom;
- font-family: 'Lato', sans-serif;
- color: white;
- margin-left: 15px;
- margin-top: 13px;
- font-size: 24px;
- position: relative;
- bottom: 2px;
+  min-width: 175px;
+  display: flex;
+  align-items: bottom;
+  font-family: 'Lato', sans-serif;
+  color: white;
+  margin-left: 15px;
+  margin-top: 13px;
+  font-size: 24px;
+  position: relative;
+  bottom: 2px;
 }
 
 .title{

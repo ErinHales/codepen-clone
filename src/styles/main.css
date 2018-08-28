@@ -193,8 +193,9 @@
 .signup-container {
   background: url("https://static.codepen.io/assets/logos/codepen-logo-pattern-725360e4ce5b66f968c7f39c80999bdeaa3cbe2f18eac75d58b01f8cf55c26ab.png");
   background-repeat: repeat;
-  height: 100vh;
+  min-height: 80vh;
   display: flex;
+  padding-bottom: 100px;
   flex-direction: column;
   align-items: center; }
   .signup-container .signup-form-container {
@@ -284,7 +285,6 @@
   font-size: 14px; }
 
 .signup-input {
-  color: red;
   background: #eaedf0;
   border: 3px solid #eaedf0;
   border-radius: 3px;
@@ -876,9 +876,12 @@ span {
   background: #6e6d6d; }
 
 .arrow {
+  margin-left: 4px;
+  margin-right: -5px;
   height: 30px; }
 
 .divMag {
+  margin-right: 10px;
   border-radius: 50px;
   background: #898e9e;
   position: relative;
@@ -1974,7 +1977,7 @@ span {
   color: white;
   background: #36383F;
   font-family: 'Lato';
-  margin-left: 24px;
+  margin-left: 15px;
   cursor: pointer; }
 
 .signUpButton:hover {
@@ -2234,6 +2237,8 @@ span {
 
 .icon2 {
   height: 40px; }
+  .icon2:hover {
+    cursor: pointer; }
 
 .APenBy {
   font-size: 11px;

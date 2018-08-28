@@ -52,7 +52,6 @@ module.exports = {
     getLayoutPens : (req,res) =>{
         req.app.get('db').get_showcase_pens()
         .then(pens => {
-            console.log(pens);
             res.status(200).send(pens.map(pen => restructureResponsePen(pen)));
         })
         .catch(err => res.status(500).send(err))

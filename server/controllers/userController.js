@@ -55,9 +55,8 @@ module.exports = {
         req.app.get("db").search_user_pens([id, pageNum, search])
     },
     getUserInfo(req, res) {
-        console.log(req.session)
+
         req.app.get("db").get_user_info(req.session.userid).then(response => {
-            console.log(response)
             res.status(200).send(response);
         })
     },
@@ -65,13 +64,13 @@ module.exports = {
         let { location, bio, link1, link2, link3, forHire, theme } = req.body;
         req.app.get("db").add_user_info([req.session.userid, location, bio, link1, link2, link3, forHire, theme]).then(() => {
             res.sendStatus(200);
-        }).catch(console.error());
+        }).catch(console.error);
     },
     updateUserInfo(req, res) {
         let { location, bio, link1, link2, link3, forHire } = req.body;
         req.app.get("db").update_user_info([req.session.userid, location, bio, link1, link2, link3, forHire, theme]).then(() => {
             res.sendStatus(200);
-        }).catch(console.error());
+        }).catch(console.error);
     },
     updateTheme(req, res) {
         req.app.get("db").update_theme([req.session.userid, req.body.theme]).then(() => {
