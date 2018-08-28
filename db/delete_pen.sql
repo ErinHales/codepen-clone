@@ -1,5 +1,7 @@
 DELETE FROM stats
 WHERE pen_id = $1;
+DELETE FROM profile_layout
+WHERE pen_id = $1;
 DELETE FROM css_stylesheets
 WHERE pen_id = $1;
 DELETE FROM js_scripts
@@ -13,4 +15,4 @@ WHERE pen_id = $1;
 DELETE FROM pen_comments
 WHERE pen_id = $1;
 DELETE FROM pens
-WHERE pen_id = $1;
+WHERE pen_id = $1
