@@ -23,9 +23,6 @@ export default class EditorSettings extends Component {
         };
         return (
             <div>
-                <div className="theme-save">
-                    <button onClick={() => this.updateTheme()}>Save Theme</button>
-                </div>
                 <div className="editorSettings">
                     <div className="sampleEditor">
                         <Codemirror ref="editor" value={this.state.css} options={options} autoFocus={false} />
