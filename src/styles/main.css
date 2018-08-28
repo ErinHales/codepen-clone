@@ -2066,9 +2066,6 @@ span {
   .component-showcase .showcase-container {
     width: 97%;
     margin: 0 auto; }
-    .component-showcase .showcase-container .showcase-footer {
-      border: 1xp solid blue;
-      height: 50px; }
     .component-showcase .showcase-container .showcase-grid {
       margin-top: 1rem;
       display: flex;
@@ -2141,9 +2138,8 @@ span {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 5px auto 20px auto !important;
-        width: 50% !important;
-        border: 1px solid blue;
+        margin: 5px 0 20px 0 !important;
+        width: 65% !important;
         justify-content: flex-end; }
       .component-showcase .showcase-container .showcase-body-container .paginationButtons .fa-angle-left {
         font-size: 20px;

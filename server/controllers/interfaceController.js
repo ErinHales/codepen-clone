@@ -50,6 +50,7 @@ module.exports = {
         // console.log(req.params);
         const { userId, pageNum } = req.params;
         // console.log(userId, pageNum);
+
         let id;
         if (parseInt(userId) !== 0) {
             id = parseInt(userId)

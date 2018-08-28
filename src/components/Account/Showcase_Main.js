@@ -108,7 +108,7 @@ class Showcase_Main extends Component {
             connectDragSource(
                 <div className="showcase-main">
                     <div style={{ opacity }} className="frame-overlay">
-                        <iframe scrolling="no" className="pen-iframe" srcDoc={srcDoc}></iframe>
+                        <iframe  scrolling="no" className="pen-iframe" srcDoc={srcDoc}></iframe>
                     </div>
                 </div>
             )

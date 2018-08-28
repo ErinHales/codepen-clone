@@ -117,7 +117,7 @@ class Showcase_Layout extends Component {
             connectDragSource(
                 <div className="grid-item"  >
                     <div styles={{ opacity }} className="frame-overlay">
-                        <iframe title={penId} scrolling="no" className="pen-iframe" srcDoc={srcDoc}></iframe>
+                        <iframe  title={penId} scrolling="no" className="pen-iframe" srcDoc={srcDoc}></iframe>
                     </div>
                 </div>
             )

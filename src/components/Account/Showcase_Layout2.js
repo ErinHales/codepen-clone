@@ -37,7 +37,7 @@ class Showcase_Layout2 extends Component {
                 })
         }
     }
-    addItem = (gridId, css, html, js, penId) => {
+    addItem = (gridId, penId) => {
         let gridIndex = this.state.showCaseLayout[gridId - 1];
         // IF the showcase is empty and item to showcase
         if (!this.state.showCaseMain.penId) {
@@ -99,6 +99,7 @@ class Showcase_Layout2 extends Component {
         let showcaseMainCopy = Object.assign({}, this.state.showCaseMain);
         axios.get('/api/layout')
             .then(res => {
+                console.log(res);
                 if (res.data.length > 0) {
                     res.data.forEach((item, index) => {
                         if (index === 0) {

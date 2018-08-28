@@ -14,7 +14,7 @@ class Showcase extends Component {
     }
 
     getUserPens = () => {
-        axios.get(`/api/pens/user/3/${this.state.currentPage}?type=new`)
+        axios.get(`/api/pens/user/0/${this.state.currentPage}?type=new`)
             .then(res => {
                 console.log(res);
                 this.setState({
@@ -23,11 +23,10 @@ class Showcase extends Component {
             })
             .catch(err => console.log(err));
     }
-
     nextPage() {
         let { currentPage, pens } = this.state;
         if (!pens[currentPage + 1]) {
-            axios.get(`/api/pens/user/3/${currentPage + 1}?type=new`)
+            axios.get(`/api/pens/user/0/${currentPage + 1}?type=new`)
                 .then(res => {
                     if (res.data[0]) {
                         let copy = pens.slice();
@@ -45,18 +44,15 @@ class Showcase extends Component {
             })
         }
     }
-
     getPrev() {
         this.setState({
             currentPage: this.state.currentPage - 1
         })
     }
-
     componentDidMount() {
         this.getUserPens();
     }
     render() {
-        console.log(this.state);
         return (
             <div className="component-showcase">
                 <div className="showcase-container">

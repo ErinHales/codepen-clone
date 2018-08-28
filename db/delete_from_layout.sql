@@ -1,1 +1,1 @@
-DELETE FROM profile_layout WHERE pen_id = $1;
+DELETE FROM profile_layout WHERE pen_id = $1 AND user_id = $2;
