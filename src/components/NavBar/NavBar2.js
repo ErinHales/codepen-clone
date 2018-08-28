@@ -7,14 +7,15 @@ import Fork from './components/Fork';
 import Save from './components/Save'
 
 class NavBar2 extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state={
       user: '',
       penUser: '',
       pen:'',
       input: 'Untitled Pen'
     }
+    this.backToPen = this.backToPen.bind(this)
   }
 
   componentDidMount(){
@@ -48,6 +49,9 @@ class NavBar2 extends Component {
     
   }
 
+  backToPen() {
+    this.props.history.push('/pens')
+  }
   
   titleChanger(){
 
@@ -84,7 +88,7 @@ class NavBar2 extends Component {
           <nav className='nav1'>
 
             <div className='Name2'>
-              <img className='icon2' src='http://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Large.png' alt='' />
+              <img className='icon2' onClick={this.backToPen} src='http://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Large.png' alt='' />
               <div className='title'>
                 {this.titleChanger()}
                 {/* <p className='APenBy'>A PEN BY 
