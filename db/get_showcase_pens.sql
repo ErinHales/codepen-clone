@@ -42,7 +42,7 @@ FULL JOIN pen_comments
     ON pens.pen_id = pen_comments.pen_id
 FULL JOIN views
     ON pens.pen_id = views.pen_id
-    WHERE pens.pen_id IS NOT null
+    WHERE pens.pen_id IS NOT null  AND pens.user_id = $1
 GROUP BY
     users.name,
     users.img_url,

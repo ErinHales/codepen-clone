@@ -8,24 +8,46 @@ class Showcase extends Component {
     constructor() {
         super();
         this.state = {
-            // pens: [
-            //     {id: 1, imgUrl: 'https://s.codepen.io/aibarra13/fullcpgrid/yEeMmY'},
-            //     { id: 2, imgUrl: 'https://s.codepen.io/aibarra13/fullcpgrid/yEeMmY' },
-            //     { id: 3, imgUrl: 'https://s.codepen.io/aibarra13/fullcpgrid/yEeMmY' },
-            //     { id: 4, imgUrl: 'https://s.codepen.io/aibarra13/fullcpgrid/yEeMmY' }
-            // ] 
             pens: [],
             currentPage: 0,
         }
     }
+
     getUserPens = () => {
-        axios.get('/api/pens/user/3/2?type=new')
+        axios.get(`/api/pens/user/0/${this.state.currentPage}?type=new`)
             .then(res => {
+                console.log(res);
                 this.setState({
-                    pens: res.data
+                    pens: [res.data]
                 })
             })
             .catch(err => console.log(err));
+    }
+    nextPage() {
+        let { currentPage, pens } = this.state;
+        if (!pens[currentPage + 1]) {
+            axios.get(`/api/pens/user/0/${currentPage + 1}?type=new`)
+                .then(res => {
+                    if (res.data[0]) {
+                        let copy = pens.slice();
+                        copy.push(res.data);
+                        this.setState({
+                            pens: copy,
+                            currentPage: currentPage + 1
+                        })
+                    }
+                })
+                .catch(console.error);
+        } else {
+            this.setState({
+                currentPage: currentPage + 1
+            })
+        }
+    }
+    getPrev() {
+        this.setState({
+            currentPage: this.state.currentPage - 1
+        })
     }
     componentDidMount() {
         this.getUserPens();
@@ -55,17 +77,18 @@ class Showcase extends Component {
                                     </div>
                                 </div>
                                 <div className="showcase-grid">
-                                    {this.state.pens.map((pen, index) => {
-
-                                        return <Showcase_Pen key={pen.pen_id} penId={pen.pen_id} css={pen.css} html={pen.html} js={pen.js} />
-                                    })}
+                                    {this.state.pens[0] ? this.state.pens[this.state.currentPage].map((pen, index) => {
+                                        return <Showcase_Pen key={pen.pen_id} penId={pen.pen_id} css={pen.css} html={pen.html} js={pen.js} scripts={pen.scripts} user_id={pen.user_id} />
+                                    }) : null }
+                                </div>
+                                <div className="paginationButtons">
+                                    <button className="nextButton" style={{ display: this.state.currentPage === 0 ? "none" : "block" }} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
+                                    <button className="nextButton" onClick={() => this.nextPage()}>Next<i className="fa fa-angle-right"></i></button>
                                 </div>
                             </div>
                         </div>
                         <Showcase_Layout2 />
                     </div>
-                </div>
-                <div className="showcase-footer">
 
                 </div>
             </div>
