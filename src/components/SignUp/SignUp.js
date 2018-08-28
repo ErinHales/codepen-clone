@@ -74,7 +74,11 @@ export default class SignUp extends Component {
         )
         return (
             <div>
-                <NavBar/>
+                { this.props.closePopUp ? (
+                    null
+                ) : (
+                    <NavBar/>
+                )}
                 <div className="signup-container">
                     <div className="signup-form-container">
                         <div className="signup-form-highlights">

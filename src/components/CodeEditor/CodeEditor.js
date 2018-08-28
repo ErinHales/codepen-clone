@@ -22,6 +22,7 @@ export default class CodeEditor extends Component {
             showSignUp: false,
             isLoggedIn: false,
             visitingUsersId: null,
+            userName: '',
 
             name: "name of pen",
             css: '',
@@ -67,6 +68,7 @@ export default class CodeEditor extends Component {
         this.autoSaveHandler = this.autoSaveHandler.bind(this)
         this.autoUpdateHandler = this.autoUpdateHandler.bind(this)
         this.tabSizeHandler = this.tabSizeHandler.bind(this)
+        this.updateName = this.updateName.bind(this)
     }
 
     componentWillMount() {
@@ -86,19 +88,23 @@ export default class CodeEditor extends Component {
                     this.setState({
                         css: null,
                         html: null,
-                        js: null
+                        js: null,
+                        name: response.data.name
                     })
-                    console.log(response.data)
-                    const { user_id: penUserId, html, css, js, name, scripts } = response.data;
-                    const { css: cssList, html: htmlScripts, js: jsList } = scripts
+
+                    const { user_id: penUserId, html, css, js, username, scripts } = response.data;
+                    let { css: cssList, html: htmlScripts, js: jsList } = scripts
                     const { html_tag_class, head_tag } = htmlScripts
+                    if (!cssList[0]) cssList = []
+                    if (!jsList[0]) jsList = []
+
 
                     this.setState({
                         penUserId,
                         css,
                         html,
                         js,
-                        name,
+                        userName: username,
                         jsSettings: {
                             jsCdnList: jsList
                         },
@@ -116,9 +122,17 @@ export default class CodeEditor extends Component {
 
     }
 
+    // componentDidMount() {
+    //     axios.get('/api/userinfo').then(response => {
+    //         // console.log(response.data);
+    //         this.setState({
+    //             theme: response.data[0].theme
+    //         })
+    //     })
+    //     axios.put(`/api/pen/view/${this.props.match.params.id}/${this.state.userid}`).catch(console.error());
+    // }
     componentDidMount() {
         axios.get('/api/userinfo').then(response => {
-            // console.log(response.data);
             if (response.data[0]) {
                 this.setState({
                     theme: response.data[0].theme
@@ -204,7 +218,6 @@ export default class CodeEditor extends Component {
     //////////// SETTINGS MENU //////////////////
     //JS page Handlers
     jsCdnSelectHandler(data) {
-        console.log(data)
         this.setState({
             jsSettings: {
                 jsCdnList: [...this.state.jsSettings.jsCdnList, data.latest]
@@ -212,7 +225,6 @@ export default class CodeEditor extends Component {
         })
     }
     removeJsCdn(value) {
-        console.log('fired')
         this.setState({
             jsSettings: {
                 jsCdnList: this.state.jsSettings.jsCdnList.filter(e => !e.startsWith(value))
@@ -222,7 +234,6 @@ export default class CodeEditor extends Component {
 
     //CSS page Handlers
     cssCdnSelectHandler(data) {
-        console.log(data)
         this.setState({
             cssSettings: {
                 cssCdnList: [...this.state.cssSettings.cssCdnList, data.latest]
@@ -239,7 +250,6 @@ export default class CodeEditor extends Component {
 
     //HTML Page Handlers
     classTagHandler(value) {
-        console.log('tag handler fired')
         this.setState({
             htmlSettings: {
                 htmlClassTag: value,
@@ -248,7 +258,6 @@ export default class CodeEditor extends Component {
         })
     }
     headStuffHandler(value) {
-        console.log('head stuff fired')
         this.setState({
             htmlSettings: {
                 head: value,
@@ -259,7 +268,6 @@ export default class CodeEditor extends Component {
 
     // Behavior Page Handlers
     autoSaveHandler(value) {
-        console.log(2222, value)
         this.setState({
             behaviorSettings: Object.assign({}, this.state.behaviorSettings, { autoSave: value })
         })
@@ -334,7 +342,6 @@ export default class CodeEditor extends Component {
             this.savePen()
         }
         else {
-            console.log('test')
             this.setState({ showPopUp: false, showSignUp: false })
         }
     }
@@ -342,6 +349,12 @@ export default class CodeEditor extends Component {
         this.setState({ showSignUp: !this.state.showSignUp })
     }
     ///////////////////////////////
+
+    updateName(e) {
+        this.setState({
+            name: e.target.value
+        })
+    }
 
     render() {
 
@@ -378,13 +391,15 @@ export default class CodeEditor extends Component {
 
         const popUp = (
             <div className="signup-popup">
-                <div className="signup-popup-form-container">
-                    {this.state.showSignUp ?
-                        <SignUp closePopUp={this.closePopUp} />
-                        :
-                        <Login closePopUp={this.closePopUp} switch={this.popUpSwitch} />
-                    }
+                <div className="signup-popup-container-postition">
+                    <div className="signup-popup-form-container">
+                        {this.state.showSignUp ?
+                            <SignUp closePopUp={this.closePopUp} />
+                            :
+                            <Login closePopUp={this.closePopUp} switch={this.popUpSwitch} />
+                        }
 
+                    </div>
                 </div>
                 <div onClick={() => this.closePopUp(false)} className="signup-popup-overlay"></div>
             </div>
@@ -397,7 +412,6 @@ export default class CodeEditor extends Component {
         let jsLibraryString = this.state.jsSettings.jsCdnList.reduce((string, element) => {
             return string + `<script type='text/javascript' src='${element}'></script>`
         }, '')
-        console.log(jsLibraryString)
         let srcdoc = `
         <html class='${this.state.htmlSettings.htmlClassTag || ''}'>
             <head>
@@ -412,58 +426,62 @@ export default class CodeEditor extends Component {
         </html>`;
         return (
             <div>
-                <NavBar2 isLoggedIn={this.state.isLoggedIn} showSettings={this.state.showSettings} settingsPopUpHandler={this.settingsPopUpHandler} savePen={this.savePen}/>
-                <div className="codeEditor">
-                    {this.state.showPopUp ? popUp : null}
-                    {this.state.showSettings ? settingsMenu : null}
-                    <div className="editorHead">
-                        <section className="editorSection">
-                            <div>
-                                <button
-                                    onClick={() => this.settingsPageSelectionHandler('html')}
-                                ><img className="settingsImg" src="http://www.clker.com/cliparts/5/t/n/f/d/T/white-gear-hi.png" alt="settings" /></button>
-                                <h3>HTML</h3>
-                            </div>
-                            <button><img className="settingsImg" src="http://i66.tinypic.com/2gufexh.jpg" alt="down arrow" /></button>
-                        </section>
-                        <section className="editorSection">
-                            <div>
-                                <button
-                                    onClick={() => this.settingsPageSelectionHandler('css')}
-                                ><img className="settingsImg" src="http://www.clker.com/cliparts/5/t/n/f/d/T/white-gear-hi.png" alt="settings" /></button>
-                                <h3>CSS</h3>
-                            </div>
-                            <button><img className="settingsImg" src="http://i66.tinypic.com/2gufexh.jpg" alt="down arrow" /></button>
-                        </section>
-                        <section className="editorSection">
-                            <div>
-                                <button
-                                    onClick={() => this.settingsPageSelectionHandler('js')}
-                                ><img className="settingsImg" src="http://www.clker.com/cliparts/5/t/n/f/d/T/white-gear-hi.png" alt="settings" /></button>
-                                <h3>JS</h3>
-                            </div>
-                            <button><img className="settingsImg" src="http://i66.tinypic.com/2gufexh.jpg" alt="down arrow" /></button>
-                        </section>
-                    </div>
-                    {this.state.html !== null ? <div className="editor">
-                        <HTML updateHTML={this.updateHTML} html={this.state.html} theme={this.state.theme} />
-                        <CSS updateCSS={this.updateCSS} css={this.state.css} theme={this.state.theme} />
-                        <JavaScript updateJS={this.updateJS} js={this.state.js} theme={this.state.theme} />
-                    </div> : null}
-                    <div className="verticalResize"></div>
-                    <iframe className="penFrame" srcDoc={srcdoc} frameBorder="0" title="showPen"></iframe>
-                    <div className="penFooter">
-                        <button>Console</button>
-                        <button onClick={() => this.savePen()}>Save</button>
-                        {console.log(this.state.visitingUserId, this.state.penUserId)}
-                        {this.state.visitingUserId === this.state.penUserId ? (
-                            <button onClick={this.deletePen} className="delete">Delete</button>
-                        ) : (
-                                null
-                            )}
-                    </div>
+        <NavBar2
+            userName={this.state.userName}
+            updateName={this.updateName}
+            penName={this.state.name}
+            isLoggedIn={this.state.isLoggedIn} showSettings={this.state.showSettings} settingsPopUpHandler={this.settingsPopUpHandler} />
+            <div className="codeEditor">
+                {this.state.showPopUp ? popUp : null}
+                {this.state.showSettings ? settingsMenu : null}
+                <div className="editorHead">
+                    <section className="editorSection">
+                        <div>
+                            <button
+                                onClick={() => this.settingsPageSelectionHandler('html')}
+                            ><img className="settingsImg" src="http://www.clker.com/cliparts/5/t/n/f/d/T/white-gear-hi.png" alt="settings" /></button>
+                            <h3>HTML</h3>
+                        </div>
+                        <button><img className="settingsImg" src="http://i66.tinypic.com/2gufexh.jpg" alt="down arrow" /></button>
+                    </section>
+                    <section className="editorSection">
+                        <div>
+                            <button
+                                onClick={() => this.settingsPageSelectionHandler('css')}
+                            ><img className="settingsImg" src="http://www.clker.com/cliparts/5/t/n/f/d/T/white-gear-hi.png" alt="settings" /></button>
+                            <h3>CSS</h3>
+                        </div>
+                        <button><img className="settingsImg" src="http://i66.tinypic.com/2gufexh.jpg" alt="down arrow" /></button>
+                    </section>
+                    <section className="editorSection">
+                        <div>
+                            <button
+                                onClick={() => this.settingsPageSelectionHandler('js')}
+                            ><img className="settingsImg" src="http://www.clker.com/cliparts/5/t/n/f/d/T/white-gear-hi.png" alt="settings" /></button>
+                            <h3>JS</h3>
+                        </div>
+                        <button><img className="settingsImg" src="http://i66.tinypic.com/2gufexh.jpg" alt="down arrow" /></button>
+                    </section>
+                </div>
+                {this.state.html !== null ? <div className="editor">
+                    <HTML updateHTML={this.updateHTML} html={this.state.html} theme={this.state.theme} />
+                    <CSS updateCSS={this.updateCSS} css={this.state.css} theme={this.state.theme} />
+                    <JavaScript updateJS={this.updateJS} js={this.state.js} theme={this.state.theme} />
+                </div> : null}
+                <div className="verticalResize"></div>
+                <iframe className="penFrame" srcDoc={srcdoc} frameBorder="0" title="showPen"></iframe>
+                <div className="penFooter">
+                    <button>Console</button>
+                    <button onClick={() => this.savePen()}>Save</button>
+                    {console.log(this.state.visitingUserId, this.state.penUserId)}
+                    {this.state.visitingUserId === this.state.penUserId ? (
+                        <button onClick={this.deletePen} className="delete">Delete</button>
+                    ) : (
+                            null
+                        )}
                 </div>
             </div>
+            </div >
         )
     }
 }

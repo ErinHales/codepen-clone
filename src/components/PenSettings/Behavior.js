@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function Behavior(props) {
-    console.log(props)
     return (
         <div className="pen-settings-interface">
             <h3 className="pen-settings-heading">Code Indentation</h3>

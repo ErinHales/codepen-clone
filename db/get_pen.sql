@@ -35,7 +35,7 @@ SELECT
     stats.views,
     stats.comments,
     stats.loves,
-    users.name,
+    users.name as username,
     users.img_url,
     html_scripts.html_tag_class,
     html_scripts.head_tag,
