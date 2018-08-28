@@ -89,7 +89,7 @@ export default class SettingsCss extends Component {
                 <div onClick={this.showPopUp} className={`popup${this.state.showPopUp ? ' show-popup' : ""}`}>?</div>
                 <h3 className="pen-settings-heading">Add External Stylesheets/Pens</h3> 
                 <p className="pen-settings-description">Any URL's added here will be added as {'<link>'}s in order, and before the CSS in the editor. If you link to another Pen, it will include the CSS from that Pen. If the preprocessor matches, it will attempt to combine them before processing.</p>
-                <div ref={input => this.input = input} className="pen-settings-input-container">
+                <div ref={input => this.input = input} className="pen-settings-input-container highlight">
                     <div className="pen-settings-input-icon">
                         <i 
                         style={{
