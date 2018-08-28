@@ -37,7 +37,7 @@ const dropSource = {
                 // This checks for duplicates in the small boxes
                 let { css, html, js } = monitor.getItem();
                 if (!component.state.imgUrl) {
-                    props.addItem(props.gridItem, css, html, js, gridPenId);
+                    props.addItem(props.gridItem, gridPenId);
                 }
             }
         }

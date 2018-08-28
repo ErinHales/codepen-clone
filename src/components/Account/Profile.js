@@ -13,11 +13,11 @@ class Profile extends Component {
       pens: [],
       currentPage: 0,
       userInfo: {},
-      showcase: []
+      showcase: [],
+      displayShowcase: false
     }
 
   }
-
   componentDidMount() {
     axios.get(`/api/users?type=user`).then(res => {
       this.setState({
@@ -82,6 +82,13 @@ class Profile extends Component {
   getPrev() {
     this.setState({
       currentPage: this.state.currentPage - 1
+    })
+  }
+
+  toggleDisplayShowcase = () =>{
+    this.setState({
+      displayShowcase: !this.state.displayShowcase,
+      currentPage: 0
     })
   }
 
@@ -151,8 +158,8 @@ class Profile extends Component {
 
             <div className='Pen-InputWrapper'>
               <div>
-                <h2 className='Pens2'>All Pens</h2>
-                <h2 className='Proj2'>Showcase</h2>
+                <h2 onClick={() => this.state.displayShowcase ? this.toggleDisplayShowcase() : null} className='Pens2'>All Pens</h2>
+                <h2 onClick = {() => !this.state.displayShowcase ? this.toggleDisplayShowcase() : null } className='Proj2'>Showcase</h2>
               </div>
               <input className='Inp-box' type="text" placeholder='Search These Pens...' />
             </div>
@@ -160,25 +167,28 @@ class Profile extends Component {
             <div className='ligthgray-line'></div>
             <div className='gray-line'></div>
 
-            <ShowCaseProfile showcase={this.state.showcase} />
+            
+            {this.state.displayShowcase ? <ShowCaseProfile showcase={this.state.showcase} /> :
+                 this.state.pens ? (
+                  <div className="pen-window">
+                    <div>
+                      {pensList}
+                    </div>
+                    <div className="nextButtonContainer">
+                      <button className="nextButton" style={{ display: this.state.currentPage === 0 ? "none" : "block" }} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
+                      <button className='pagination' onClick={() => this.nextPage()}>Next <i className="fa fa-angle-right"></i></button>
+                    </div>
+                  </div>
+                ) : (
+                    <div className="goMakePens">
+                      <h1>You haven't <br />made any pens yet!</h1>
+                      <Link to="/editor"><button>Create Pen</button></Link>
+                    </div>
+    
+                  )
+            }
 
-            {/* {this.state.pens ? (
-              <div className="pen-window">
-                <div>
-                  {pensList}
-                </div>
-                <div className="nextButtonContainer">
-                  <button className="nextButton" style={{ display: this.state.currentPage === 0 ? "none" : "block" }} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
-                  <button className='pagination' onClick={() => this.nextPage()}>Next <i className="fa fa-angle-right"></i></button>
-                </div>
-              </div>
-            ) : (
-                <div className="goMakePens">
-                  <h1>You haven't <br />made any pens yet!</h1>
-                  <Link to="/editor"><button>Create Pen</button></Link>
-                </div>
-
-              )} */}
+         
           </div>
         </div>
       </div>

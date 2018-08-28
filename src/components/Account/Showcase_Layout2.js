@@ -39,6 +39,7 @@ class Showcase_Layout2 extends Component {
     }
     addItem = (gridId, penId) => {
         let gridIndex = this.state.showCaseLayout[gridId - 1];
+      
         // IF the showcase is empty and item to showcase
         if (!this.state.showCaseMain.penId) {
             this.addShowcaseMain(penId);

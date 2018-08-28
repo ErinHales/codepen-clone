@@ -23,8 +23,6 @@ export default class ShowCaseProfile extends Component {
                 />
             )
         })
-        let showcase = this.props.showcase[0];
-        console.log(this.props.showcase);
         return (
             <div className="showCaseContainer">
                 <div className="displayPensList">

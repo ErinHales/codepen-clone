@@ -1,5 +1,4 @@
 let restructureResponsePen = require('./helpers/restructureResponsePen');
-
 module.exports = {
     insertIntoLayout: (req, res) => {
         let { penId, gridId } = req.body;
