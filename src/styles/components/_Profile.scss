@@ -128,9 +128,33 @@
 }
 
 .Pens2{
-  color: white;
   margin-right: 20px;
   cursor: pointer;
+}
+
+.showcase-empty{
+  text-align: center;
+  padding: 80px 0;
+  font-family: "Lato", sans-serif;
+  h2{
+    font-size: 4rem;
+    color: #fff;
+    margin-bottom: 2rem;
+  }
+  button{
+    padding: 12px 8px;
+    border-radius: 5px;
+    font-size: 1.25rem;
+    background-color: #FFDD40;
+    font-weight: bold;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}
+
+.link-active{
+   color: white !important;
 }
 
 .Proj2{

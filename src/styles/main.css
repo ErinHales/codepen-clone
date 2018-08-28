@@ -1353,9 +1353,28 @@ span {
     align-items: center; }
 
 .Pens2 {
-  color: white;
   margin-right: 20px;
   cursor: pointer; }
+
+.showcase-empty {
+  text-align: center;
+  padding: 80px 0;
+  font-family: "Lato", sans-serif; }
+  .showcase-empty h2 {
+    font-size: 4rem;
+    color: #fff;
+    margin-bottom: 2rem; }
+  .showcase-empty button {
+    padding: 12px 8px;
+    border-radius: 5px;
+    font-size: 1.25rem;
+    background-color: #FFDD40;
+    font-weight: bold; }
+    .showcase-empty button:hover {
+      cursor: pointer; }
+
+.link-active {
+  color: white !important; }
 
 .Proj2 {
   margin-right: 20px; }

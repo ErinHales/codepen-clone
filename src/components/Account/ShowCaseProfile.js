@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Pen from '../Pen/Pen';
+import {Link} from 'react-router-dom';
 
 export default class ShowCaseProfile extends Component {
     render() {
@@ -23,12 +24,28 @@ export default class ShowCaseProfile extends Component {
                 />
             )
         })
-        return (
-            <div className="showCaseContainer">
-                <div className="displayPensList">
-                    {pensList}
+
+        if (pensList.length > 0) {
+            return (
+
+                <div className="showCaseContainer">
+                    <div className="displayPensList">
+                        {pensList}
+                    </div>
                 </div>
-            </div>
-        )
+            )
+        }
+        else {
+            return (
+                <div className="showCaseContainer">
+                    <div className="showcase-empty">
+                        <h2>Your Showcase Is Emtpy</h2>
+                       <Link to='/showcase'> <button>Click here to update your showcase</button></Link>
+                    </div>
+                </div>
+            )
+
+        }
+
     }
 }
