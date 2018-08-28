@@ -2078,6 +2078,8 @@ span {
         height: 150px;
         width: 31%;
         margin-bottom: 1rem; }
+        .component-showcase .showcase-container .showcase-grid .grid-item .overlay .text {
+          display: none; }
         .component-showcase .showcase-container .showcase-grid .grid-item:hover {
           cursor: all-scroll; }
         .component-showcase .showcase-container .showcase-grid .grid-item .frame-overlay {

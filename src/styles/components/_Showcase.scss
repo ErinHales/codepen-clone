@@ -19,6 +19,12 @@
             .grid-item {
                 height: 150px;
                 width: 31%;
+                .overlay{
+                    .text{
+                        display: none;
+                    }
+                }
+
                 // border: 1px solid red;
                 margin-bottom: 1rem;
                 &:hover {

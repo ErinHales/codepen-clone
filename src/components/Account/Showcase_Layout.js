@@ -3,7 +3,7 @@ import { DropTarget, DragSource } from 'react-dnd';
 import flow from 'lodash.flow';
 const itemSource = {
     beginDrag(props) {
-      
+
         return props;
     },
     endDrag(props, monitor, component) {
@@ -41,10 +41,10 @@ const dropSource = {
                 }
             }
         }
-        else if(monitor.getItem().hasOwnProperty('addShowcaseMain') && props.penId){
-            console.log('test');
-           monitor.getItem().switchShowcase(props, monitor.getItem());
-        }        
+        else if (monitor.getItem().hasOwnProperty('addShowcaseMain') && props.penId) {
+
+            monitor.getItem().switchShowcase(props, monitor.getItem());
+        }
     }
 }
 class Showcase_Layout extends Component {
@@ -55,7 +55,7 @@ class Showcase_Layout extends Component {
             css: '',
             js: '',
             html: '',
-            penId: ''
+            scripts: ''
         }
     }
 
@@ -65,22 +65,60 @@ class Showcase_Layout extends Component {
                 penId: this.props.penId,
                 css: this.props.css,
                 js: this.props.js,
-                html: this.props.html
+                html: this.props.html,
+                scripts: this.props.scripts
             })
         }
     }
 
     render() {
-        const { connectDropTarget, connectDragSource, hovered, item, isDragging } = this.props;
+        let { html, js, css, penId, scripts, } = this.state;
+        let srcDoc;
+        if (scripts) {
+            let { css: cssList, html: htmlScripts, js: jsList } = scripts
+            let { html_tag_class: htmlClassTag, head_tag: head } = htmlScripts
+
+            // removing null
+            if (!cssList[0]) cssList = []
+            if (!jsList[0]) jsList = []
+            if (!htmlClassTag) {
+                htmlClassTag = ''
+            }
+
+            let stylesheetString = cssList.reduce((string, element) => {
+                return string + `<link rel='stylesheet' href='${element}'>`
+            }, '')
+
+            let jsLibraryString = jsList.reduce((string, element) => {
+                return string + `<script type='text/javascript' src='${element}'></script>`
+            }, '')
+
+            srcDoc = `
+            <html class='${htmlClassTag || ''}'>
+                <head>
+                    ${stylesheetString}
+                    ${head || ''}            
+                </head>
+                <body>${html}</body>
+                <style>${css}</style>
+                ${jsLibraryString}
+                
+                <script>${js}</script>
+            </html>`;
+        }
+        else {
+            srcDoc = `${html}<style>${css}</style><script>${js}</script>`;
+        }
+
+        const { connectDropTarget, connectDragSource, isDragging } = this.props;
         const opacity = isDragging ? 0 : 1;
-        const srcDoc = `${this.state.html}<style>${this.state.css}</style><script>${this.state.js}</script>`;
+
         return connectDropTarget(
             connectDragSource(
-                <div styles={{ opacity }} className="grid-item"  >
-                    <div   className="frame-overlay">
-                        <iframe  scrolling="no" className="pen-iframe" srcDoc={srcDoc}></iframe>
+                <div className="grid-item"  >
+                    <div styles={{ opacity }} className="frame-overlay">
+                        <iframe title={penId} scrolling="no" className="pen-iframe" srcDoc={srcDoc}></iframe>
                     </div>
-                    {/* <img style={{ opacity }} src={this.state.imgUrl ? this.state.imgUrl : ''} alt="" /> */}
                 </div>
             )
         )

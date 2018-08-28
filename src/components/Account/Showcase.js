@@ -56,8 +56,7 @@ class Showcase extends Component {
                                 </div>
                                 <div className="showcase-grid">
                                     {this.state.pens.map((pen, index) => {
-
-                                        return <Showcase_Pen key={pen.pen_id} penId={pen.pen_id} css={pen.css} html={pen.html} js={pen.js} />
+                                        return <Showcase_Pen key={pen.pen_id} penId={pen.pen_id} css={pen.css} html={pen.html} js={pen.js} scripts={pen.scripts} user_id={pen.user_id} />
                                     })}
                                 </div>
                             </div>
