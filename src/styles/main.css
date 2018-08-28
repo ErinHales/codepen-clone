@@ -284,7 +284,7 @@
   font-size: 14px; }
 
 .signup-input {
-  color: red;
+  color: black;
   background: #eaedf0;
   border: 3px solid #eaedf0;
   border-radius: 3px;
@@ -1023,7 +1023,8 @@ span {
 
 .component-account {
   background-color: #191A1D;
-  min-height: 170vh; }
+  min-height: 170vh;
+  font-family: "Lato", sans-serif; }
   .component-account .account-container {
     position: relative;
     top: 1rem;
@@ -1799,7 +1800,8 @@ span {
   max-height: 550px;
   box-sizing: border-box;
   padding-bottom: 10px;
-  min-height: 385px; }
+  min-height: 385px;
+  overflow: auto; }
 
 .pen-settings-interface {
   max-height: 475px;
@@ -1843,7 +1845,9 @@ span {
   background-color: black;
   font-size: 1.1rem;
   font-family: "Lato", sans-serif;
-  padding: 10px; }
+  padding: 10px;
+  display: flex;
+  justify-content: space-between; }
   .pen-settings-nav-selection .pen-settings-nav-selection-button {
     padding-right: 10px;
     background-color: black;
@@ -1862,6 +1866,8 @@ span {
 .pen-settings-input-container {
   display: flex;
   width: 100%; }
+  .pen-settings-input-container .highlight:focus {
+    border: 3px solid #616574; }
 
 .popup {
   padding: 1px 4px;
@@ -1888,8 +1894,7 @@ span {
   position: relative;
   color: #535557;
   width: 100%;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
+  border-radius: 4px;
   font-size: .95rem;
   padding: 1rem; }
 
@@ -1984,6 +1989,30 @@ span {
 
 .pen-settings-slider-form {
   margin-bottom: 20px; }
+
+.penDetails {
+  padding: 20px;
+  font-family: "Lato", sans-serif; }
+  .penDetails input,
+  .penDetails textarea {
+    background-color: #EAEFF0;
+    width: calc(100% - 20px);
+    font-size: 25px;
+    padding: 10px;
+    border-radius: 4px;
+    border: none; }
+  .penDetails input:focus,
+  .penDetails textarea:focus {
+    border: 3px solid #616574;
+    padding: 7px;
+    outline: none; }
+  .penDetails textarea {
+    font-size: 12px;
+    height: 100px; }
+  .penDetails h2 {
+    font-size: 20px;
+    font-weight: light;
+    margin: 10px 0px; }
 
 .signUpButton {
   height: 45px;

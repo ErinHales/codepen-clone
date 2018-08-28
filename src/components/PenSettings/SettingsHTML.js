@@ -21,7 +21,7 @@ export default class SettingsHTML extends Component {
                             marginBottom: 25
                         }}
                         placeholder="e.g. single post post-1234"
-                        className="pen-settings-input" 
+                        className="pen-settings-input highlight" 
                         value={this.props.htmlClassTag} 
                         onChange={(event) => this.props.classTagHandler(event.target.value)} type="text"/>
                 </div>
