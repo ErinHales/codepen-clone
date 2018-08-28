@@ -1023,7 +1023,8 @@ span {
 
 .component-account {
   background-color: #191A1D;
-  min-height: 170vh; }
+  min-height: 170vh;
+  font-family: "Lato", sans-serif; }
   .component-account .account-container {
     position: relative;
     top: 1rem;

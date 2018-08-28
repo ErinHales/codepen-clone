@@ -34,9 +34,6 @@
     "test": "jest",
     "eject": "react-scripts eject"
   },
-  "jest": {
-    "testEnvironment": "node"
-  },
   "proxy": "http://localhost:3030",
   "devDependencies": {
     "jest": "^23.5.0"

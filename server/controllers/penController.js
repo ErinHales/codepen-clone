@@ -195,18 +195,18 @@ module.exports = {
         const { userid: user_id } = req.session
         const { penId: pen_id } = req.params
         //console.log(pen_id)
-        dbConn.get_pen([pen_id])
-            .then( response => {
-                if( user_id === response[0].user_id) {
+        // dbConn.get_pen([pen_id])
+        //     .then( response => {
+        //         if( user_id === response[0].user_id) {
                     dbConn.delete_pen([pen_id])
                         .then( () => res.sendStatus(200))
                         .catch(console.error)
-                }
-                else {
-                    res.sendStatus(401)
-                }
-            })
-            .catch(console.error)
+            //     }
+            //     else {
+            //         res.sendStatus(401)
+            //     }
+            // })
+            // .catch(console.error)
     },
     getLikes(req,res) {
         req.app.get("db").get_num_likes(req.params.penId).then(response => {

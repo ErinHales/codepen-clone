@@ -405,6 +405,7 @@ export default class CodeEditor extends Component {
         return (
             <div>
         <NavBar2
+            history={this.props.history}
             userName={this.state.userName}
             updateName={this.updateName}
             penName={this.state.name}
@@ -452,11 +453,11 @@ export default class CodeEditor extends Component {
                     <button>Console</button>
                     <button onClick={() => this.savePen()}>Save</button>
                     {console.log(this.state.visitingUserId, this.state.penUserId)}
-                    {this.state.visitingUserId === this.state.penUserId ? (
+                    {/* {this.state.visitingUserId === this.state.penUserId ? ( */}
                         <button onClick={this.deletePen} className="delete">Delete</button>
-                    ) : (
+                    {/* ) : (
                             null
-                        )}
+                        )} */}
                 </div>
             </div>
             </div >
