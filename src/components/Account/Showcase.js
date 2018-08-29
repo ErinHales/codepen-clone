@@ -4,6 +4,7 @@ import { DragDropContext } from 'react-dnd';
 import Showcase_Pen from './Showcase_Pens';
 import Showcase_Layout2 from './Showcase_Layout2';
 import axios from 'axios';
+import Navbar from '../NavBar/NavBar';
 class Showcase extends Component {
     constructor() {
         super();
@@ -12,7 +13,6 @@ class Showcase extends Component {
             currentPage: 0,
         }
     }
-
     getUserPens = () => {
         axios.get(`/api/pens/user/0/${this.state.currentPage}?type=new`)
             .then(res => {
@@ -54,42 +54,44 @@ class Showcase extends Component {
     }
     render() {
         return (
-            <div className="component-showcase">
-                <div className="showcase-container">
-                    <div className="header">
-                        <h1>Organize Your Profile Showcase</h1>
-                        <p>Put yourself out there, being awesome is long tail. - Allan Branch</p>
-                    </div>
-                    <div className="showcase-body-container">
-                        <div className="showcase-pens">
-                            <div className="showcase-box">
-                                <div className="showcase-header">
-                                    <p>Find Your Pens &</p>
-                                    <h2>Drag From Here</h2>
-                                </div>
-                                <div className="showcase-filter">
-                                    <div className="filter-links">
-                                        <p>Public</p>
-                                        <p>Popular</p>
+            <div>
+                <Navbar></Navbar>
+                <div className="component-showcase">
+                    <div className="showcase-container">
+                        <div className="header">
+                            <h1>Organize Your Profile Showcase</h1>
+                            <p>Put yourself out there, being awesome is long tail. - Allan Branch</p>
+                        </div>
+                        <div className="showcase-body-container">
+                            <div className="showcase-pens">
+                                <div className="showcase-box">
+                                    <div className="showcase-header">
+                                        <p>Find Your Pens &</p>
+                                        <h2>Drag From Here</h2>
                                     </div>
-                                    <div className="filter-box">
-                                        <input placeholder="Search Your Pens..." type="text" />
+                                    <div className="showcase-filter">
+                                        <div className="filter-links">
+                                            <p>Public</p>
+                                            <p>Popular</p>
+                                        </div>
+                                        <div className="filter-box">
+                                            <input placeholder="Search Your Pens..." type="text" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="showcase-grid">
-                                    {this.state.pens[0] ? this.state.pens[this.state.currentPage].map((pen, index) => {
-                                        return <Showcase_Pen key={pen.pen_id} penId={pen.pen_id} css={pen.css} html={pen.html} js={pen.js} scripts={pen.scripts} user_id={pen.user_id} />
-                                    }) : null }
-                                </div>
-                                <div className="paginationButtons">
-                                    <button className="nextButton" style={{ display: this.state.currentPage === 0 ? "none" : "block" }} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
-                                    <button className="nextButton" onClick={() => this.nextPage()}>Next<i className="fa fa-angle-right"></i></button>
+                                    <div className="showcase-grid">
+                                        {this.state.pens[0] ? this.state.pens[this.state.currentPage].map((pen, index) => {
+                                            return <Showcase_Pen key={pen.pen_id} penId={pen.pen_id} css={pen.css} html={pen.html} js={pen.js} scripts={pen.scripts} user_id={pen.user_id} />
+                                        }) : null}
+                                    </div>
+                                    <div className="paginationButtons">
+                                        <button className="nextButton" style={{ display: this.state.currentPage === 0 ? "none" : "block" }} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
+                                        <button className="nextButton" onClick={() => this.nextPage()}>Next<i className="fa fa-angle-right"></i></button>
+                                    </div>
                                 </div>
                             </div>
+                            <Showcase_Layout2 />
                         </div>
-                        <Showcase_Layout2 />
                     </div>
-
                 </div>
             </div>
         )
