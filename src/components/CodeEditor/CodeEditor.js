@@ -346,6 +346,7 @@ export default class CodeEditor extends Component {
                     this.getPenData(this.props.match.params.id)
                 })
         }
+    }
     updateDescription = (e) => {
         this.setState({
             description: e.target.value

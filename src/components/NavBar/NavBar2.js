@@ -52,7 +52,7 @@ class NavBar2 extends Component {
     return(
       <div className='titleChng'>
       <div>
-        <input type='text' className='titleInput' value={this.props.penName} onKeyDown={(e) => e.keyCode === 13 ? this.props.savePen() : null } onChange={(e) => this.props.updateName(e)}/>
+        <input style={{width: (this.props.penName.length * 13) - ( ((this.props.penName.length * 13) / 4.3))}} type='text' className='titleInput' value={this.props.penName} onKeyDown={(e) => e.keyCode === 13 ? this.props.savePen() : null } onChange={(e) => this.props.updateName(e)}/>
         <img src="https://vignette.wikia.nocookie.net/freestyle2/images/7/79/Icon_edit.png/revision/latest?cb=20160907075220" alt="" className='penIcon' onClick={this.props.savePen}/>
       </div>
       <p className='APenBy'>A PEN BY 
@@ -61,7 +61,7 @@ class NavBar2 extends Component {
     )}else {
       return(
         <div className='titleChng'>
-          <p>{this.props.penName}{console.log(this.props.penName)}</p>
+          <p style={{width: (this.props.penName.length * 13) - ( ((this.props.penName.length * 13) / 4.3))}}>{this.props.penName}</p>
           <p className='APenBy'>A PEN BY 
             <Link to={`/profile/${this.props.penUserId}`} className='link'><span className='userName'>{this.props.userName}</span></Link></p>
       </div>

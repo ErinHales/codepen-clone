@@ -491,6 +491,7 @@ span {
 
 .penInfo,
 .penPopularity {
+  color: #C5C8D4;
   display: flex;
   align-items: center; }
 
@@ -1027,7 +1028,7 @@ span {
 
 .component-account {
   background-color: #191A1D;
-  min-height: 170vh;
+  padding-bottom: 80px;
   font-family: "Lato", sans-serif; }
   .component-account .account-container {
     position: relative;
@@ -1252,7 +1253,6 @@ span {
 
 .b-line {
   height: 70px;
-  width: calc(100vw - 20px);
   background: black;
   color: white;
   display: flex;
@@ -1266,13 +1266,14 @@ span {
 
 .Content {
   width: 100%;
+  overflow: hidden;
   background: #191A1D; }
 
 .UserInfo {
   color: white;
   position: absolute;
   top: 170px;
-  width: calc(100vw - 20px);
+  width: calc(100vw - 25px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2367,7 +2368,6 @@ span {
   color: gray; }
 
 .Name2 {
-  width: 20%;
   min-width: 175px;
   display: flex;
   align-items: bottom;
@@ -2478,7 +2478,7 @@ span {
   border: none;
   font-family: 'Lato', sans-serif;
   font-size: 20px;
-  width: 140px; }
+  width: 180px; }
 
 .titleInput::-webkit-input-placeholder {
   color: whitesmoke;

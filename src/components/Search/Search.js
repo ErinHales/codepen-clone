@@ -97,6 +97,7 @@ export default class Search extends Component {
             var usersList = users.map(user => {
                 return (
                     <div className="user" key={user.id}>
+                        
                         <img src={user.img_url} alt="" />
                         <Link to={`/profile/${user.id}`}><h3>{user.name}</h3></Link>
                     </div>
@@ -116,9 +117,9 @@ export default class Search extends Component {
                         <h4>Order results by</h4>
                         <div className="filterContainer">
                             <input name="filter" type="radio" value="popularity" id="popularity" onChange={(e) => this.handleUpdate(e, "filter")} defaultChecked></input>
-                            <label htmlFor="popularity">Relevance & Popularity</label>
+                            <label for="popularity">Relevance & Popularity</label>
                             <input name="filter" type="radio" value="currency" id="currency" onChange={(e) => this.handleUpdate(e, "filter")}></input>
-                            <label htmlFor="currency">Newest First</label>
+                            <label for="currency">Newest First</label>
                         </div>
                     </div>
                     <div className="penContainer">
