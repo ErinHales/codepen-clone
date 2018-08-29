@@ -2134,7 +2134,7 @@ span {
       .component-showcase .showcase-container .showcase-grid .row:last-child {
         margin-top: 1rem; }
       .component-showcase .showcase-container .showcase-grid .grid-item {
-        height: 150px;
+        min-height: 100px;
         width: 31%;
         margin-bottom: 1rem; }
         .component-showcase .showcase-container .showcase-grid .grid-item .overlay .text {
@@ -2222,7 +2222,7 @@ span {
           margin-bottom: 0.25rem; }
       .component-showcase .showcase-container .showcase-body-container .showcase-pens {
         width: 45%;
-        height: 100%;
+        height: 82vh;
         background-color: #32333B;
         padding: 20px;
         border-radius: 5px; }
@@ -2230,6 +2230,7 @@ span {
         width: 47%;
         background-color: #32333B;
         padding: 20px;
+        height: 140vh;
         border-radius: 5px; }
         .component-showcase .showcase-container .showcase-body-container .showcase-layout .frame-overlay {
           position: relative;
@@ -2264,7 +2265,7 @@ span {
             margin-bottom: 1.5rem; }
           .component-showcase .showcase-container .showcase-body-container .showcase-layout .showcase-layout-container .showcase-main {
             width: 100%;
-            height: 269px; }
+            min-height: 200px; }
             .component-showcase .showcase-container .showcase-body-container .showcase-layout .showcase-layout-container .showcase-main img {
               width: 100%;
               height: 100%; }
@@ -2293,8 +2294,8 @@ span {
                   cursor: all-scroll; }
         .component-showcase .showcase-container .showcase-body-container .showcase-layout .delete-container {
           text-align: center;
-          margin-top: 3rem;
-          margin-bottom: 2rem; }
+          margin: 1rem 0;
+          padding: 1rem 0; }
           .component-showcase .showcase-container .showcase-body-container .showcase-layout .delete-container p,
           .component-showcase .showcase-container .showcase-body-container .showcase-layout .delete-container i {
             color: #FFFFFF; }

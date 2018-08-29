@@ -111,7 +111,6 @@ class Showcase_Layout2 extends Component {
         let showcaseMainCopy = Object.assign({}, this.state.showCaseMain);
         axios.get('/api/layout')
             .then(res => {
-                console.log(res);
                 if (res.data.length > 0) {
                     res.data.forEach((item, index) => {
                         if (index === 0) {

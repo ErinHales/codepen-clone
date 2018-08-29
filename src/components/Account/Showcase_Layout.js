@@ -123,7 +123,7 @@ class Showcase_Layout extends Component {
         return connectDropTarget(
             connectDragSource(
                 <div className="grid-item"  >
-                    <div styles={{ opacity }} className="frame-overlay">
+                    <div style={{ opacity }} className="frame-overlay">
                         <iframe style={{ backgroundColor: isEmpty ? 'white' : 'transparent' }} title={penId} scrolling="no" className="pen-iframe" srcDoc={srcDoc}></iframe>
                     </div>
                 </div>
