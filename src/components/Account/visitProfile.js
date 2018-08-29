@@ -3,14 +3,17 @@ import Pen from '../Pen/Pen'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import NavBar from '../NavBar/NavBar'
-
+import ShowCaseProfile from './ShowCaseProfile';
 class Profile extends Component {
     constructor() {
         super()
         this.state = {
             user: '',
             pens: [],
-            currentPage: 0
+            currentPage: 0,
+            userInfo: {},
+            showcase: [],
+            displayShow: false
         }
 
     }
@@ -34,6 +37,12 @@ class Profile extends Component {
                     currentPage: 0
                 })
             }
+        })
+        axios.get('/api/layout').then(res => {
+            console.log(res.data)
+            this.setState({
+                showcase: res.data
+            })
         })
     }
 
@@ -74,6 +83,13 @@ class Profile extends Component {
         })
     }
 
+    toggleDisplayShowcase = () => {
+        this.setState({
+          displayShowcase: !this.state.displayShowcase,
+          currentPage: 0
+        })
+      }
+
     render() {
         let { currentPage, pens, user } = this.state;
         if (pens[currentPage]) {
@@ -97,7 +113,6 @@ class Profile extends Component {
                 );
             })
         }
-        console.log(pensList);
         return (
             <div>
                 <NavBar />
@@ -130,8 +145,8 @@ class Profile extends Component {
 
                         <div className='Pen-InputWrapper'>
                             <div>
-                                <h2 className='Pens2'>All Pens</h2>
-                                <h2 className='Proj2'>Showcase</h2>
+                            <h2 className={this.state.displayShowcase ? 'Pens2' : ' Pens2 link-active '} onClick={() => this.state.displayShowcase ? this.toggleDisplayShowcase() : null} >All Pens</h2>
+                <h2 className={this.state.displayShowcase ? 'Proj2 link-active' : 'Proj2'} onClick={() => !this.state.displayShowcase ? this.toggleDisplayShowcase() : null} >Showcase</h2>
                             </div>
                             <input className='Inp-box' type="text" placeholder='Search These Pens...' />
                         </div>
@@ -139,7 +154,7 @@ class Profile extends Component {
                         <div className='ligthgray-line'></div>
                         <div className='gray-line'></div>
 
-                        {this.state.pens ? (
+                        {this.state.displayShowcase ?  <ShowCaseProfile showcase={this.state.showcase} /> : this.state.pens ? (
                             <div className="pen-window">
                                 <div>
                                     {pensList}
