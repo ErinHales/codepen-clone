@@ -7,8 +7,8 @@ class Showcase_Layout2 extends Component {
     constructor() {
         super();
         this.state = {
-            showCaseLayout: [{ id: 1, html: '', css: '', js: '', penId: '' }, { id: 2, html: '', css: '', js: '', penId: '' }, { id: 3, html: '', css: '', js: '', penId: '' }, { id: 4, html: '', css: '', js: '', penId: '' }, { id: 5, html: '', css: '', js: '', penId: '' }, { id: 6, html: '', css: '', js: '', penId: '' }],
-            showCaseMain: { id: 0, penId: '', css: '', html: '', js: '' }
+            showCaseLayout: [{ id: 1, html: '', css: '', js: '', penId: '', scripts: '' }, { id: 2, html: '', css: '', js: '', penId: '', scripts: '' }, { id: 3, html: '', css: '', js: '', penId: '', scripts: '' }, { id: 4, html: '', css: '', js: '', penId: '', scripts: '' }, { id: 5, html: '', css: '', js: '', penId: '', scripts: '' }, { id: 6, html: '', css: '', js: '', penId: '', scripts: '' }],
+            showCaseMain: { id: 0, penId: '', css: '', html: '', js: '', scripts: '' }
         }
     }
     deleteItem = async penId => {
@@ -37,11 +37,12 @@ class Showcase_Layout2 extends Component {
                 })
         }
     }
-    addItem = (gridId, css, html, js, penId) => {
+    addItem = (gridId, penId) => {
         let gridIndex = this.state.showCaseLayout[gridId - 1];
+      
         // IF the showcase is empty and item to showcase
         if (!this.state.showCaseMain.penId) {
-            this.addShowcaseMain(penId, css, html, js);
+            this.addShowcaseMain(penId);
         }
         // This is to replace a grid item fromt the left side
         else if (gridIndex.penId) {
@@ -73,7 +74,7 @@ class Showcase_Layout2 extends Component {
                 this.updateGrid();
             })
     }
-    addShowcaseMain = (penId, css, html, js) => {
+    addShowcaseMain = (penId) => {
         // before adding something to the showcase check if it exist in the gird
         if (this.state.showCaseLayout.findIndex(e => e.penId === penId) === -1) {
             // If it the item is in the grid and wants to be showcase then showcase needs to be update
@@ -95,31 +96,38 @@ class Showcase_Layout2 extends Component {
         }
     }
     updateGrid() {
-        // let showcaseLayoutCopy = this.state.showCaseLayout.slice().map(e => {
-        //     return Object.assign({}, e);
-        // });
         let showcaseLayoutCopy = [{ id: 1, html: '', css: '', js: '', penId: '' }, { id: 2, html: '', css: '', js: '', penId: '' }, { id: 3, html: '', css: '', js: '', penId: '' }, { id: 4, html: '', css: '', js: '', penId: '' }, { id: 5, html: '', css: '', js: '', penId: '' }, { id: 6, html: '', css: '', js: '', penId: '' }];
         let showcaseMainCopy = Object.assign({}, this.state.showCaseMain);
         axios.get('/api/layout')
             .then(res => {
-                res.data.forEach((item, index) => {
-                    if (index === 0) {
-                        showcaseMainCopy.penId = item.pen_id;
-                        showcaseMainCopy.css = item.css;
-                        showcaseMainCopy.html = item.html;
-                        showcaseMainCopy.js = item.js;
-                    }
-                    else {
-                        showcaseLayoutCopy[index - 1].penId = item.pen_id;
-                        showcaseLayoutCopy[index - 1].css = item.css;
-                        showcaseLayoutCopy[index - 1].html = item.html;
-                        showcaseLayoutCopy[index - 1].js = item.js;
-                    }
-                })
-                this.setState({
-                    showCaseLayout: showcaseLayoutCopy,
-                    showCaseMain: showcaseMainCopy
-                })
+                console.log(res);
+                if (res.data.length > 0) {
+                    res.data.forEach((item, index) => {
+                        if (index === 0) {
+                            showcaseMainCopy.penId = item.pen_id;
+                            showcaseMainCopy.css = item.css;
+                            showcaseMainCopy.html = item.html;
+                            showcaseMainCopy.js = item.js;
+                            showcaseMainCopy.scripts = item.scripts;
+                        }
+                        else {
+                            showcaseLayoutCopy[index - 1].penId = item.pen_id;
+                            showcaseLayoutCopy[index - 1].css = item.css;
+                            showcaseLayoutCopy[index - 1].html = item.html;
+                            showcaseLayoutCopy[index - 1].js = item.js;
+                            showcaseLayoutCopy[index - 1].scripts = item.scripts;
+                        }
+                    })
+                    this.setState({
+                        showCaseLayout: showcaseLayoutCopy,
+                        showCaseMain: showcaseMainCopy
+                    })
+                }
+                else {
+                    this.setState({
+                        showCaseMain: { id: 0, penId: '', css: '', html: '', js: '', scripts: '' }
+                    })
+                }
             })
             .catch(err => console.log(err))
     }
@@ -142,7 +150,7 @@ class Showcase_Layout2 extends Component {
         else {
             axios.delete(`/api/layout/${penId}`)
                 .then(() => {
-                    this.updateGrid()
+                    this.updateGrid();
                 })
                 .catch(err => console.log(err));
         }

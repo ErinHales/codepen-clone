@@ -14,11 +14,11 @@ class Profile extends Component {
       currentPage: 0,
       userInfo: {},
       showcase: [],
-      search: ''
+      search: '',
+      displayShowcase: false
     }
 
   }
-
   componentDidMount() {
     axios.get(`/api/users?type=user`).then(res => {
       this.setState({
@@ -109,6 +109,13 @@ class Profile extends Component {
       })
     })
   }
+  
+  toggleDisplayShowcase = () => {
+    this.setState({
+      displayShowcase: !this.state.displayShowcase,
+      currentPage: 0
+    })
+  }
 
   render() {
     let { currentPage, pens, user } = this.state;
@@ -176,8 +183,8 @@ class Profile extends Component {
 
             <div className='Pen-InputWrapper'>
               <div>
-                <h2 className='Pens2'>All Pens</h2>
-                <h2 className='Proj2'>Showcase</h2>
+                <h2 className={this.state.displayShowcase ? 'Pens2' : ' Pens2 link-active '} onClick={() => this.state.displayShowcase ? this.toggleDisplayShowcase() : null} >All Pens</h2>
+                <h2 className={this.state.displayShowcase ? 'Proj2 link-active' : 'Proj2'} onClick={() => !this.state.displayShowcase ? this.toggleDisplayShowcase() : null} >Showcase</h2>
               </div>
               <input className='Inp-box' type="text" placeholder='Search These Pens...' />
             </div>
@@ -185,25 +192,27 @@ class Profile extends Component {
             <div className='ligthgray-line'></div>
             <div className='gray-line'></div>
 
-            <ShowCaseProfile showcase={this.state.showcase} />
 
-            {/* {this.state.pens ? (
-              <div className="pen-window">
-                <div>
-                  {pensList}
+            {this.state.displayShowcase ? <ShowCaseProfile showcase={this.state.showcase} /> :
+              this.state.pens ? (
+                <div className="pen-window">
+                  <div>
+                    {pensList}
+                  </div>
+                  <div className="nextButtonContainer">
+                    <button className="nextButton" style={{ display: this.state.currentPage === 0 ? "none" : "block" }} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
+                    <button className='pagination' onClick={() => this.nextPage()}>Next <i className="fa fa-angle-right"></i></button>
+                  </div>
                 </div>
-                <div className="nextButtonContainer">
-                  <button className="nextButton" style={{ display: this.state.currentPage === 0 ? "none" : "block" }} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
-                  <button className='pagination' onClick={() => this.nextPage()}>Next <i className="fa fa-angle-right"></i></button>
-                </div>
-              </div>
-            ) : (
-                <div className="goMakePens">
-                  <h1>You haven't <br />made any pens yet!</h1>
-                  <Link to="/editor"><button>Create Pen</button></Link>
-                </div>
+              ) : (
+                  <div className="goMakePens">
+                    <h1>You haven't <br />made any pens yet!</h1>
+                    <Link to="/editor"><button>Create Pen</button></Link>
+                  </div>
+                )
+            }
 
-              )} */}
+
           </div>
         </div>
       </div>

@@ -1354,9 +1354,28 @@ span {
     align-items: center; }
 
 .Pens2 {
-  color: white;
   margin-right: 20px;
   cursor: pointer; }
+
+.showcase-empty {
+  text-align: center;
+  padding: 80px 0;
+  font-family: "Lato", sans-serif; }
+  .showcase-empty h2 {
+    font-size: 4rem;
+    color: #fff;
+    margin-bottom: 2rem; }
+  .showcase-empty button {
+    padding: 12px 8px;
+    border-radius: 5px;
+    font-size: 1.25rem;
+    background-color: #FFDD40;
+    font-weight: bold; }
+    .showcase-empty button:hover {
+      cursor: pointer; }
+
+.link-active {
+  color: white !important; }
 
 .Proj2 {
   margin-right: 20px; }
@@ -2130,6 +2149,8 @@ span {
         height: 150px;
         width: 31%;
         margin-bottom: 1rem; }
+        .component-showcase .showcase-container .showcase-grid .grid-item .overlay .text {
+          display: none; }
         .component-showcase .showcase-container .showcase-grid .grid-item:hover {
           cursor: all-scroll; }
         .component-showcase .showcase-container .showcase-grid .grid-item .frame-overlay {
@@ -2173,6 +2194,34 @@ span {
       margin-top: 2.5rem;
       display: flex;
       justify-content: space-between; }
+      .component-showcase .showcase-container .showcase-body-container .nextButton {
+        border-radius: 2px;
+        background-color: transparent;
+        border: 3px solid white;
+        color: white;
+        padding: 10px;
+        font-family: "Lato", sans-serif;
+        font-size: 15px;
+        text-align: center;
+        margin: 0 !important;
+        margin-left: 10px !important; }
+      .component-showcase .showcase-container .showcase-body-container .paginationButtons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 5px 0 20px 0 !important;
+        width: 65% !important;
+        justify-content: flex-end; }
+      .component-showcase .showcase-container .showcase-body-container .paginationButtons .fa-angle-left {
+        font-size: 20px;
+        margin: 0px 10px 0px 0px; }
+      .component-showcase .showcase-container .showcase-body-container .paginationButtons .fa-angle-right {
+        font-size: 20px;
+        margin: 0px 0px 0px 10px; }
+      .component-showcase .showcase-container .showcase-body-container .nextButton:hover {
+        background-color: white;
+        color: black;
+        cursor: pointer; }
       .component-showcase .showcase-container .showcase-body-container .showcase-header {
         color: #FFFFFF;
         text-align: center;
