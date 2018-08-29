@@ -21,7 +21,9 @@ class Showcase_Layout2 extends Component {
         if (index === updatedGrid.length - 1) {
             axios.delete(`/api/layout/${penId}`)
                 .then(() => {
+                    
                     this.updateGrid();
+                    this.props.showAlert();
                 })
                 .catch(err => console.log(err))
         }
@@ -33,13 +35,15 @@ class Showcase_Layout2 extends Component {
             await axios.delete(`/api/layout/${penId}`);
             await axios.put('/api/layout/position', { updatedGrid })
                 .then(() => {
+                   
                     this.updateGrid();
+                    this.props.showAlert();
                 })
         }
     }
     addItem = (gridId, penId) => {
         let gridIndex = this.state.showCaseLayout[gridId - 1];
-      
+
         // IF the showcase is empty and item to showcase
         if (!this.state.showCaseMain.penId) {
             this.addShowcaseMain(penId);
@@ -48,7 +52,9 @@ class Showcase_Layout2 extends Component {
         else if (gridIndex.penId) {
             axios.put('/api/layout', { penId, gridId })
                 .then(() => {
+                    
                     this.updateGrid();
+                    this.props.showAlert();
                 })
         }
         // This ensures that there arent any duplicates 
@@ -62,7 +68,9 @@ class Showcase_Layout2 extends Component {
             }
             axios.post('/api/layout', { penId, gridId: gridIndex + 1 })
                 .then(() => {
+                   
                     this.updateGrid();
+                    this.props.showAlert();
                 })
                 .catch(err => console.log(err));
         }
@@ -72,6 +80,7 @@ class Showcase_Layout2 extends Component {
         axios.put('/api/showcase', { penId: grid.penId, gridId: grid.gridItem, showcasePen: showcase.penId })
             .then(() => {
                 this.updateGrid();
+                this.props.showAlert();
             })
     }
     addShowcaseMain = (penId) => {
@@ -82,6 +91,7 @@ class Showcase_Layout2 extends Component {
                 axios.put('/api/showcase', { penId })
                     .then(() => {
                         this.updateGrid();
+                        this.props.showAlert();
                     })
             }
             // Showcase is empty and there is no other items on the grid
@@ -89,6 +99,7 @@ class Showcase_Layout2 extends Component {
                 axios.post('/api/layout', { penId, gridId: 0 })
                     .then(() => {
                         this.updateGrid();
+                        this.props.showAlert();
                     })
                     .catch(err => console.log(err));
             }
@@ -144,13 +155,16 @@ class Showcase_Layout2 extends Component {
                 .catch(err => console.log(err));
             await axios.put('/api/layout/position', { updatedGrid })
                 .then(() => {
+                    
                     this.updateGrid();
+                    this.props.showAlert();
                 })
         }
         else {
             axios.delete(`/api/layout/${penId}`)
                 .then(() => {
                     this.updateGrid();
+                    this.props.showAlert();
                 })
                 .catch(err => console.log(err));
         }

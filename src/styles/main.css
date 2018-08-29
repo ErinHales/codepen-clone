@@ -2111,6 +2111,17 @@ span {
   background-color: #191A1D;
   min-height: 100vh;
   padding-top: 3.25rem; }
+  .component-showcase .alert {
+    background-color: #FFDD40;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 10;
+    display: none; }
+    .component-showcase .alert p {
+      padding: 10px 8px;
+      font-size: 1.1rem; }
   .component-showcase .showcase-container {
     width: 97%;
     margin: 0 auto; }

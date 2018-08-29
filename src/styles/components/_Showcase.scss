@@ -2,6 +2,19 @@
     background-color: $bg-dark-black;
     min-height: 100vh;
     padding-top: 3.25rem;
+    .alert{
+        background-color: #FFDD40;
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        z-index: 10;
+        display: none;
+        p{
+            padding: 10px 8px;
+            font-size: 1.1rem;
+        }
+    }
     .showcase-container {
         // border: 1px solid red;
         width: 97%;
