@@ -85,7 +85,7 @@ class Account extends Component {
 
     saveInfo() {
         let { location, bio, link1, link2, link3, forHire } = this.state;
-        if (this.state.userInfoExists) {
+        if (this.state.userInfoExists === true) {
             axios.put('/api/update/userinfo', { location, bio, link1, link2, link3, forHire }).then(console.log("User information successfully updated"))
         } else {
             axios.post('/api/setuserinfo', { location, bio, link1, link2, link3, forHire }).then(console.log("User information successfully added"));
