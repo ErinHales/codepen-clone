@@ -1,4 +1,132 @@
-.challenges {
+.challenge {
     background: url('https://static.codepen.io/assets/logos/codepen-logo-pattern-725360e4ce5b66f968c7f39c80999bdeaa3cbe2f18eac75d58b01f8cf55c26ab.png');
     background-repeat: repeat;
+    min-height: 105vh; // active styles for all inputs
+    padding-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.Title2{
+    font-family: $font-Black-Han-Sans;
+    line-height: 1.1;
+    font-size: 70px;
+    text-transform: uppercase;
+    z-index: 2;
+    position: relative;
+    bottom: 50px;
+}
+
+.sparkles{
+    position: relative;
+    top: 50px;
+}
+
+.text3{
+    font-family: 'Lato', sans-serif;
+    font-size: 28px;
+    color: rgb(156, 153, 182);
+    font-weight: 100;
+    padding-left: 375px;
+    padding-right: 375px;
+}
+
+.subscribe{
+    height: 50px;
+    width: 300px;
+    border: 1px solid black;
+    font-family: 'Lato', sans-serif;
+    border-radius: 5px;
+    background-color: #47cf73;
+    color: black;
+    font-size: 26px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    padding: 5px;
+    text-align: center;
+    position: relative;
+    left: 40%;
+    padding-left: 25px;
+    margin: 25px;
+}
+
+.subscribe:hover{
+    background: #65e68e;
+    cursor: pointer;
+}
+
+.challenge1{
+    height: 350px;
+    width: 650px;
+    background: rgba(0, 0, 0, 0.363);
+    position: relative;
+    left: 31%;
+    margin-top: 50px;
+    padding: 30px;
+    padding-top: 0px;
+    font-family: 'Lato', sans-serif;
+}
+
+.august{
+    height: 20px;
+    width: 200px;
+    background: rgb(233, 233, 63);
+    color: black;
+    font-size: 14px;
+    border-radius: 8px;
+    padding: 6px;
+    position: relative;
+    right: 40px;
+    transform: rotate(-15deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.teach{
+    font-family: $font-Black-Han-Sans;
+    font-size: 40px;
+    text-align: start;
+    color: #76DAFF;
+    margin-bottom: 10px;
+}
+
+.teach:hover{
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+.teacher{
+    height: 50px;
+}
+
+.text2{
+    text-align: start;
+    line-height: 25px;
+    margin-bottom: 30px;
+}
+
+.box3{
+    height: 90px;
+    width: 620px;
+    background: #2e2e2e;
+    display: flex;
+    font-size: 14px;
+    padding: 15px;
+    align-content: center;
+    align-items: center;
+    text-align: start;
+}
+
+.Event{
+    height: 40px;
+}
+
+.text4{
+    width: 270px;
+    margin-left: 35px;
+    color: gray;
 }

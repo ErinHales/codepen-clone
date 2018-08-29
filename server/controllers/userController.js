@@ -90,7 +90,7 @@ module.exports = {
     },
     updateUserInfo(req, res) {
         let { location, bio, link1, link2, link3, forHire } = req.body;
-        req.app.get("db").update_user_info([req.session.userid, location, bio, link1, link2, link3, forHire, theme]).then(() => {
+        req.app.get("db").update_user_info([req.session.userid, location, bio, link1, link2, link3, forHire]).then(() => {
             res.sendStatus(200);
         }).catch(err => {
             console.error(err)

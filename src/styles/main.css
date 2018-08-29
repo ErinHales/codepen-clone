@@ -1264,6 +1264,10 @@ span {
     align-items: center;
     z-index: 30; }
 
+.showCaseContainer {
+  width: 80vw;
+  margin: 0 auto; }
+
 .Content {
   width: 100%;
   overflow: hidden;
@@ -1427,7 +1431,7 @@ span {
   justify-content: space-around;
   align-items: center; }
   .pen-window > :nth-child(1) {
-    width: 80%;
+    width: 100;
     border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
@@ -2160,6 +2164,17 @@ span {
   background-color: #191A1D;
   min-height: 100vh;
   padding-top: 3.25rem; }
+  .component-showcase .alert {
+    background-color: #FFDD40;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 10;
+    display: none; }
+    .component-showcase .alert p {
+      padding: 10px 8px;
+      font-size: 1.1rem; }
   .component-showcase .showcase-container {
     width: 97%;
     margin: 0 auto; }
@@ -2172,7 +2187,7 @@ span {
       .component-showcase .showcase-container .showcase-grid .row:last-child {
         margin-top: 1rem; }
       .component-showcase .showcase-container .showcase-grid .grid-item {
-        height: 150px;
+        min-height: 100px;
         width: 31%;
         margin-bottom: 1rem; }
         .component-showcase .showcase-container .showcase-grid .grid-item .overlay .text {
@@ -2260,7 +2275,7 @@ span {
           margin-bottom: 0.25rem; }
       .component-showcase .showcase-container .showcase-body-container .showcase-pens {
         width: 45%;
-        height: 100%;
+        height: 82vh;
         background-color: #32333B;
         padding: 20px;
         border-radius: 5px; }
@@ -2268,6 +2283,7 @@ span {
         width: 47%;
         background-color: #32333B;
         padding: 20px;
+        height: 140vh;
         border-radius: 5px; }
         .component-showcase .showcase-container .showcase-body-container .showcase-layout .frame-overlay {
           position: relative;
@@ -2302,7 +2318,7 @@ span {
             margin-bottom: 1.5rem; }
           .component-showcase .showcase-container .showcase-body-container .showcase-layout .showcase-layout-container .showcase-main {
             width: 100%;
-            height: 269px; }
+            min-height: 200px; }
             .component-showcase .showcase-container .showcase-body-container .showcase-layout .showcase-layout-container .showcase-main img {
               width: 100%;
               height: 100%; }
@@ -2331,8 +2347,8 @@ span {
                   cursor: all-scroll; }
         .component-showcase .showcase-container .showcase-body-container .showcase-layout .delete-container {
           text-align: center;
-          margin-top: 3rem;
-          margin-bottom: 2rem; }
+          margin: 1rem 0;
+          padding: 1rem 0; }
           .component-showcase .showcase-container .showcase-body-container .showcase-layout .delete-container p,
           .component-showcase .showcase-container .showcase-body-container .showcase-layout .delete-container i {
             color: #FFFFFF; }
@@ -2578,3 +2594,121 @@ span {
   display: flex;
   flex-wrap: wrap;
   justify-content: center; }
+
+.challenge {
+  background: url("https://static.codepen.io/assets/logos/codepen-logo-pattern-725360e4ce5b66f968c7f39c80999bdeaa3cbe2f18eac75d58b01f8cf55c26ab.png");
+  background-repeat: repeat;
+  min-height: 105vh;
+  padding-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: whitesmoke; }
+
+.Title2 {
+  font-family: "Black Han Sans", sans-serif;
+  line-height: 1.1;
+  font-size: 70px;
+  text-transform: uppercase;
+  z-index: 2;
+  position: relative;
+  bottom: 50px; }
+
+.sparkles {
+  position: relative;
+  top: 50px; }
+
+.text3 {
+  font-family: 'Lato', sans-serif;
+  font-size: 28px;
+  color: #9c99b6;
+  font-weight: 100;
+  padding-left: 375px;
+  padding-right: 375px; }
+
+.subscribe {
+  height: 50px;
+  width: 300px;
+  border: 1px solid black;
+  font-family: 'Lato', sans-serif;
+  border-radius: 5px;
+  background-color: #47cf73;
+  color: black;
+  font-size: 26px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  padding: 5px;
+  text-align: center;
+  position: relative;
+  left: 40%;
+  padding-left: 25px;
+  margin: 25px; }
+
+.subscribe:hover {
+  background: #65e68e;
+  cursor: pointer; }
+
+.challenge1 {
+  height: 350px;
+  width: 650px;
+  background: rgba(0, 0, 0, 0.363);
+  position: relative;
+  left: 31%;
+  margin-top: 50px;
+  padding: 30px;
+  padding-top: 0px;
+  font-family: 'Lato', sans-serif; }
+
+.august {
+  height: 20px;
+  width: 200px;
+  background: #e9e93f;
+  color: black;
+  font-size: 14px;
+  border-radius: 8px;
+  padding: 6px;
+  position: relative;
+  right: 40px;
+  transform: rotate(-15deg);
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.teach {
+  font-family: "Black Han Sans", sans-serif;
+  font-size: 40px;
+  text-align: start;
+  color: #76DAFF;
+  margin-bottom: 10px; }
+
+.teach:hover {
+  color: whitesmoke;
+  cursor: pointer; }
+
+.teacher {
+  height: 50px; }
+
+.text2 {
+  text-align: start;
+  line-height: 25px;
+  margin-bottom: 30px; }
+
+.box3 {
+  height: 90px;
+  width: 620px;
+  background: #2e2e2e;
+  display: flex;
+  font-size: 14px;
+  padding: 15px;
+  align-content: center;
+  align-items: center;
+  text-align: start; }
+
+.Event {
+  height: 40px; }
+
+.text4 {
+  width: 270px;
+  margin-left: 35px;
+  color: gray; }
