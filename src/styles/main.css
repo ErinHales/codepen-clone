@@ -285,6 +285,7 @@
   font-size: 14px; }
 
 .signup-input {
+  color: black;
   background: #eaedf0;
   border: 3px solid #eaedf0;
   border-radius: 3px;
@@ -1251,12 +1252,17 @@ span {
 
 .b-line {
   height: 70px;
-  width: 100%;
+  width: calc(100vw - 20px);
   background: black;
   color: white;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   min-width: 300px; }
+  .b-line .links {
+    display: flex;
+    align-items: center;
+    z-index: 30; }
 
 .Content {
   width: 100%;
@@ -1266,11 +1272,14 @@ span {
   color: white;
   position: absolute;
   top: 170px;
-  width: 100vw;
+  width: calc(100vw - 20px);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center; }
+  .UserInfo h3 {
+    padding: 5px;
+    font-family: "Lato", sans-serif; }
 
 .UserName {
   font-size: 40px;
@@ -1288,20 +1297,28 @@ span {
   width: 130px;
   background: #181818;
   border: 4px #2e2d2d solid;
-  box-shadow: 1px 1px #1d1c1c;
+  box-shadow: 1px 1px #381b1b;
   overflow: hidden;
   margin: auto; }
 
-.Hire {
+.Hire,
+.b-line .links a {
   font-family: 'Lato', sans-serif;
-  position: relative;
-  left: 95%;
+  margin: 0px 10px;
   font-size: 11px;
   border: 1px solid white;
   padding: 5px;
   border-radius: 3px;
   min-width: 42px;
-  cursor: pointer; }
+  cursor: pointer;
+  color: white;
+  text-decoration: none; }
+
+.Hire:hover,
+.b-line .links a:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black; }
 
 .Hire:hover {
   background: whitesmoke;
@@ -1311,6 +1328,7 @@ span {
   color: gray;
   font-family: 'Lato', sans-serif;
   margin-left: 20px;
+  display: flex;
   cursor: pointer; }
 
 .followers:hover {
@@ -1357,9 +1375,28 @@ span {
     align-items: center; }
 
 .Pens2 {
-  color: white;
   margin-right: 20px;
   cursor: pointer; }
+
+.showcase-empty {
+  text-align: center;
+  padding: 80px 0;
+  font-family: "Lato", sans-serif; }
+  .showcase-empty h2 {
+    font-size: 4rem;
+    color: #fff;
+    margin-bottom: 2rem; }
+  .showcase-empty button {
+    padding: 12px 8px;
+    border-radius: 5px;
+    font-size: 1.25rem;
+    background-color: #FFDD40;
+    font-weight: bold; }
+    .showcase-empty button:hover {
+      cursor: pointer; }
+
+.link-active {
+  color: white !important; }
 
 .Proj2 {
   margin-right: 20px; }
@@ -1385,7 +1422,7 @@ span {
 .pen-window {
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: calc(100vw - 33px);
   justify-content: space-around;
   align-items: center; }
   .pen-window > :nth-child(1) {
@@ -1451,7 +1488,11 @@ span {
     cursor: pointer; }
 
 .profileContainer {
-  min-height: 400px; }
+  min-height: 400px;
+  margin-top: 70px; }
+
+.displayPensList {
+  width: 85vw; }
 
 .commentsPageContainer {
   background-color: #222222;
@@ -1524,7 +1565,8 @@ span {
   background-color: #222222; }
   .commentsContainer .tags {
     display: flex;
-    align-items: center; }
+    align-items: center;
+    margin-top: 30px; }
     .commentsContainer .tags h3 {
       margin: 10px;
       color: lightgray; }
@@ -1534,7 +1576,9 @@ span {
   .commentsContainer .descriptionBox {
     background-color: #32333B;
     color: lightgray;
-    padding: 20px; }
+    padding: 20px;
+    max-height: 180px;
+    overflow: auto; }
   .commentsContainer h2 {
     color: white;
     margin: 50px 0px 20px 0px;
@@ -1585,6 +1629,9 @@ span {
 .leaveComment {
   border-bottom: 0.5px solid lightgray;
   padding-bottom: 5px; }
+
+.commentsLink {
+  text-decoration: none; }
 
 .searchBar {
   width: 100vw;
@@ -1775,6 +1822,23 @@ span {
   width: 280px;
   margin-top: 50px; }
 
+.portfolioLinks a {
+  background-color: transparent;
+  font-family: "Lato", sans-serif;
+  font-size: 20px;
+  margin: 0px 20px;
+  padding: 5px;
+  border: 3px solid black;
+  border-radius: 3px;
+  color: black;
+  text-decoration: none; }
+
+.portfolioLinks a:hover {
+  color: #FFDD40;
+  background-color: black;
+  cursor: pointer;
+  font-weight: normal; }
+
 .pen-settings-container {
   border: 2px solid white;
   background-color: white;
@@ -1784,7 +1848,8 @@ span {
   max-height: 550px;
   box-sizing: border-box;
   padding-bottom: 10px;
-  min-height: 385px; }
+  min-height: 385px;
+  overflow: auto; }
 
 .pen-settings-interface {
   max-height: 475px;
@@ -1828,7 +1893,9 @@ span {
   background-color: black;
   font-size: 1.1rem;
   font-family: "Lato", sans-serif;
-  padding: 10px; }
+  padding: 10px;
+  display: flex;
+  justify-content: space-between; }
   .pen-settings-nav-selection .pen-settings-nav-selection-button {
     padding-right: 10px;
     background-color: black;
@@ -1847,6 +1914,8 @@ span {
 .pen-settings-input-container {
   display: flex;
   width: 100%; }
+  .pen-settings-input-container .highlight:focus {
+    border: 3px solid #616574; }
 
 .popup {
   padding: 1px 4px;
@@ -1873,8 +1942,7 @@ span {
   position: relative;
   color: #535557;
   width: 100%;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
+  border-radius: 4px;
   font-size: .95rem;
   padding: 1rem; }
 
@@ -1969,6 +2037,30 @@ span {
 
 .pen-settings-slider-form {
   margin-bottom: 20px; }
+
+.penDetails {
+  padding: 20px;
+  font-family: "Lato", sans-serif; }
+  .penDetails input,
+  .penDetails textarea {
+    background-color: #EAEFF0;
+    width: calc(100% - 20px);
+    font-size: 25px;
+    padding: 10px;
+    border-radius: 4px;
+    border: none; }
+  .penDetails input:focus,
+  .penDetails textarea:focus {
+    border: 3px solid #616574;
+    padding: 7px;
+    outline: none; }
+  .penDetails textarea {
+    font-size: 12px;
+    height: 100px; }
+  .penDetails h2 {
+    font-size: 20px;
+    font-weight: light;
+    margin: 10px 0px; }
 
 .signUpButton {
   height: 45px;
@@ -2082,6 +2174,8 @@ span {
         height: 150px;
         width: 31%;
         margin-bottom: 1rem; }
+        .component-showcase .showcase-container .showcase-grid .grid-item .overlay .text {
+          display: none; }
         .component-showcase .showcase-container .showcase-grid .grid-item:hover {
           cursor: all-scroll; }
         .component-showcase .showcase-container .showcase-grid .grid-item .frame-overlay {
@@ -2125,6 +2219,34 @@ span {
       margin-top: 2.5rem;
       display: flex;
       justify-content: space-between; }
+      .component-showcase .showcase-container .showcase-body-container .nextButton {
+        border-radius: 2px;
+        background-color: transparent;
+        border: 3px solid white;
+        color: white;
+        padding: 10px;
+        font-family: "Lato", sans-serif;
+        font-size: 15px;
+        text-align: center;
+        margin: 0 !important;
+        margin-left: 10px !important; }
+      .component-showcase .showcase-container .showcase-body-container .paginationButtons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 5px 0 20px 0 !important;
+        width: 65% !important;
+        justify-content: flex-end; }
+      .component-showcase .showcase-container .showcase-body-container .paginationButtons .fa-angle-left {
+        font-size: 20px;
+        margin: 0px 10px 0px 0px; }
+      .component-showcase .showcase-container .showcase-body-container .paginationButtons .fa-angle-right {
+        font-size: 20px;
+        margin: 0px 0px 0px 10px; }
+      .component-showcase .showcase-container .showcase-body-container .nextButton:hover {
+        background-color: white;
+        color: black;
+        cursor: pointer; }
       .component-showcase .showcase-container .showcase-body-container .showcase-header {
         color: #FFFFFF;
         text-align: center;

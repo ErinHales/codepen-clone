@@ -23,7 +23,8 @@ export default class Pens extends Component {
                 this.setState({
                     pens: [res.data],
                     currentPage: 0,
-                    filter: "popular"
+                    filter: "popular",
+                    type: "views"
                 })
             })
             .catch(console.error)
@@ -35,19 +36,21 @@ export default class Pens extends Component {
                 this.setState({
                     pens: [res.data],
                     currentPage: 0,
-                    filter: "all"
+                    filter: "all",
+                    type: "new"
                 })
             })
             .catch(console.error);
     }
 
     getUserPens() {
-        axios.get('/api/pens/user/3/0?type=new')
+        axios.get('/api/pens/user/0/0?type=new')
             .then(res => {
                 this.setState({
                     pens: [res.data],
                     currentPage: 0,
-                    filter: "my"
+                    filter: "my",
+                    type: "new"
                 })
             })
             .catch(console.error);
@@ -69,8 +72,8 @@ export default class Pens extends Component {
     }
 
     nextPage() {
-        let { type, currentPage, pens } = this.state;
-        if (type !== "user" && !pens[currentPage + 1]) {
+        let { type, filter, currentPage, pens } = this.state;
+        if (filter !== "my" && !pens[currentPage + 1]) {
             axios.get(`/api/pens/${currentPage + 1}?type=${type}`)
                 .then(res => {
                     if (res.data[0]) {
@@ -84,8 +87,9 @@ export default class Pens extends Component {
                 })
                 .catch(console.error);
         } else if (!pens[currentPage + 1]) {
-            axios.get(`/api/pens/user/3/${currentPage + 1}?type=new`)
+            axios.get(`/api/pens/user/0/${currentPage + 1}?type=new`)
                 .then(res => {
+                    console.log(res.data);
                     if (res.data[0]) {
                         let copy = pens.slice();
                         copy.push(res.data);
@@ -135,7 +139,7 @@ export default class Pens extends Component {
         }
         return (
             <div>
-             <NavBar/>
+                <NavBar/>
                 <div className="pensView">
                     <div className="pens-sizing-container">
                         <div className="pensHeader">

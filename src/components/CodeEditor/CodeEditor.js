@@ -25,6 +25,7 @@ export default class CodeEditor extends Component {
             userName: '',
 
             name: "name of pen",
+            description: '',
             css: '',
             html: '',
             js: '',
@@ -46,12 +47,7 @@ export default class CodeEditor extends Component {
                 htmlClassTag: '',
                 head: '',
             },
-            pageSelection: {
-                htmlPage: true,
-                cssPage: false,
-                jsPage: false,
-                behaviorPage: false
-            }
+            pageSelection: 'html'
         }
 
         this.settingsPageSelectionHandler = this.settingsPageSelectionHandler.bind(this)
@@ -160,9 +156,10 @@ export default class CodeEditor extends Component {
     }
     ////// DATA FORMATING ///////
     penData = () => {
-        const { name, html, css, js } = this.state
+        const { name, description, html, css, js } = this.state
         return {
             name,
+            description,
             forked: false,
             html,
             css,
@@ -201,6 +198,7 @@ export default class CodeEditor extends Component {
                 this.props.history.push('/pens')
             })
             .catch(console.error)
+        window.location.hash = "#/pens";
     }
 
 
@@ -294,42 +292,11 @@ export default class CodeEditor extends Component {
 
     // settings page selection
     settingsPageSelectionHandler(pageName) {
-        const pageChanger = {
-            html: () => this.setState({
-                pageSelection: Object.assign({}, this.state.pageSelection, {
-                    htmlPage: true,
-                    cssPage: false,
-                    jsPage: false,
-                    behaviorPage: false
-                })
-            }),
-            css: () => this.setState({
-                pageSelection: Object.assign({}, this.state.pageSelection, {
-                    htmlPage: false,
-                    cssPage: true,
-                    jsPage: false,
-                    behaviorPage: false
-                })
-            }),
-            js: () => this.setState({
-                pageSelection: Object.assign({}, this.state.pageSelection, {
-                    htmlPage: false,
-                    cssPage: false,
-                    jsPage: true,
-                    behaviorPage: false
-                })
-            }),
-            behavior: () => this.setState({
-                pageSelection: Object.assign({}, this.state.pageSelection, {
-                    htmlPage: false,
-                    cssPage: false,
-                    jsPage: false,
-                    behaviorPage: true
-                })
-            }),
-        }
-        pageChanger[pageName]()
-        this.settingsPopUpHandler(true)
+        this.setState({
+            pageSelection: pageName,
+            showSettings: true
+        })
+        // html, css, js, behavior, details
     }
 
     //// SETTINGS POPUP CONTROLLERS ////////
@@ -358,7 +325,7 @@ export default class CodeEditor extends Component {
     }
     ///////////////////////////////
 
-    updateName(e) {
+    updateName = (e) => {
         this.setState({
             name: e.target.value
         })
@@ -379,6 +346,10 @@ export default class CodeEditor extends Component {
                     this.getPenData(this.props.match.params.id)
                 })
         }
+    updateDescription = (e) => {
+        this.setState({
+            description: e.target.value
+        })
     }
 
     render() {
@@ -408,6 +379,11 @@ export default class CodeEditor extends Component {
                     pageHandler={this.settingsPageSelectionHandler}
 
                     savePen={this.savePen}
+
+                    updateName={this.updateName}
+                    name={this.state.name}
+                    updateDescription={this.updateDescription}
+                    description={this.state.description}
                 />
                 <div onClick={() => this.settingsPopUpHandler(false)} className="pen-settings-popup-overlay"></div>
             </div>

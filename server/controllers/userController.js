@@ -1,3 +1,6 @@
+const restructureResponsePen = require('./helpers/restructureResponsePen')
+
+
 module.exports = {
     getUser(req, res) {
         if (req.query.id) {
@@ -46,15 +49,25 @@ module.exports = {
             res.status(200).send(response);
         }).catch(err => {
             res.status(500).send(err);
-            console.error();
+            console.error(err);
         })
     },
     searchUserPens(req, res) {
-        let {pageNum, userId} = req.params;
+        let {pageNum} = req.params;
         let {search} = req.query;
+        pageNum *= 6;
+        let newSearch = `%${search}%`;
+        req.app.get("db").search_user_pens([req.session.userid, pageNum, newSearch]).then(response => {
+            res.status(200).send(response.map( pen => restructureResponsePen(pen)));
+        }).catch(err => {
+            res.status(500).send(err);
+            console.error(err);
+        })
+    },
+    getUserInfo(req, res) {
         let id;
-        if (userId !== 0) {
-            id = userId;
+        if(req.query.userid) {
+            id = req.query.userid;
         } else {
             id = req.session.userid;
         }
@@ -70,17 +83,26 @@ module.exports = {
         let { location, bio, link1, link2, link3, forHire, theme } = req.body;
         req.app.get("db").add_user_info([req.session.userid, location, bio, link1, link2, link3, forHire, theme]).then(() => {
             res.sendStatus(200);
-        }).catch(console.error);
+        }).catch(err => {
+            console.error(err)
+            res.sendStatus(500)
+        });
     },
     updateUserInfo(req, res) {
         let { location, bio, link1, link2, link3, forHire } = req.body;
         req.app.get("db").update_user_info([req.session.userid, location, bio, link1, link2, link3, forHire, theme]).then(() => {
             res.sendStatus(200);
-        }).catch(console.error);
+        }).catch(err => {
+            console.error(err)
+            res.sendStatus(500)
+        });
     },
     updateTheme(req, res) {
         req.app.get("db").update_theme([req.session.userid, req.body.theme]).then(() => {
             res.sendStatus(200);
-        }).catch(console.error);
+        }).catch(err => {
+            console.error(err)
+            res.sendStatus(500)
+        });
     }
 }

@@ -15,4 +15,4 @@ WHERE pen_id = $1;
 DELETE FROM pen_comments
 WHERE pen_id = $1;
 DELETE FROM pens
-WHERE pen_id = $1;
+WHERE pen_id = $1

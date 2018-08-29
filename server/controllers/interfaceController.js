@@ -102,14 +102,14 @@ module.exports = {
                 res.status(200).send(response.map( pen => restructureResponsePen(pen)));
             }).catch(err => {
                 res.status(500);
-                console.error();
+                console.error(err);
             })
         } else {
             req.app.get("db").search_by_currency([offset, searchParam]).then(response => {
                 res.status(200).send(response.map( pen => restructureResponsePen(pen)));
             }).catch(err => {
                 res.status(500);
-                console.error();
+                console.error(err);
             })
         }
     }

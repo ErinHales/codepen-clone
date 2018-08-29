@@ -34,6 +34,10 @@ class About extends Component {
                 <h3 className='coDev'>Co-Developer</h3>
               </div>
               <p className='descrptn'>Highly motivated and intelligent young web developer focusing on React. With a passion for problem solving and design, web development has proved to be the perfect fit.</p>
+              <div className="portfolioLinks">
+                <a href="https://github.com/ErinHales" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/erin-hales-64122a15b/" target="_blank">LinkedIn</a>
+              </div>
             </div>
 
             <div className='divisions'>
@@ -43,6 +47,10 @@ class About extends Component {
                 <h3 className='coDev'>Co-Developer</h3>
               </div>
               <p className='descrptn'>Full stack web developer experienced in React, Node, SQL, and JavasScript. I am a recent graduate from DevMountain where I learned a variety of web development skills in a fast paced practical manner.</p>
+              <div className="portfolioLinks">
+                <a href="https://github.com/Ibarra11" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/alanjibarra/" target="_blank">LinkedIn</a>
+              </div>
             </div>
 
             <div className='divisions'>
@@ -52,6 +60,10 @@ class About extends Component {
                 <h3 className='coDev'>Co-Developer</h3>
               </div>
               <p className='descrptn'>Enjoy solving hard problems. Thinking through a challenge and carrying out the plan to shape data into what I need is deeply satisfying. Working with the full-stack brings me numerous opportunities to work on crunchy problems.</p>
+              <div className="portfolioLinks">
+                <a href="https://github.com/michael-fearn/" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/michael-fearn/" target="_blank">LinkedIn</a>
+              </div>
             </div>
 
             <div className='divisions'>
@@ -60,7 +72,11 @@ class About extends Component {
                 <h1 className='devName'>Ruben Ortiz</h1>
                 <h3 className='coDev'>Co-Developer</h3>
               </div>
-              <p className='descrptn'>Full Stack Web Developer always looking for opportunities were where to practice and further develop greater knowledge on this amazing career. Always seeking to learn new technologies and techniques to be a better developer.</p>
+              <p className='descrptn'>Full Stack Web Developer always looking for opportunities to practice and further develop greater knowledge on this amazing career. Always seeking to learn new technologies and techniques to be a better developer.</p>
+              <div className="portfolioLinks">
+                <a href="https://github.com/ROrtiz016" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/rortiz-016/" target="_blank">LinkedIn</a>
+              </div>
             </div>
 
             <div className='divisions1'>

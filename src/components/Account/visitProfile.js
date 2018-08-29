@@ -3,14 +3,18 @@ import Pen from '../Pen/Pen'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import NavBar from '../NavBar/NavBar'
-
+import ShowCaseProfile from './ShowCaseProfile';
 class Profile extends Component {
     constructor() {
         super()
         this.state = {
             user: '',
             pens: [],
-            currentPage: 0
+            currentPage: 0,
+            userInfo: {},
+            showcase: [],
+            displayShow: false,
+            userInfo: {}
         }
 
     }
@@ -35,6 +39,17 @@ class Profile extends Component {
                 })
             }
         })
+        axios.get(`/api/userinfo?userid=${id}`).then(res => {
+            this.setState({
+                userInfo: res.data[0]
+            })
+        })
+        axios.get(`/api/layout?userid=${id}`).then(res => {
+            console.log(res.data)
+            this.setState({
+                showcase: res.data
+            })
+        })
     }
 
     userAvatar() {
@@ -55,11 +70,9 @@ class Profile extends Component {
         let { id } = this.props.match.params;
         axios.get(`/api/pens/user/${id}/${currentPage + 1}?type=new`)
             .then(res => {
-                console.log(res.data);
                 if (res.data[0]) {
                     let copy = pens.slice();
                     copy.push(res.data);
-                    console.log(copy);
                     this.setState({
                         pens: copy,
                         currentPage: currentPage + 1
@@ -74,8 +87,25 @@ class Profile extends Component {
         })
     }
 
+    toggleDisplayShowcase = () => {
+        this.setState({
+            displayShowcase: !this.state.displayShowcase,
+            currentPage: 0
+        })
+    }
+
+    // searchUserPens() {
+    //     axios.get(`/api/search/userpens/0?search=${this.state.search}`).then(response => {
+    //         this.setState({
+    //             pens: [response.data],
+    //             currentPage: 0,
+    //             displayShowcase: false
+    //         })
+    //     })
+    // }
+
     render() {
-        let { currentPage, pens, user } = this.state;
+        let { currentPage, pens, user, userInfo } = this.state;
         if (pens[currentPage]) {
             var pensList = pens[currentPage].map(pen => {
                 let { pen_id, name, username, img_url, description, views, comments, loves, scripts, html, css, js } = pen;
@@ -97,7 +127,6 @@ class Profile extends Component {
                 );
             })
         }
-        console.log(pensList);
         return (
             <div>
                 <NavBar />
@@ -106,23 +135,33 @@ class Profile extends Component {
                     </div>
 
                     <div className='b-line'>
-                        <div className='Hire'>Hire Me</div>
                         <div className='followers'>
                             <h1> 0 Followers</h1>
-                        </div>
-                        <div>
                             <h1 className='followers'> 0 Following</h1>
                         </div>
+                        {userInfo ?
+                            <div className="links">
+                                {userInfo.link1 ? <a href={userInfo.link1} target="_blank">Profile Link {userInfo.link2 ? 1 : ""}</a> : null}
+                                {userInfo.link2 ? <a href={userInfo.link2} target="_blank">Profile Link 2</a> : null}
+                                {userInfo.link3 ? <a href={userInfo.link3} target="_blank">Profile Link 3</a> : null}
+                                <div className='Hire'>Hire Me</div>
+                            </div>
+                            :
+                            <div>
+                                <div className='Hire'>Hire Me</div>
+                            </div>
+                        }
                     </div>
 
                     <div className='UserInfo'>
                         <div>
                             <h1 className='UserName'>{user.name}</h1>
-                            <p className='Name2'>{user.username}</p>
-                            <div className='UserPic'>
+                            <p id='Name2'>@{user.username}</p>
+                            <div id='UserPic'>
                                 {this.userAvatar()}
                             </div>
-                            {/* <h3 className='Name2'>{this.state.user.name}</h3> */}
+                            {userInfo ? <h3>{this.state.userInfo.location}</h3> : null}
+                            {userInfo ? <h3>{this.state.userInfo.bio}</h3> : null}
                         </div>
                     </div>
 
@@ -130,16 +169,16 @@ class Profile extends Component {
 
                         <div className='Pen-InputWrapper'>
                             <div>
-                                <h2 className='Pens2'>All Pens</h2>
-                                <h2 className='Proj2'>Showcase</h2>
+                                <h2 className={this.state.displayShowcase ? 'Pens2' : ' Pens2 link-active '} onClick={() => this.state.displayShowcase ? this.toggleDisplayShowcase() : null} >All Pens</h2>
+                                <h2 className={this.state.displayShowcase ? 'Proj2 link-active' : 'Proj2'} onClick={() => !this.state.displayShowcase ? this.toggleDisplayShowcase() : null} >Showcase</h2>
                             </div>
-                            <input className='Inp-box' type="text" placeholder='Search These Pens...' />
+                            {/* <input className='Inp-box' type="text" placeholder='Search These Pens...' /> */}
                         </div>
 
                         <div className='ligthgray-line'></div>
                         <div className='gray-line'></div>
 
-                        {this.state.pens ? (
+                        {this.state.displayShowcase ? <ShowCaseProfile toggleDisplayShowcase={this.toggleDisplayShowcase} visiting={true} userid={this.props.match.params.id} showcase={this.state.showcase} /> : this.state.pens ? (
                             <div className="pen-window">
                                 <div>
                                     {pensList}

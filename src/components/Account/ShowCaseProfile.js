@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Pen from '../Pen/Pen';
+import {Link} from 'react-router-dom';
 
 export default class ShowCaseProfile extends Component {
     render() {
@@ -23,14 +24,35 @@ export default class ShowCaseProfile extends Component {
                 />
             )
         })
-        let showcase = this.props.showcase[0];
-        console.log(this.props.showcase);
-        return (
-            <div className="showCaseContainer">
-                <div className="displayPensList">
-                    {pensList}
+
+        if (pensList.length > 0) {
+            return (
+
+                <div className="showCaseContainer">
+                    <div className="displayPensList">
+                        {pensList}
+                    </div>
                 </div>
-            </div>
-        )
+            )
+        }
+        else {
+            return (
+                <div className="showCaseContainer">
+                    {!this.props.visiting ?
+                        <div className="showcase-empty">
+                            <h2>Your Showcase Is Emtpy</h2>
+                            <Link to='/showcase'> <button>Click here to update your showcase</button></Link>
+                        </div>
+                        :
+                        <div className="showcase-empty">
+                            <h2>Sorry, This Person's <br/>Showcase Is Emtpy</h2>
+                            <button onClick={() => this.props.toggleDisplayShowcase()}>Back to Pens</button>
+                        </div>
+                    }
+                </div>
+            )
+
+        }
+
     }
 }

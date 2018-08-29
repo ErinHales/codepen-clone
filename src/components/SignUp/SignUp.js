@@ -47,6 +47,7 @@ export default class SignUp extends Component {
         else {
             alert('All forms required');
         }
+        window.location.hash = "#/pens";
     } 
 
     render() {
