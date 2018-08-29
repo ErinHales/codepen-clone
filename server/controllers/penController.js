@@ -69,6 +69,11 @@ module.exports = {
                         console.error(err)
                         res.sendStatus(500)
                     })
+                dbConn.post_stats([pen_id])
+                    .catch( err => {
+                        console.error(err)
+                        res.sendStatus(500)
+                    })
                 // check to see if the request from the client contains any html settings content
                 // if(html_tag_class || head_tag) {
                     //Adding the content if it exists
@@ -190,21 +195,18 @@ module.exports = {
         const dbConn = req.app.get('db')
         const { userid: user_id } = req.session
         const { penId: pen_id } = req.params
-        // dbConn.get_pen([pen_id])
-        //     .then( response => {
-        //         if( user_id === response[0].user_id) {
+        dbConn.get_pen([pen_id])
+            .then( response => {
+                if( user_id === response[0].user_id) {
                     dbConn.delete_pen([pen_id])
                         .then( () => res.sendStatus(200))
-                        .catch(err => {
-                            console.error(err)
-                            res.sendStatus(500)
-                        })
-            //     }
-            //     else {
-            //         res.sendStatus(401)
-            //     }
-            // })
-            // .catch(console.error)
+                        .catch(console.error)
+                }
+                else {
+                    res.sendStatus(401)
+                }
+            })
+            .catch(console.error)
     },
     getLikes(req,res) {
         req.app.get("db").get_num_likes(req.params.penId).then(response => {

@@ -98,6 +98,7 @@ export default class Search extends Component {
             var usersList = users.map(user => {
                 return (
                     <div className="user" key={user.id}>
+                        
                         <img src={user.img_url} alt="" />
                         <Link to={`/profile/${user.id}`}><h3>{user.name}</h3></Link>
                     </div>

@@ -6,6 +6,7 @@ import SignUpBtn from './components/SignUpBtn'
 import { withRouter } from 'react-router-dom'
 // import SearchBar from '../SearchBar/SearchBar';
 import axios from 'axios'
+import LoginBtn from './components/LoginBtn';
 
 
 class NavBar extends Component {
@@ -42,13 +43,15 @@ class NavBar extends Component {
   }
 
   componentChange(){
-    if(this.props.match.path !== '/'){
+    if(this.state.showYourProfile){
       return(
         <UserPic/>
       )
-    }else if(this.props.match.path === '/'){
+    }else if(!this.state.showYourProfile){
       return(
-        <SignUpBtn/>
+        <div>
+          <SignUpBtn/>
+        </div>
       )
     }
     
@@ -73,7 +76,7 @@ class NavBar extends Component {
         <nav className='nav1'>
 
           <div className='Name'>
-            <Link to='/' className='link'><h1 className='clonepen'>C L <img className='icon' src='http://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Large.png' alt='' /> N E P E N</h1></Link>
+            <Link to='/pens' className='link'><h1 className='clonepen'>C L <img className='icon' src='http://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Large.png' alt='' /> N E P E N</h1></Link>
           </div>
           {this.state.showYourProfile ? (
             <Link to="/profile" className="link">
@@ -121,7 +124,12 @@ class NavBar extends Component {
                 <img className='mag' src="https://www.shareicon.net/download/2015/09/25/107005_find_512x512.png" alt="magnifier" />
               </button>
             </Link>
-
+            { !this.state.showYourProfile ? (
+              <LoginBtn />
+            ) : (
+              null
+            )
+            }
             <div>
               {this.componentChange()}
             </div>
