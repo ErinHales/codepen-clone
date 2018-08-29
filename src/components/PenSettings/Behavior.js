@@ -5,7 +5,7 @@ export default function Behavior(props) {
         <div className="pen-settings-interface">
             <h3 className="pen-settings-heading">Code Indentation</h3>
             <form className="pen-settings-slider-form" action="">
-                <input 
+                <input
                 list="tab-width-options" 
                 type="range" 
                 min="0" 

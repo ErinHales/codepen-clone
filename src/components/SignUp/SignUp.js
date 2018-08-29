@@ -34,7 +34,6 @@ export default class SignUp extends Component {
                 // If the response is ok then direct them to the home page
                 if(res.data === 'OK'){
                     // this.props.history.push('/pens')
-                    alert('User signedup successfully');
                     if(this.props.closePopUp) {
                         this.props.closePopUp(true)
                     }
@@ -48,6 +47,7 @@ export default class SignUp extends Component {
         else {
             alert('All forms required');
         }
+        window.location.hash = "#/pens";
     } 
 
     render() {

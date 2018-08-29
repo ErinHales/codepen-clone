@@ -1,7 +1,8 @@
 UPDATE pens
 SET 
     name = $1,
-    html = $2,
-    css =  $3,
-    js =  $4
-WHERE pen_id = $5;
+    description = $2,
+    html = $3,
+    css =  $4,
+    js =  $5
+WHERE pen_id = $6;
