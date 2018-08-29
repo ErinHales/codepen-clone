@@ -1255,6 +1255,10 @@ span {
   align-items: center;
   min-width: 300px; }
 
+.showCaseContainer {
+  width: 80vw;
+  margin: 0 auto; }
+
 .Content {
   width: 100%;
   background: #191A1D; }
@@ -1405,7 +1409,7 @@ span {
   justify-content: space-around;
   align-items: center; }
   .pen-window > :nth-child(1) {
-    width: 80%;
+    width: 100;
     border-radius: 10px;
     display: flex;
     flex-wrap: wrap;

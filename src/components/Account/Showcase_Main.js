@@ -67,7 +67,9 @@ class Showcase_Main extends Component {
     render() {
         let { html, js, css, penId, scripts, } = this.state;
         let srcDoc;
+        let isEmpty = false;
         if (scripts) {
+            isEmpty = true;
             let { css: cssList, html: htmlScripts, js: jsList } = scripts
             let { html_tag_class: htmlClassTag, head_tag: head } = htmlScripts
 
@@ -108,7 +110,7 @@ class Showcase_Main extends Component {
             connectDragSource(
                 <div className="showcase-main">
                     <div style={{ opacity }} className="frame-overlay">
-                        <iframe  scrolling="no" className="pen-iframe" srcDoc={srcDoc}></iframe>
+                        <iframe style={{ backgroundColor: isEmpty ? 'white' : 'transparent' }}  scrolling="no" className="pen-iframe" srcDoc={srcDoc}></iframe>
                     </div>
                 </div>
             )
