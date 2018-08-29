@@ -116,9 +116,9 @@ export default class Search extends Component {
                         <h4>Order results by</h4>
                         <div className="filterContainer">
                             <input name="filter" type="radio" value="popularity" id="popularity" onChange={(e) => this.handleUpdate(e, "filter")} defaultChecked></input>
-                            <label for="popularity">Relevance & Popularity</label>
+                            <label htmlFor="popularity">Relevance & Popularity</label>
                             <input name="filter" type="radio" value="currency" id="currency" onChange={(e) => this.handleUpdate(e, "filter")}></input>
-                            <label for="currency">Newest First</label>
+                            <label htmlFor="currency">Newest First</label>
                         </div>
                     </div>
                     <div className="penContainer">

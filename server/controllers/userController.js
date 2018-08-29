@@ -1,9 +1,13 @@
 module.exports = {
     getUser(req, res) {
         if (req.query.id) {
-            req.app.get("db").get_user(req.query.id).then(response => {
-                res.status(200).send(response);
-            })
+            req.app.get("db").get_user(req.query.id)
+                .then(response => {
+                    res.status(200).send(response);
+                })
+                .catch((err) => {
+                    console.error(err)
+                })
         } else {
             let { name, img_url, username, userid } = req.session;
             res.send({ name, img_url, username, userid });
@@ -22,7 +26,9 @@ module.exports = {
                 req.session.img_url = imgUrl;
                 res.sendStatus(200);
             })
-            .catch(err => res.status(500).send(err))
+            .catch(err => {
+                res.status(500).send(err)
+            })
     },
     updateUserName(req, res) {
         let {name} = req.body;

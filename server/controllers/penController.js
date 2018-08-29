@@ -69,6 +69,11 @@ module.exports = {
                         console.error(err)
                         res.sendStatus(500)
                     })
+                dbConn.post_stats([pen_id])
+                    .catch( err => {
+                        console.error(err)
+                        res.sendStatus(500)
+                    })
                 // check to see if the request from the client contains any html settings content
                 // if(html_tag_class || head_tag) {
                     //Adding the content if it exists

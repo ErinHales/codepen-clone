@@ -25,15 +25,7 @@ class NavBar2 extends Component {
         user:res.data
       })
     })
-
-    const {id} = this.props.match.params
-    axios.get(`/api/penInfo/${id}`).then(response => {
-      this.setState({
-          pen: response.data,
-          penUser: response.data,
-      })
-  })
-  .catch()
+    .catch()
 
   }
 

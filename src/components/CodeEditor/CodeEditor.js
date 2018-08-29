@@ -73,6 +73,44 @@ export default class CodeEditor extends Component {
         this.fork = this.fork.bind(this)
     }
 
+    getPenData = (id) => {
+        axios.get(`/api/pen/${id}`)
+        .then(response => {
+            this.setState({
+                css: null,
+                html: null,
+                js: null,
+                name: response.data.name
+            })
+
+            const { user_id: penUserId, html, css, js, username, scripts } = response.data;
+            let { css: cssList, html: htmlScripts, js: jsList } = scripts
+            const { html_tag_class, head_tag } = htmlScripts
+            if (!cssList[0]) cssList = []
+            if (!jsList[0]) jsList = []
+
+
+            this.setState({
+                penUserId,
+                css,
+                html,
+                js,
+                userName: username,
+                jsSettings: {
+                    jsCdnList: jsList
+                },
+                cssSettings: {
+                    cssCdnList: cssList
+                },
+                htmlSettings: {
+                    htmlClassTag: html_tag_class,
+                    head: head_tag
+                }
+            })
+        })
+        .catch()
+    }
+
     componentWillMount() {
         axios.get('/api/users')
             .then(response => {
@@ -85,41 +123,7 @@ export default class CodeEditor extends Component {
             })
         const { id } = this.props.match.params
         if (id) {
-            axios.get(`/api/pen/${id}`)
-                .then(response => {
-                    this.setState({
-                        css: null,
-                        html: null,
-                        js: null,
-                        name: response.data.name
-                    })
-
-                    const { user_id: penUserId, html, css, js, username, scripts } = response.data;
-                    let { css: cssList, html: htmlScripts, js: jsList } = scripts
-                    const { html_tag_class, head_tag } = htmlScripts
-                    if (!cssList[0]) cssList = []
-                    if (!jsList[0]) jsList = []
-
-
-                    this.setState({
-                        penUserId,
-                        css,
-                        html,
-                        js,
-                        userName: username,
-                        jsSettings: {
-                            jsCdnList: jsList
-                        },
-                        cssSettings: {
-                            cssCdnList: cssList
-                        },
-                        htmlSettings: {
-                            htmlClassTag: html_tag_class,
-                            head: head_tag
-                        }
-                    })
-                })
-                .catch()
+            this.getPenData(id)
         }
 
     }
@@ -143,7 +147,7 @@ export default class CodeEditor extends Component {
                 }
             }
         })
-        if(this.props.match.params.id) {
+        if(this.props.match.params.id && this.state.userid) {
             axios.put(`/api/pen/view/${this.props.match.params.id}/${this.state.userid}`)
                 .catch(console.error());
         }
@@ -371,9 +375,8 @@ export default class CodeEditor extends Component {
             penData.forked = true
             axios.post('/api/pen/', penData)
                 .then(response => {
-                    // window.location.hash =`#/editor/${response.data[0].pen_id}`
                     this.props.history.push(`/editor/${response.data[0].pen_id}`)
-                    this.forceUpdate()
+                    this.getPenData(this.props.match.params.id)
                 })
         }
     }
