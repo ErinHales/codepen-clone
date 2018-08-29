@@ -8,12 +8,18 @@
 
 .b-line{
   height: 70px;
-  width: 100%;
+  width: calc(100vw - 20px);
   background: black;
   color: white;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   min-width: 300px;
+  .links {
+    display: flex;
+    align-items: center;
+    z-index: 30;
+  }
 }
 
 .Content{
@@ -25,11 +31,15 @@
   color: white;
   position: absolute;
   top: 170px;
-  width: 100vw;
+  width: calc(100vw - 20px);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  h3 {
+    padding: 5px;
+    font-family: "Lato", sans-serif;
+  }
 }
 
 .UserName{
@@ -50,21 +60,30 @@
   width: 130px;
   background: rgb(24, 24, 24);
   border: 4px rgb(46, 45, 45) solid;
-  box-shadow: 1px 1px rgb(29, 28, 28);
+  box-shadow: 1px 1px rgb(56, 27, 27);
   overflow: hidden;
   margin: auto;
 }
 
-.Hire{
+.Hire,
+.b-line .links a {
   font-family: 'Lato', sans-serif;
-  position: relative;
-  left: 95%;
+  margin: 0px 10px;
   font-size: 11px;
   border: 1px solid white;
   padding: 5px;
   border-radius: 3px;
   min-width: 42px;
   cursor: pointer;
+  color: white;
+  text-decoration: none;
+}
+
+.Hire:hover,
+.b-line .links a:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black;
 }
 
 .Hire:hover{
@@ -76,6 +95,7 @@
   color: gray;
   font-family: 'Lato', sans-serif;
   margin-left: 20px;
+  display: flex;
   cursor: pointer;
 }
 
@@ -185,7 +205,7 @@
 .pen-window {
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: calc(100vw - 33px);
   justify-content: space-around;
   align-items: center;
   > :nth-child(1) {
@@ -264,4 +284,9 @@
 
 .profileContainer {
   min-height: 400px;
+  margin-top: 70px;
+}
+
+.displayPensList {
+  width: 85vw;
 }

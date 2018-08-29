@@ -47,10 +47,7 @@ module.exports = {
     },
     getUserPens(req, res) {
         const dbConn = req.app.get('db')
-        // console.log(req.params);
         const { userId, pageNum } = req.params;
-        // console.log(userId, pageNum);
-
         let id;
         if (parseInt(userId) !== 0) {
             id = parseInt(userId)
@@ -82,7 +79,6 @@ module.exports = {
             else if(req.query.type === 'new') {
                 dbConn.get_new_user_pens([id, offset])
                     .then( dbResponse => {
-                        // console.log(dbResponse);
                         res.status(200).send(dbResponse.map( pen => restructureResponsePen(pen)))
                     })
                     .catch( err => {
@@ -106,14 +102,14 @@ module.exports = {
                 res.status(200).send(response.map( pen => restructureResponsePen(pen)));
             }).catch(err => {
                 res.status(500);
-                console.error();
+                console.error(err);
             })
         } else {
             req.app.get("db").search_by_currency([offset, searchParam]).then(response => {
                 res.status(200).send(response.map( pen => restructureResponsePen(pen)));
             }).catch(err => {
                 res.status(500);
-                console.error();
+                console.error(err);
             })
         }
     }

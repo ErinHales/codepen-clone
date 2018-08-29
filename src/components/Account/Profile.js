@@ -14,6 +14,7 @@ class Profile extends Component {
       currentPage: 0,
       userInfo: {},
       showcase: [],
+      search: '',
       displayShowcase: false
     }
 
@@ -38,15 +39,34 @@ class Profile extends Component {
       }
     })
     axios.get('/api/userinfo').then(res => {
+      console.log(res.data[0]);
       this.setState({
-        userInfo: res.data
+        userInfo: res.data[0]
       })
     })
+
     axios.get('/api/layout').then(res => {
-      console.log(res.data)
       this.setState({
         showcase: res.data
       })
+    })
+  }
+
+  getAllPens = () => {
+    axios.get(`/api/pens/user/0/0?type=new`).then(res => {
+      if (res.data[0]) {
+        this.setState({
+          pens: [res.data],
+          currentPage: 0,
+          search: ''
+        })
+      } else {
+        this.setState({
+          pens: false,
+          currentPage: 0,
+          search: ''
+        })
+      }
     })
   }
 
@@ -64,19 +84,33 @@ class Profile extends Component {
 
 
   nextPage() {
-    let { currentPage, pens } = this.state;
-    axios.get(`/api/pens/user/0/${currentPage + 1}?type=new`)
-      .then(res => {
-        if (res.data[0]) {
-          let copy = pens.slice();
-          copy.push(res.data);
-          console.log(copy);
-          this.setState({
-            pens: copy,
-            currentPage: currentPage + 1
-          })
-        }
-      })
+    let { search, currentPage, pens } = this.state;
+    if (search === '') {
+      axios.get(`/api/pens/user/0/${currentPage + 1}?type=new`)
+        .then(res => {
+          if (res.data[0]) {
+            let copy = pens.slice();
+            copy.push(res.data);
+            this.setState({
+              pens: copy,
+              currentPage: currentPage + 1
+            })
+          }
+        })
+    } else {
+      axios.get(`/api/search/userpens/${currentPage + 1}?search=${search}`)
+        .then(res => {
+          if (res.data[0]) {
+            let copy = pens.slice();
+            copy.push(res.data);
+            console.log(copy);
+            this.setState({
+              pens: copy,
+              currentPage: currentPage + 1
+            })
+          }
+        })
+    }
   }
 
   getPrev() {
@@ -85,15 +119,32 @@ class Profile extends Component {
     })
   }
 
+  searchUserPens() {
+    axios.get(`/api/search/userpens/0?search=${this.state.search}`).then(response => {
+      console.log(response.data);
+      this.setState({
+        pens: [response.data],
+        currentPage: 0
+      })
+    })
+  }
+
   toggleDisplayShowcase = () => {
     this.setState({
       displayShowcase: !this.state.displayShowcase,
-      currentPage: 0
+      currentPage: 0,
+      search: ''
+    })
+  }
+
+  updateSearch = (e) => {
+    this.setState({
+      search: e.target.value
     })
   }
 
   render() {
-    let { currentPage, pens, user } = this.state;
+    let { currentPage, pens, user, userInfo } = this.state;
     if (pens[currentPage]) {
       var pensList = pens[currentPage].map(pen => {
         let { pen_id, name, username, img_url, description, views, comments, loves, scripts, html, css, js } = pen;
@@ -123,16 +174,18 @@ class Profile extends Component {
           </div>
 
           <div className='b-line'>
-            <div>{this.state.userInfo.link1}</div>
-            <div>{this.state.userInfo.link2}</div>
-            <div>{this.state.userInfo.link3}</div>
-            <div className='Hire'>Hire Me</div>
             <div className='followers'>
               <h1> 0 Followers</h1>
-            </div>
-            <div>
               <h1 className='followers'> 0 Following</h1>
             </div>
+            {userInfo ?
+              <div className="links">
+                {userInfo.link1 ? <a href={userInfo.link1} target="_blank">Profile Link {userInfo.link2 ? 1 : ""}</a> : null}
+                {userInfo.link2 ? <a href={userInfo.link2} target="_blank">Profile Link 2</a> : null}
+                {userInfo.link3 ? <a href={userInfo.link3} target="_blank">Profile Link 3</a> : null}
+                <div className='Hire'>Hire Me</div>
+              </div>
+              : null}
           </div>
 
           <Link className='link' to="/account">
@@ -148,20 +201,22 @@ class Profile extends Component {
               <div id='UserPic'>
                 {this.userAvatar()}
               </div>
-              <h3 className='Name2'>{this.state.userInfo.location}</h3>
+              { userInfo ? <h3>{this.state.userInfo.location}</h3> : null }
+              { userInfo ? <h3>{this.state.userInfo.bio}</h3> : null }
             </div>
           </div>
-
-          <div className="bio">{this.state.userInfo.bio}</div>
 
           <div className="profileContainer">
 
             <div className='Pen-InputWrapper'>
               <div>
-                <h2 className={this.state.displayShowcase ? 'Pens2' : ' Pens2 link-active '} onClick={() => this.state.displayShowcase ? this.toggleDisplayShowcase() : null} >All Pens</h2>
+                <h2 className={this.state.displayShowcase ? 'Pens2' : ' Pens2 link-active '} onClick={() => {
+                  this.state.displayShowcase ? this.toggleDisplayShowcase() : null
+                  this.getAllPens()
+                }} >All Pens</h2>
                 <h2 className={this.state.displayShowcase ? 'Proj2 link-active' : 'Proj2'} onClick={() => !this.state.displayShowcase ? this.toggleDisplayShowcase() : null} >Showcase</h2>
               </div>
-              <input className='Inp-box' type="text" placeholder='Search These Pens...' />
+              <input className='Inp-box' type="text" placeholder='Search These Pens...' value={this.state.search} onChange={(e) => this.updateSearch(e)} onKeyUp={(e) => e.keyCode === 13 ? this.searchUserPens() : null} />
             </div>
 
             <div className='ligthgray-line'></div>

@@ -38,10 +38,17 @@ export default class ShowCaseProfile extends Component {
         else {
             return (
                 <div className="showCaseContainer">
-                    <div className="showcase-empty">
-                        <h2>Your Showcase Is Emtpy</h2>
-                       <Link to='/showcase'> <button>Click here to update your showcase</button></Link>
-                    </div>
+                    {!this.props.visiting ?
+                        <div className="showcase-empty">
+                            <h2>Your Showcase Is Emtpy</h2>
+                            <Link to='/showcase'> <button>Click here to update your showcase</button></Link>
+                        </div>
+                        :
+                        <div className="showcase-empty">
+                            <h2>Sorry, This Person's <br/>Showcase Is Emtpy</h2>
+                            <button onClick={() => this.props.toggleDisplayShowcase()}>Back to Pens</button>
+                        </div>
+                    }
                 </div>
             )
 
