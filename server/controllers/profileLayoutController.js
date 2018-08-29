@@ -53,8 +53,13 @@ module.exports = {
 
     },
     getLayoutPens: (req, res) => {
-        let {userid} = req.session
-        req.app.get('db').get_showcase_pens(userid)
+        let id;
+        if(req.query.userid) {
+            id = req.query.userid;
+        } else {
+            id = req.session.userid;
+        }
+        req.app.get('db').get_showcase_pens(id)
             .then(pens => {
                 res.status(200).send(pens.map(pen => restructureResponsePen(pen)));
             })

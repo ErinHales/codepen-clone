@@ -147,6 +147,9 @@ app.get('/api/search/pens/:pageNum', interfaceCntrl.searchPens)
 // search all users
 app.get('/api/search/users', userCntrl.searchUser)
 
+// search user's pens
+app.get('/api/search/userpens/:pageNum', userCntrl.searchUserPens)
+
 
 
 
