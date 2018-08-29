@@ -10,6 +10,7 @@ import Login from './components/Login/Login';
 import Comments from './components/Comments/Comments';
 import Search from './components/Search/Search';
 import Account from './components/Account/account';
+import Challenges from './components/Challenges/Challenges'
 import { Switch, Route } from 'react-router-dom';
 // import PenSettings from './components/PenSettings/PenSettings';
 import Footer from './components/Footer/Footer';
@@ -35,6 +36,7 @@ class App extends Component {
           <Route path="/about" component={About}/>
           <Route path="/search" component={Search} />
           <Route path="/showcase" component={Showcase} />
+          <Route path="/challenges" component={Challenges} />
         </Switch>
         <Footer />
         {/* <Showcase /> */}
