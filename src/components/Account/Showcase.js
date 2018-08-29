@@ -58,7 +58,7 @@ class Showcase extends Component {
             setTimeout(() =>{
                 document.querySelector('.alert').style.display = 'none';
             }, 2000)
-        }, 1000);
+        }, 875);
     //    document.querySelector('.alert').style.display = 'block';
 }
 render() {
