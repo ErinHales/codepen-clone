@@ -88,7 +88,7 @@ export default class CodeEditor extends Component {
             const { html_tag_class, head_tag } = htmlScripts
             if (!cssList[0]) cssList = []
             if (!jsList[0]) jsList = []
-
+            console.log(penUserId)
 
             this.setState({
                 penUserId,
@@ -449,10 +449,12 @@ export default class CodeEditor extends Component {
             
             <script>${this.state.js}</script>
         </html>`;
+        console.log(this.state)
         return (
             <div>
             <NavBar2
                 savePen={this.savePen}
+                penUserId={this.state.penUserId}
                 isUser={this.state.visitingUserId === this.state.penUserId}
                 history={this.props.history}
                 userName={this.state.userName}

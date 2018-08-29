@@ -30,11 +30,11 @@ class NavBar2 extends Component {
   }
 
   componentChange(){
-    if(this.props.match.path !== '/editor'){
+    if(!this.props.isUser){
       return(
         <Fork fork={this.props.fork}/>
       )
-    }else if(this.props.match.path === '/editor'){
+    }else{
       return(
         <Save savePen={this.props.savePen}/>
       )
@@ -47,12 +47,14 @@ class NavBar2 extends Component {
   }
   
   titleChanger(){
-    console.log(this.props.isUser)
+    console.log(this.props)
     if(this.props.isUser){
     return(
       <div className='titleChng'>
-      <input type='text' className='titleInput' value={this.props.penName} onKeyDown={(e) => e.keyCode === 13 ? this.props.savePen() : null } onChange={(e) => this.props.updateName(e)}/>
-      <img src="https://vignette.wikia.nocookie.net/freestyle2/images/7/79/Icon_edit.png/revision/latest?cb=20160907075220" alt="" className='penIcon' onClick={this.props.savePen}/>
+      <div>
+        <input type='text' className='titleInput' value={this.props.penName} onKeyDown={(e) => e.keyCode === 13 ? this.props.savePen() : null } onChange={(e) => this.props.updateName(e)}/>
+        <img src="https://vignette.wikia.nocookie.net/freestyle2/images/7/79/Icon_edit.png/revision/latest?cb=20160907075220" alt="" className='penIcon' onClick={this.props.savePen}/>
+      </div>
       <p className='APenBy'>A PEN BY 
         <Link to='/profile' className='link'><span className='userName'>{this.state.user.name}</span></Link></p>
       </div>
@@ -61,7 +63,7 @@ class NavBar2 extends Component {
         <div className='titleChng'>
           <p>{this.props.penName}{console.log(this.props.penName)}</p>
           <p className='APenBy'>A PEN BY 
-            <Link to='/profile' className='link'><span className='userName'>{this.props.userName}</span></Link></p>
+            <Link to={`/profile/${this.props.penUserId}`} className='link'><span className='userName'>{this.props.userName}</span></Link></p>
       </div>
       )
     }
