@@ -1521,7 +1521,8 @@ span {
   background-color: #222222; }
   .commentsContainer .tags {
     display: flex;
-    align-items: center; }
+    align-items: center;
+    margin-top: 30px; }
     .commentsContainer .tags h3 {
       margin: 10px;
       color: lightgray; }
@@ -1531,7 +1532,9 @@ span {
   .commentsContainer .descriptionBox {
     background-color: #32333B;
     color: lightgray;
-    padding: 20px; }
+    padding: 20px;
+    max-height: 180px;
+    overflow: auto; }
   .commentsContainer h2 {
     color: white;
     margin: 50px 0px 20px 0px;
@@ -1582,6 +1585,9 @@ span {
 .leaveComment {
   border-bottom: 0.5px solid lightgray;
   padding-bottom: 5px; }
+
+.commentsLink {
+  text-decoration: none; }
 
 .searchBar {
   width: 100vw;
