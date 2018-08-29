@@ -75,7 +75,7 @@ export default class Search extends Component {
         let { currentPage, pens, search, users } = this.state;
         if (pens[currentPage]) {
             var pensList = pens[currentPage].map(pen => {
-                let { pen_id, name, username, img_url, views, comments, loves, scripts, html, css, js } = pen;
+                let { pen_id, name, description, username, img_url, views, comments, loves, scripts, html, css, js } = pen;
                 return (
                     <Pen
                         key={pen_id}
@@ -86,6 +86,7 @@ export default class Search extends Component {
                         css={css}
                         js={js}
                         username={username}
+                        description={description}
                         penName={name}
                         views={views}
                         commentsNum={comments}
