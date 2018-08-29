@@ -405,6 +405,7 @@ export default class CodeEditor extends Component {
         return (
             <div>
         <NavBar2
+            savePen = {this.savePen}
             history={this.props.history}
             userName={this.state.userName}
             updateName={this.updateName}

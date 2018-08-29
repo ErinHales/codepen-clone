@@ -84,6 +84,7 @@
     .tags {
         display: flex;
         align-items: center;
+        margin-top: 30px;
         h3 {
             margin: 10px;
             color: lightgray;
@@ -97,6 +98,8 @@
         background-color: $dark-blue-gray;
         color: lightgray;
         padding: 20px;
+        max-height: 180px;
+        overflow: auto;
     }
     h2 {
         color: white;
@@ -159,4 +162,8 @@
 .leaveComment {
     border-bottom: 0.5px solid lightgray;
     padding-bottom: 5px;
+}
+
+.commentsLink {
+    text-decoration: none;
 }
