@@ -1,3 +1,6 @@
+const restructureResponsePen = require('./helpers/restructureResponsePen')
+
+
 module.exports = {
     getUser(req, res) {
         if (req.query.id) {
@@ -44,19 +47,25 @@ module.exports = {
         })
     },
     searchUserPens(req, res) {
-        let {pageNum, userId} = req.params;
+        let {pageNum} = req.params;
         let {search} = req.query;
         pageNum *= 6;
+        let newSearch = `%${search}%`;
+        req.app.get("db").search_user_pens([req.session.userid, pageNum, newSearch]).then(response => {
+            res.status(200).send(response.map( pen => restructureResponsePen(pen)));
+        }).catch(err => {
+            res.status(500).send(err);
+            console.error(err);
+        })
+    },
+    getUserInfo(req, res) {
         let id;
-        if (userId !== 0) {
-            id = userId;
+        if(req.query.userid) {
+            id = req.query.userid;
         } else {
             id = req.session.userid;
         }
-        req.app.get("db").search_user_pens([id, pageNum, search])
-    },
-    getUserInfo(req, res) {
-        req.app.get("db").get_user_info(req.session.userid).then(response => {
+        req.app.get("db").get_user_info(id).then(response => {
             res.status(200).send(response);
         })
     },

@@ -106,7 +106,6 @@ class Account extends Component {
     }
 
     render() {
-        console.log(this.state.theme);
         return (
             <div>
                 <NavBar />
