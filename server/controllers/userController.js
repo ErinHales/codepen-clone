@@ -46,6 +46,7 @@ module.exports = {
     searchUserPens(req, res) {
         let {pageNum, userId} = req.params;
         let {search} = req.query;
+        pageNum *= 6;
         let id;
         if (userId !== 0) {
             id = userId;

@@ -13,7 +13,8 @@ class Profile extends Component {
       pens: [],
       currentPage: 0,
       userInfo: {},
-      showcase: []
+      showcase: [],
+      search: ''
     }
 
   }
@@ -64,24 +65,48 @@ class Profile extends Component {
 
 
   nextPage() {
-    let { currentPage, pens } = this.state;
-    axios.get(`/api/pens/user/0/${currentPage + 1}?type=new`)
-      .then(res => {
-        if (res.data[0]) {
-          let copy = pens.slice();
-          copy.push(res.data);
-          console.log(copy);
-          this.setState({
-            pens: copy,
-            currentPage: currentPage + 1
-          })
-        }
-      })
+    let { search, currentPage, pens } = this.state;
+    if (search === '') {
+      axios.get(`/api/pens/user/0/${currentPage + 1}?type=new`)
+        .then(res => {
+          if (res.data[0]) {
+            let copy = pens.slice();
+            copy.push(res.data);
+            console.log(copy);
+            this.setState({
+              pens: copy,
+              currentPage: currentPage + 1
+            })
+          }
+        })
+    } else {
+      axios.get(`/api/search/userpens/0/${currentPage + 1}?search=${search}`)
+        .then(res => {
+          if (res.data[0]) {
+            let copy = pens.slice();
+            copy.push(res.data);
+            console.log(copy);
+            this.setState({
+              pens: copy,
+              currentPage: currentPage + 1
+            })
+          }
+        })
+    }
   }
 
   getPrev() {
     this.setState({
       currentPage: this.state.currentPage - 1
+    })
+  }
+
+  searchUserPens() {
+    axios.get(`/api/search/userpens/0/0?search=${this.state.search}`).then(response => {
+      this.setState({
+        pens: [response.data],
+        currentPage: 0
+      })
     })
   }
 
