@@ -22,6 +22,12 @@
   }
 }
 
+
+.showCaseContainer{
+  width: 80vw;
+  margin: 0 auto;
+}
+
 .Content{
   width: 100%;
   background: #191A1D;
@@ -102,6 +108,8 @@
 .followers:hover{
   color: whitesmoke
 }
+
+
 
 .EditP{
   height: 40px;
@@ -209,7 +217,7 @@
   justify-content: space-around;
   align-items: center;
   > :nth-child(1) {
-    width: 80%;
+    width: 100;
     border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
