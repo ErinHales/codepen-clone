@@ -96,7 +96,7 @@ class NavBar extends Component {
           </Link>
 
           <div className='divProj'>
-            <h1 className='Proj'>Challenges</h1>
+            <Link className='link' to='/challenges'><h1 className='Proj'>Challenges</h1></Link>
             <div className='prj-line'></div>
           </div>
 
