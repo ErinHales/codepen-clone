@@ -2584,17 +2584,19 @@ span {
   border: 1px solid red; }
   .showCaseContainer .showPen {
     margin: 0 !important;
-    margin-bottom: 1rem !important; }
+    margin-top: 1rem !important;
+    width: 32% !important; }
+  .showCaseContainer .showPen:nth-child(3n+3) {
+    margin-left: 2% !important;
+    margin-right: 2% !important; }
   .showCaseContainer .showPen:nth-child(1) {
-    width: 100%;
+    width: 100% !important;
     border: 1px solid blue; }
   .showCaseContainer .displayPensList {
     display: flex;
     border: 1px solid yellow;
     width: 100%;
     flex-wrap: wrap; }
-  .showCaseContainer .showPen:nth-child(3n+3) {
-    border: 1px solid green; }
 
 .challenge {
   background: url("https://static.codepen.io/assets/logos/codepen-logo-pattern-725360e4ce5b66f968c7f39c80999bdeaa3cbe2f18eac75d58b01f8cf55c26ab.png");

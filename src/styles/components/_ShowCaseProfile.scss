@@ -7,10 +7,17 @@
     border: 1px solid red;
     .showPen{
         margin: 0 !important;
-        margin-bottom: 1rem !important;
+        margin-top: 1rem !important;
+        width: 32% !important;
     }
+
+    .showPen:nth-child(3n+3){
+        margin-left:  2% !important;
+        margin-right:  2% !important;
+    }
+
     .showPen:nth-child(1) {
-        width: 100%;
+        width: 100% !important;
         border: 1px solid blue;
     }
     .displayPensList {
@@ -20,8 +27,8 @@
         flex-wrap: wrap;
     }
 
-    .showPen:nth-child(3n+3){
-        border: 1px solid green;
-    }
+   
+
+   
 
 }
