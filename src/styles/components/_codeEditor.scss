@@ -98,6 +98,9 @@ $light-gray: #C5C8D4;
 .CodeMirror-scroll {
     width: 33.3vw;
     padding-top: 30px;
+    CodeMirror-line:last-child {
+        margin-bottom: 100px !important;
+    }
 }
 
 .CodeMirror-gutter {

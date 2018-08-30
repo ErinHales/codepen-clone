@@ -39,7 +39,6 @@ class Profile extends Component {
       }
     })
     axios.get('/api/userinfo').then(res => {
-      console.log(res.data[0]);
       this.setState({
         userInfo: res.data[0]
       })
