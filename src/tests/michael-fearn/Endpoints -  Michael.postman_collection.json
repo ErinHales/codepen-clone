@@ -1,0 +1,104 @@
+{
+	"info": {
+		"_postman_id": "42fc609d-ff97-4710-b174-774a4ee2ca7c",
+		"name": "ClonePen - Endpoints -  Michael",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST - Pen",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3a55bc5a-53db-4d85-b802-7d4dba4f9028",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": 1,\r\n    \"name\": \"test pen\",\r\n    \"forked\": false,\r\n    \"html\": \"\",\r\n    \"css\": \"\",\r\n    \"js\": \"function magic(fairyDust) {\\n\\treturn 'I can fly. Also, I do believe in fairies';\\n}\",\r\n    \"scripts\": {\r\n        \"html\":{\r\n        \t\"html_tag_class\": \"test\\n\\t testttttsss\",\r\n        \t\"head_tag\": \"test\\n\\t testttttsss\"\r\n        },\r\n        \"css\": [\"asdfasdf\"], \r\n        \"js\": [\"asdfasdf\",\"adqwerpsadf\"]\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3030/api/pen/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"pen",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Pen",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "78ce8dbe-f262-4e1d-b978-a03ecbb96683",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"returns object\", function () {",
+							"    pm.expect(typeof pm.response.json()).to.eql(\"object\")",
+							"})",
+							"",
+							"pm.test(\"contains correct number of properties\", function () {",
+							"    pm.expect(Object.keys(pm.response.json()).length).to.eql(8)",
+							"})",
+							"",
+							"pm.test(\"fork should be a boolean\", function () {",
+							"    pm.expect(typeof pm.response.json().forked).to.eql(\"boolean\")",
+							"})",
+							"",
+							"pm.test(\"\")"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3030/api/pen/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"pen",
+						"5"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
