@@ -8,7 +8,8 @@
 
 .b-line{
   height: 70px;
-  width: calc(100vw - 20px);
+  // max-width: 50%;
+  // width: calc(100vw - 20px);
   background: black;
   color: white;
   display: flex;
@@ -22,8 +23,15 @@
   }
 }
 
+
+.showCaseContainer{
+  width: 80vw;
+  margin: 0 auto;
+}
+
 .Content{
   width: 100%;
+  overflow: hidden;
   background: #191A1D;
 }
 
@@ -31,7 +39,7 @@
   color: white;
   position: absolute;
   top: 170px;
-  width: calc(100vw - 20px);
+  width: calc(100vw - 25px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -102,6 +110,8 @@
 .followers:hover{
   color: whitesmoke
 }
+
+
 
 .EditP{
   height: 40px;
@@ -209,7 +219,7 @@
   justify-content: space-around;
   align-items: center;
   > :nth-child(1) {
-    width: 80%;
+    width: 100;
     border-radius: 10px;
     display: flex;
     flex-wrap: wrap;

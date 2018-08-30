@@ -3,9 +3,9 @@ const restructureResponsePen = require('./helpers/restructureResponsePen')
 module.exports = {
     getPens(req, res) {
         const dbConn = req.app.get('db')
-        // to be implemented
         let {pageNum} = req.params;
         let offset = parseInt(pageNum) * 6;
+
         if(req.query) {
             if(req.query.type === 'views') {
                 dbConn.get_most_viewed_pens(offset)

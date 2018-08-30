@@ -1,6 +1,7 @@
 .component-account {
     background-color: $bg-dark-black;
-    min-height: 170vh;
+    // min-height: 170vh;
+    padding-bottom: 80px;
     font-family: $font-lato;
     .account-container {
         position: relative;

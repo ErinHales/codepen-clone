@@ -55,7 +55,8 @@ class Showcase_Layout extends Component {
             css: '',
             js: '',
             html: '',
-            scripts: ''
+            scripts: '',
+            isEmpty: false
         }
     }
 
@@ -71,10 +72,14 @@ class Showcase_Layout extends Component {
         }
     }
 
+
+
     render() {
         let { html, js, css, penId, scripts, } = this.state;
         let srcDoc;
+        let isEmpty = false;
         if (scripts) {
+
             let { css: cssList, html: htmlScripts, js: jsList } = scripts
             let { html_tag_class: htmlClassTag, head_tag: head } = htmlScripts
 
@@ -108,23 +113,24 @@ class Showcase_Layout extends Component {
         }
         else {
             srcDoc = `${html}<style>${css}</style><script>${js}</script>`;
+            if(html || css || js){
+                isEmpty = true;
+            }
+           
         }
-
         const { connectDropTarget, connectDragSource, isDragging } = this.props;
         const opacity = isDragging ? 0 : 1;
-
         return connectDropTarget(
             connectDragSource(
                 <div className="grid-item"  >
-                    <div styles={{ opacity }} className="frame-overlay">
-                        <iframe  title={penId} scrolling="no" className="pen-iframe" srcDoc={srcDoc}></iframe>
+                    <div style={{ opacity }} className="frame-overlay">
+                        <iframe style={{ backgroundColor: isEmpty ? 'white' : 'transparent' }} title={penId} scrolling="no" className="pen-iframe" srcDoc={srcDoc}></iframe>
                     </div>
                 </div>
             )
         )
     }
 }
-
 export default flow(
     DropTarget('item', dropSource, collectTarget),
     DragSource('item', itemSource, collectSource)

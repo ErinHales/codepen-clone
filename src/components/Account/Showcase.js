@@ -4,15 +4,15 @@ import { DragDropContext } from 'react-dnd';
 import Showcase_Pen from './Showcase_Pens';
 import Showcase_Layout2 from './Showcase_Layout2';
 import axios from 'axios';
+import Navbar from '../NavBar/NavBar';
 class Showcase extends Component {
     constructor() {
         super();
         this.state = {
             pens: [],
-            currentPage: 0,
+            currentPage: 0
         }
     }
-
     getUserPens = () => {
         axios.get(`/api/pens/user/0/${this.state.currentPage}?type=new`)
             .then(res => {
@@ -52,9 +52,23 @@ class Showcase extends Component {
     componentDidMount() {
         this.getUserPens();
     }
-    render() {
-        return (
+    displayAlert = async () => {
+         setTimeout(() => {
+            document.querySelector('.alert').style.display = 'block';
+            setTimeout(() =>{
+                document.querySelector('.alert').style.display = 'none';
+            }, 3000)
+        }, 875);
+    //    document.querySelector('.alert').style.display = 'block';
+}
+render() {
+    return (
+        <div>
+            <Navbar></Navbar>
             <div className="component-showcase">
+                <div className="alert">
+                    <p>Showcase layout saved</p>
+                </div>
                 <div className="showcase-container">
                     <div className="header">
                         <h1>Organize Your Profile Showcase</h1>
@@ -79,7 +93,7 @@ class Showcase extends Component {
                                 <div className="showcase-grid">
                                     {this.state.pens[0] ? this.state.pens[this.state.currentPage].map((pen, index) => {
                                         return <Showcase_Pen key={pen.pen_id} penId={pen.pen_id} css={pen.css} html={pen.html} js={pen.js} scripts={pen.scripts} user_id={pen.user_id} />
-                                    }) : null }
+                                    }) : null}
                                 </div>
                                 <div className="paginationButtons">
                                     <button className="nextButton" style={{ display: this.state.currentPage === 0 ? "none" : "block" }} onClick={() => this.getPrev()}><i className="fa fa-angle-left"></i>Prev</button>
@@ -87,13 +101,13 @@ class Showcase extends Component {
                                 </div>
                             </div>
                         </div>
-                        <Showcase_Layout2 />
+                        <Showcase_Layout2 showAlert={this.displayAlert} />
                     </div>
-
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
+}
 }
 
 export default DragDropContext(HTML5Backend)(Showcase);

@@ -193,8 +193,9 @@
 .signup-container {
   background: url("https://static.codepen.io/assets/logos/codepen-logo-pattern-725360e4ce5b66f968c7f39c80999bdeaa3cbe2f18eac75d58b01f8cf55c26ab.png");
   background-repeat: repeat;
-  height: 100vh;
+  min-height: 80vh;
   display: flex;
+  padding-bottom: 100px;
   flex-direction: column;
   align-items: center; }
   .signup-container .signup-form-container {
@@ -492,6 +493,7 @@ span {
 
 .penInfo,
 .penPopularity {
+  color: #C5C8D4;
   display: flex;
   align-items: center; }
 
@@ -878,9 +880,12 @@ span {
   background: #6e6d6d; }
 
 .arrow {
+  margin-left: 4px;
+  margin-right: -5px;
   height: 30px; }
 
 .divMag {
+  margin-right: 10px;
   border-radius: 50px;
   background: #898e9e;
   position: relative;
@@ -1025,7 +1030,7 @@ span {
 
 .component-account {
   background-color: #191A1D;
-  min-height: 170vh;
+  padding-bottom: 80px;
   font-family: "Lato", sans-serif; }
   .component-account .account-container {
     position: relative;
@@ -1250,7 +1255,6 @@ span {
 
 .b-line {
   height: 70px;
-  width: calc(100vw - 20px);
   background: black;
   color: white;
   display: flex;
@@ -1262,15 +1266,20 @@ span {
     align-items: center;
     z-index: 30; }
 
+.showCaseContainer {
+  width: 80vw;
+  margin: 0 auto; }
+
 .Content {
   width: 100%;
+  overflow: hidden;
   background: #191A1D; }
 
 .UserInfo {
   color: white;
   position: absolute;
   top: 170px;
-  width: calc(100vw - 20px);
+  width: calc(100vw - 25px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1424,7 +1433,7 @@ span {
   justify-content: space-around;
   align-items: center; }
   .pen-window > :nth-child(1) {
-    width: 80%;
+    width: 100;
     border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
@@ -2067,7 +2076,7 @@ span {
   color: white;
   background: #36383F;
   font-family: 'Lato';
-  margin-left: 24px;
+  margin-left: 15px;
   cursor: pointer; }
 
 .signUpButton:hover {
@@ -2157,6 +2166,17 @@ span {
   background-color: #191A1D;
   min-height: 100vh;
   padding-top: 3.25rem; }
+  .component-showcase .alert {
+    background-color: #FFDD40;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 10;
+    display: none; }
+    .component-showcase .alert p {
+      padding: 10px 8px;
+      font-size: 1.1rem; }
   .component-showcase .showcase-container {
     width: 97%;
     margin: 0 auto; }
@@ -2169,7 +2189,7 @@ span {
       .component-showcase .showcase-container .showcase-grid .row:last-child {
         margin-top: 1rem; }
       .component-showcase .showcase-container .showcase-grid .grid-item {
-        height: 150px;
+        min-height: 100px;
         width: 31%;
         margin-bottom: 1rem; }
         .component-showcase .showcase-container .showcase-grid .grid-item .overlay .text {
@@ -2257,7 +2277,7 @@ span {
           margin-bottom: 0.25rem; }
       .component-showcase .showcase-container .showcase-body-container .showcase-pens {
         width: 45%;
-        height: 100%;
+        height: 82vh;
         background-color: #32333B;
         padding: 20px;
         border-radius: 5px; }
@@ -2265,6 +2285,7 @@ span {
         width: 47%;
         background-color: #32333B;
         padding: 20px;
+        height: 140vh;
         border-radius: 5px; }
         .component-showcase .showcase-container .showcase-body-container .showcase-layout .frame-overlay {
           position: relative;
@@ -2299,7 +2320,7 @@ span {
             margin-bottom: 1.5rem; }
           .component-showcase .showcase-container .showcase-body-container .showcase-layout .showcase-layout-container .showcase-main {
             width: 100%;
-            height: 269px; }
+            min-height: 200px; }
             .component-showcase .showcase-container .showcase-body-container .showcase-layout .showcase-layout-container .showcase-main img {
               width: 100%;
               height: 100%; }
@@ -2328,8 +2349,8 @@ span {
                   cursor: all-scroll; }
         .component-showcase .showcase-container .showcase-body-container .showcase-layout .delete-container {
           text-align: center;
-          margin-top: 3rem;
-          margin-bottom: 2rem; }
+          margin: 1rem 0;
+          padding: 1rem 0; }
           .component-showcase .showcase-container .showcase-body-container .showcase-layout .delete-container p,
           .component-showcase .showcase-container .showcase-body-container .showcase-layout .delete-container i {
             color: #FFFFFF; }
@@ -2357,13 +2378,14 @@ span {
 
 .icon2 {
   height: 40px; }
+  .icon2:hover {
+    cursor: pointer; }
 
 .APenBy {
   font-size: 11px;
   color: gray; }
 
 .Name2 {
-  width: 20%;
   min-width: 175px;
   display: flex;
   align-items: bottom;
@@ -2469,11 +2491,12 @@ span {
 .titleInput {
   height: 24px;
   color: whitesmoke;
+  display: inline-block;
   background: black;
   border: none;
   font-family: 'Lato', sans-serif;
-  font-size: 18px;
-  width: 140px; }
+  font-size: 20px;
+  width: 180px; }
 
 .titleInput::-webkit-input-placeholder {
   color: whitesmoke;
@@ -2487,9 +2510,9 @@ span {
 
 .titleChng {
   height: 30px;
-  width: 175px;
+  font-size: 20px;
   display: flex;
-  flex-wrap: wrap; }
+  flex-direction: column; }
 
 .search {
   display: flex;

@@ -1,6 +1,8 @@
 .icon2{
   height: 40px;
-
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .APenBy{
@@ -9,17 +11,17 @@
 }
 
 .Name2{
-  width: 20%;
- min-width: 175px;
- display: flex;
- align-items: bottom;
- font-family: 'Lato', sans-serif;
- color: white;
- margin-left: 15px;
- margin-top: 13px;
- font-size: 24px;
- position: relative;
- bottom: 2px;
+  // width: 20%;
+  min-width: 175px;
+  display: flex;
+  align-items: bottom;
+  font-family: 'Lato', sans-serif;
+  color: white;
+  margin-left: 15px;
+  margin-top: 13px;
+  font-size: 24px;
+  position: relative;
+  bottom: 2px;
 }
 
 .title{
@@ -134,11 +136,12 @@
 .titleInput{
   height: 24px;
   color: whitesmoke;
+  display: inline-block;
   background: black;
   border: none;
   font-family: 'Lato', sans-serif;
-  font-size: 18px;
-  width: 140px;
+  font-size: 20px;
+  width: 180px;
 }
 
 .titleInput::-webkit-input-placeholder{
@@ -155,9 +158,10 @@
 
 .titleChng{
   height: 30px;
-  width: 175px;
+  // width: 175px;
+  font-size: 20px;
   display: flex;
-  flex-wrap: wrap
+  flex-direction: column;
 }
 
 
