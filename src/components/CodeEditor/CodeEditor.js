@@ -123,7 +123,20 @@ export default class CodeEditor extends Component {
         }
 
     }
+    // componentDidUpdate() {
+    //     if(this.state.isLoggedIn) {
+    //         axios.get('/api/users')
+    //         .then(response => {
+    //             if (response.data.username) {
+    //                 this.setState({
+    //                     isLoggedIn: true,
+    //                     visitingUserId: response.data.userid
+    //                 })
+    //             }
+    //         })
 
+    //     }
+    // }
     // componentDidMount() {
     //     axios.get('/api/userinfo').then(response => {
     //         // console.log(response.data);
@@ -187,7 +200,7 @@ export default class CodeEditor extends Component {
         else {
             axios.post('/api/pen/', this.penData())
                 .then(response => {
-                    this.props.match.params.id = response.data[0].pen_id
+                    this.props.history.push(`/editor/${response.data[0].pen_id}`)
                 })
         }
     }
