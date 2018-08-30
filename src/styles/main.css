@@ -2603,7 +2603,10 @@ span {
   display: flex;
   flex-direction: column;
   text-align: center;
-  color: whitesmoke; }
+  justify-content: center;
+  color: whitesmoke;
+  align-content: center;
+  align-items: center; }
 
 .Title2 {
   font-family: "Black Han Sans", sans-serif;
@@ -2640,8 +2643,6 @@ span {
   align-items: center;
   padding: 5px;
   text-align: center;
-  position: relative;
-  left: 40%;
   padding-left: 25px;
   margin: 25px; }
 
@@ -2653,8 +2654,6 @@ span {
   height: 350px;
   width: 650px;
   background: rgba(0, 0, 0, 0.363);
-  position: relative;
-  left: 31%;
   margin-top: 50px;
   padding: 30px;
   padding-top: 0px;
