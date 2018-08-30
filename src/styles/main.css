@@ -358,7 +358,7 @@
 .CodeMirror {
   font-size: 14px;
   height: 100%;
-  width: calc(33.3vw - 3px);
+  width: calc(33vw);
   font-family: 'Source Code Pro'; }
 
 .verticalResize {
@@ -374,17 +374,19 @@
   z-index: -1; }
 
 .CodeMirror-scroll {
-  width: 33.3vw;
-  padding-top: 30px; }
+  width: 32.5vw;
+  height: calc(100% - 25px) !important;
+  padding-top: 30px;
+  padding-bottom: 10px !important;
+  border-left: 15px solid #36383F; }
 
 .CodeMirror-gutter {
   width: 15px !important;
   background-color: #36383F;
   margin-right: 10px;
-  margin-top: 20px; }
-
-.CodeMirror-gutter:hover {
-  cursor: col-resize; }
+  margin-top: 20px;
+  height: 290px !important;
+  display: none !important; }
 
 span {
   font-size: 15px; }
@@ -392,7 +394,11 @@ span {
 .CodeMirror-gutters {
   margin-right: 30px;
   padding-right: 20px;
-  border: none !important; }
+  border: none !important;
+  display: none !important; }
+
+.CodeMirror-line {
+  padding-left: 25px !important; }
 
 .CodeMirror-linenumber {
   font-size: 10px;
@@ -415,8 +421,8 @@ span {
   background-color: #666B7A;
   outline: 1px solid #C5C8D4; }
 
-.CodeMirror-vscroll {
-  width: 0px !important; }
+.CodeMirror-vscrollbar {
+  display: none !important; }
 
 .penFrame {
   width: calc(100vw - 10px);
