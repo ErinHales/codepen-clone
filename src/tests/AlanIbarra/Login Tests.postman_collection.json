@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "c179c1a1-cbe1-4e9f-be18-c2fbb8f4f6c1",
+		"name": "Login Tests",
+		"description": "This will test the login functionlaity and register functinality.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Registering  a successful user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8d1f4232-9578-4ee3-bfb4-9e49f3707735",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Response status should be 200', () =>{",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Jane Doe\",\n\t\"username\": \"test123\",\n\t\"email\": \"test@gmail.com\",\n\t\"password\": \"123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3030/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticating a valid user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e6fc44f5-e911-425f-967a-cdeab065f950",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('reposne status should be 200', () =>{",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"credentials\": \"test@gmail.com\",\n\t\"password\": \"123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3030/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "A user logs in with a unkown username",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f486d48c-5808-4bee-8926-6bdc353c2bea",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"pm.test('it should return a error when the username does not exists', () =>{",
+							"    pm.expect(pm.response.text()).to.eql('No user exist with that username')",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"credentials\": \"thisusershouldnotbeallowed\",\n\t\"password\": \"123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3030/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "A user logs in with a unknown email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3b00ad8a-1e54-4bc5-af9d-fe4c8b911aa3",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"pm.test('it should return an error message when a user logs in with a invalid email', () =>{",
+							"    pm.expect(pm.response.text()).to.eql('No user exist with that email');",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"credentials\": \"wrongemail@gmail.com\",\n\t\"password\": \"123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3030/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "A user logs in with a valid username, but wrong password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "629dbe37-e74c-48e2-bc53-eb98e97081c8",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('When a user enters a wrong password, it should return wrong password', () =>{",
+							"    pm.expect(pm.response.text()).to.eql('Password did not match the username')",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"credentials\": \"test\",\n\t\"password\": \"passwordDoesNotExists\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3030/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "A user logs in with a valid email, but wrong password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "805cedaa-466c-4d2b-8d65-ab1fbdf334d9",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('it should return an error message when a user enters a wrong password with an email', ()=>{",
+							"    pm.expect(pm.response.text()).to.eql('Password did not match the email');",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"credentials\": \"alan.ibarra209@gmail.com\",\n\t\"password\": \"kdisojfas\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3030/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

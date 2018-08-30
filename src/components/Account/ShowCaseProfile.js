@@ -27,7 +27,6 @@ export default class ShowCaseProfile extends Component {
 
         if (pensList.length > 0) {
             return (
-
                 <div className="showCaseContainer">
                     <div className="displayPensList">
                         {pensList}
