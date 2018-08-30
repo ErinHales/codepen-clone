@@ -2591,7 +2591,8 @@ span {
     margin-right: 2% !important; }
   .showCaseContainer .showPen:nth-child(1) {
     width: 100% !important;
-    border: 1px solid blue; }
+    border: 1px solid blue;
+    margin-top: 0% !important; }
   .showCaseContainer .displayPensList {
     display: flex;
     border: 1px solid yellow;
