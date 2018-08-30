@@ -1,0 +1,67 @@
+{
+	"info": {
+		"_postman_id": "8e4ee7f7-b395-406b-9ed9-e87ac1143206",
+		"name": "clonepen_user_testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/api/users?id=38",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bbfb8aee-bd19-456a-b633-696de0401d3d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status code is 200', () => {",
+							"    pm.expect(pm.response).to.have.status(200)",
+							"})",
+							"",
+							"pm.test('Student should have the correct name', () =>{",
+							"    pm.expect(typeof pm.response.json()).to.eql('object')",
+							"})",
+							"",
+							"pm.test('User should have a name', () =>{",
+							"    pm.expect(typeof pm.response.json()[0].name).to.eql('string')",
+							"})",
+							"",
+							"pm.test('User should have the correct name', () =>{",
+							"    pm.expect(pm.response.json()[0].name).to.eql('Ruben')",
+							"})",
+							"",
+							"pm.test('User should have the correct username', () =>{",
+							"    pm.expect(pm.response.json()[0].username).to.eql('rubenOrtiz')",
+							"})",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/api/users?id=38",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "38"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

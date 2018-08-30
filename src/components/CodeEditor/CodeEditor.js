@@ -65,6 +65,46 @@ export default class CodeEditor extends Component {
         this.autoUpdateHandler = this.autoUpdateHandler.bind(this)
         this.tabSizeHandler = this.tabSizeHandler.bind(this)
         this.updateName = this.updateName.bind(this)
+
+        this.fork = this.fork.bind(this)
+    }
+
+    getPenData = (id) => {
+        axios.get(`/api/pen/${id}`)
+        .then(response => {
+            this.setState({
+                css: null,
+                html: null,
+                js: null,
+                name: response.data.name
+            })
+
+            const { user_id: penUserId, html, css, js, username, scripts } = response.data;
+            let { css: cssList, html: htmlScripts, js: jsList } = scripts
+            const { html_tag_class, head_tag } = htmlScripts
+            if (!cssList[0]) cssList = []
+            if (!jsList[0]) jsList = []
+            console.log(penUserId)
+
+            this.setState({
+                penUserId,
+                css,
+                html,
+                js,
+                userName: username,
+                jsSettings: {
+                    jsCdnList: jsList
+                },
+                cssSettings: {
+                    cssCdnList: cssList
+                },
+                htmlSettings: {
+                    htmlClassTag: html_tag_class,
+                    head: head_tag
+                }
+            })
+        })
+        .catch()
     }
 
     componentWillMount() {
@@ -79,41 +119,7 @@ export default class CodeEditor extends Component {
             })
         const { id } = this.props.match.params
         if (id) {
-            axios.get(`/api/pen/${id}`)
-                .then(response => {
-                    this.setState({
-                        css: null,
-                        html: null,
-                        js: null,
-                        name: response.data.name
-                    })
-
-                    const { user_id: penUserId, html, css, js, username, scripts } = response.data;
-                    let { css: cssList, html: htmlScripts, js: jsList } = scripts
-                    const { html_tag_class, head_tag } = htmlScripts
-                    if (!cssList[0]) cssList = []
-                    if (!jsList[0]) jsList = []
-
-
-                    this.setState({
-                        penUserId,
-                        css,
-                        html,
-                        js,
-                        userName: username,
-                        jsSettings: {
-                            jsCdnList: jsList
-                        },
-                        cssSettings: {
-                            cssCdnList: cssList
-                        },
-                        htmlSettings: {
-                            htmlClassTag: html_tag_class,
-                            head: head_tag
-                        }
-                    })
-                })
-                .catch()
+            this.getPenData(id)
         }
 
     }
@@ -130,12 +136,14 @@ export default class CodeEditor extends Component {
     componentDidMount() {
         axios.get('/api/userinfo').then(response => {
             if (response.data[0]) {
-                this.setState({
-                    theme: response.data[0].theme
-                })
+                if(response.data[0].theme) {
+                    this.setState({
+                        theme: response.data[0].theme
+                    })
+                }
             }
         })
-        if(this.props.match.params.id) {
+        if(this.props.match.params.id && this.state.userid) {
             axios.put(`/api/pen/view/${this.props.match.params.id}/${this.state.userid}`)
                 .catch(console.error());
         }
@@ -323,6 +331,22 @@ export default class CodeEditor extends Component {
         })
     }
 
+    fork() {
+        //show login pop up if not logged in , if logged in 
+        if (!this.state.isLoggedIn) {
+            this.setState({ showPopUp: true })
+            return
+        }
+        else {
+            let penData = this.penData()
+            penData.forked = true
+            axios.post('/api/pen/', penData)
+                .then(response => {
+                    this.props.history.push(`/editor/${response.data[0].pen_id}`)
+                    this.getPenData(this.props.match.params.id)
+                })
+        }
+    }
     updateDescription = (e) => {
         this.setState({
             description: e.target.value
@@ -402,15 +426,22 @@ export default class CodeEditor extends Component {
             
             <script>${this.state.js}</script>
         </html>`;
+        console.log(this.state)
         return (
             <div>
-        <NavBar2
-            savePen = {this.savePen}
-            history={this.props.history}
-            userName={this.state.userName}
-            updateName={this.updateName}
-            penName={this.state.name}
-            isLoggedIn={this.state.isLoggedIn} showSettings={this.state.showSettings} settingsPopUpHandler={this.settingsPopUpHandler} />
+            <NavBar2
+                savePen={this.savePen}
+                penUserId={this.state.penUserId}
+                isUser={this.state.visitingUserId === this.state.penUserId}
+                history={this.props.history}
+                userName={this.state.userName}
+                updateName={this.updateName}
+                penName={this.state.name}
+                isLoggedIn={this.state.isLoggedIn} 
+                showSettings={this.state.showSettings} 
+                settingsPopUpHandler={this.settingsPopUpHandler} 
+                fork={this.fork}
+            />
             <div className="codeEditor">
                 {this.state.showPopUp ? popUp : null}
                 {this.state.showSettings ? settingsMenu : null}
@@ -451,14 +482,17 @@ export default class CodeEditor extends Component {
                 <div className="verticalResize"></div>
                 <iframe className="penFrame" srcDoc={srcdoc} frameBorder="0" title="showPen"></iframe>
                 <div className="penFooter">
-                    <button>Console</button>
-                    <button onClick={() => this.savePen()}>Save</button>
-                    {console.log(this.state.visitingUserId, this.state.penUserId)}
-                    {/* {this.state.visitingUserId === this.state.penUserId ? ( */}
-                        <button onClick={this.deletePen} className="delete">Delete</button>
-                    {/* ) : (
+                    {/* <button>Console</button> */}
+                    {this.state.visitingUserId === this.state.penUserId ? (
+                        <button onClick={() => this.savePen()}>Save</button>
+                    ) : (
                             null
-                        )} */}
+                        )}
+                    {this.state.visitingUserId === this.state.penUserId ? (
+                        <button onClick={this.deletePen} className="delete">Delete</button>
+                    ) : (
+                            null
+                        )}
                 </div>
             </div>
             </div >

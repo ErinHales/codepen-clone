@@ -33,7 +33,7 @@ export default class SignUp extends Component {
                 console.log(res);
                 // If the response has
                 if(res.data === 'OK'){
-                    // this.props.history.push('/pens')
+                    this.props.history.push('/pens') 
                     if(this.props.closePopUp) {
                         this.props.closePopUp(true)
                     }

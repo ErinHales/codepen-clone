@@ -193,8 +193,9 @@
 .signup-container {
   background: url("https://static.codepen.io/assets/logos/codepen-logo-pattern-725360e4ce5b66f968c7f39c80999bdeaa3cbe2f18eac75d58b01f8cf55c26ab.png");
   background-repeat: repeat;
-  height: 100vh;
+  min-height: 80vh;
   display: flex;
+  padding-bottom: 100px;
   flex-direction: column;
   align-items: center; }
   .signup-container .signup-form-container {
@@ -490,6 +491,7 @@ span {
 
 .penInfo,
 .penPopularity {
+  color: #C5C8D4;
   display: flex;
   align-items: center; }
 
@@ -876,9 +878,12 @@ span {
   background: #6e6d6d; }
 
 .arrow {
+  margin-left: 4px;
+  margin-right: -5px;
   height: 30px; }
 
 .divMag {
+  margin-right: 10px;
   border-radius: 50px;
   background: #898e9e;
   position: relative;
@@ -1023,7 +1028,7 @@ span {
 
 .component-account {
   background-color: #191A1D;
-  min-height: 170vh;
+  padding-bottom: 80px;
   font-family: "Lato", sans-serif; }
   .component-account .account-container {
     position: relative;
@@ -1248,7 +1253,6 @@ span {
 
 .b-line {
   height: 70px;
-  width: calc(100vw - 20px);
   background: black;
   color: white;
   display: flex;
@@ -1266,13 +1270,14 @@ span {
 
 .Content {
   width: 100%;
+  overflow: hidden;
   background: #191A1D; }
 
 .UserInfo {
   color: white;
   position: absolute;
   top: 170px;
-  width: calc(100vw - 20px);
+  width: calc(100vw - 25px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2069,7 +2074,7 @@ span {
   color: white;
   background: #36383F;
   font-family: 'Lato';
-  margin-left: 24px;
+  margin-left: 15px;
   cursor: pointer; }
 
 .signUpButton:hover {
@@ -2371,13 +2376,14 @@ span {
 
 .icon2 {
   height: 40px; }
+  .icon2:hover {
+    cursor: pointer; }
 
 .APenBy {
   font-size: 11px;
   color: gray; }
 
 .Name2 {
-  width: 20%;
   min-width: 175px;
   display: flex;
   align-items: bottom;
@@ -2483,11 +2489,12 @@ span {
 .titleInput {
   height: 24px;
   color: whitesmoke;
+  display: inline-block;
   background: black;
   border: none;
   font-family: 'Lato', sans-serif;
-  font-size: 18px;
-  width: 140px; }
+  font-size: 20px;
+  width: 180px; }
 
 .titleInput::-webkit-input-placeholder {
   color: whitesmoke;
@@ -2501,9 +2508,9 @@ span {
 
 .titleChng {
   height: 30px;
-  width: 175px;
+  font-size: 20px;
   display: flex;
-  flex-wrap: wrap; }
+  flex-direction: column; }
 
 .search {
   display: flex;
@@ -2607,7 +2614,10 @@ span {
   display: flex;
   flex-direction: column;
   text-align: center;
-  color: whitesmoke; }
+  justify-content: center;
+  color: whitesmoke;
+  align-content: center;
+  align-items: center; }
 
 .Title2 {
   font-family: "Black Han Sans", sans-serif;
@@ -2644,8 +2654,6 @@ span {
   align-items: center;
   padding: 5px;
   text-align: center;
-  position: relative;
-  left: 40%;
   padding-left: 25px;
   margin: 25px; }
 
@@ -2657,8 +2665,6 @@ span {
   height: 350px;
   width: 650px;
   background: rgba(0, 0, 0, 0.363);
-  position: relative;
-  left: 31%;
   margin-top: 50px;
   padding: 30px;
   padding-top: 0px;

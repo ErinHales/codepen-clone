@@ -4,9 +4,13 @@ const restructureResponsePen = require('./helpers/restructureResponsePen')
 module.exports = {
     getUser(req, res) {
         if (req.query.id) {
-            req.app.get("db").get_user(req.query.id).then(response => {
-                res.status(200).send(response);
-            })
+            req.app.get("db").get_user(req.query.id)
+                .then(response => {
+                    res.status(200).send(response);
+                })
+                .catch((err) => {
+                    console.error(err)
+                })
         } else {
             let { name, img_url, username, userid } = req.session;
             res.send({ name, img_url, username, userid });
@@ -25,7 +29,9 @@ module.exports = {
                 req.session.img_url = imgUrl;
                 res.sendStatus(200);
             })
-            .catch(err => res.status(500).send(err))
+            .catch(err => {
+                res.status(500).send(err)
+            })
     },
     updateUserName(req, res) {
         let {name} = req.body;
@@ -65,7 +71,11 @@ module.exports = {
         } else {
             id = req.session.userid;
         }
-        req.app.get("db").get_user_info(id).then(response => {
+        req.app.get("db").search_user_pens([id, pageNum, search])
+    },
+    getUserInfo(req, res) {
+
+        req.app.get("db").get_user_info(req.session.userid).then(response => {
             res.status(200).send(response);
         })
     },
