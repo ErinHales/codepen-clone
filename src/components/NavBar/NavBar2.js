@@ -16,9 +16,10 @@ class NavBar2 extends Component {
       input: 'Untitled Pen'
     }
     this.backToPen = this.backToPen.bind(this)
+    this.getUser = this.getUser.bind(this)
   }
 
-  componentDidMount(){
+  getUser() {
     axios.get('/api/users').then(res => {
       console.log(res.data)
       this.setState({
@@ -28,12 +29,27 @@ class NavBar2 extends Component {
     .catch()
 
   }
+  componentDidUpdate() {
+    if(!this.state.user) {
+      this.getUser()
+    }
+  }
+  componentDidMount(){
+    this.getUser()
+  }
 
   componentChange(){
     if(!this.props.isUser){
-      return(
-        <Fork fork={this.props.fork}/>
-      )
+      if(this.props.match.path === '/editor') {
+        return(
+          <Save savePen={this.props.savePen}/>
+        )
+      }
+      else {
+        return(
+          <Fork fork={this.props.fork}/>
+        )
+      }
     }else{
       return(
         <Save savePen={this.props.savePen}/>
@@ -47,16 +63,20 @@ class NavBar2 extends Component {
   }
   
   titleChanger(){
-    console.log(this.props)
-    if(this.props.isUser){
+    console.log(this.state.user.name)
+    if(this.props.isUser || this.props.match.path === '/editor'){
     return(
       <div className='titleChng'>
       <div>
         <input style={{width: (this.props.penName.length * 13) - ( ((this.props.penName.length * 13) / 4.3))}} type='text' className='titleInput' value={this.props.penName} onKeyDown={(e) => e.keyCode === 13 ? this.props.savePen() : null } onChange={(e) => this.props.updateName(e)}/>
         <img src="https://vignette.wikia.nocookie.net/freestyle2/images/7/79/Icon_edit.png/revision/latest?cb=20160907075220" alt="" className='penIcon' onClick={this.props.savePen}/>
       </div>
-      <p className='APenBy'>A PEN BY 
-        <Link to='/profile' className='link'><span className='userName'>{this.state.user.name}</span></Link></p>
+      <p className='APenBy'>A PEN BY
+        {this.state.user.name ? (
+          <Link to='/profile' className='link'><span className='userName'>{this.state.user.name}</span></Link>
+        ) : (
+          <span className='userName'>Anonymous</span>
+        )}</p>
       </div>
     )}else {
       return(

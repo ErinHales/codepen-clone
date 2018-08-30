@@ -9,7 +9,7 @@
 .b-line{
   height: 70px;
   // max-width: 50%;
-  // width: calc(100vw - 20px);
+  width: calc(100vw - 20px);
   background: black;
   color: white;
   display: flex;
@@ -219,7 +219,7 @@
   justify-content: space-around;
   align-items: center;
   > :nth-child(1) {
-    width: 100;
+    width: 80%;
     border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
