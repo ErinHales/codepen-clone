@@ -2,14 +2,34 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.showCaseContainer .showPen:nth-child(1) {
     width: 80vw;
-}
+    margin: 0 auto;
+    border: 1px solid red;
+    .showPen{
+        margin: 0 !important;
+        margin-top: 1rem !important;
+        width: 32% !important;
+    }
 
-.displayPensList {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    .showPen:nth-child(3n+3){
+        margin-left:  2% !important;
+        margin-right:  2% !important;
+    }
+
+    .showPen:nth-child(1) {
+        width: 100% !important;
+        border: 1px solid blue;
+        margin-top: 0% !important;
+    }
+    .displayPensList {
+        display: flex;
+        border: 1px solid yellow;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+   
+
+   
+
 }

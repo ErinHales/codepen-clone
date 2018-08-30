@@ -247,7 +247,8 @@
                 margin: 0 auto;
                 .showcase-filter {
                     // border: 1px solid blue;
-                    display: flex;
+                    display: none;
+                    // display: flex;
                     justify-content: space-between;
                     align-items: center;
                     margin-top: 0.75rem;
