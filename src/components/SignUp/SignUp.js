@@ -31,7 +31,7 @@ export default class SignUp extends Component {
             axios.post('/api/auth/register', {name, username, email, password})
             .then(res =>{
                 console.log(res);
-                // If the response is ok then direct them to the home page
+                // If the response has
                 if(res.data === 'OK'){
                     // this.props.history.push('/pens')
                     if(this.props.closePopUp) {

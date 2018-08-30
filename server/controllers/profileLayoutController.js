@@ -33,11 +33,12 @@ module.exports = {
     },
     updateShowcase: (req, res) => {
         let { penId, gridId, showcasePen } = req.body;
+        console.log(req.body);
         let db = req.app.get('db');
         let {userid} = req.session
         // If gridId exist then we are going to switch the showcase with one of the grid items
         if (gridId) {
-            db.switch_showcase([penId, 0])
+            db.switch_showcase([penId, 0, userid])
                 .then(() => db.switch_showcase([showcasePen, gridId, userid])
                     .then(() => res.sendStatus(200))
                     .catch(err => res.status(500).send(err))

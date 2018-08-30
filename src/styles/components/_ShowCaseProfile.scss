@@ -2,14 +2,26 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.showCaseContainer .showPen:nth-child(1) {
     width: 80vw;
-}
+    margin: 0 auto;
+    border: 1px solid red;
+    .showPen{
+        margin: 0 !important;
+        margin-bottom: 1rem !important;
+    }
+    .showPen:nth-child(1) {
+        width: 100%;
+        border: 1px solid blue;
+    }
+    .displayPensList {
+        display: flex;
+        border: 1px solid yellow;
+        width: 100%;
+        flex-wrap: wrap;
+    }
 
-.displayPensList {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    .showPen:nth-child(3n+3){
+        border: 1px solid green;
+    }
+
 }
