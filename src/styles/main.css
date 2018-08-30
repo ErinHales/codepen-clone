@@ -1253,6 +1253,7 @@ span {
 
 .b-line {
   height: 70px;
+  width: calc(100vw - 20px);
   background: black;
   color: white;
   display: flex;
@@ -1431,7 +1432,7 @@ span {
   justify-content: space-around;
   align-items: center; }
   .pen-window > :nth-child(1) {
-    width: 100;
+    width: 80%;
     border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
