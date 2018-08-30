@@ -2365,7 +2365,7 @@ span {
         width: 98%;
         margin: 0 auto; }
         .component-showcase .showcase-container .showcase-body-container .showcase-box .showcase-filter {
-          display: flex;
+          display: none;
           justify-content: space-between;
           align-items: center;
           margin-top: 0.75rem; }
@@ -2591,15 +2591,26 @@ span {
 .showCaseContainer {
   display: flex;
   flex-direction: column;
-  align-items: center; }
-
-.showCaseContainer .showPen:nth-child(1) {
-  width: 80vw; }
-
-.displayPensList {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; }
+  align-items: center;
+  width: 80vw;
+  margin: 0 auto;
+  border: 1px solid red; }
+  .showCaseContainer .showPen {
+    margin: 0 !important;
+    margin-top: 1rem !important;
+    width: 32% !important; }
+  .showCaseContainer .showPen:nth-child(3n+3) {
+    margin-left: 2% !important;
+    margin-right: 2% !important; }
+  .showCaseContainer .showPen:nth-child(1) {
+    width: 100% !important;
+    border: 1px solid blue;
+    margin-top: 0% !important; }
+  .showCaseContainer .displayPensList {
+    display: flex;
+    border: 1px solid yellow;
+    width: 100%;
+    flex-wrap: wrap; }
 
 .challenge {
   background: url("https://static.codepen.io/assets/logos/codepen-logo-pattern-725360e4ce5b66f968c7f39c80999bdeaa3cbe2f18eac75d58b01f8cf55c26ab.png");
@@ -2609,7 +2620,10 @@ span {
   display: flex;
   flex-direction: column;
   text-align: center;
-  color: whitesmoke; }
+  justify-content: center;
+  color: whitesmoke;
+  align-content: center;
+  align-items: center; }
 
 .Title2 {
   font-family: "Black Han Sans", sans-serif;
@@ -2646,8 +2660,6 @@ span {
   align-items: center;
   padding: 5px;
   text-align: center;
-  position: relative;
-  left: 40%;
   padding-left: 25px;
   margin: 25px; }
 
@@ -2659,8 +2671,6 @@ span {
   height: 350px;
   width: 650px;
   background: rgba(0, 0, 0, 0.363);
-  position: relative;
-  left: 31%;
   margin-top: 50px;
   padding: 30px;
   padding-top: 0px;
