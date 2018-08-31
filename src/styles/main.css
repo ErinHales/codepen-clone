@@ -2594,8 +2594,7 @@ span {
   flex-direction: column;
   align-items: center;
   width: 80vw;
-  margin: 0 auto;
-  border: 1px solid red; }
+  margin: 0 auto; }
   .showCaseContainer .showPen {
     margin: 0 !important;
     margin-top: 1rem !important;
@@ -2605,11 +2604,9 @@ span {
     margin-right: 2% !important; }
   .showCaseContainer .showPen:nth-child(1) {
     width: 100% !important;
-    border: 1px solid blue;
     margin-top: 0% !important; }
   .showCaseContainer .displayPensList {
     display: flex;
-    border: 1px solid yellow;
     width: 100%;
     flex-wrap: wrap; }
 
