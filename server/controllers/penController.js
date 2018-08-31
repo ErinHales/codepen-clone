@@ -48,6 +48,7 @@ module.exports = {
         res.status(200)
     },
     postPen(req, res) {
+            console.log('post pen')
         // Setting db Connection to variable
         const dbConn = req.app.get('db')
         // Destructure variables off of body
@@ -113,6 +114,7 @@ module.exports = {
             })
     },
     updatePen(req, res) {
+        console.log('update pen')
         const { userid: user_id } = req.session
         if(user_id){
             // Setting db Connection to variable
@@ -144,7 +146,17 @@ module.exports = {
                             })
                     }
                     // check to see if the request from the client contains any css settings content
-                    if(css_stylesheet[0]) {
+
+                    let repeatFilter = {}
+                    css_stylesheet = css_stylesheet.filter(val => val).filter( val => {
+                        if(!repeatFilter[val]) {
+                            repeatFilter[val] = 1
+                            return true
+                        } else {
+                            return false
+                        }
+                    })
+                        if(css_stylesheet[0]) {
                         //Adding the content if it exists
                         dbConn.delete_css_stylesheet([pen_id])
                             .then( () => {
@@ -162,10 +174,19 @@ module.exports = {
                             })
                     }
                     // check to see if the request from the client contains any javascript settings content
+                    let repeatFilter = {}
+                    js_script = js_script.filter(val => val).filter( val => {
+                        if(!repeatFilter[val]) {
+                            repeatFilter[val] = 1
+                            return true
+                        } else {
+                            return false
+                        }
+                    })
                     if(js_script[0]) {
 
                         dbConn.delete_js_scripts([pen_id])
-                            .then(() => {
+                            .then(() => {             
                                 //Adding the content if it exists
                                 for(let i = 0; i < js_script.length; i++) {
                                     dbConn.post_js_scripts([pen_id, js_script[i]])

@@ -49,8 +49,29 @@ export default class Pen extends Component {
         let { html_tag_class: htmlClassTag, head_tag: head } = htmlScripts
         
         // removing null
-        if (!cssList[0]) cssList = []
-        if (!jsList[0]) jsList = []
+        // if (!cssList[0]) cssList = []
+        // if (!jsList[0]) jsList = []
+        let repeatFilter = {
+            css: {},
+            js: {}
+        }
+        console.log()
+        cssList=cssList.filter(val => val).filter( val => {
+            if(!repeatFilter.css[val]) {
+                repeatFilter.css[val] = 1
+                return true
+            } else {
+                return false
+            }
+        })
+        jsList = jsList.filter(val => val).filter( val => {
+            if(!repeatFilter.js[val]) {
+                repeatFilter.js[val] = 1
+                return true
+            } else {
+                return false
+            }
+        })
         if (!htmlClassTag) {
             htmlClassTag = ''
         }

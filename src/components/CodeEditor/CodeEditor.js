@@ -82,10 +82,31 @@ export default class CodeEditor extends Component {
             const { user_id: penUserId, html, css, js, username, scripts } = response.data;
             let { css: cssList, html: htmlScripts, js: jsList } = scripts
             const { html_tag_class, head_tag } = htmlScripts
-            if (!cssList[0]) cssList = []
-            if (!jsList[0]) jsList = []
-            console.log(penUserId)
+            // if (!cssList[0]) cssList = []
+            // if (!jsList[0]) jsList = []
+            // console.log(penUserId)
+            let repeatFilter = {
+                css: {},
+                js: {}
+            }
+            cssList=cssList.filter(val => val).filter( val => {
+                if(!repeatFilter.css[val]) {
+                    repeatFilter.css[val] = 1
+                    return true
+                } else {
+                    return false
+                }
+            })
+            jsList = jsList.filter(val => val).filter( val => {
+                if(!repeatFilter.js[val]) {
+                    repeatFilter.js[val] = 1
+                    return true
+                } else {
+                    return false
+                }
+            })
 
+            
             this.setState({
                 penUserId,
                 css,
@@ -198,9 +219,11 @@ export default class CodeEditor extends Component {
             axios.put(`/api/pen/${id}`, this.penData())
         }
         else {
+            console.log(this.penData())
             axios.post('/api/pen/', this.penData())
                 .then(response => {
                     this.props.history.push(`/editor/${response.data[0].pen_id}`)
+                    window.location.reload()
                 })
         }
     }
@@ -439,7 +462,7 @@ export default class CodeEditor extends Component {
             
             <script>${this.state.js}</script>
         </html>`;
-        console.log(this.state)
+        // console.log(this.state)
         return (
             <div>
             <NavBar2
@@ -466,7 +489,7 @@ export default class CodeEditor extends Component {
                             ><img className="settingsImg" src="http://www.clker.com/cliparts/5/t/n/f/d/T/white-gear-hi.png" alt="settings" /></button>
                             <h3>HTML</h3>
                         </div>
-                        <button><img className="settingsImg" src="http://i66.tinypic.com/2gufexh.jpg" alt="down arrow" /></button>
+                        {/* <button><img className="settingsImg" src="http://i66.tinypic.com/2gufexh.jpg" alt="down arrow" /></button> */}
                     </section>
                     <section className="editorSection">
                         <div>
@@ -475,7 +498,7 @@ export default class CodeEditor extends Component {
                             ><img className="settingsImg" src="http://www.clker.com/cliparts/5/t/n/f/d/T/white-gear-hi.png" alt="settings" /></button>
                             <h3>CSS</h3>
                         </div>
-                        <button><img className="settingsImg" src="http://i66.tinypic.com/2gufexh.jpg" alt="down arrow" /></button>
+                        {/* <button><img className="settingsImg" src="http://i66.tinypic.com/2gufexh.jpg" alt="down arrow" /></button> */}
                     </section>
                     <section className="editorSection">
                         <div>
@@ -484,7 +507,7 @@ export default class CodeEditor extends Component {
                             ><img className="settingsImg" src="http://www.clker.com/cliparts/5/t/n/f/d/T/white-gear-hi.png" alt="settings" /></button>
                             <h3>JS</h3>
                         </div>
-                        <button><img className="settingsImg" src="http://i66.tinypic.com/2gufexh.jpg" alt="down arrow" /></button>
+                        {/* <button><img className="settingsImg" src="http://i66.tinypic.com/2gufexh.jpg" alt="down arrow" /></button> */}
                     </section>
                 </div>
                 {this.state.html !== null ? <div className="editor">

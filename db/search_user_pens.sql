@@ -34,7 +34,7 @@ FULL JOIN pen_comments
     ON pens.pen_id = pen_comments.pen_id
 FULL JOIN views
     ON pens.pen_id = views.pen_id
-WHERE pens.user_id = $1 AND pens.name LIKE $3 OR pens.description LIKE $3
+WHERE pens.user_id = $1 AND pens.name LIKE $3 OR pens.user_id = $1 AND pens.description LIKE $3 
 GROUP BY
     users.name,
     users.img_url,
