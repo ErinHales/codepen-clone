@@ -39,7 +39,6 @@ class Profile extends Component {
       }
     })
     axios.get('/api/userinfo').then(res => {
-      console.log(res.data[0]);
       this.setState({
         userInfo: res.data[0]
       })
@@ -147,11 +146,12 @@ class Profile extends Component {
     let { currentPage, pens, user, userInfo } = this.state;
     if (pens[currentPage]) {
       var pensList = pens[currentPage].map(pen => {
-        let { pen_id, name, username, img_url, description, views, comments, loves, scripts, html, css, js } = pen;
+        let { pen_id, name, user_id, username, img_url, description, views, comments, loves, scripts, html, css, js } = pen;
         return (
           <Pen
             key={pen_id}
             id={pen_id}
+            user_id={user_id}
             profilePicture={img_url}
             scripts={scripts}
             html={html}
