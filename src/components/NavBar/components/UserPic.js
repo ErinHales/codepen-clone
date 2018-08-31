@@ -60,7 +60,7 @@ class UserPic extends Component {
     return (
       <div className='container'>
         <div>
-          <img className='bell' src="https://www.applozic.com/assets/resources/lib/images/icon-bell.png" alt="Bell" />
+          {/* <img className='bell' src="https://www.applozic.com/assets/resources/lib/images/icon-bell.png" alt="Bell" /> */}
         </div>
         {this.state.user.userid ? (        
             <div className='userIcon' onClick={() => this.toggleUserNav()}>

@@ -27,12 +27,6 @@ class NavBar2 extends Component {
       })
     })
     .catch()
-
-  }
-  componentDidUpdate() {
-    if(!this.state.user) {
-      this.getUser()
-    }
   }
   componentDidMount(){
     this.getUser()
